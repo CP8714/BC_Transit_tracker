@@ -10,7 +10,7 @@ import requests
 
 # === GitHub data source ===
 # Update this to your actual username/repo
-DATA_URL = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/main/data/buses.json"
+DATA_URL = "https://api.github.com/repos/CP8714/BC_Transit_tracker/contents/data/buses.json"
 
 # === Load static route data once ===
 fp_routes = "data/routes.shp"   # adjust path if needed
