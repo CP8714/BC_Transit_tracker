@@ -8,7 +8,7 @@ import plotly.express as px
 import os
 
 # === Load static route data once ===
-fp_routes = "Victoria_routes/routes.shp"   # adjust path if needed
+fp_routes = "data/routes.shp"   # adjust path if needed
 route_data = gpd.read_file(fp_routes)
 route_geojson = json.loads(route_data.to_json())
 
