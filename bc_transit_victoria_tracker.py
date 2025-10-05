@@ -6,6 +6,11 @@ from dash import dcc, html
 from dash.dependencies import Output, Input
 import plotly.express as px
 import os
+import requests
+
+# === GitHub data source ===
+# Update this to your actual username/repo
+DATA_URL = "https://github.com/CP8714/BC_Transit_tracker/blob/main/data/buses.json"
 
 # === Load static route data once ===
 fp_routes = "data/routes.shp"   # adjust path if needed
@@ -43,13 +48,15 @@ app.layout = html.Div([
      Input("bus-search", "value")]
 )
 def update_map(n, bus_number):
-    # Load latest bus data from file
-    data_file = os.path.join("data", "buses.json")
-    if not os.path.exists(data_file):
-        return px.scatter_map(lat=[], lon=[], zoom=11, height=600), "No data yet"
-
-    with open(data_file, "r") as f:
-        buses = json.load(f)
+    # Fetch latest bus data from GitHub
+    try:
+        headers = {"Authorization": f"token {os.environ['GITHUB_TOKEN']}"}
+        response = requests.get(DATA_URL, headers=headers, timeout=10)
+        response.raise_for_status()
+        buses = response.json()
+    except Exception as e:
+        fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
+        return fig, f"Error fetching data: {e}"
 
     # Filter for specific bus
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
@@ -88,5 +95,7 @@ def update_map(n, bus_number):
 
     return fig, speed_text
 
+
 if __name__ == "__main__":
     app.run(debug=True)
+
