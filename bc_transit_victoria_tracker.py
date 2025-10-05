@@ -10,7 +10,7 @@ import requests
 
 # === GitHub data source ===
 # Update this to your actual username/repo
-DATA_URL = "https://api.github.com/repos/CP8714/BC_Transit_tracker/contents/data/buses.json"
+DATA_URL = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/buses.json"
 
 # === Load static route data once ===
 fp_routes = "data/routes.shp"   # adjust path if needed
@@ -50,9 +50,7 @@ app.layout = html.Div([
 def update_map(n, bus_number):
     # Fetch latest bus data from GitHub
     try:
-        headers = {"Authorization": f"token {os.environ['GITHUB_TOKEN']}"}
-        response = requests.get(DATA_URL, headers=headers, timeout=10)
-        response.raise_for_status()
+        response = requests.get(DATA_URL, timeout=10)
         buses = response.json()
     except Exception as e:
         fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
