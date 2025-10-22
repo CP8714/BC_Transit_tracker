@@ -112,6 +112,14 @@ def update_map_interval(buses, bus_number):
         return fig, f"Error fetching data: {e}"
     return update_map(buses, bus_number)
 
+@app.callback(
+    [Output("live-map", "figure"),
+     Output("bus-speed", "children")],
+    [Input("manual-update", "n_clicks"),
+     Input("bus-search", "value")],
+    prevent_initial_call=True
+)
+
 def manual_update(n_clicks, bus_number):
     try:
         import os
