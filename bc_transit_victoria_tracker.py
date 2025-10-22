@@ -114,6 +114,7 @@ def update_map_interval(buses, bus_number):
 
 def manual_update(n_clicks, bus_number):
     try:
+        print("✅ CALLBACK TRIGGERED", flush=True)
         if n_clicks == count + 1:
             print("✅ CALLBACK TRIGGERED", flush=True)
             # Run fetch_data.py to update buses.json live
