@@ -8,6 +8,8 @@ import os
 import subprocess
 
 # === Load static route GeoJSON once ===
+gdf = gpd.read_file("data/routes.shp")
+gdf.to_file("data/routes.geojson", driver="GeoJSON")
 with open("data/routes.geojson") as f:
     route_geojson = json.load(f)
 
