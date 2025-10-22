@@ -12,6 +12,8 @@ import requests
 # Update this to your actual username/repo
 DATA_URL = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/buses.json"
 
+count = 0
+
 # === Load static route data once ===
 fp_routes = "data/routes.shp"   # adjust path if needed
 route_data = gpd.read_file(fp_routes)
@@ -107,6 +109,18 @@ def update_map_interval(buses, bus_number):
         fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
         return fig, f"Error fetching data: {e}"
     return update_map(buses, bus_number)
+
+def manual_update(n_clicks, bus_number):
+    try:
+        if n_clicks == count + 1:
+            # Run fetch_data.py to update buses.json live
+            subprocess.run(["python", "fetch_data.py"], check=True)
+            buses = load_buses()
+            count = n_clicks
+            return update_map(buses, bus_number)
+    except Exception as e:
+        fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
+        return fig, f"Error fetching live data: {e}"
 
 
 if __name__ == "__main__":
