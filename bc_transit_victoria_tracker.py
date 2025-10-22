@@ -114,9 +114,13 @@ def update_map_interval(buses, bus_number):
 
 def manual_update(n_clicks, bus_number):
     try:
-        print("✅ CALLBACK TRIGGERED", flush=True)
+        import os
+        print("✅ callback reached", flush=True)
+        print("cwd:", os.getcwd(), flush=True)
+        print("files:", os.listdir("."), flush=True)
+        print("data folder exists?", os.path.isdir("data"), flush=True)
+        print("data/buses.json exists?", os.path.exists("data/buses.json"), flush=True)
         if n_clicks == count + 1:
-            print("✅ CALLBACK TRIGGERED", flush=True)
             # Run fetch_data.py to update buses.json live
             import fetch_data
             fetch_data.fetch
