@@ -2,6 +2,7 @@
 import json
 import dash
 import geopandas as gpd
+import plotly.express as px
 from dash import dcc, html
 from dash.dependencies import Output, Input
 import plotly.graph_objects as go
@@ -31,24 +32,6 @@ app.layout = html.Div([
             debounce=True
         )
     ], style={"margin-bottom": "10px"}),
-
-    # Manual update button
-    html.Div([
-        html.Button(
-            "Update Now",
-            id="manual-update",
-            n_clicks=0,
-            style={
-                "padding": "10px 20px",
-                "font-size": "16px",
-                "background-color": "#007BFF",
-                "color": "white",
-                "border": "none",
-                "border-radius": "5px",
-                "cursor": "pointer"
-            }
-        )
-    ], style={"margin-bottom": "20px"}),
 
     html.H3(id="bus-speed"),
     dcc.Graph(id="live-map"),
