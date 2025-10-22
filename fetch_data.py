@@ -3,9 +3,8 @@ from google.transit import gtfs_realtime_pb2
 import json
 from datetime import datetime
 
-url = "https://bct.tmix.se/gtfs-realtime/vehicleupdates.pb?operatorIds=48"
-
 def fetch():
+    url = "https://bct.tmix.se/gtfs-realtime/vehicleupdates.pb?operatorIds=48"
     response = requests.get(url, timeout=10)
     response.raise_for_status()
 
