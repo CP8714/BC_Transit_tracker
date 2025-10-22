@@ -32,6 +32,10 @@ app.layout = html.Div([
             debounce=True
         )
     ], style={"margin-bottom": "10px"}),
+
+    # Manual update button
+    html.Button("Update Now", id="manual-update", n_clicks=0, style={"margin-bottom": "10px"}),
+    
     html.H3(id="bus-speed"),
     dcc.Graph(id="live-map"),
     dcc.Interval(
