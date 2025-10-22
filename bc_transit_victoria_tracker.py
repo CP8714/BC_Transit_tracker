@@ -4,7 +4,7 @@ import json
 import dash
 from dash import dcc, html
 from dash.dependencies import Output, Input, State
-import plotly.express as px
+import plotly.graph_objects as go
 import os
 import requests
 import subprocess
@@ -68,33 +68,48 @@ def load_buses():
         return json.load(f)
 
 def generate_map(buses, bus_number):
-    """Generate figure and speed text for a given bus_number."""
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
 
     if not bus:
-        fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
+        fig = go.Figure()
+        fig.update_layout(mapbox_style="open-street-map", mapbox_zoom=11, mapbox_center={"lat":48.4284,"lon":-123.3656})
         return fig, f"{bus_number} is not running at the moment"
 
     lat, lon, speed, route, bus_id = (
         bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:]
     )
 
-    fig = px.scatter_map(
-        lat=[lat], lon=[lon],
-        text=[f"{bus_id}"],
-        zoom=12, height=600
-    )
+    fig = go.Figure()
 
-    # Add static routes
+    # Add route GeoJSON as Scattermapbox line
+    for feature in route_geojson["features"]:
+        coords = feature["geometry"]["coordinates"]
+        lons, lats = zip(*coords)
+        fig.add_trace(go.Scattermapbox(
+            lat=lats,
+            lon=lons,
+            mode="lines",
+            line=dict(color="gray", width=2),
+            hoverinfo="none"
+        ))
+
+    # Add bus location
+    fig.add_trace(go.Scattermapbox(
+        lat=[lat],
+        lon=[lon],
+        mode="markers+text",
+        marker=dict(size=12, color="red"),
+        text=[f"{bus_id}"],
+        textposition="top right",
+        hoverinfo="text"
+    ))
+
     fig.update_layout(
-        map_style="open-street-map",
-        map_layers=[{
-            "sourcetype": "geojson",
-            "source": route_geojson,
-            "type": "line",
-            "color": "gray",
-            "line": {"width": 2}
-        }]
+        mapbox_style="open-street-map",
+        mapbox_zoom=12,
+        mapbox_center={"lat": lat, "lon": lon},
+        height=600,
+        margin={"l":0,"r":0,"t":0,"b":0}
     )
 
     speed_text = (
