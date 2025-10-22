@@ -36,6 +36,24 @@ app.layout = html.Div([
     html.H3(id="bus-speed"),
     dcc.Graph(id="live-map"),
 
+    # Manual update button
+    html.Div([
+        html.Button(
+            "Update Now",
+            id="manual-update",
+            n_clicks=0,
+            style={
+                "padding": "10px 20px",
+                "font-size": "16px",
+                "background-color": "#007BFF",
+                "color": "white",
+                "border": "none",
+                "border-radius": "5px",
+                "cursor": "pointer"
+            }
+        )
+    ], style={"margin-bottom": "20px"}),
+
     # Auto-refresh
     dcc.Interval(
         id="interval-component",
