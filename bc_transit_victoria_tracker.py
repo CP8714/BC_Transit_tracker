@@ -4,10 +4,15 @@ import json
 import dash
 from dash import dcc, html
 from dash.dependencies import Output, Input
-from fetch_data import fetch
+# from fetch_data import fetch
 import plotly.express as px
 import os
 import requests
+
+
+import requests
+from google.transit import gtfs_realtime_pb2
+from datetime import datetime
 
 # === GitHub data source ===
 # Update this to your actual username/repo
@@ -47,6 +52,30 @@ app.layout = html.Div([
         n_intervals=0
     )
 ])
+
+def get_data():
+    url = "https://bct.tmix.se/gtfs-realtime/vehicleupdates.pb?operatorIds=48"
+    response = requests.get(url, timeout=10)
+    response.raise_for_status()
+
+    feed = gtfs_realtime_pb2.FeedMessage()
+    feed.ParseFromString(response.content)
+
+    buses = []
+    for entity in feed.entity:
+        if entity.HasField("vehicle"):
+            buses.append({
+                "id": entity.vehicle.vehicle.id,
+                "lat": entity.vehicle.position.latitude,
+                "lon": entity.vehicle.position.longitude,
+                "speed": entity.vehicle.position.speed,
+                "route": entity.vehicle.trip.route_id,
+                "timestamp": datetime.utcnow().isoformat()
+            })
+
+    # Save to file
+    with open("data/buses.json", "w") as f:
+        json.dump(buses, f, indent=2)
 
 def load_buses():
     try:
@@ -115,7 +144,7 @@ def manual_update(n_clicks, bus_number):
     try:
         if n_clicks == count + 1:
             # Run fetch_data.py to update buses.json live
-            fetch()
+            get_data()
             buses = load_buses()
             count = n_clicks
             return update_map(buses, bus_number)
