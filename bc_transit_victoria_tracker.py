@@ -114,7 +114,7 @@ def manual_update(n_clicks, bus_number):
     try:
         if n_clicks == count + 1:
             # Run fetch_data.py to update buses.json live
-            subprocess.run(["python", "fetch_data.py"], check=True)
+            fetch_data.py
             buses = load_buses()
             count = n_clicks
             return update_map(buses, bus_number)
