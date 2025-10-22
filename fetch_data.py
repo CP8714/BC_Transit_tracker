@@ -24,7 +24,7 @@ def fetch():
             })
 
     # Save to file
-    with open("data/buses.json", "w") as f:
+    with open("data/buses_test.json", "w") as f:
         json.dump(buses, f, indent=2)
 
 if __name__ == "__main__":
