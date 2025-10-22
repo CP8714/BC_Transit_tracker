@@ -54,19 +54,7 @@ def load_buses():
         fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
         return fig, f"Error fetching data: {e}"
 
-@app.callback(
-    [Output("live-map", "figure"),
-     Output("bus-speed", "children")],
-    [Input("interval-component", "n_intervals"),
-     Input("bus-search", "value")]
-)
-def update_map(n, bus_number):
-    # Fetch latest bus data from GitHub
-    try:
-        buses = load_buses()
-    except Exception as e:
-        fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
-        return fig, f"Error fetching data: {e}"
+def update_map(buses, bus_number):
 
     # Filter for specific bus
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
@@ -104,6 +92,21 @@ def update_map(n, bus_number):
     )
 
     return fig, speed_text
+
+@app.callback(
+    [Output("live-map", "figure"),
+     Output("bus-speed", "children")],
+    [Input("interval-component", "n_intervals"),
+     Input("bus-search", "value")]
+)
+def update_map_interval(buses, bus_number):
+    # Fetch latest bus data from GitHub
+    try:
+        buses = load_buses()
+    except Exception as e:
+        fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
+        return fig, f"Error fetching data: {e}"
+    return update_map(buses, bus_number)
 
 
 if __name__ == "__main__":
