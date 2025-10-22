@@ -4,6 +4,7 @@ import json
 from datetime import datetime
 
 def fetch():
+    print("✅ fetch_data.fetch() WAS CALLED", flush=True)  # <--- ADD THIS
     url = "https://bct.tmix.se/gtfs-realtime/vehicleupdates.pb?operatorIds=48"
     response = requests.get(url, timeout=10)
     response.raise_for_status()
