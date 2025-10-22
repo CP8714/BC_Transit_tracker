@@ -1,6 +1,7 @@
 # bc_transit_victoria_tracker.py
 import json
 import dash
+import geopandas as gpd
 from dash import dcc, html
 from dash.dependencies import Output, Input
 import plotly.graph_objects as go
