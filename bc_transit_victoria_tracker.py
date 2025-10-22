@@ -1,27 +1,26 @@
-# bc_transit_victoria_tracker.py
+# Import necessary modules
+import geopandas as gpd
 import json
 import dash
-import geopandas as gpd
-import plotly.express as px
 from dash import dcc, html
-from dash.dependencies import Output, Input
-import plotly.graph_objects as go
+from dash.dependencies import Output, Input, State
+import plotly.express as px
 import os
+import requests
 import subprocess
 
-# === Load static route GeoJSON once ===
-gdf = gpd.read_file("data/routes.shp")
-gdf.to_file("data/routes.geojson", driver="GeoJSON")
-with open("data/routes.geojson") as f:
-    route_geojson = json.load(f)
+# === Load static route data once ===
+fp_routes = "data/routes.shp"   # adjust path if needed
+route_data = gpd.read_file(fp_routes)
+route_geojson = json.loads(route_data.to_json())
 
 # === Dash app ===
 app = dash.Dash(__name__)
 
 app.layout = html.Div([
     html.H2("BC Transit Victoria – Bus Tracker"),
-
-    # Bus input
+    
+    # Input for bus number
     html.Div([
         html.Label("Enter Bus Number:"),
         dcc.Input(
@@ -33,28 +32,13 @@ app.layout = html.Div([
         )
     ], style={"margin-bottom": "10px"}),
 
+    # Manual update button
+    html.Button("Update Now", id="manual-update", n_clicks=0, style={"margin-bottom": "10px"}),
+
     html.H3(id="bus-speed"),
     dcc.Graph(id="live-map"),
 
-    # Manual update button
-    html.Div([
-        html.Button(
-            "Update Now",
-            id="manual-update",
-            n_clicks=1,
-            style={
-                "padding": "10px 20px",
-                "font-size": "16px",
-                "background-color": "#007BFF",
-                "color": "white",
-                "border": "none",
-                "border-radius": "5px",
-                "cursor": "pointer"
-            }
-        )
-    ], style={"margin-bottom": "20px"}),
-
-    # Auto-refresh
+    # Auto-refresh interval
     dcc.Interval(
         id="interval-component",
         interval=60*1000,  # 60 seconds
@@ -62,74 +46,52 @@ app.layout = html.Div([
     )
 ])
 
-# === Helper functions ===
 def load_buses():
-    data_file = "data/buses.json"
+    """Load buses.json safely."""
+    data_file = os.path.join("data", "buses.json")
     if not os.path.exists(data_file):
         return []
-    try:
-        with open(data_file) as f:
-            return json.load(f)
-    except Exception:
-        return []
+    with open(data_file, "r") as f:
+        return json.load(f)
 
 def generate_map(buses, bus_number):
-    default_lat, default_lon = 48.4284, -123.3656  # Victoria, BC
-
-    fig = go.Figure()
-
-    # Draw routes
-    for feature in route_geojson["features"]:
-        if feature["geometry"]["type"] == "LineString":
-            coords = feature["geometry"]["coordinates"]
-            lons, lats = zip(*coords)
-            fig.add_trace(go.Scattermapbox(
-                lat=lats,
-                lon=lons,
-                mode="lines",
-                line=dict(color="gray", width=2),
-                hoverinfo="none"
-            ))
-
-    # Draw bus
+    """Generate figure and speed text for a given bus_number."""
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
-    if bus:
-        lat, lon, speed, route, bus_id = (
-            bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:]
-        )
-        fig.add_trace(go.Scattermapbox(
-            lat=[lat],
-            lon=[lon],
-            mode="markers+text",
-            marker=dict(size=12, color="red"),
-            text=[f"{bus_id}"],
-            textposition="top right",
-            hoverinfo="text"
-        ))
-        center_lat, center_lon = lat, lon
-        speed_text = (
-            f"{bus_id} is running route {route} at {speed:.1f} km/h"
-            if speed else f"{bus_id} is running route {route} and is currently stopped"
-        )
-    else:
-        center_lat, center_lon = default_lat, default_lon
-        speed_text = f"{bus_number} is not running at the moment"
 
+    if not bus:
+        fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
+        return fig, f"{bus_number} is not running at the moment"
+
+    lat, lon, speed, route, bus_id = (
+        bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:]
+    )
+
+    fig = px.scatter_map(
+        lat=[lat], lon=[lon],
+        text=[f"{bus_id}"],
+        zoom=12, height=600
+    )
+
+    # Add static routes
     fig.update_layout(
-        mapbox=dict(
-            style="open-street-map",
-            center=dict(lat=center_lat, lon=center_lon),
-            zoom=12
-        ),
-        height=600,
-        margin={"l":0,"r":0,"t":0,"b":0}
+        map_style="open-street-map",
+        map_layers=[{
+            "sourcetype": "geojson",
+            "source": route_geojson,
+            "type": "line",
+            "color": "gray",
+            "line": {"width": 2}
+        }]
+    )
+
+    speed_text = (
+        f"{bus_id} is running route {route} at {speed:.1f} km/h"
+        if speed else f"{bus_id} is running route {route} and is currently stopped"
     )
 
     return fig, speed_text
 
-# === Callbacks ===
-
-# Auto-refresh
+# --- Callback for auto-refresh interval ---
 @app.callback(
     [Output("live-map", "figure"),
      Output("bus-speed", "children")],
@@ -140,7 +102,7 @@ def update_map_interval(n, bus_number):
     buses = load_buses()
     return generate_map(buses, bus_number)
 
-# Manual update
+# --- Callback for manual "Update Now" button ---
 @app.callback(
     [Output("live-map", "figure"),
      Output("bus-speed", "children")],
@@ -150,21 +112,13 @@ def update_map_interval(n, bus_number):
 )
 def manual_update(n_clicks, bus_number):
     try:
-        # Run fetch_data.py on Render
-        # subprocess.run(["python3", "fetch_data.py"], check=True)
-        buses = load_buses()
-        return generate_map(buses, bus_number)
+        # Run fetch_data.py to update buses.json live
+        # subprocess.run(["python", "fetch_data.py"], check=True)
+        # buses = load_buses()
+        # return generate_map(buses, bus_number)
+        return
     except Exception as e:
-        fig = go.Figure()
-        fig.update_layout(
-            mapbox=dict(
-                style="open-street-map",
-                center=dict(lat=48.4284, lon=-123.3656),
-                zoom=12
-            ),
-            height=600,
-            margin={"l":0,"r":0,"t":0,"b":0}
-        )
+        fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
         return fig, f"Error fetching live data: {e}"
 
 if __name__ == "__main__":
