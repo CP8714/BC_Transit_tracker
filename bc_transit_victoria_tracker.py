@@ -46,8 +46,7 @@ app.layout = html.Div([
         "border": "none",
         "border-radius": "5px",
         "cursor": "pointer"
-    }
-),
+    }),
 
     html.H3(id="bus-speed"),
     dcc.Graph(id="live-map"),
