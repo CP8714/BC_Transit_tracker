@@ -119,9 +119,10 @@ def update_map_interval(n, bus_number):
 def manual_update(n_clicks, bus_number):
     try:
         # Run fetch_data.py to update buses.json live
-        subprocess.run(["python", "fetch_data.py"], check=True)
-        buses = load_buses()
-        return generate_map(buses, bus_number)
+        # subprocess.run(["python", "fetch_data.py"], check=True)
+        # buses = load_buses()
+        # return generate_map(buses, bus_number)
+        return 0
     except Exception as e:
         fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
         return fig, f"Error fetching live data: {e}"
