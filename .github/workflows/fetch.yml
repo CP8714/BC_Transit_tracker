@@ -3,7 +3,7 @@ name: Fetch GTFS Data
 on:
   workflow_dispatch:       # manual run
   schedule:
-    - cron: "*/5 * * * *"  # every 5 minutes
+    - cron: "*/1 * * * *"  # every minute
 
 jobs:
   fetch:
