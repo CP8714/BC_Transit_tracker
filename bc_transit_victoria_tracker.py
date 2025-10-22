@@ -68,53 +68,57 @@ def load_buses():
         return json.load(f)
 
 def generate_map(buses, bus_number):
+    # Default map center (Victoria, BC)
+    default_lat, default_lon = 48.4284, -123.3656
+    
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
-
-    if not bus:
-        fig = go.Figure()
-        fig.update_layout(mapbox_style="open-street-map", mapbox_zoom=11, mapbox_center={"lat":48.4284,"lon":-123.3656})
-        return fig, f"{bus_number} is not running at the moment"
-
-    lat, lon, speed, route, bus_id = (
-        bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:]
-    )
 
     fig = go.Figure()
 
-    # Add route GeoJSON as Scattermapbox line
+    # Add static route lines
     for feature in route_geojson["features"]:
         coords = feature["geometry"]["coordinates"]
-        lons, lats = zip(*coords)
-        fig.add_trace(go.Scattermapbox(
-            lat=lats,
-            lon=lons,
-            mode="lines",
-            line=dict(color="gray", width=2),
-            hoverinfo="none"
-        ))
+        if feature["geometry"]["type"] == "LineString":
+            lons, lats = zip(*coords)
+            fig.add_trace(go.Scattermapbox(
+                lat=lats,
+                lon=lons,
+                mode="lines",
+                line=dict(color="gray", width=2),
+                hoverinfo="none"
+            ))
 
-    # Add bus location
-    fig.add_trace(go.Scattermapbox(
-        lat=[lat],
-        lon=[lon],
-        mode="markers+text",
-        marker=dict(size=12, color="red"),
-        text=[f"{bus_id}"],
-        textposition="top right",
-        hoverinfo="text"
-    ))
+    # Add bus marker
+    if bus:
+        lat, lon, speed, route, bus_id = (
+            bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:]
+        )
+        fig.add_trace(go.Scattermapbox(
+            lat=[lat],
+            lon=[lon],
+            mode="markers+text",
+            marker=dict(size=12, color="red"),
+            text=[f"{bus_id}"],
+            textposition="top right",
+            hoverinfo="text"
+        ))
+        center_lat, center_lon = lat, lon
+        speed_text = (
+            f"{bus_id} is running route {route} at {speed:.1f} km/h"
+            if speed else f"{bus_id} is running route {route} and is currently stopped"
+        )
+    else:
+        center_lat, center_lon = default_lat, default_lon
+        speed_text = f"{bus_number} is not running at the moment"
 
     fig.update_layout(
-        mapbox_style="open-street-map",
-        mapbox_zoom=12,
-        mapbox_center={"lat": lat, "lon": lon},
+        mapbox=dict(
+            style="open-street-map",
+            center=dict(lat=center_lat, lon=center_lon),
+            zoom=12
+        ),
         height=600,
         margin={"l":0,"r":0,"t":0,"b":0}
-    )
-
-    speed_text = (
-        f"{bus_id} is running route {route} at {speed:.1f} km/h"
-        if speed else f"{bus_id} is running route {route} and is currently stopped"
     )
 
     return fig, speed_text
