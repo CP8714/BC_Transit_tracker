@@ -9,6 +9,9 @@ import os
 import requests
 import subprocess
 
+
+DATA_URL = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/buses.json"
+
 # === Load static route data once ===
 fp_routes = "data/routes.shp"   # adjust path if needed
 route_data = gpd.read_file(fp_routes)
@@ -49,10 +52,13 @@ app.layout = html.Div([
 def load_buses():
     """Load buses.json safely."""
     data_file = os.path.join("data", "buses.json")
-    if not os.path.exists(data_file):
-        return []
-    with open(data_file, "r") as f:
-        return json.load(f)
+    try:
+        response = requests.get(DATA_URL, timeout=10)
+        buses = response.json()
+        return buses
+    except Exception as e:
+        fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
+        return fig, f"Error fetching data: {e}"
 
 def generate_map(buses, bus_number):
     """Generate figure and speed text for a given bus_number."""
@@ -113,10 +119,9 @@ def update_map_interval(n, bus_number):
 def manual_update(n_clicks, bus_number):
     try:
         # Run fetch_data.py to update buses.json live
-        # subprocess.run(["python", "fetch_data.py"], check=True)
-        # buses = load_buses()
-        # return generate_map(buses, bus_number)
-        return
+        subprocess.run(["python", "fetch_data.py"], check=True)
+        buses = load_buses()
+        return generate_map(buses, bus_number)
     except Exception as e:
         fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
         return fig, f"Error fetching live data: {e}"
