@@ -41,7 +41,7 @@ app.layout = html.Div([
         html.Button(
             "Update Now",
             id="manual-update",
-            n_clicks=0,
+            n_clicks=1,
             style={
                 "padding": "10px 20px",
                 "font-size": "16px",
