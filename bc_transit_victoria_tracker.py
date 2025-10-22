@@ -4,6 +4,7 @@ import json
 import dash
 from dash import dcc, html
 from dash.dependencies import Output, Input
+from fetch_data import fetch
 import plotly.express as px
 import os
 import requests
@@ -114,7 +115,7 @@ def manual_update(n_clicks, bus_number):
     try:
         if n_clicks == count + 1:
             # Run fetch_data.py to update buses.json live
-            fetch_data.py
+            fetch()
             buses = load_buses()
             count = n_clicks
             return update_map(buses, bus_number)
