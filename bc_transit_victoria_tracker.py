@@ -45,6 +45,15 @@ app.layout = html.Div([
     )
 ])
 
+def load_buses():
+    try:
+        response = requests.get(DATA_URL, timeout=10)
+        buses = response.json()
+        return buses
+    except Exception as e:
+        fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
+        return fig, f"Error fetching data: {e}"
+
 @app.callback(
     [Output("live-map", "figure"),
      Output("bus-speed", "children")],
@@ -54,10 +63,7 @@ app.layout = html.Div([
 def update_map(n, bus_number):
     # Fetch latest bus data from GitHub
     try:
-        response = requests.get(DATA_URL, timeout=10)
-
-
-        buses = response.json()
+        buses = load_buses()
     except Exception as e:
         fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
         return fig, f"Error fetching data: {e}"
