@@ -33,7 +33,21 @@ app.layout = html.Div([
     ], style={"margin-bottom": "10px"}),
 
     # Manual update button
-    html.Button("Update Now", id="manual-update", n_clicks=0, style={"margin-bottom": "10px"}),
+    html.Button(
+    "Update Now",
+    id="manual-update",
+    n_clicks=0,
+    style={
+        "margin-bottom": "15px",
+        "padding": "10px 20px",
+        "font-size": "16px",
+        "background-color": "#007BFF",
+        "color": "white",
+        "border": "none",
+        "border-radius": "5px",
+        "cursor": "pointer"
+    }
+),
 
     html.H3(id="bus-speed"),
     dcc.Graph(id="live-map"),
