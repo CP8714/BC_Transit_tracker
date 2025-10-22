@@ -151,7 +151,7 @@ def update_map_interval(n, bus_number):
 def manual_update(n_clicks, bus_number):
     try:
         # Run fetch_data.py on Render
-        subprocess.run(["python3", "fetch_data.py"], check=True)
+        # subprocess.run(["python3", "fetch_data.py"], check=True)
         buses = load_buses()
         return generate_map(buses, bus_number)
     except Exception as e:
