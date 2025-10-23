@@ -74,6 +74,8 @@ def generate_map(buses, bus_number):
         bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:]
     )
 
+    speed = speed * 3
+
     fig = px.scatter_map(
         lat=[lat], lon=[lon],
         text=[f"{bus_id}"],
@@ -91,6 +93,7 @@ def generate_map(buses, bus_number):
             "line": {"width": 2}
         }]
     )
+    
 
     speed_text = (
         f"{bus_id} is running route {route} at {speed:.1f} km/h"
