@@ -66,7 +66,7 @@ def load_buses():
 
 def load_trips():
     csv_file = os.path.join("data", "trips.csv")
-    if os.path.exists(data_file):
+    if os.path.exists(csv_file):
         trips_df = pd.read_csv(fp)
         return trips_df
 
