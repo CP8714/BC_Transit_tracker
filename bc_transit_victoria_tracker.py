@@ -38,6 +38,8 @@ app.layout = html.Div([
     html.Button("Update Now", id="manual-update", n_clicks=0, style={"margin-bottom": "10px"}),
 
     html.H3(id="bus-speed"),
+
+    html.H3(id="capacity"),
     dcc.Graph(id="live-map"),
 
     # Auto-refresh interval
@@ -70,8 +72,8 @@ def generate_map(buses, bus_number):
         fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
         return fig, f"{bus_number} is not running at the moment"
 
-    lat, lon, speed, route, bus_id = (
-        bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:]
+    lat, lon, speed, route, bus_id, capacity = (
+        bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"]
     )
 
     speed = speed * 3
@@ -93,21 +95,25 @@ def generate_map(buses, bus_number):
             "line": {"width": 2}
         }]
     )
-    
 
     speed_text = (
         f"{bus_id} is running route {route} at {speed:.1f} km/h"
         if speed else f"{bus_id} is running route {route} and is currently stopped"
     )
 
-    return fig, speed_text
+    capacity_text = (
+        f"Current seating capacity: {capacity}"
+    )
+
+    return fig, speed_text, capacity_text
 
 # --- Unified callback ---
 from dash import callback_context
 
 @app.callback(
     [Output("live-map", "figure"),
-     Output("bus-speed", "children")],
+     Output("bus-speed", "children"),
+     Output("capacity", "children"),],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("bus-search", "value")]
