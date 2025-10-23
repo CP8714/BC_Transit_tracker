@@ -20,6 +20,7 @@ def fetch():
                 "lon": entity.vehicle.position.longitude,
                 "speed": entity.vehicle.position.speed,
                 "route": entity.vehicle.trip.route_id,
+                "capacity": entity.vehicle.occupancy_status,
                 "timestamp": datetime.utcnow().isoformat()
             })
 
