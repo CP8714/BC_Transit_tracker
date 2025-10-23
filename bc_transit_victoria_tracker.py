@@ -82,6 +82,7 @@ def generate_map(buses, bus_number, trips_df):
     lat, lon, speed, route, bus_id, capacity, trip_id = (
         bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"]
     )
+    route = route.split('-')[0]
     trip_headsign = trips_df.loc[trips_df["trip_id"] == trip_id, "trip_headsign"]
     trip_headsign = trip_headsign.iloc[0]
     speed = speed * 3
@@ -107,8 +108,8 @@ def generate_map(buses, bus_number, trips_df):
     )
 
     speed_text = (
-        f"{bus_id} is running route {route} {trip_headsign} at {speed:.1f} km/h"
-        if speed else f"{bus_id} is running route {route} {trip_headsign} and is currently stopped"
+        f"{bus_id} is running the {route} {trip_headsign} at {speed:.1f} km/h"
+        if speed else f"{bus_id} is running the {route} {trip_headsign} and is currently stopped"
     )
     if capacity == 0:
         capacity_text = "Occupancy Status: Empty"
