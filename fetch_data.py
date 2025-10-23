@@ -13,6 +13,7 @@ def fetch():
     response.raise_for_status()
 
     static_response = requests.get(static_url)
+    static_response.raise_for_status()
     z = zipfile.ZipFile(io.BytesIO(static_response.content))
 
     trips_df = pd.read_csv(z.open("trips.txt"))
