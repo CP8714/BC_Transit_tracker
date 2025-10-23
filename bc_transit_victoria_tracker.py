@@ -81,7 +81,7 @@ def generate_map(buses, bus_number, trips_df):
     lat, lon, speed, route, bus_id, capacity, trip_id = (
         bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"]
     )
-    result = trips_df.loc[trips_df["trip_id"] == "11028329:10000118:10049820", "trip_headsign"]
+    result = trips_df.loc[trips_df["trip_id"] == trip_id, "trip_headsign"]
     speed = speed * 3
 
     
