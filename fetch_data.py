@@ -2,11 +2,18 @@ import requests
 from google.transit import gtfs_realtime_pb2
 import json
 from datetime import datetime
+import pandas as pd
+import zipfile
+import io
 
 def fetch():
     url = "https://bct.tmix.se/gtfs-realtime/vehicleupdates.pb?operatorIds=48"
+    static_url = "https://bct.tmix.se/Tmix.Cap.TdExport.WebApi/gtfs/?operatorIds=48"
     response = requests.get(url, timeout=10)
     response.raise_for_status()
+
+    static_response = requests.get(static_url)
+    z = zipfile.ZipFile(io.BytesIO(response.content))
 
     feed = gtfs_realtime_pb2.FeedMessage()
     feed.ParseFromString(response.content)
@@ -27,6 +34,9 @@ def fetch():
     # Save to file
     with open("data/buses.json", "w") as f:
         json.dump(buses, f, indent=2)
+
+    trips_df = pd.read_csv(z.open("trips.txt"))
+    trips_df.to_csv("data/trips.csv", index=False)
 
 if __name__ == "__main__":
     fetch()
