@@ -15,6 +15,9 @@ def fetch():
     static_response = requests.get(static_url)
     z = zipfile.ZipFile(io.BytesIO(static_response.content))
 
+    trips_df = pd.read_csv(z.open("trips.txt"))
+    trips_df.to_csv("data/trips.csv", index=False)
+
     feed = gtfs_realtime_pb2.FeedMessage()
     feed.ParseFromString(response.content)
 
@@ -35,8 +38,6 @@ def fetch():
     with open("data/buses.json", "w") as f:
         json.dump(buses, f, indent=2)
 
-    trips_df = pd.read_csv(z.open("trips.txt"))
-    trips_df.to_csv("data/trips.csv", index=False)
 
 if __name__ == "__main__":
     fetch()
