@@ -13,7 +13,7 @@ def fetch():
     response.raise_for_status()
 
     static_response = requests.get(static_url)
-    z = zipfile.ZipFile(io.BytesIO(response.content))
+    z = zipfile.ZipFile(io.BytesIO(static_response.content))
 
     feed = gtfs_realtime_pb2.FeedMessage()
     feed.ParseFromString(response.content)
