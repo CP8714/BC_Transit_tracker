@@ -70,7 +70,7 @@ def load_trips():
         trips_df = pd.read_csv(fp)
         return trips_df
 
-def generate_map(buses, bus_number):
+def generate_map(buses, bus_number, trips_df):
     """Generate figure and speed text for a given bus_number."""
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
 
@@ -81,8 +81,10 @@ def generate_map(buses, bus_number):
     lat, lon, speed, route, bus_id, capacity, trip_id = (
         bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"]
     )
-
+    result = trips_df.loc[trips_df["trip_id"] == "11028329:10000118:10049820", "trip_headsign"]
     speed = speed * 3
+
+    
 
     fig = px.scatter_map(
         lat=[lat], lon=[lon],
@@ -142,7 +144,8 @@ def update_map_callback(n_intervals, n_clicks, bus_number):
 
     # Load the latest bus data
     buses = load_buses()
-    return generate_map(buses, bus_number)
+    trips_df = load_trips()
+    return generate_map(buses, bus_number, trips_df)
 
 # === Run app ===
 if __name__ == "__main__":
