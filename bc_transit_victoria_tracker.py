@@ -70,7 +70,7 @@ def generate_map(buses, bus_number):
 
     if not bus:
         fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
-        return fig, f"{bus_number} is not running at the moment"
+        return fig, f"{bus_number} is not running at the moment", "Occupancy Status: Not available"
 
     lat, lon, speed, route, bus_id, capacity = (
         bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"]
@@ -100,10 +100,16 @@ def generate_map(buses, bus_number):
         f"{bus_id} is running route {route} at {speed:.1f} km/h"
         if speed else f"{bus_id} is running route {route} and is currently stopped"
     )
-
-    capacity_text = (
-        f"Current seating capacity: {capacity}"
-    )
+    if capacity == 0:
+        capacity_text = "Occupancy Status: Empty"
+    elif capacity == 1:
+        capacity_text = "Occupancy Status: Many seats available"
+    elif capacity == 2:
+        capacity_text = "Occupancy Status: Some seats available"
+    elif capacity == 3:
+        capacity_text = "Occupancy Status: Standing room only"
+    else:
+        capacity_text = "Occupancy Status: Full"
 
     return fig, speed_text, capacity_text
 
