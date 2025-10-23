@@ -78,8 +78,8 @@ def generate_map(buses, bus_number):
         fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
         return fig, f"{bus_number} is not running at the moment", "Occupancy Status: Not available"
 
-    lat, lon, speed, route, bus_id, capacity = (
-        bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"]
+    lat, lon, speed, route, bus_id, capacity, trip_id = (
+        bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"]
     )
 
     speed = speed * 3
