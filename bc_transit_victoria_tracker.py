@@ -64,6 +64,12 @@ def load_buses():
     except:
         return []
 
+def load_trips():
+    csv_file = os.path.join("data", "trips.csv")
+    if os.path.exists(data_file):
+        trips_df = pd.read_csv(fp)
+        return trips_df
+
 def generate_map(buses, bus_number):
     """Generate figure and speed text for a given bus_number."""
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
