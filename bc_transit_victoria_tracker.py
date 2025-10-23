@@ -7,6 +7,7 @@ from dash.dependencies import Output, Input
 import plotly.express as px
 import os
 import requests
+import pandas as pd
 import fetch_data  # your fetch_data.py must be in the same folder
 
 # === GitHub data source fallback (optional) ===
