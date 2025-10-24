@@ -7,10 +7,14 @@ import zipfile
 import io
 
 def fetch():
-    url = "https://bct.tmix.se/gtfs-realtime/vehicleupdates.pb?operatorIds=48"
+    fleet_update_url = "https://bct.tmix.se/gtfs-realtime/vehicleupdates.pb?operatorIds=48"
+    trip_update_url = "https://bct.tmix.se/gtfs-realtime/tripupdates.pb?operatorIds=48"
     static_url = "https://bct.tmix.se/Tmix.Cap.TdExport.WebApi/gtfs/?operatorIds=48"
-    response = requests.get(url, timeout=10)
-    response.raise_for_status()
+    fleet_update_response = requests.get(fleet_update_url, timeout=10)
+    fleet_update_response.raise_for_status()
+
+    trip_update_response = requests.get(trip_update_url, timeout=10)
+    trip_update_response.raise_for_status()
 
     static_response = requests.get(static_url)
     static_response.raise_for_status()
@@ -25,11 +29,11 @@ def fetch():
     routes_df = pd.read_csv(z.open("routes.txt"))
     routes_df.to_csv("data/routes.csv", index=False)
 
-    feed = gtfs_realtime_pb2.FeedMessage()
-    feed.ParseFromString(response.content)
+    fleet_feed = gtfs_realtime_pb2.FeedMessage()
+    feed.ParseFromString(fleet_update_response.content)
 
     buses = []
-    for entity in feed.entity:
+    for entity in fleet_feed.entity:
         if entity.HasField("vehicle"):
             buses.append({
                 "id": entity.vehicle.vehicle.id,
@@ -44,9 +48,23 @@ def fetch():
                 "timestamp": datetime.utcnow().isoformat()
             })
 
-    # Save to file
+    # Save to buses.json
     with open("data/buses.json", "w") as f:
         json.dump(buses, f, indent=2)
+
+    trip_feed = gtfs_realtime_pb2.FeedMessage()
+    feed.ParseFromString(trip_update_response.content)
+    trips = []
+    for entity in trip_feed.entity:
+        if entity.HasField("trip_update"):
+            trips.append({
+                "trip_id": entity.trip_update.trip.trip_id,
+                "route_id": entity.trip_update.trip.route_id
+            })
+
+    # Save to trips.json
+    with open("data/trips.json", "w") as f:
+        json.dump(trips, f, indent=2)
 
 
 if __name__ == "__main__":
