@@ -42,7 +42,10 @@ app.layout = html.Div([
 
     html.H3(id="stop-text"),
 
-    html.H3(id="capacity"),
+    html.H3(id="capacity-text"),
+
+    html.H3(id="speed-text"),
+    
     dcc.Graph(id="live-map"),
 
     # Auto-refresh interval
@@ -85,7 +88,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
 
     if not bus:
         fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
-        return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available"
+        return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available"
 
     lat, lon, speed, route, bus_id, capacity, trip_id, stop_id = (
         bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"], bus["stop_id"]
@@ -120,13 +123,17 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     )
 
     desc_text = (
-        f"{bus_id} is running the {route} {trip_headsign} at {speed:.1f} km/h"
-        if speed else f"{bus_id} is running the {route} {trip_headsign} and is currently stopped"
+        f"{bus_id} is running the {route} {trip_headsign}h"
     )
 
     stop_text = (
         f"Next Stop: {stop}"
         if speed else f"Current Stop: {stop}"
+    )
+
+    speed_text = (
+        f"Current Speed: {speed:.1f} km/h"
+        if speed else f"Current Speed: 0 km/h"
     )
     
     if capacity == 0:
@@ -140,7 +147,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     else:
         capacity_text = "Occupancy Status: Full"
 
-    return fig, desc_text, stop_text, capacity_text
+    return fig, desc_text, stop_text, capacity_text, speed_text
 
 # --- Unified callback ---
 from dash import callback_context
@@ -149,7 +156,8 @@ from dash import callback_context
     [Output("live-map", "figure"),
      Output("desc-text", "children"),
      Output("stop-text", "children"),
-     Output("capacity", "children"),],
+     Output("capacity-text", "children"),
+     Output("speed-text", "children"),],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("bus-search", "value")]
