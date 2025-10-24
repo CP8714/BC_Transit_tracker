@@ -40,6 +40,8 @@ app.layout = html.Div([
 
     html.H3(id="desc-text"),
 
+    html.H3(id="stop-text"),
+
     html.H3(id="capacity"),
     dcc.Graph(id="live-map"),
 
@@ -83,7 +85,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
 
     if not bus:
         fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
-        return fig, f"{bus_number} is not running at the moment", "Occupancy Status: Not available"
+        return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available"
 
     lat, lon, speed, route, bus_id, capacity, trip_id, stop_id = (
         bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"], bus["stop_id"]
@@ -135,7 +137,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     else:
         capacity_text = "Occupancy Status: Full"
 
-    return fig, desc_text, capacity_text
+    return fig, desc_text, stop_text, capacity_text
 
 # --- Unified callback ---
 from dash import callback_context
@@ -143,6 +145,7 @@ from dash import callback_context
 @app.callback(
     [Output("live-map", "figure"),
      Output("desc-text", "children"),
+     Output("stop-text", "children"),
      Output("capacity", "children"),],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
