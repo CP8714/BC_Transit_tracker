@@ -164,15 +164,14 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     
     if stop.empty:
         stop_text = "Next Stop: Transit yard"
-    elif speed > 0:
-        stop = stop.iloc[0]
-        stop_text = f"Next Stop: {stop}"
-    elif speed == 0 and trip_headsign.empty:
-        stop = stop.iloc[0]
-        stop_text = f"First Stop: {stop}"
     else:
         stop = stop.iloc[0]
-        stop_text = f"Current Stop: {stop}"
+        if trip_headsign.empty:
+            stop_text = f"First Stop: {stop}"
+        elif speed > 0:
+            stop_text = f"Next Stop: {stop}"
+        else:
+            stop_text = f"Current Stop: {stop}"
 
     speed_text = (
         f"Current Speed: {speed:.1f} km/h"
