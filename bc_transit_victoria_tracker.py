@@ -15,14 +15,6 @@ import fetch_data  # your fetch_data.py must be in the same folder
 # === GitHub data source fallback (optional) ===
 DATA_URL = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/buses.json"
 
-# === Load static route data once ===
-fp_routes = "data/routes.shp"
-route_data = gpd.read_file(fp_routes)
-route = "95"
-
-selected_route = route_data[route_data["route_id"].str.startswith(route)]
-route_geojson = json.loads(selected_route.to_json())
-
 # === Dash app ===
 app = dash.Dash(__name__)
 
@@ -100,7 +92,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     )
     # stop_id in stops_df is a float so stop_id from buses must be converted to a float 
     stop_id = float(stop_id)
-    route = route.split('-')[0]
+    route_number = route.split('-')[0]
     trip_headsign = trips_df.loc[trips_df["trip_id"] == trip_id, "trip_headsign"]
     trip_headsign = trip_headsign.iloc[0]
     speed = speed * 3
@@ -137,7 +129,12 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     #    name="Heading"
     #))
 
-    # Add static routes
+    fp_routes = "data/routes.shp"
+    route_data = gpd.read_file(fp_routes)
+    current_route = route_data[route_data["route_id"].str.startswith(route_number)]
+    route_geojson = json.loads(current_route.to_json())
+
+    # Add route on map
     fig.update_layout(
         mapbox = dict(
             style="open-street-map",
