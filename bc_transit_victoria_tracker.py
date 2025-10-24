@@ -90,6 +90,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     lat, lon, speed, route, bus_id, capacity, trip_id, stop_id = (
         bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"], bus["stop_id"]
     )
+    # stop_id in stops_df is a float so stop_id from buses must be converted to a float 
     stop_id = float(stop_id)
     route = route.split('-')[0]
     trip_headsign = trips_df.loc[trips_df["trip_id"] == trip_id, "trip_headsign"]
