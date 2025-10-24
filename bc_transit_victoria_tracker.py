@@ -139,17 +139,22 @@ def generate_map(buses, bus_number, trips_df, stops_df):
 
     # Add static routes
     fig.update_layout(
-        mapbox_style="open-street-map",
-        mapbox_zoom=12,
-        mapbox_center={"lat": lat, "lon": lon},
-        map_layers=[{
-            "sourcetype": "geojson",
-            "source": route_geojson,
-            "type": "line",
-            "line": {"width": 4}
-        }],
-        height=600
-    )
+        mapbox = dict(
+            style="open-street-map",
+            center={"lat": lat, "lon": lon},
+            zoom=12,
+            layers=[
+                dict(
+                    sourcetype="geojson",
+                    source=route_geojson,
+                    type="line",
+                    line = dict(width=4)
+                )
+            ]
+        ),
+        height=600,
+        margin={"r":0,"t":0,"l":0,"b":0}
+)
 
     desc_text = (
         f"{bus_id} is running the {route} {trip_headsign}"
