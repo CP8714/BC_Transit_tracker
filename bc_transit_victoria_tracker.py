@@ -144,6 +144,16 @@ def generate_map(buses, bus_number, trips_df, stops_df, routes_df):
     current_route = route_data[route_data["route_id"] == route]
     route_geojson = json.loads(current_route.to_json())
 
+    route_coords = []
+    for geom in current_route.geometry:
+        if geom.geom_type == "LineString":
+            route_coords.extend(list(geom.coords))
+        elif geom.geom_type == "MultiLineString":
+            for line in geom:
+                route_coords.extend(list(line.coords))
+
+    lons, lats = zip(*route_coords)
+
 
     fig.add_trace(go.Scattermapbox(
         lat=lats,
