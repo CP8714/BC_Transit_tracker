@@ -92,7 +92,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     )
     # stop_id in stops_df is a float so stop_id from buses must be converted to a float 
     stop_id = float(stop_id)
-    route_number = route.split('-')[0]
+    route_number = route.split('-')[0] 
     trip_headsign = trips_df.loc[trips_df["trip_id"] == trip_id, "trip_headsign"]
     trip_headsign = trip_headsign.iloc[0]
     speed = speed * 3
@@ -153,8 +153,12 @@ def generate_map(buses, bus_number, trips_df, stops_df):
         margin={"r":0,"t":0,"l":0,"b":0}
 )
 
+    if not trip_headsign.empty:
+            trip_headsign = trip_headsign.iloc[0]
+
     desc_text = (
-        f"{bus_id} is running the {route_number} {trip_headsign}"
+        f"{bus_id} is currently deadheading"
+        if trip_headsign.empty else f"{bus_id} is running the {route_number} {trip_headsign}"
     )
 
     stop_text = (
