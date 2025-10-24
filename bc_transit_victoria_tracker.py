@@ -101,11 +101,11 @@ def generate_map(buses, bus_number, trips_df, stops_df):
 
     
 
-    bearing_rad = math.radians(bearing)
-    arrow_len = 0.002  # adjust for zoom
+    # bearing_rad = math.radians(bearing)
+    # arrow_len = 0.002  # adjust for zoom
 
-    end_lat = lat + arrow_len * math.cos(bearing_rad)
-    end_lon = lon + arrow_len * math.sin(bearing_rad)
+    # end_lat = lat + arrow_len * math.cos(bearing_rad)
+    # end_lon = lon + arrow_len * math.sin(bearing_rad)
 
     fig = go.Figure()
 
@@ -154,7 +154,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
 )
 
     desc_text = (
-        f"{bus_id} is running the {route} {trip_headsign}"
+        f"{bus_id} is running the {route_number} {trip_headsign}"
     )
 
     stop_text = (
