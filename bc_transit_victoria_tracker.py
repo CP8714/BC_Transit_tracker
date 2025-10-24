@@ -121,7 +121,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
         mode="markers+text",
         text=[bus_id],
         textposition="top center",
-        marker=dict(size=12, color="blue")
+        marker=dict(size=12, color="blue"),
         name="Bus Position"
     ))
 
