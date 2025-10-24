@@ -60,7 +60,7 @@ def fetch():
             trips.append({
                 "trip_id": entity.trip_update.trip.trip_id,
                 "route_id": entity.trip_update.trip.route_id,
-                "delay": entity.trip_update.stop_time_update[1].arrival.delay
+                "delay": entity.trip_update.stop_time_update[0].arrival.delay
             })
 
     # Save to trip_updates.json
