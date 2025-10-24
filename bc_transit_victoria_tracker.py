@@ -145,7 +145,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
                     sourcetype="geojson",
                     source=route_geojson,
                     type="line",
-                    line=dict(width=4)
+                    line = dict(width=4)
                 )
             ]
         ),
