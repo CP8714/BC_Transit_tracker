@@ -13,7 +13,7 @@ import pandas as pd
 import fetch_data  # your fetch_data.py must be in the same folder
 
 # === GitHub data source fallback (optional) ===
-DATA_URL = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/buses.json"
+DATA_URL = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
 
 # === Dash app ===
 app = dash.Dash(__name__)
