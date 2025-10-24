@@ -104,29 +104,31 @@ def generate_map(buses, bus_number, trips_df, stops_df):
 
     
 
-    fig = px.scatter_map(
-        lat=[lat], lon=[lon],
+    fig = go.Figure(go.Scattermapbox(
+        lat=[lat],
+        lon=[lon],
+        mode="markers+text",
         text=[f"{bus_id}"],
-        zoom=12, height=600
-    )
-
-    fig.update_traces(
-    marker_symbol="arrow-up",
-    marker_size=30,
-    marker_angle=bearing,  # <– rotates bus icon
-    textposition="top center"
-    )
+        textposition="top center",
+        marker=dict(
+            size=30,
+            symbol="arrow-up",  # you’ll SEE IT now
+            angle=bus.get("bearing", 0),  # safe default
+        )
+    ))
 
     # Add static routes
     fig.update_layout(
-        map_style="open-street-map",
+        mapbox_style="open-street-map",
+        mapbox_zoom=12,
+        mapbox_center={"lat": lat, "lon": lon},
         map_layers=[{
             "sourcetype": "geojson",
             "source": route_geojson,
             "type": "line",
-            "color": "gray",
             "line": {"width": 2}
-        }]
+        }],
+        height=600
     )
 
     desc_text = (
