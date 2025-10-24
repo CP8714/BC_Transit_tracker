@@ -182,11 +182,11 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     if capacity == 0:
         capacity_text = "Occupancy Status: Empty"
     elif capacity == 1:
-        capacity_text = "Occupancy Status: Many seats available"
+        capacity_text = "Occupancy Status: Many Seats Available"
     elif capacity == 2:
-        capacity_text = "Occupancy Status: Some seats available"
+        capacity_text = "Occupancy Status: Some Seats Available"
     elif capacity == 3:
-        capacity_text = "Occupancy Status: Standing room only"
+        capacity_text = "Occupancy Status: Standing Room Only"
     else:
         capacity_text = "Occupancy Status: Full"
 
@@ -198,7 +198,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
 
     pst_timestamp = pst_time.strftime("%H:%M:%S")
 
-    timestamp_text = f"Update provided at {pst_timestamp}" 
+    timestamp_text = f"Updated at {pst_timestamp}" 
 
     return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text
 
