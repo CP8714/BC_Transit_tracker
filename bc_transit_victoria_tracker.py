@@ -10,7 +10,9 @@ import math
 import os
 import requests
 import pandas as pd
-import fetch_data  # your fetch_data.py must be in the same folder
+import fetch_data
+from datetime import datetime
+import pytz
 
 # === GitHub data source fallback (optional) ===
 bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
@@ -45,6 +47,8 @@ app.layout = html.Div([
     html.H3(id="speed-text"),
     
     dcc.Graph(id="live-map"),
+
+    html.H3(id="timestamp-text"),
 
     # Auto-refresh interval
     dcc.Interval(
@@ -88,8 +92,8 @@ def generate_map(buses, bus_number, trips_df, stops_df):
         fig = go.Figure()
         return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available"
 
-    lat, lon, speed, route, bus_id, capacity, trip_id, stop_id, bearing = (
-        bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"], bus["stop_id"], bus["bearing"]
+    lat, lon, speed, route, bus_id, capacity, trip_id, stop_id, bearing, timestamp = (
+        bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"], bus["stop_id"], bus["bearing"], bus["timestamp"]
     )
     # stop_id in stops_df is a float so stop_id from buses must be converted to a float 
     stop_id = float(stop_id)
@@ -186,7 +190,17 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     else:
         capacity_text = "Occupancy Status: Full"
 
-    return fig, desc_text, stop_text, capacity_text, speed_text
+    # Parse timestamp as UTC time
+    utc_time = datetime.fromisoformat(timestamp).replace(tzinfo=pytz.utc)
+
+    # Convert to PST 
+    pst_time = utc_time.astimezone(pytz.timezone("America/Los_Angeles"))
+
+    pst_timestamp = pst_time.strftime("%H:%M:%S")
+
+    timestamp_text = f"Update provided at {pst_timestamp}" 
+
+    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text
 
 # --- Unified callback ---
 from dash import callback_context
@@ -196,7 +210,8 @@ from dash import callback_context
      Output("desc-text", "children"),
      Output("stop-text", "children"),
      Output("capacity-text", "children"),
-     Output("speed-text", "children"),],
+     Output("speed-text", "children"),
+     Output("timestamp-text", "children")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("bus-search", "value")]
