@@ -84,7 +84,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
 
     if not bus:
-        fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
+        fig = go.Figure(lat=[], lon=[], zoom=11, height=600)
         return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available"
 
     lat, lon, speed, route, bus_id, capacity, trip_id, stop_id, bearing = (
