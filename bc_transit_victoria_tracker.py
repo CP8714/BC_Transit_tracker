@@ -211,7 +211,7 @@ from dash import callback_context
      Output("stop-text", "children"),
      Output("capacity-text", "children"),
      Output("speed-text", "children"),
-     Output("timestamp-text", "children")],
+     Output("timestamp-text", "children"),],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("bus-search", "value")]
