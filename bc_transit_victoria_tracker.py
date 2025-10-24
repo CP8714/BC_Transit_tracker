@@ -144,24 +144,21 @@ def generate_map(buses, bus_number, trips_df, stops_df, routes_df):
     current_route = route_data[route_data["route_id"] == route]
     route_geojson = json.loads(current_route.to_json())
 
-    # Add route on map
+
+    fig.add_trace(go.Scattermapbox(
+        lat=lats,
+        lon=lons,
+        mode='lines',
+        line=dict(color=f"#{route_color_hex}", width=4),
+        name=f"Route {route_number}"
+    ))
+
     fig.update_layout(
-        mapbox = dict(
-            style="open-street-map",
-            center={"lat": lat, "lon": lon},
-            zoom=12,
-            layers=[
-                dict(
-                    sourcetype="geojson",
-                    source=route_geojson,
-                    type="line",
-                    line=dict(width=4, color=f"#{route_color_hex}") 
-                )
-            ]
-        ),
-        height=600,
-        margin={"r":0,"t":0,"l":0,"b":0}
-)
+        mapbox_style="open-street-map",
+        mapbox_zoom=12,
+        mapbox_center={"lat": lats[0], "lon": lons[0]},
+        height=600
+    )
 
     desc_text = (
         f"{bus_id} is running the {route_number} {trip_headsign}"
