@@ -154,6 +154,7 @@ def update_map_callback(n_intervals, n_clicks, bus_number):
     # Load the latest bus data
     buses = load_buses()
     trips_df = load_trips()
+    stops_df = load_stops()
     return generate_map(buses, bus_number, trips_df)
 
 # === Run app ===
