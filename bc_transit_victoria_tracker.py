@@ -13,7 +13,8 @@ import pandas as pd
 import fetch_data  # your fetch_data.py must be in the same folder
 
 # === GitHub data source fallback (optional) ===
-DATA_URL = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
+bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
+trip_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/trip_updates.json"
 
 # === Dash app ===
 app = dash.Dash(__name__)
@@ -62,7 +63,7 @@ def load_buses():
             return json.load(f)
     # fallback to GitHub JSON if file missing
     try:
-        response = requests.get(DATA_URL, timeout=10)
+        response = requests.get(bus_updates, timeout=10)
         return response.json()
     except:
         return []
