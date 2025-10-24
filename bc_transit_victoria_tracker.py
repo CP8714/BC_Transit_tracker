@@ -18,8 +18,9 @@ DATA_URL = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/hea
 # === Load static route data once ===
 fp_routes = "data/routes.shp"
 route_data = gpd.read_file(fp_routes)
-route = "95-VIC"
-selected_route = route_data[route_data["route_id"] == route]
+route = "95"
+
+selected_route = route_data[route_data["route_id"].str.startswith(route)]
 route_geojson = json.loads(selected_route.to_json())
 
 # === Dash app ===
