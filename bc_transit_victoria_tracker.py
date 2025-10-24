@@ -27,7 +27,7 @@ app.layout = html.Div([
             id="bus-search",
             type="text",
             placeholder="e.g. 9542",
-            value="",
+            value="9542",
             debounce=True
         )
     ], style={"margin-bottom": "10px"}),
