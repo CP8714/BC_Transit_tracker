@@ -129,6 +129,9 @@ def generate_map(buses, bus_number, trips_df, stops_df):
 
     fp_routes = os.path.join("data", "routes.shp")
     route_data = gpd.read_file(fp_routes)
+    # Route map not shown for buses heading back to yard
+    if trip_headsign.empty and (stop_id == 900000 or stop == 930000):
+        route = "0"
     current_route = route_data[route_data["route_id"] == route]
     route_geojson = json.loads(current_route.to_json())
 
