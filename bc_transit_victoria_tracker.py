@@ -4,8 +4,9 @@ import json
 import dash
 from dash import dcc, html
 from dash.dependencies import Output, Input
-import plotly.express as px
+# import plotly.express as px
 import plotly.graph_objects as go
+import math
 import os
 import requests
 import pandas as pd
@@ -105,17 +106,31 @@ def generate_map(buses, bus_number, trips_df, stops_df):
 
     
 
-    fig = go.Figure(go.Scattermapbox(
+    bearing_rad = math.radians(bearing)
+    arrow_len = 0.002  # adjust for zoom
+
+    end_lat = lat + arrow_len * math.cos(bearing_rad)
+    end_lon = lon + arrow_len * math.sin(bearing_rad)
+
+    fig = go.Figure()
+
+    # Bus location as marker
+    fig.add_trace(go.Scattermapbox(
         lat=[lat],
         lon=[lon],
         mode="markers+text",
-        text=[f"{bus_id}"],
+        text=[bus_id],
         textposition="top center",
-        marker=dict(
-            size=30,
-            symbol="arrow-up",  # you’ll SEE IT now
-            angle=bus.get("bearing", 0),  # safe default
-        )
+        marker=dict(size=12, color="blue")
+    ))
+
+    # Arrow showing heading
+    fig.add_trace(go.Scattermapbox(
+        lat=[lat, end_lat],
+        lon=[lon, end_lon],
+        mode="lines",
+        line=dict(width=4, color="red"),
+        name="Heading"
     ))
 
     # Add static routes
