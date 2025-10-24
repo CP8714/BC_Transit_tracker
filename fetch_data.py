@@ -57,11 +57,13 @@ def fetch():
     trips = []
     for entity in trip_feed.entity:
         if entity.HasField("trip_update"):
-            trips.append({
-                "trip_id": entity.trip_update.trip.trip_id,
-                "route_id": entity.trip_update.trip.route_id,
-                "delay": entity.trip_update.stop_time_update[0].arrival.delay
-            })
+            entity = entity.trip_update
+            if entity.HasField("stop_time_update"):
+                trips.append({
+                    "trip_id": entity.trip_update.trip.trip_id,
+                    "route_id": entity.trip_update.trip.route_id,
+                    "delay": entity.trip_update.stop_time_update[0].arrival.delay
+                })
 
     # Save to trip_updates.json
     with open("data/trip_updates.json", "w") as f:
