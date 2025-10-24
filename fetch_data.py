@@ -65,11 +65,11 @@ def fetch():
             })
             if len(trip_entity.stop_time_update) == 1:
                 trips.append({
-                    "delay": trip_entity.trip.stop_time_update[0].arrival.delay
+                    "delay": trip_entity.stop_time_update[0].arrival.delay
                 })
             else:
                 trips.append({
-                    "delay": trip_entity.trip.stop_time_update[0].departure.delay
+                    "delay": trip_entity.stop_time_update[0].departure.delay
                 })
 
     # Save to trip_updates.json
