@@ -122,16 +122,17 @@ def generate_map(buses, bus_number, trips_df, stops_df):
         text=[bus_id],
         textposition="top center",
         marker=dict(size=12, color="blue")
+        name="Bus Position"
     ))
 
     # Arrow showing heading
-    fig.add_trace(go.Scattermapbox(
-        lat=[lat, end_lat],
-        lon=[lon, end_lon],
-        mode="lines",
-        line=dict(width=4, color="red"),
-        name="Heading"
-    ))
+    # fig.add_trace(go.Scattermapbox(
+    #    lat=[lat, end_lat],
+    #    lon=[lon, end_lon],
+    #    mode="lines",
+    #    line=dict(width=4, color="red"),
+    #    name="Heading"
+    #))
 
     # Add static routes
     fig.update_layout(
