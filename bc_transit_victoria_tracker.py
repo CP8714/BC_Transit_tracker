@@ -96,7 +96,6 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     trip_headsign = trips_df.loc[trips_df["trip_id"] == trip_id, "trip_headsign"]
     speed = speed * 3
     stop = stops_df.loc[stops_df["stop_id"] == stop_id, "stop_name"]
-    stop = stop.iloc[0]
 
     
 
@@ -150,20 +149,29 @@ def generate_map(buses, bus_number, trips_df, stops_df):
         ),
         height=600,
         margin={"r":0,"t":0,"l":0,"b":0}
-)
-
-    if not trip_headsign.empty:
-            trip_headsign = trip_headsign.iloc[0]
-
-    desc_text = (
-        f"{bus_id} is currently deadheading"
-        if trip_headsign.empty else f"{bus_id} is running the {route_number} {trip_headsign}"
     )
 
-    stop_text = (
-        f"Next Stop: {stop}"
-        if speed else f"Current Stop: {stop}"
-    )
+    if trip_headsign.empty and stop.empty:
+        desc_text = f"{bus_id} is currently deadheading back to the transit yard"
+    
+    elif trip_headsign.empty:
+        desc_text = f"{bus_id} is currently deadheading to run a {route_number}"
+
+    else:
+        trip_headsign = trip_headsign.iloc[0]
+        desc_text: f"{bus_id} is running the {route_number} {trip_headsign}"
+
+
+    if not stop.empty:
+        stop = stop.iloc[0]
+    if stop.empty:
+        stop_text = "Next Stop: Transit yard"
+    elif speed > 0:
+        stop_text = f"Next Stop: {stop}"
+    elif speed == 0 and trip_headsign.empty:
+        stop_text = f"First Stop: {stop}"
+    else:
+        stop_text = f"Current Stop: {stop}"
 
     speed_text = (
         f"Current Speed: {speed:.1f} km/h"
