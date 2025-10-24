@@ -27,7 +27,7 @@ app.layout = html.Div([
             id="bus-search",
             type="text",
             placeholder="e.g. 9542",
-            value="9542",
+            value="",
             debounce=True
         )
     ], style={"margin-bottom": "10px"}),
@@ -84,7 +84,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
 
     if not bus:
-        fig = go.Figure(zoom=11, height=600)
+        fig = go.Figure()
         return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available"
 
     lat, lon, speed, route, bus_id, capacity, trip_id, stop_id, bearing = (
