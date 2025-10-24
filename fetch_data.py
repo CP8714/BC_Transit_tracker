@@ -48,8 +48,8 @@ def fetch():
                 "timestamp": datetime.utcnow().isoformat()
             })
 
-    # Save to buses.json
-    with open("data/buses.json", "w") as f:
+    # Save to bus_updates.json
+    with open("data/bus_updates.json", "w") as f:
         json.dump(buses, f, indent=2)
 
     trip_feed = gtfs_realtime_pb2.FeedMessage()
@@ -62,8 +62,8 @@ def fetch():
                 "route_id": entity.trip_update.trip.route_id
             })
 
-    # Save to trips.json
-    with open("data/trips.json", "w") as f:
+    # Save to trip_updates.json
+    with open("data/trip_updates.json", "w") as f:
         json.dump(trips, f, indent=2)
 
 
