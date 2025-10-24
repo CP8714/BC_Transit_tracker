@@ -15,13 +15,6 @@ import fetch_data  # your fetch_data.py must be in the same folder
 # === GitHub data source fallback (optional) ===
 DATA_URL = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/buses.json"
 
-# === Load static route data once ===
-fp_routes = "data/routes.shp"
-route_data = gpd.read_file(fp_routes)
-route = "95-VIC"
-selected_route = route_data[route_data["route_id"] == route]
-route_geojson = json.loads(selected_route.to_json())
-
 # === Dash app ===
 app = dash.Dash(__name__)
 
@@ -49,7 +42,7 @@ app.layout = html.Div([
     html.H3(id="capacity-text"),
 
     html.H3(id="speed-text"),
-
+    
     dcc.Graph(id="live-map"),
 
     # Auto-refresh interval
@@ -99,14 +92,14 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     )
     # stop_id in stops_df is a float so stop_id from buses must be converted to a float 
     stop_id = float(stop_id)
-    route = route.split('-')[0]
+    route_number = route.split('-')[0]
     trip_headsign = trips_df.loc[trips_df["trip_id"] == trip_id, "trip_headsign"]
     trip_headsign = trip_headsign.iloc[0]
     speed = speed * 3
     stop = stops_df.loc[stops_df["stop_id"] == stop_id, "stop_name"]
     stop = stop.iloc[0]
 
-
+    
 
     bearing_rad = math.radians(bearing)
     arrow_len = 0.002  # adjust for zoom
@@ -136,19 +129,29 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     #    name="Heading"
     #))
 
-    # Add static routes
+    fp_routes = os.path.join("data", "routes.shp")
+    route_data = gpd.read_file(fp_routes)
+    current_route = route_data[route_data["route_id"] == route]
+    route_geojson = json.loads(current_route.to_json())
+
+    # Add route on map
     fig.update_layout(
-        mapbox_style="open-street-map",
-        mapbox_zoom=12,
-        mapbox_center={"lat": lat, "lon": lon},
-        map_layers=[{
-            "sourcetype": "geojson",
-            "source": route_geojson,
-            "type": "line",
-            "line": {"width": 4}
-        }],
-        height=600
-    )
+        mapbox = dict(
+            style="open-street-map",
+            center={"lat": lat, "lon": lon},
+            zoom=12,
+            layers=[
+                dict(
+                    sourcetype="geojson",
+                    source=route_geojson,
+                    type="line",
+                    line = dict(width=4)
+                )
+            ]
+        ),
+        height=600,
+        margin={"r":0,"t":0,"l":0,"b":0}
+)
 
     desc_text = (
         f"{bus_id} is running the {route} {trip_headsign}"
@@ -163,7 +166,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
         f"Current Speed: {speed:.1f} km/h"
         if speed else f"Current Speed: 0 km/h"
     )
-
+    
     if capacity == 0:
         capacity_text = "Occupancy Status: Empty"
     elif capacity == 1:
