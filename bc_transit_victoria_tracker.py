@@ -16,9 +16,11 @@ import fetch_data  # your fetch_data.py must be in the same folder
 DATA_URL = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/buses.json"
 
 # === Load static route data once ===
-fp_routes = "data/routes.shp"   # adjust path if needed
+fp_routes = "data/routes.shp"
 route_data = gpd.read_file(fp_routes)
-route_geojson = json.loads(route_data.to_json())
+route = "95-VIC"
+selected_route = route_data[route_data["route_id"] == route]
+route_geojson = json.loads(selected_route.to_json())
 
 # === Dash app ===
 app = dash.Dash(__name__)
@@ -143,7 +145,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
             "sourcetype": "geojson",
             "source": route_geojson,
             "type": "line",
-            "line": {"width": 2}
+            "line": {"width": 2, "color": "red"}
         }],
         height=600
     )
