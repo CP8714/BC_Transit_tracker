@@ -157,22 +157,17 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     if trip_headsign.empty:
         if stop_id == 900000 or stop_id == 930000:
             desc_text = f"{bus_id} is currently deadheading back to the transit yard"
+            stop_text = f"Next Stop: {stop}"
         else:
             desc_text = f"{bus_id} is currently deadheading to run a {route_number}"
+            stop_text = f"First Stop: {stop}"
     else:
         trip_headsign = trip_headsign.iloc[0]
         desc_text: f"{bus_id} is running the {route_number} {trip_headsign}"
-
-    
-    if trip_headsign.empty:
-        if stop_id == 900000 or stop == 930000:
+        if speed > 0:
             stop_text = f"Next Stop: {stop}"
         else:
-            stop_text = f"First Stop: {stop}"
-    elif speed > 0:
-        stop_text = f"Next Stop: {stop}"
-    else:
-        stop_text = f"Current Stop: {stop}"
+            stop_text = f"Current Stop: {stop}"
 
     speed_text = (
         f"Current Speed: {speed:.1f} km/h"
