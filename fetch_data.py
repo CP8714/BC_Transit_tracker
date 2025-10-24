@@ -59,10 +59,18 @@ def fetch():
         trip_entity = entity.trip_update
         if len(trip_entity.stop_time_update) > 0:
             trips.append({
-                "trip_id": entity.trip_update.trip.trip_id,
-                "route_id": entity.trip_update.trip.route_id,
-                "delay": trip_entity.stop_time_update[0].arrival.delay
+                "trip_id": trip_entity.trip.trip_id,
+                "route_id": trip_entity.trip.route_id,
+                "start_time": trip_entity.trip.start_time,
             })
+            if len(trip_entity.stop_time_update) == 1:
+                trips.append({
+                    "delay": trip_entity.trip.stop_time_update[0].arrival.delay
+                })
+            else:
+                trips.append({
+                    "delay": trip_entity.trip.stop_time_update[0].departure.delay
+                })
 
     # Save to trip_updates.json
     with open("data/trip_updates.json", "w") as f:
