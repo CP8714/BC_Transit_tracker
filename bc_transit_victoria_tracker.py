@@ -66,10 +66,16 @@ def load_buses():
         return []
 
 def load_trips():
-    csv_file = os.path.join("data", "trips.csv")
-    if os.path.exists(csv_file):
-        trips_df = pd.read_csv(csv_file)
+    trips_file = os.path.join("data", "trips.csv")
+    if os.path.exists(trips_file):
+        trips_df = pd.read_csv(trips_file)
         return trips_df
+
+def load_stops():
+    stops_file = os.path.join("data", "stops.csv")
+    if os.path.exists(stops_file):
+        stops_df = pd.read_csv(stops_file)
+        return stops_df
 
 def generate_map(buses, bus_number, trips_df):
     """Generate figure and speed text for a given bus_number."""
