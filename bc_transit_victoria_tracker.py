@@ -130,7 +130,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     fp_routes = os.path.join("data", "routes.shp")
     route_data = gpd.read_file(fp_routes)
     # Route map not shown for buses heading back to yard
-    if trip_headsign.empty and (stop_id == 900000 or stop_id == 930000):
+    if trip_headsign.empty:
         route = "0"
     current_route = route_data[route_data["route_id"] == route]
     route_geojson = json.loads(current_route.to_json())
@@ -159,7 +159,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
             desc_text = f"{bus_id} is currently deadheading back to the transit yard"
             stop_text = f"Next Stop: {stop}"
         else:
-            desc_text = f"{bus_id} is currently deadheading to run a {route_number}"
+            desc_text = f"{bus_id} is currently deadheading to run another route"
             stop_text = f"First Stop: {stop}"
     else:
         trip_headsign = trip_headsign.iloc[0]
