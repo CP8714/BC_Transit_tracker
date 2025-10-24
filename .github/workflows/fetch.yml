@@ -27,5 +27,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add data/
-          git commit -m "Updated bus data" || echo "No changes"
+          git commit -m "Updated bus and trip data" || echo "No changes"
           git push
