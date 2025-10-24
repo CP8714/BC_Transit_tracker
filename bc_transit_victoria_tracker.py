@@ -123,7 +123,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     )
 
     desc_text = (
-        f"{bus_id} is running the {route} {trip_headsign}h"
+        f"{bus_id} is running the {route} {trip_headsign}"
     )
 
     stop_text = (
