@@ -38,7 +38,7 @@ app.layout = html.Div([
     # Manual update button
     html.Button("Update Now", id="manual-update", n_clicks=0, style={"margin-bottom": "10px"}),
 
-    html.H3(id="bus-speed"),
+    html.H3(id="desc-text"),
 
     html.H3(id="capacity"),
     dcc.Graph(id="live-map"),
@@ -77,7 +77,7 @@ def load_stops():
         stops_df = pd.read_csv(stops_file)
         return stops_df
 
-def generate_map(buses, bus_number, trips_df):
+def generate_map(buses, bus_number, trips_df, stops_df):
     """Generate figure and speed text for a given bus_number."""
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
 
@@ -92,6 +92,8 @@ def generate_map(buses, bus_number, trips_df):
     trip_headsign = trips_df.loc[trips_df["trip_id"] == trip_id, "trip_headsign"]
     trip_headsign = trip_headsign.iloc[0]
     speed = speed * 3
+    stop = stops_df.loc[stops_df["stop_id"] == stop_id, "stop_name"]
+    stop = stop.iloc[0]
 
     
 
@@ -113,10 +115,16 @@ def generate_map(buses, bus_number, trips_df):
         }]
     )
 
-    speed_text = (
+    desc_text = (
         f"{bus_id} is running the {route} {trip_headsign} at {speed:.1f} km/h"
         if speed else f"{bus_id} is running the {route} {trip_headsign} and is currently stopped"
     )
+
+    stop_text = (
+        f"Next Stop: {stop}"
+        if speed else f"Current Stop: {stop}"
+    )
+    
     if capacity == 0:
         capacity_text = "Occupancy Status: Empty"
     elif capacity == 1:
@@ -128,14 +136,14 @@ def generate_map(buses, bus_number, trips_df):
     else:
         capacity_text = "Occupancy Status: Full"
 
-    return fig, speed_text, capacity_text
+    return fig, desc_text, capacity_text
 
 # --- Unified callback ---
 from dash import callback_context
 
 @app.callback(
     [Output("live-map", "figure"),
-     Output("bus-speed", "children"),
+     Output("desc-text", "children"),
      Output("capacity", "children"),],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
@@ -155,7 +163,7 @@ def update_map_callback(n_intervals, n_clicks, bus_number):
     buses = load_buses()
     trips_df = load_trips()
     stops_df = load_stops()
-    return generate_map(buses, bus_number, trips_df)
+    return generate_map(buses, bus_number, trips_df, stops_df)
 
 # === Run app ===
 if __name__ == "__main__":
