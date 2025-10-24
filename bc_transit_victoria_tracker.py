@@ -94,7 +94,6 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     stop_id = float(stop_id)
     route_number = route.split('-')[0] 
     trip_headsign = trips_df.loc[trips_df["trip_id"] == trip_id, "trip_headsign"]
-    trip_headsign = trip_headsign.iloc[0]
     speed = speed * 3
     stop = stops_df.loc[stops_df["stop_id"] == stop_id, "stop_name"]
     stop = stop.iloc[0]
