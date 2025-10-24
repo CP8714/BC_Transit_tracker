@@ -90,8 +90,8 @@ def generate_map(buses, bus_number, trips_df, stops_df):
         fig = px.scatter_map(lat=[], lon=[], zoom=11, height=600)
         return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available"
 
-    lat, lon, speed, route, bus_id, capacity, trip_id, stop_id = (
-        bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"], bus["stop_id"]
+    lat, lon, speed, route, bus_id, capacity, trip_id, stop_id, bearing = (
+        bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"], bus["stop_id"], bus["bearing"]
     )
     # stop_id in stops_df is a float so stop_id from buses must be converted to a float 
     stop_id = float(stop_id)
@@ -108,6 +108,13 @@ def generate_map(buses, bus_number, trips_df, stops_df):
         lat=[lat], lon=[lon],
         text=[f"{bus_id}"],
         zoom=12, height=600
+    )
+
+    fig.update_traces(
+    marker_symbol="arrow-up",
+    marker_size=30,
+    marker_angle=bearing,  # <– rotates bus icon
+    textposition="top center"
     )
 
     # Add static routes
