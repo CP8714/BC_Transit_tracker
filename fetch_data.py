@@ -30,7 +30,7 @@ def fetch():
     routes_df.to_csv("data/routes.csv", index=False)
 
     fleet_feed = gtfs_realtime_pb2.FeedMessage()
-    feed.ParseFromString(fleet_update_response.content)
+    fleet_feed.ParseFromString(fleet_update_response.content)
 
     buses = []
     for entity in fleet_feed.entity:
@@ -53,7 +53,7 @@ def fetch():
         json.dump(buses, f, indent=2)
 
     trip_feed = gtfs_realtime_pb2.FeedMessage()
-    feed.ParseFromString(trip_update_response.content)
+    trip_feed.ParseFromString(trip_update_response.content)
     trips = []
     for entity in trip_feed.entity:
         if entity.HasField("trip_update"):
