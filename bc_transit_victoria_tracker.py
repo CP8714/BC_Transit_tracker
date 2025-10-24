@@ -79,7 +79,13 @@ def load_stops():
         stops_df = pd.read_csv(stops_file)
         return stops_df
 
-def generate_map(buses, bus_number, trips_df, stops_df):
+def load_routes():
+    routes_file = os.path.join("data", "routes.csv")
+    if os.path.exists(routes_file):
+        routes_df = pd.read_csv(routes_file)
+        return routes_df
+
+def generate_map(buses, bus_number, trips_df, stops_df, routes_df):
     """Generate figure and speed text for a given bus_number."""
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
 
@@ -129,9 +135,13 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     #    name="Heading"
     #))
 
-    fp_routes = "data/routes.shp"
+    route_color_hex = "#808080"  # default to gray
+    route_color_hex = routes_df.loc[routes_df["route_id"] == route, "route_color"]
+    route_color_hex = route_color_hex.iloc[0]
+
+    fp_routes = os.path.join("data", "routes.shp")
     route_data = gpd.read_file(fp_routes)
-    current_route = route_data[route_data["route_id"].str.startswith(route_number)]
+    current_route = route_data[route_data["route_id"] == route]
     route_geojson = json.loads(current_route.to_json())
 
     # Add route on map
@@ -145,7 +155,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
                     sourcetype="geojson",
                     source=route_geojson,
                     type="line",
-                    line = dict(width=4)
+                    line = dict(width=4, color=route_color_hex)
                 )
             ]
         ),
@@ -207,7 +217,8 @@ def update_map_callback(n_intervals, n_clicks, bus_number):
     buses = load_buses()
     trips_df = load_trips()
     stops_df = load_stops()
-    return generate_map(buses, bus_number, trips_df, stops_df)
+    routes_df = load_routes()
+    return generate_map(buses, bus_number, trips_df, stops_df, routes_df)
 
 # === Run app ===
 if __name__ == "__main__":
