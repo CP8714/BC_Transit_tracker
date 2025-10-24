@@ -15,6 +15,13 @@ import fetch_data  # your fetch_data.py must be in the same folder
 # === GitHub data source fallback (optional) ===
 DATA_URL = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/buses.json"
 
+# === Load static route data once ===
+fp_routes = "data/routes.shp"
+route_data = gpd.read_file(fp_routes)
+route = "95-VIC"
+selected_route = route_data[route_data["route_id"] == route]
+route_geojson = json.loads(selected_route.to_json())
+
 # === Dash app ===
 app = dash.Dash(__name__)
 
@@ -42,7 +49,7 @@ app.layout = html.Div([
     html.H3(id="capacity-text"),
 
     html.H3(id="speed-text"),
-    
+
     dcc.Graph(id="live-map"),
 
     # Auto-refresh interval
@@ -79,13 +86,7 @@ def load_stops():
         stops_df = pd.read_csv(stops_file)
         return stops_df
 
-def load_routes():
-    routes_file = os.path.join("data", "routes.csv")
-    if os.path.exists(routes_file):
-        routes_df = pd.read_csv(routes_file)
-        return routes_df
-
-def generate_map(buses, bus_number, trips_df, stops_df, routes_df):
+def generate_map(buses, bus_number, trips_df, stops_df):
     """Generate figure and speed text for a given bus_number."""
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
 
@@ -98,14 +99,14 @@ def generate_map(buses, bus_number, trips_df, stops_df, routes_df):
     )
     # stop_id in stops_df is a float so stop_id from buses must be converted to a float 
     stop_id = float(stop_id)
-    route_number = route.split('-')[0]
+    route = route.split('-')[0]
     trip_headsign = trips_df.loc[trips_df["trip_id"] == trip_id, "trip_headsign"]
     trip_headsign = trip_headsign.iloc[0]
     speed = speed * 3
     stop = stops_df.loc[stops_df["stop_id"] == stop_id, "stop_name"]
     stop = stop.iloc[0]
 
-    
+
 
     bearing_rad = math.radians(bearing)
     arrow_len = 0.002  # adjust for zoom
@@ -135,39 +136,22 @@ def generate_map(buses, bus_number, trips_df, stops_df, routes_df):
     #    name="Heading"
     #))
 
-    route_color_hex = "#808080"  # default to gray
-    route_color_hex = routes_df.loc[routes_df["route_id"] == route, "route_color"]
-    route_color_hex = route_color_hex.iloc[0]
-
-    fp_routes = os.path.join("data", "routes.shp")
-    route_data = gpd.read_file(fp_routes)
-    current_route = route_data[route_data["route_id"] == route]
-    route_geojson = json.loads(current_route.to_json())
-
-    route_coords = []
-    for geom in current_route.geometry:
-        route_coords.extend(list(geom.coords))
-                                    
-    lons, lats = zip(*route_coords)
-
-
-    fig.add_trace(go.Scattermapbox(
-        lat=lats,
-        lon=lons,
-        mode='lines',
-        line=dict(color=f"#{route_color_hex}", width=4),
-        name=f"Route {route_number}"
-    ))
-
+    # Add static routes
     fig.update_layout(
         mapbox_style="open-street-map",
         mapbox_zoom=12,
-        mapbox_center={"lat": lats[0], "lon": lons[0]},
+        mapbox_center={"lat": lat, "lon": lon},
+        map_layers=[{
+            "sourcetype": "geojson",
+            "source": route_geojson,
+            "type": "line",
+            "line": {"width": 4}
+        }],
         height=600
     )
 
     desc_text = (
-        f"{bus_id} is running the {route_number} {trip_headsign}"
+        f"{bus_id} is running the {route} {trip_headsign}"
     )
 
     stop_text = (
@@ -179,7 +163,7 @@ def generate_map(buses, bus_number, trips_df, stops_df, routes_df):
         f"Current Speed: {speed:.1f} km/h"
         if speed else f"Current Speed: 0 km/h"
     )
-    
+
     if capacity == 0:
         capacity_text = "Occupancy Status: Empty"
     elif capacity == 1:
@@ -220,8 +204,7 @@ def update_map_callback(n_intervals, n_clicks, bus_number):
     buses = load_buses()
     trips_df = load_trips()
     stops_df = load_stops()
-    routes_df = load_routes()
-    return generate_map(buses, bus_number, trips_df, stops_df, routes_df)
+    return generate_map(buses, bus_number, trips_df, stops_df)
 
 # === Run app ===
 if __name__ == "__main__":
