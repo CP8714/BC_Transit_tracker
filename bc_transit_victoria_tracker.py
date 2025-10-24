@@ -156,9 +156,9 @@ def generate_map(buses, bus_number, trips_df, stops_df, routes_df):
                     source=route_geojson,
                     type="line",
                     line = dict(width=4),
-                    paint=dict(
-                    "line-color": route_color_hex
-                    )
+                    paint={
+                        "line-color": route_color_hex
+                    }
                 )
             ]
         ),
