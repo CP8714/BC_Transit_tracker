@@ -88,7 +88,7 @@ def generate_map(buses, bus_number, trips_df, stops_df):
 
     if not bus:
         fig = go.Figure()
-        return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available"
+        return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available", ""
 
     lat, lon, speed, route, bus_id, capacity, trip_id, stop_id, bearing, timestamp = (
         bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"], bus["stop_id"], bus["bearing"], bus["timestamp"]
