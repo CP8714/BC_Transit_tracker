@@ -110,6 +110,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
     current_trip = next((trip for trip in current_trips if trip["trip_id"] == trip_id), None)
 
     delay = (current_trip["delay"])
+    delay_mins = delay // 60
     
     # stop_id in stops_df is a float so stop_id from buses must be converted to a float 
     stop_id = float(stop_id)
@@ -184,7 +185,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
             stop_text = f"First Stop: {stop}"
     else:
         trip_headsign = trip_headsign.iloc[0]
-        desc_text = f"{bus_id} is currently {delay:.1f} late running the {route_number} {trip_headsign}"
+        desc_text = f"{bus_id} is currently {delay_mins:.1f} minutes late running the {route_number} {trip_headsign}"
         if speed > 0:
             stop_text = f"Next Stop: {stop}"
         else:
