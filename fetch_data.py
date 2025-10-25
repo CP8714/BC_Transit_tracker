@@ -13,8 +13,8 @@ def fetch():
     fleet_update_response = requests.get(fleet_update_url, timeout=10)
     fleet_update_response.raise_for_status()
 
-    trip_update_response = requests.get(trip_update_url, timeout=10)
-    trip_update_response.raise_for_status()
+    # trip_update_response = requests.get(trip_update_url, timeout=10)
+    # trip_update_response.raise_for_status()
 
     static_response = requests.get(static_url)
     static_response.raise_for_status()
