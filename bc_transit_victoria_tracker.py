@@ -110,7 +110,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
     current_trip = next((trip for trip in current_trips if trip["trip_id"] == trip_id), None)
 
     deadheading = False
-    if not current_trip["delay"]:
+    if not current_trip:
         deadheading = True
     else:
         delay = (current_trip["delay"]) // 60
