@@ -109,8 +109,11 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
     )
     current_trip = next((trip for trip in current_trips if trip["trip_id"] == trip_id), None)
 
-    delay = (current_trip["delay"])
-    delay_mins = delay // 60
+    deadheading = False
+    if not current_trip["delay"]:
+        deadheading = True
+    else:
+        delay = (current_trip["delay"]) // 60
     
     # stop_id in stops_df is a float so stop_id from buses must be converted to a float 
     stop_id = float(stop_id)
@@ -177,7 +180,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
     )
     stop = stop.iloc[0]
     if trip_headsign.empty:
-        if stop_id == 900000 or stop_id == 930000:
+        if deadheading:
             desc_text = f"{bus_id} is currently deadheading back to the transit yard"
             stop_text = f"Next Stop: {stop}"
         else:
