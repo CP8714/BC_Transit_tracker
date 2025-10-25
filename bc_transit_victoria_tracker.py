@@ -179,9 +179,9 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
         margin={"r":0,"t":0,"l":0,"b":0}
     )
     stop = stop.iloc[0]
-    if trip_headsign.empty:
-        if deadheading:
-            desc_text = f"{bus_id} is currently deadheading back to the transit yard"
+    if deadheading:
+        if stop_id == 900000 or stop_id == 930000:
+            desc_text = f"{bus_id} is currently returning back to a transit yard"
             stop_text = f"Next Stop: {stop}"
         else:
             desc_text = f"{bus_id} is currently deadheading to run another route"
