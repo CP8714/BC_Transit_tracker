@@ -107,6 +107,10 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
     lat, lon, speed, route, bus_id, capacity, trip_id, stop_id, bearing, timestamp = (
         bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"], bus["stop_id"], bus["bearing"], bus["timestamp"]
     )
+    cureent_trip = next((trip for trip in current_trips if trip["current_trips"] == trip_id), None)
+
+    delay = (current_trip["delay"])
+    
     # stop_id in stops_df is a float so stop_id from buses must be converted to a float 
     stop_id = float(stop_id)
     route_number = route.split('-')[0] 
