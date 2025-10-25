@@ -207,7 +207,7 @@ def update_map_callback(n_intervals, n_clicks, bus_number):
     # Manual button triggers a live fetch
     if triggered_id == "manual-update":
         try:
-            fetch_fleet.fetch()
+            fetch_data.fetch()
         except Exception as e:
             print(f"Error fetching live fleet data: {e}", flush=True)
 
