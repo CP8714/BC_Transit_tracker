@@ -10,7 +10,7 @@ import math
 import os
 import requests
 import pandas as pd
-import fetch_data  # your fetch_data.py must be in the same folder
+import fetch_fleet_data
 
 # === GitHub data source fallback (optional) ===
 bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
@@ -207,9 +207,9 @@ def update_map_callback(n_intervals, n_clicks, bus_number):
     # Manual button triggers a live fetch
     if triggered_id == "manual-update":
         try:
-            fetch_data.fetch()
+            fetch_fleet_data.fetch()
         except Exception as e:
-            print(f"Error fetching live data: {e}", flush=True)
+            print(f"Error fetching live fleet data: {e}", flush=True)
 
     # Load the latest bus data
     buses = load_buses()
