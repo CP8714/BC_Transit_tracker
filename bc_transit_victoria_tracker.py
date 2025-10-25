@@ -207,7 +207,8 @@ def update_map_callback(n_intervals, n_clicks, bus_number):
     # Manual button triggers a live fetch
     if triggered_id == "manual-update":
         try:
-            fetch_data.fetch()  # <-- actually fetch live GTFS data
+            import threading
+            threading.Thread(target=fetch_data.fetch, daemon=True).start()
         except Exception as e:
             print(f"Error fetching live data: {e}", flush=True)
 
