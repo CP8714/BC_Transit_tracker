@@ -46,6 +46,8 @@ app.layout = html.Div([
     
     dcc.Graph(id="live-map"),
 
+    html.H3(id="timestamp-text"),
+
     # Auto-refresh interval
     dcc.Interval(
         id="interval-component",
@@ -88,8 +90,8 @@ def generate_map(buses, bus_number, trips_df, stops_df):
         fig = go.Figure()
         return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available"
 
-    lat, lon, speed, route, bus_id, capacity, trip_id, stop_id, bearing = (
-        bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"], bus["stop_id"], bus["bearing"]
+    lat, lon, speed, route, bus_id, capacity, trip_id, stop_id, bearing, timestamp = (
+        bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"], bus["stop_id"], bus["bearing"], bus["timestamp"]
     )
     # stop_id in stops_df is a float so stop_id from buses must be converted to a float 
     stop_id = float(stop_id)
@@ -178,15 +180,25 @@ def generate_map(buses, bus_number, trips_df, stops_df):
     if capacity == 0:
         capacity_text = "Occupancy Status: Empty"
     elif capacity == 1:
-        capacity_text = "Occupancy Status: Many seats available"
+        capacity_text = "Occupancy Status: Many Seats Available"
     elif capacity == 2:
-        capacity_text = "Occupancy Status: Some seats available"
+        capacity_text = "Occupancy Status: Some Seats Available"
     elif capacity == 3:
-        capacity_text = "Occupancy Status: Standing room only"
+        capacity_text = "Occupancy Status: Standing Room Only"
     else:
         capacity_text = "Occupancy Status: Full"
 
-    return fig, desc_text, stop_text, capacity_text, speed_text
+    # Parse timestamp as UTC time
+    utc_time = datetime.fromisoformat(timestamp).replace(tzinfo=pytz.utc)
+
+    # Convert to PST 
+    pst_time = utc_time.astimezone(pytz.timezone("America/Los_Angeles"))
+
+    pst_timestamp = pst_time.strftime("%H:%M:%S")
+
+    timestamp_text = f"Updated at {pst_timestamp}"
+
+    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text
 
 # --- Unified callback ---
 from dash import callback_context
@@ -196,7 +208,8 @@ from dash import callback_context
      Output("desc-text", "children"),
      Output("stop-text", "children"),
      Output("capacity-text", "children"),
-     Output("speed-text", "children")],
+     Output("speed-text", "children"),
+     Output("timestamp-text", "children")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("bus-search", "value")]
