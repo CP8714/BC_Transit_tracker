@@ -20,7 +20,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run fetcher
-        run: python fetch_fleet_data.py
+        run: python fetch_data.py
 
       - name: Commit and push data
         run: |
