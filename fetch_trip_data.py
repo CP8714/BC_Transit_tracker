@@ -20,8 +20,7 @@ def fetch():
                     "route_id": trip_entity.trip.route_id,
                     "start_time": trip_entity.trip.start_time,
                     "delay": trip_entity.stop_time_update[0].departure.delay,
-                    "stop_sequence": trip_entity.stop_time_update[0].stop_sequence,
-                    "start_time": trip_entity.trip.start_time
+                    "stop_sequence": trip_entity.stop_time_update[0].stop_sequence
                 })
             else:
                 trips.append({
@@ -29,8 +28,7 @@ def fetch():
                     "route_id": trip_entity.trip.route_id,
                     "start_time": trip_entity.trip.start_time,
                     "delay": trip_entity.stop_time_update[0].arrival.delay,
-                    "stop_sequence": trip_entity.stop_time_update[0].stop_sequence,
-                    "start_time": trip_entity.trip.start_time
+                    "stop_sequence": trip_entity.stop_time_update[0].stop_sequence
                 })
 
     # Save to trip_updates.json
