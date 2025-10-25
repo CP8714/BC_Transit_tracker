@@ -191,6 +191,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
         if delay == 0:
             desc_text = f"{bus_id} is currently on schedule running the {route_number} {trip_headsign}"
         if delay < 0:
+            delay = delay * -1
             desc_text = f"{bus_id} is currently {delay:d} minutes early running the {route_number} {trip_headsign}"
         else:
             desc_text = f"{bus_id} is currently {delay:d} minutes late running the {route_number} {trip_headsign}"
