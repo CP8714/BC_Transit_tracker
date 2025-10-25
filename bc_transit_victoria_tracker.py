@@ -11,6 +11,7 @@ import os
 import requests
 import pandas as pd
 import fetch_fleet_data
+import fetch_trip_data
 from datetime import datetime
 import pytz
 
@@ -223,6 +224,7 @@ def update_map_callback(n_intervals, n_clicks, bus_number):
     if triggered_id == "manual-update":
         try:
             fetch_fleet_data.fetch()
+            fetch_trip_data.fetch()
         except Exception as e:
             print(f"Error fetching live fleet data: {e}", flush=True)
 
