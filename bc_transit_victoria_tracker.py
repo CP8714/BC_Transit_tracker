@@ -188,7 +188,6 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
             stop_text = f"First Stop: {stop}"
     else:
         trip_headsign = trip_headsign.iloc[0]
-        delay = int(delay)
         if delay == 0:
             desc_text = f"{bus_id} is currently on schedule running the {route_number} {trip_headsign}"
         if delay < 0:
@@ -201,7 +200,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
             if delay == 1:
                 desc_text = f"{bus_id} is currently {delay:d} minute late running the {route_number} {trip_headsign}"
             else:
-                desc_text = f"{bus_id} is currently {delay:d} minutes late running the {route_number} {trip_headsign}"
+                desc_text = f"{bus_id} is currently {delay:.1f} minutes late running the {route_number} {trip_headsign}"
 
         
         if speed > 0:
