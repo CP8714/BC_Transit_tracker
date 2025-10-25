@@ -8,7 +8,7 @@ import io
 
 def fetch():
     fleet_update_url = "https://bct.tmix.se/gtfs-realtime/vehicleupdates.pb?operatorIds=48"
-    trip_update_url = "https://bct.tmix.se/gtfs-realtime/tripupdates.pb?operatorIds=48"
+    # trip_update_url = "https://bct.tmix.se/gtfs-realtime/tripupdates.pb?operatorIds=48"
     static_url = "https://bct.tmix.se/Tmix.Cap.TdExport.WebApi/gtfs/?operatorIds=48"
     fleet_update_response = requests.get(fleet_update_url, timeout=10)
     fleet_update_response.raise_for_status()
@@ -52,30 +52,30 @@ def fetch():
     with open("data/bus_updates.json", "w") as f:
         json.dump(buses, f, indent=2)
 
-    trip_feed = gtfs_realtime_pb2.FeedMessage()
-    trip_feed.ParseFromString(trip_update_response.content)
-    trips = []
-    for entity in trip_feed.entity:
-        trip_entity = entity.trip_update
-        if len(trip_entity.stop_time_update) > 0:
-            if trip_entity.stop_time_update[0].stop_sequence == 1:
-                trips.append({
-                    "trip_id": trip_entity.trip.trip_id,
-                    "route_id": trip_entity.trip.route_id,
-                    "start_time": trip_entity.trip.start_time,
-                    "delay": trip_entity.stop_time_update[0].departure.delay
-                })
-            else:
-                trips.append({
-                    "trip_id": trip_entity.trip.trip_id,
-                    "route_id": trip_entity.trip.route_id,
-                    "start_time": trip_entity.trip.start_time,
-                    "delay": trip_entity.stop_time_update[0].arrival.delay
-                })
+    # trip_feed = gtfs_realtime_pb2.FeedMessage()
+    # trip_feed.ParseFromString(trip_update_response.content)
+    # trips = []
+    # for entity in trip_feed.entity:
+    #     trip_entity = entity.trip_update
+    #     if len(trip_entity.stop_time_update) > 0:
+    #         if trip_entity.stop_time_update[0].stop_sequence == 1:
+    #             trips.append({
+    #                 "trip_id": trip_entity.trip.trip_id,
+    #                 "route_id": trip_entity.trip.route_id,
+    #                 "start_time": trip_entity.trip.start_time,
+    #                 "delay": trip_entity.stop_time_update[0].departure.delay
+    #             })
+    #         else:
+    #             trips.append({
+    #                 "trip_id": trip_entity.trip.trip_id,
+    #                 "route_id": trip_entity.trip.route_id,
+    #                 "start_time": trip_entity.trip.start_time,
+    #                 "delay": trip_entity.stop_time_update[0].arrival.delay
+    #             })
 
-    # Save to trip_updates.json
-    with open("data/trip_updates.json", "w") as f:
-        json.dump(trips, f, indent=2)
+    # # Save to trip_updates.json
+    # with open("data/trip_updates.json", "w") as f:
+    #     json.dump(trips, f, indent=2)
 
 
 if __name__ == "__main__":
