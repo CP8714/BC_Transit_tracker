@@ -73,6 +73,17 @@ def load_buses():
     except:
         return []
 
+def load_current_trips():
+    data_file = os.path.join("data", "trip_updates.json")
+    if os.path.exists(data_file):
+        with open(data_file, "r") as f:
+            return json.load(f)
+    try:
+        response = requests.get(trip_updates, timeout=10)
+        return response.json()
+    except:
+        return []
+
 def load_trips():
     trips_file = os.path.join("data", "trips.csv")
     if os.path.exists(trips_file):
@@ -85,7 +96,7 @@ def load_stops():
         stops_df = pd.read_csv(stops_file)
         return stops_df
 
-def generate_map(buses, bus_number, trips_df, stops_df):
+def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
     """Generate figure and speed text for a given bus_number."""
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
 
@@ -230,9 +241,10 @@ def update_map_callback(n_intervals, n_clicks, bus_number):
 
     # Load the latest bus data
     buses = load_buses()
+    current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    return generate_map(buses, bus_number, trips_df, stops_df)
+    return generate_map(buses, bus_number, current_trips, trips_df, stops_df)
 
 # === Run app ===
 if __name__ == "__main__":
