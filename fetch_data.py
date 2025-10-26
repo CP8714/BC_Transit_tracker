@@ -64,6 +64,7 @@ def fetch():
                         "trip_id": trip_entity.trip.trip_id,
                         "route_id": trip_entity.trip.route_id,
                         "start_time": trip_entity.trip.start_time,
+                        "stop_id": stop.stop_id,
                         "delay": stop.departure.delay,
                         "stop_sequence": stop.stop_sequence,
                         "time": stop.arrival.time
@@ -73,6 +74,7 @@ def fetch():
                         "trip_id": trip_entity.trip.trip_id,
                         "route_id": trip_entity.trip.route_id,
                         "start_time": trip_entity.trip.start_time,
+                        "stop_id": stop.stop_id,
                         "delay": stop.arrival.delay,
                         "stop_sequence": stop.stop_sequence,
                         "time": stop.arrival.time
