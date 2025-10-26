@@ -108,13 +108,14 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
         bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"], bus["stop_id"], bus["bearing"], bus["timestamp"]
     )
     current_trip = next((trip for trip in current_trips if trip["trip_id"] == trip_id), None)
+    current_trip = next((stop for stop in current_trip if stop["stop_id"] == stop_id), None)
 
     deadheading = False
     if not current_trip:
         deadheading = True
     else:
-        delay, stop_sequence, start_time, eta_time = (
-            current_trip["delay"], current_trip["stop_sequence"], current_trip["start_time"], current_trip["time"]
+        delay, stop_sequence, start_time, eta_time, current_stop_id = (
+            current_trip["delay"], current_trip["stop_sequence"], current_trip["start_time"], current_trip["time"], current["current_stop_id"]
         )
         delay = delay // 60
         # Converting from Unix to PST
