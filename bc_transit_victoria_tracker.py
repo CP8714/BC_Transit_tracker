@@ -113,10 +113,13 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
     if not current_trip:
         deadheading = True
     else:
-        delay, stop_sequence, start_time = (
-            current_trip["delay"], current_trip["stop_sequence"], current_trip["start_time"]
+        delay, stop_sequence, start_time, eta_time = (
+            current_trip["delay"], current_trip["stop_sequence"], current_trip["start_time"], current_trip["time"]
         )
         delay = delay // 60
+        # Converting from Unix to PST
+        eta_time = datetime.fromtimestamp(unix_time, pytz.timezone("America/Los_Angeles"))
+        eta_time = eta_time.strftime("%H:%M")
     
     # stop_id in stops_df is a float so stop_id from buses must be converted to a float 
     stop_id = float(stop_id)
@@ -212,7 +215,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
 
         
         if speed > 0:
-            stop_text = f"Next Stop: {stop}"
+            stop_text = f"Next Stop: {stop}, ETA: {eta_time}"
         else:
             stop_text = f"Current Stop: {stop}"
 
