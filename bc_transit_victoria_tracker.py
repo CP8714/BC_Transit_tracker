@@ -46,6 +46,8 @@ app.layout = html.Div([
     html.H3(id="capacity-text"),
 
     html.H3(id="speed-text"),
+
+    html.H3([html.Div(text) for text in future_stops_eta], id="future-stop-text")
     
     dcc.Graph(id="live-map"),
 
@@ -102,13 +104,14 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
 
     if not bus:
         fig = go.Figure()
-        return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available", ""
+        return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available", "", []
 
     lat, lon, speed, route, bus_id, capacity, trip_id, stop_id, bearing, timestamp = (
         bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"], bus["stop_id"], bus["bearing"], bus["timestamp"]
     )
     current_trip = [trip for trip in current_trips if trip["trip_id"] == trip_id]
     current_stop = next((stop for stop in current_trip if stop["stop_id"] == stop_id), None)
+    future_stops_eta = []
 
     deadheading = False
     if not current_trip:
@@ -121,6 +124,20 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
         # Converting from Unix to PST
         eta_time = datetime.fromtimestamp(eta_time, pytz.timezone("America/Los_Angeles"))
         eta_time = eta_time.strftime("%H:%M")
+
+        future_stops = [stop for stop in current_trip if stop["stop_sequence"] > current_stop["stop_sequence"]]
+
+        if future_stops:
+            for stop in future_stops:
+                future_eta_time = datetime.fromtimestamp(stop["time"], pytz.timezone("America/Los_Angeles"))
+                future_eta_time = eta_time.strftime("%H:%M")
+                future_stop_id = float(stop["stop_id"])
+                future_stop_name = stops_df.loc[stops_df["stop_id"] == future_stop_id, "stop_name"]
+                future_stop_name = future_stop_name.iloc[0]
+                future_stops_text = f"{future_stop_name}: {future_eta_time}"
+                future_stops_eta.append(future_stops_text)
+        
+        
     
     # stop_id in stops_df is a float so stop_id from buses must be converted to a float 
     stop_id = float(stop_id)
@@ -246,7 +263,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
 
     timestamp_text = f"Updated at {pst_timestamp}"
 
-    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text
+    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta
 
 # --- Unified callback ---
 from dash import callback_context
@@ -257,7 +274,8 @@ from dash import callback_context
      Output("stop-text", "children"),
      Output("capacity-text", "children"),
      Output("speed-text", "children"),
-     Output("timestamp-text", "children")],
+     Output("timestamp-text", "children"),
+     Output("future-stop-text", "children")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("bus-search", "value")]
