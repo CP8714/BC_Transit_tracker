@@ -136,6 +136,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
                 future_stop_name = future_stop_name.iloc[0]
                 future_stops_text = f"{future_stop_name}: {future_eta_time}"
                 future_stops_eta.append(future_stops_text)
+            future_stops_eta = [html.Div(text) for text in future_stops_eta]
         
         
     
