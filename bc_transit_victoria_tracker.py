@@ -118,7 +118,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
         )
         delay = delay // 60
         # Converting from Unix to PST
-        eta_time = datetime.fromtimestamp(unix_time, pytz.timezone("America/Los_Angeles"))
+        eta_time = datetime.fromtimestamp(eta_time, pytz.timezone("America/Los_Angeles"))
         eta_time = eta_time.strftime("%H:%M")
     
     # stop_id in stops_df is a float so stop_id from buses must be converted to a float 
