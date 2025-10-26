@@ -139,7 +139,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
                 future_stops_text = f"{future_stop_name}: {future_eta_time}"
                 all_future_stops_eta.append(future_stops_text)
             # Only include the next 5 stops depending on if the "Show Next 5 stops" button has been clicked
-            if toggle_future_stops_clicks and len(future_stops) >= 5:
+            if toggle_future_stops_clicks % 2 == 1 and len(future_stops) >= 5:
                 future_stops_eta = all_future_stops_eta[:6]
             else:
                 future_stops_eta = all_future_stops_eta
