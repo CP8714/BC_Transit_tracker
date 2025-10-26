@@ -47,7 +47,7 @@ app.layout = html.Div([
 
     html.H3(id="speed-text"),
 
-    html.Button(toggle_future_stops_text, id="toggle-future-stops", n_clicks=0, style={"margin-bottom": "10px"}),
+    html.Button("Show Next 5 Stops", id="toggle-future-stops", n_clicks=0, style={"margin-bottom": "10px"}),
 
     html.H3(id="future-stop-text"),
     
@@ -114,7 +114,6 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     current_trip = [trip for trip in current_trips if trip["trip_id"] == trip_id]
     current_stop = next((stop for stop in current_trip if stop["stop_id"] == stop_id), None)
     future_stops_eta = []
-    toggle_future_stops_text = "Show Next 5 Stops"
 
     deadheading = False
     if not current_trip:
@@ -143,10 +142,8 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
             # Only include the next 5 stops depending on if the "Show Next 5 stops" button has been clicked
             if toggle_future_stops_clicks % 2 == 1 and len(future_stops) >= 5:
                 future_stops_eta = all_future_stops_eta[:6]
-                toggle_future_stops_text = "Show All Remaining Stops"
             else:
                 future_stops_eta = all_future_stops_eta
-                toggle_future_stops_text = "Show Next 5 Stops"
             future_stops_eta = [html.Div(text) for text in future_stops_eta]
         
         
