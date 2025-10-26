@@ -58,24 +58,25 @@ def fetch():
     for entity in trip_feed.entity:
         trip_entity = entity.trip_update
         if len(trip_entity.stop_time_update) > 0:
-            if trip_entity.stop_time_update[0].stop_sequence == 1:
-                trips.append({
-                    "trip_id": trip_entity.trip.trip_id,
-                    "route_id": trip_entity.trip.route_id,
-                    "start_time": trip_entity.trip.start_time,
-                    "delay": trip_entity.stop_time_update[0].departure.delay,
-                    "stop_sequence": trip_entity.stop_time_update[0].stop_sequence,
-                    "time": trip_entity.stop_time_update[0].arrival.time
-                })
-            else:
-                trips.append({
-                    "trip_id": trip_entity.trip.trip_id,
-                    "route_id": trip_entity.trip.route_id,
-                    "start_time": trip_entity.trip.start_time,
-                    "delay": trip_entity.stop_time_update[0].arrival.delay,
-                    "stop_sequence": trip_entity.stop_time_update[0].stop_sequence,
-                    "time": trip_entity.stop_time_update[0].arrival.time
-                })
+            for stop in trip_entity.stop_time_update:
+                if trip_entity.stop_time_update[0].stop_sequence == 1:
+                    trips.append({
+                        "trip_id": trip_entity.trip.trip_id,
+                        "route_id": trip_entity.trip.route_id,
+                        "start_time": trip_entity.trip.start_time,
+                        "delay": stop.departure.delay,
+                        "stop_sequence": stop.stop_sequence,
+                        "time": stop.arrival.time
+                    })
+                else:
+                    trips.append({
+                        "trip_id": trip_entity.trip.trip_id,
+                        "route_id": trip_entity.trip.route_id,
+                        "start_time": trip_entity.trip.start_time,
+                        "delay": stop.arrival.delay,
+                        "stop_sequence": stop.stop_sequence,
+                        "time": stop.arrival.time
+                    })
 
     # Save to trip_updates.json
     with open("data/trip_updates.json", "w") as f:
