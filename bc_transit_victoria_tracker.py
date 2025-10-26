@@ -45,8 +45,9 @@ app.layout = html.Div([
 
     html.H3(id="capacity-text"),
 
-    html.Button("Show Next 5 stops", id="toggle-future-stops", n_clicks=0, style={"margin-bottom": "10px"}),
     html.H3(id="speed-text"),
+
+    html.Button("Show Next 5 stops", id="toggle-future-stops", n_clicks=0, style={"margin-bottom": "10px"}),
 
     html.H3(id="future-stop-text"),
     
