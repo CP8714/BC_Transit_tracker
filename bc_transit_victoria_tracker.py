@@ -47,7 +47,7 @@ app.layout = html.Div([
 
     html.H3(id="speed-text"),
 
-    html.H3([html.Div(text) for text in future_stops_eta], id="future-stop-text"),
+    html.H3(id="future-stop-text"),
     
     dcc.Graph(id="live-map"),
 
