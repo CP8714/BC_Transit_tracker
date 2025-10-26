@@ -215,7 +215,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
 
         
         if speed > 0:
-            stop_text = f"Next Stop: {stop}, ETA: {eta_time}"
+            stop_text = f"Next Stop: {stop} (ETA: {eta_time})"
         else:
             stop_text = f"Current Stop: {stop}"
 
