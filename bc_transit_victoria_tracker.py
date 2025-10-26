@@ -45,6 +45,7 @@ app.layout = html.Div([
 
     html.H3(id="capacity-text"),
 
+    html.Button("Show Next 5 stops", id="toggle-future-stops", n-clicks=0, style={"margin-bottom": "10px"}),
     html.H3(id="speed-text"),
 
     html.H3(id="future-stop-text"),
@@ -98,7 +99,7 @@ def load_stops():
         stops_df = pd.read_csv(stops_file)
         return stops_df
 
-def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
+def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks):
     """Generate figure and speed text for a given bus_number."""
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
 
@@ -128,6 +129,10 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
         future_stops = [stop for stop in current_trip if stop["stop_sequence"] > current_stop["stop_sequence"]]
 
         if future_stops:
+            # Only include the next 5 stops depending on if the "Show Next 5 stops" button has been clicked
+            if toggle_future_stops_clicks and len(future_stops) >= 5:
+                future_stops = future_stops[:5]
+            future_stops_eta.append("Future Stop ETAs")
             for stop in future_stops:
                 future_eta_time = datetime.fromtimestamp(stop["time"], pytz.timezone("America/Los_Angeles"))
                 future_eta_time = future_eta_time.strftime("%H:%M")
@@ -279,9 +284,10 @@ from dash import callback_context
      Output("future-stop-text", "children")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
-     Input("bus-search", "value")]
+     Input("bus-search", "value"),
+     Input("toggle-future-stops", "n_clicks")]
 )
-def update_map_callback(n_intervals, n_clicks, bus_number):
+def update_map_callback(n_intervals, manual_update, bus_number, toggle_future_stops_clicks):
     triggered_id = callback_context.triggered_id
 
     # Manual button triggers a live fetch
@@ -297,7 +303,7 @@ def update_map_callback(n_intervals, n_clicks, bus_number):
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    return generate_map(buses, bus_number, current_trips, trips_df, stops_df)
+    return generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks)
 
 # === Run app ===
 if __name__ == "__main__":
