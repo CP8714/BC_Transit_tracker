@@ -1,4 +1,4 @@
-# Import necessary modules
+t# Import necessary modules
 import geopandas as gpd
 import json
 import dash
@@ -130,7 +130,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         future_stops = [stop for stop in current_trip if stop["stop_sequence"] > current_stop["stop_sequence"]]
         if future_stops:
             all_future_stops_eta = []
-            all_future_stops_eta.append("Future Stop ETAs")
+            all_future_stops_eta.append("Next Stop ETAs")
             for stop in future_stops:
                 future_eta_time = datetime.fromtimestamp(stop["time"], pytz.timezone("America/Los_Angeles"))
                 future_eta_time = future_eta_time.strftime("%H:%M")
