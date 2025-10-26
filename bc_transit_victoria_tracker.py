@@ -190,6 +190,8 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df):
             desc_text = f"{bus_id} is currently deadheading to run another route"
             stop_text = f"First Stop: {stop}"
     else:
+        # Remove seconds from start_time
+        start_time = start_time[:5]
         trip_headsign = trip_headsign.iloc[0]
         if delay == 0:
             if stop_sequence == 1:
