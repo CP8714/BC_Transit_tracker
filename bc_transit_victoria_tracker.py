@@ -100,7 +100,7 @@ def load_stops():
         stops_df = pd.read_csv(stops_file)
         return stops_df
 
-def load_stops_times():
+def load_stop_times():
     stop_times_file = os.path.join("data", "stop_times.csv")
     if os.path.exists(stop_times_file):
         stop_times_df = pd.read_csv(stop_times_file)
