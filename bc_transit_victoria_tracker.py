@@ -100,6 +100,12 @@ def load_stops():
         stops_df = pd.read_csv(stops_file)
         return stops_df
 
+def load_stops_times():
+    stop_times_file = os.path.join("data", "stop_times.csv")
+    if os.path.exists(stop_times_file):
+        stop_times_df = pd.read_csv(stop_times_file)
+        return stop_times_df
+
 def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks):
     """Generate figure and speed text for a given bus_number."""
     toggle_future_stops_text = "Show Next 5 Stops"
@@ -314,6 +320,7 @@ def update_map_callback(n_intervals, manual_update, bus_number, toggle_future_st
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
+    stops_times_df = load_stop_times()
     return generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks)
 
 # === Run app ===
