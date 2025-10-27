@@ -47,7 +47,7 @@ app.layout = html.Div([
 
     html.H3(id="speed-text"),
 
-    html.Button("Show Next 5 Stops", id="toggle-future-stops", n_clicks=0, style={"margin-bottom": "10px"}),
+    html.Button(id="toggle-future-stops", n_clicks=0, children="SHow Next 5 Stops", style={"margin-bottom": "10px"}),
 
     html.H3(id="future-stop-text"),
     
@@ -102,6 +102,7 @@ def load_stops():
 
 def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks):
     """Generate figure and speed text for a given bus_number."""
+    toggle_future_stops_text = "Show Next 5 Stops"
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
 
     if not bus:
@@ -142,8 +143,10 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
             # Only include the next 5 stops depending on if the "Show Next 5 stops" button has been clicked
             if toggle_future_stops_clicks % 2 == 1 and len(future_stops) >= 5:
                 future_stops_eta = all_future_stops_eta[:6]
+                toggle_future_stops_text = "Show All Next Stops"
             else:
                 future_stops_eta = all_future_stops_eta
+                toggle_future_stops_text = "Show Next 5 Stops"
             future_stops_eta = [html.Div(text) for text in future_stops_eta]
         
         
@@ -272,7 +275,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
 
     timestamp_text = f"Updated at {pst_timestamp}"
 
-    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta
+    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text
 
 # --- Unified callback ---
 from dash import callback_context
@@ -284,7 +287,8 @@ from dash import callback_context
      Output("capacity-text", "children"),
      Output("speed-text", "children"),
      Output("timestamp-text", "children"),
-     Output("future-stop-text", "children")],
+     Output("future-stop-text", "children"),
+     Output("toggle-future-stops", "children")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("bus-search", "value"),
