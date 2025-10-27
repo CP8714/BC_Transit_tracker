@@ -29,6 +29,9 @@ def fetch():
     routes_df = pd.read_csv(z.open("routes.txt"))
     routes_df.to_csv("data/routes.csv", index=False)
 
+    stop_times_df = pd.read_csv(z.open("stop_times.txt"))
+    stops_times_df.to_csv("data/stop_times.csv", index=False)
+
     fleet_feed = gtfs_realtime_pb2.FeedMessage()
     fleet_feed.ParseFromString(fleet_update_response.content)
 
