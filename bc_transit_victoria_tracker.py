@@ -47,7 +47,7 @@ app.layout = html.Div([
 
     html.H3(id="speed-text"),
 
-    html.Button(id="toggle-future-stops", n_clicks=0, children="SHow Next 5 Stops", style={"margin-bottom": "10px"}),
+    html.Button(id="toggle-future-stops", n_clicks=0, children="Show Next 5 Stops", style={"margin-bottom": "10px"}),
 
     html.H3(id="future-stop-text"),
     
@@ -105,9 +105,15 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     toggle_future_stops_text = "Show Next 5 Stops"
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
 
+    if toggle_future_stops_clicks % 2 == 1:
+        toggle_future_stops_text = "Show All Next Stops"
+    else:
+        toggle_future_stops_text = "Show Next 5 Stops"
+        
+
     if not bus:
         fig = go.Figure()
-        return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available", "", []
+        return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available", "", [], toggle_future_stops_text
 
     lat, lon, speed, route, bus_id, capacity, trip_id, stop_id, bearing, timestamp = (
         bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"], bus["stop_id"], bus["bearing"], bus["timestamp"]
@@ -143,10 +149,8 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
             # Only include the next 5 stops depending on if the "Show Next 5 stops" button has been clicked
             if toggle_future_stops_clicks % 2 == 1 and len(future_stops) >= 5:
                 future_stops_eta = all_future_stops_eta[:6]
-                toggle_future_stops_text = "Show All Next Stops"
             else:
                 future_stops_eta = all_future_stops_eta
-                toggle_future_stops_text = "Show Next 5 Stops"
             future_stops_eta = [html.Div(text) for text in future_stops_eta]
         
         
