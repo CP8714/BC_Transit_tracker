@@ -320,7 +320,7 @@ def update_map_callback(n_intervals, manual_update, bus_number, toggle_future_st
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    stops_times_df = load_stop_times()
+    # stops_times_df = load_stop_times()
     return generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks)
 
 # === Run app ===
