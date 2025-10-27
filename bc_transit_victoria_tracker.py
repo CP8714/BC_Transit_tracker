@@ -205,7 +205,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         mapbox = dict(
             style="open-street-map",
             center={"lat": lat, "lon": lon},
-            zoom=12,
+            zoom=20,
             layers=[
                 dict(
                     sourcetype="geojson",
