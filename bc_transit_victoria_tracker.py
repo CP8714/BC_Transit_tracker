@@ -323,7 +323,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
 
     timestamp_text = f"Updated at {pst_timestamp}"
 
-    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text, ""
+    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text
 
 # --- Unified callback ---
 from dash import callback_context
