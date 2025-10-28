@@ -35,7 +35,7 @@ app.layout = html.Div([
             debounce=True
         ),
         html.Button("Search", id="search-for-bus", n_clicks=0),
-        html.H3(id="loading-text"),
+        html.Span("Fetching live data...", id="loading-text", style={"margin-left": "10px"})
     ], style={"margin-bottom": "10px"}),
 
     # Manual update button
