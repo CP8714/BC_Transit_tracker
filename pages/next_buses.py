@@ -1,7 +1,7 @@
 import dash
 from dash import html, dcc, register_page, callback
 
-dash.register_page(__name__, path="/next_busses")
+dash.register_page(__name__, path="/next_buses")
 
 layout = html.Div([
     html.H1("Next Busses Page"),
