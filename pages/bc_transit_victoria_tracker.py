@@ -68,13 +68,6 @@ layout = html.Div([
             ]
         )
     ]),
-
-    # Auto-refresh interval
-    dcc.Interval(
-        id="interval-component",
-        interval=60*1000,  # 60 seconds
-        n_intervals=0
-    ),
     
 ])
 
