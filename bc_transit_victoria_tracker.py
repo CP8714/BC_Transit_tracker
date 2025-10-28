@@ -138,7 +138,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     if not current_trip:
         deadheading = True
     else:
-        stops_times_df = load_stop_times(trip_id)
+        stop_times_df = load_stop_times(trip_id)
         current_trip_stop_ids = stop_times_df["stop_id"].astype(float).tolist()
         current_trip_stops_df = stops_df[stops_df["stop_id"].isin(trip_stop_ids)]
         fig.add_trace(go.Scattermapbox(
