@@ -39,22 +39,30 @@ app.layout = html.Div([
 
     # Manual update button
     html.Button("Update Now", id="manual-update", n_clicks=0, style={"margin-bottom": "10px"}),
-
-    html.H3(id="desc-text"),
-
-    html.H3(id="stop-text"),
-
-    html.H3(id="capacity-text"),
-
-    html.H3(id="speed-text"),
-
+    # html.H3(id="desc-text"),
+    # html.H3(id="stop-text"),
+    # html.H3(id="capacity-text"),
+    # html.H3(id="speed-text"),
     html.Button(id="toggle-future-stops", n_clicks=0, children="Show All Upcoming Stops", style={"margin-bottom": "10px"}),
+    # html.H3(id="future-stop-text"),
+    # dcc.Graph(id="live-map"),
+    # html.H3(id="timestamp-text"),
 
-    html.H3(id="future-stop-text"),
-
-    dcc.Graph(id="live-map"),
-
-    html.H3(id="timestamp-text"),
+    html.Div([
+        dcc.Loading(
+            id="loading-component",
+            type="circle",
+            children=[
+                html.H3(id="desc-text"),
+                html.H3(id="stop-text"),
+                html.H3(id="capacity-text"),
+                html.H3(id="speed-text"),
+                html.H3(id="future-stop-text"),
+                dcc.Graph(id="live-map"),
+                html.H3(id="timestamp-text"),
+            ]
+        )
+    ]),
 
     # Auto-refresh interval
     dcc.Interval(
