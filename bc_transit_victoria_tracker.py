@@ -138,16 +138,11 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     if not current_trip:
         deadheading = True
     else:
+
+        # Get lon and lat coordinates for all stops on current route to be displayed on map
         stop_times_df = load_stop_times(trip_id)
         current_trip_stop_ids = stop_times_df["stop_id"].astype(float).tolist()
         current_trip_stops_df = stops_df[stops_df["stop_id"].isin(current_trip_stop_ids)]
-        fig.add_trace(go.Scattermapbox(
-            lat=current_trip_stops_df["stop_lat"],
-            lon=current_trip_stops_df["stop_lon"],
-            mode="markers",
-            marker=dict(size=7),
-            name="Route Stops"
-        ))
         
         delay, stop_sequence, start_time, eta_time, current_stop_id = (
             current_stop["delay"], current_stop["stop_sequence"], current_stop["start_time"], current_stop["time"], current_stop["stop_id"]
@@ -185,34 +180,6 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     speed = speed * 3
     stop = stops_df.loc[stops_df["stop_id"] == stop_id, "stop_name"]
 
-    
-
-    # bearing_rad = math.radians(bearing)
-    # arrow_len = 0.002  # adjust for zoom
-
-    # end_lat = lat + arrow_len * math.cos(bearing_rad)
-    # end_lon = lon + arrow_len * math.sin(bearing_rad)
-
-    # Bus location as marker
-    fig.add_trace(go.Scattermapbox(
-        lat=[lat],
-        lon=[lon],
-        mode="markers+text",
-        text=[bus_id],
-        textposition="top center",
-        marker=dict(size=12, color="blue"),
-        name="Bus Position"
-    ))
-
-    # Arrow showing heading
-    # fig.add_trace(go.Scattermapbox(
-    #    lat=[lat, end_lat],
-    #    lon=[lon, end_lon],
-    #    mode="lines",
-    #    line=dict(width=4, color="red"),
-    #    name="Heading"
-    #))
-
     fp_routes = os.path.join("data", "routes.shp")
     route_data = gpd.read_file(fp_routes)
     # Route map not shown for buses heading back to yard
@@ -239,6 +206,45 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         height=600,
         margin={"r":0,"t":0,"l":0,"b":0}
     )
+
+    # Bus location as marker
+    fig.add_trace(go.Scattermapbox(
+        lat=[lat],
+        lon=[lon],
+        mode="markers+text",
+        text=[bus_id],
+        textposition="top center",
+        marker=dict(size=12, color="blue"),
+        name="Bus Position"
+    ))
+
+    # Possible future arrow
+    # bearing_rad = math.radians(bearing)
+    # arrow_len = 0.002  # adjust for zoom
+
+    # end_lat = lat + arrow_len * math.cos(bearing_rad)
+    # end_lon = lon + arrow_len * math.sin(bearing_rad)
+
+    # Arrow showing heading
+    # fig.add_trace(go.Scattermapbox(
+    #    lat=[lat, end_lat],
+    #    lon=[lon, end_lon],
+    #    mode="lines",
+    #    line=dict(width=4, color="red"),
+    #    name="Heading"
+    #))
+
+    if not deadheading:
+        # Add stops of current route to map
+        fig.add_trace(go.Scattermapbox(
+            lat=current_trip_stops_df["stop_lat"],
+            lon=current_trip_stops_df["stop_lon"],
+            mode="markers",
+            marker=dict(size=10, color="red"),
+            name="Route Stops"
+        ))
+
+    
     stop = stop.iloc[0]
     if deadheading:
         if stop_id == 900000 or stop_id == 930000:
