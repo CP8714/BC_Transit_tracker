@@ -24,6 +24,8 @@ dash.register_page(__name__, path="/")
 layout = html.Div([
     html.H2("BC Transit Victoria – Bus Tracker"),
 
+    dcc.Link("Go to Next Buses →", href="/next_buses_page"),
+
     html.Div([
         html.Label("Enter Bus Number:"),
         dcc.Input(
