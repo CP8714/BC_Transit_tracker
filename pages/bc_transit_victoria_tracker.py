@@ -7,9 +7,12 @@ from dash.dependencies import Output, Input
 # import plotly.express as px
 import plotly.graph_objects as go
 import math
+import sys
 import os
 import requests
 import pandas as pd
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
 import fetch_fleet_data
 import fetch_trip_data
 from datetime import datetime
