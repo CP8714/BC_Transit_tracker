@@ -52,6 +52,8 @@ app.layout = html.Div([
 
     html.H3(id="future-stop-text"),
 
+    dcc.Graph(id="live-map"),
+
     html.H3(id="timestamp-text"),
 
     # Auto-refresh interval
@@ -60,14 +62,6 @@ app.layout = html.Div([
         interval=60*1000,  # 60 seconds
         n_intervals=0
     ),
-
-    dcc.Loading(
-        id="loading-bus-data",
-        type="default",
-        children=[
-            dcc.Graph(id="live-map")
-    ]
-)
     
 ])
 
