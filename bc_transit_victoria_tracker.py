@@ -336,7 +336,7 @@ def update_map_callback(n_intervals, manual_update, bus_number, search_for_bus, 
     triggered_id = callback_context.triggered_id
 
     # Manual button triggers a live fetch
-    if triggered_id == "manual-update":
+    if triggered_id == "manual-update" or triggered_id == "search-for-bus":
         try:
             fetch_fleet_data.fetch()
             fetch_trip_data.fetch()
