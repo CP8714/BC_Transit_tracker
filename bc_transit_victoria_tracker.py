@@ -34,7 +34,8 @@ app.layout = html.Div([
             value="9542",
             debounce=True
         ),
-        html.Button("Search", id="search-for-bus", n_clicks=0)
+        html.Button("Search", id="search-for-bus", n_clicks=0),
+        html.H3(id="loading-text"),
     ], style={"margin-bottom": "10px"}),
 
     # Manual update button
@@ -53,7 +54,6 @@ app.layout = html.Div([
             id="loading-component",
             type="circle",
             children=[
-                html.Div(id="loading-text"),
                 html.H3(id="desc-text"),
                 html.H3(id="stop-text"),
                 html.H3(id="capacity-text"),
