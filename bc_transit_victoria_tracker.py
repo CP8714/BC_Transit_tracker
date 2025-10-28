@@ -323,7 +323,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
 
     timestamp_text = f"Updated at {pst_timestamp}"
 
-    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text
+    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text, ""
 
 # --- Unified callback ---
 from dash import callback_context
@@ -367,7 +367,8 @@ def update_map_callback(n_intervals, manual_update, bus_number, search_for_bus, 
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    return generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks)
+    output_without_loading = generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks)
+    return output_without_loading, loading_text
 
 # === Run app ===
 if __name__ == "__main__":
