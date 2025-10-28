@@ -38,7 +38,7 @@ app.layout = html.Div([
     ], style={"margin-bottom": "10px"}),
 
     # Manual update button
-    html.Button("Update Now", id="manual-update", n_clicks=0, style={"margin-bottom": "10px"}),
+    # html.Button("Update Now", id="manual-update", n_clicks=0, style={"margin-bottom": "10px"}),
     # html.H3(id="desc-text"),
     # html.H3(id="stop-text"),
     # html.H3(id="capacity-text"),
