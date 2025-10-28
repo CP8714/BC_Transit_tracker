@@ -217,6 +217,8 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         # Converting from Unix to PST
         eta_time = datetime.fromtimestamp(eta_time, pytz.timezone("America/Los_Angeles"))
         eta_time = eta_time.strftime("%H:%M")
+
+        future_stops = [stop for stop in current_trip if stop["stop_sequence"] > current_stop["stop_sequence"]]
         
         if future_stops:
             all_future_stops_eta = []
