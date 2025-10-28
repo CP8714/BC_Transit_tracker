@@ -48,7 +48,7 @@ app.layout = html.Div([
 
     html.H3(id="speed-text"),
 
-    html.Button(id="toggle-future-stops", n_clicks=0, children="Show Next 5 Stops", style={"margin-bottom": "10px"}),
+    html.Button(id="toggle-future-stops", n_clicks=0, children="Show All Upcoming Stops", style={"margin-bottom": "10px"}),
 
     html.H3(id="future-stop-text"),
 
@@ -116,11 +116,11 @@ def load_stop_times(current_trip_id):
 def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks):
     """Generate figure and speed text for a given bus_number."""
     fig = go.Figure()
-    toggle_future_stops_text = "Show Next 5 Stops"
+    toggle_future_stops_text = "Show All Upcoming Stops"
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
 
-    if toggle_future_stops_clicks % 2 == 1:
-        toggle_future_stops_text = "Show All Next Stops"
+    if toggle_future_stops_clicks % 2 == 0:
+        toggle_future_stops_text = "Show All Upcoming Stops"
     else:
         toggle_future_stops_text = "Show Next 5 Stops"
         
@@ -167,7 +167,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
                 future_stops_text = f"{future_stop_name}: {future_eta_time}"
                 all_future_stops_eta.append(future_stops_text)
             # Only include the next 5 stops depending on if the "Show Next 5 stops" button has been clicked
-            if toggle_future_stops_clicks % 2 == 1 and len(future_stops) >= 5:
+            if toggle_future_stops_clicks % 2 == 0 and len(future_stops) >= 5:
                 future_stops_eta = all_future_stops_eta[:6]
             else:
                 future_stops_eta = all_future_stops_eta
