@@ -122,6 +122,20 @@ def load_stop_times(current_trip_id):
                 stop_times_df = pd.concat([stop_times_df, current_trip_stops], ignore_index=True)
         return stop_times_df
 
+def get_capacity(capacity):
+    if capacity == 0:
+        capacity_text = "Occupancy Status: Empty"
+    elif capacity == 1:
+        capacity_text = "Occupancy Status: Many Seats Available"
+    elif capacity == 2:
+        capacity_text = "Occupancy Status: Some Seats Available"
+    elif capacity == 3:
+        capacity_text = "Occupancy Status: Standing Room Only"
+    else:
+        capacity_text = "Occupancy Status: Full"
+    return capacity_text
+    
+
 def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks):
     """Generate figure and speed text for a given bus_number."""
     fig = go.Figure()
@@ -133,9 +147,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     else:
         toggle_future_stops_text = "Show Next 5 Stops"
         
-
     if not bus:
-        fig = go.Figure()
         return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available", "", [], toggle_future_stops_text
 
     lat, lon, speed, route, bus_id, capacity, trip_id, stop_id, bearing, timestamp = (
@@ -144,6 +156,21 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     current_trip = [trip for trip in current_trips if trip["trip_id"] == trip_id]
     current_stop = next((stop for stop in current_trip if stop["stop_id"] == stop_id), None)
     future_stops_eta = []
+
+    capacity_text = get_capacity(capacity)
+
+    # Parse timestamp as UTC time
+    utc_time = datetime.fromisoformat(timestamp).replace(tzinfo=pytz.utc)
+    
+    # Convert to PST 
+    pst_time = utc_time.astimezone(pytz.timezone("America/Los_Angeles"))
+    pst_timestamp = pst_time.strftime("%H:%M:%S")
+    timestamp_text = f"Updated at {pst_timestamp}"
+    
+    speed_text = (
+        f"Current Speed: {speed:.1f} km/h"
+        if speed else f"Current Speed: 0 km/h"
+    )
 
     deadheading = False
     if not current_trip:
@@ -154,7 +181,35 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         stop_times_df = load_stop_times(trip_id)
         current_trip_stop_ids = stop_times_df["stop_id"].astype(float).tolist()
         current_trip_stops_df = stops_df[stops_df["stop_id"].isin(current_trip_stop_ids)]
-        
+
+        capacity_text = get_capacity(capacity)
+
+        if not current_stop:
+            # Add route on map
+            fig.update_layout(
+                mapbox = dict(
+                    style="open-street-map",
+                    center={"lat": lat, "lon": lon},
+                    zoom=14
+                ),
+                height=600,
+                margin={"r":0,"t":0,"l":0,"b":0}
+            )
+
+            # Bus location as marker
+            fig.add_trace(go.Scattermapbox(
+                lat=[lat],
+                lon=[lon],
+                mode="markers+text",
+                text=[bus_id],
+                textposition="top center",
+                marker=dict(size=12, color="blue"),
+                hovertext=[bus_id],
+                hoverinfo="text",
+                name=f"Position of {bus_id}"
+            ))
+            return fig, f"{bus_number} is currently Not In Service", "Next Stop: Not Available", capacity_text, speed_text, timestamp_text, [], toggle_future_stops_text
+            
         delay, stop_sequence, start_time, eta_time, current_stop_id = (
             current_stop["delay"], current_stop["stop_sequence"], current_stop["start_time"], current_stop["time"], current_stop["stop_id"]
         )
@@ -162,8 +217,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         # Converting from Unix to PST
         eta_time = datetime.fromtimestamp(eta_time, pytz.timezone("America/Los_Angeles"))
         eta_time = eta_time.strftime("%H:%M")
-
-        future_stops = [stop for stop in current_trip if stop["stop_sequence"] > current_stop["stop_sequence"]]
+        
         if future_stops:
             all_future_stops_eta = []
             all_future_stops_eta.append("Next Stop ETAs")
@@ -296,31 +350,6 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         else:
             stop_text = f"Current Stop: {stop}"
 
-    speed_text = (
-        f"Current Speed: {speed:.1f} km/h"
-        if speed else f"Current Speed: 0 km/h"
-    )
-    
-    if capacity == 0:
-        capacity_text = "Occupancy Status: Empty"
-    elif capacity == 1:
-        capacity_text = "Occupancy Status: Many Seats Available"
-    elif capacity == 2:
-        capacity_text = "Occupancy Status: Some Seats Available"
-    elif capacity == 3:
-        capacity_text = "Occupancy Status: Standing Room Only"
-    else:
-        capacity_text = "Occupancy Status: Full"
-
-    # Parse timestamp as UTC time
-    utc_time = datetime.fromisoformat(timestamp).replace(tzinfo=pytz.utc)
-
-    # Convert to PST 
-    pst_time = utc_time.astimezone(pytz.timezone("America/Los_Angeles"))
-
-    pst_timestamp = pst_time.strftime("%H:%M:%S")
-
-    timestamp_text = f"Updated at {pst_timestamp}"
 
     return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text
 
