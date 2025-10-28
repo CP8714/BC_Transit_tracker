@@ -28,12 +28,13 @@ app.layout = html.Div([
     html.Div([
         html.Label("Enter Bus Number:"),
         dcc.Input(
-            id="bus-search",
+            id="bus-search-user-input",
             type="text",
-            placeholder="e.g. 9542",
+            placeholder="enter bus number e.g. 9542",
             value="9542",
             debounce=True
-        )
+        ),
+        html.Button("Search", id="search-for-bus", n_clicks=0)
     ], style={"margin-bottom": "10px"}),
 
     # Manual update button
@@ -327,10 +328,11 @@ from dash import callback_context
      Output("toggle-future-stops", "children")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
-     Input("bus-search", "value"),
+     Input("bus-search-user-input", "value"),
+     Input("search-for-bus", "n_clicks"),
      Input("toggle-future-stops", "n_clicks")]
 )
-def update_map_callback(n_intervals, manual_update, bus_number, toggle_future_stops_clicks):
+def update_map_callback(n_intervals, manual_update, bus_number, search_for_bus, toggle_future_stops_clicks):
     triggered_id = callback_context.triggered_id
 
     # Manual button triggers a live fetch
