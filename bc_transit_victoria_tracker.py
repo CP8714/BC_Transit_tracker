@@ -53,6 +53,7 @@ app.layout = html.Div([
             id="loading-component",
             type="circle",
             children=[
+                html.Div(id="loading-text"),
                 html.H3(id="desc-text"),
                 html.H3(id="stop-text"),
                 html.H3(id="capacity-text"),
@@ -335,7 +336,8 @@ from dash import callback_context
      Output("speed-text", "children"),
      Output("timestamp-text", "children"),
      Output("future-stop-text", "children"),
-     Output("toggle-future-stops", "children")],
+     Output("toggle-future-stops", "children"),
+     Output("loading-text", "children")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("bus-search-user-input", "value"),
@@ -344,6 +346,13 @@ from dash import callback_context
 )
 def update_map_callback(n_intervals, manual_update, bus_number, search_for_bus, toggle_future_stops_clicks):
     triggered_id = callback_context.triggered_id
+
+    if triggered_id == "manual-update":
+        loading_text = f"Fetching latest data for bus {bus_number}..."
+    elif triggered_id == "search-for-bus":
+        loading_text = f"Searching for bus {bus_number}..."
+    else:
+        loading_text = ""
 
     # Manual button triggers a live fetch
     if triggered_id == "manual-update" or triggered_id == "search-for-bus":
