@@ -11,7 +11,6 @@ import sys
 import os
 import requests
 import pandas as pd
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 import fetch_fleet_data
 import fetch_trip_data
