@@ -2,7 +2,7 @@
 import geopandas as gpd
 import json
 import dash
-from dash import dcc, html
+from dash import html, dcc, register_page, callback
 from dash.dependencies import Output, Input
 # import plotly.express as px
 import plotly.graph_objects as go
@@ -357,7 +357,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
 # --- Unified callback ---
 from dash import callback_context
 
-@app.callback(
+@callback(
     [Output("live-map", "figure"),
      Output("desc-text", "children"),
      Output("stop-text", "children"),
