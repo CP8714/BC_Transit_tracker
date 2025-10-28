@@ -239,12 +239,10 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         fig.add_trace(go.Scattermapbox(
             lat=current_trip_stops_df["stop_lat"],
             lon=current_trip_stops_df["stop_lon"],
-            mode="markers+text",
+            mode="markers",
             marker=dict(size=10, color="red"),
-            line=dict(width=2,color='white'),
-            text=current_trip_stops_df["stop_name"],
-            textposition="top center",
-            name="Route Stops"
+            hovertext=current_trip_stops_df["stop_name"],
+            hoverinfo="text"
         ))
 
     
