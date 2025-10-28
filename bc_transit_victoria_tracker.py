@@ -100,10 +100,15 @@ def load_stops():
         stops_df = pd.read_csv(stops_file)
         return stops_df
 
-def load_stop_times():
+def load_stop_times(current_trip_id):
     stop_times_file = os.path.join("data", "stop_times.csv")
     if os.path.exists(stop_times_file):
-        stop_times_df = pd.read_csv(stop_times_file)
+        stop_times_df = pd.DataFrame()
+        stop_times_chunks = pd.read_csv(stop_times_file, chunksize=10000)
+        for stop_times_chunk in stop_times_chunks:
+            current_trip_stops = stop_times_chunk[stop_times_chunk["trip_id"] == current_trip_id]
+            if not current_trip_stops.empty:
+                stop_times_df = pd.concat([stop_times_df, current_trip_stops], ignore_index=True)
         return stop_times_df
 
 def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks):
@@ -132,6 +137,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     if not current_trip:
         deadheading = True
     else:
+        stops_times_df = load_stop_times()
         delay, stop_sequence, start_time, eta_time, current_stop_id = (
             current_stop["delay"], current_stop["stop_sequence"], current_stop["start_time"], current_stop["time"], current_stop["stop_id"]
         )
@@ -320,7 +326,6 @@ def update_map_callback(n_intervals, manual_update, bus_number, toggle_future_st
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    # stops_times_df = load_stop_times()
     return generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks)
 
 # === Run app ===
