@@ -113,6 +113,7 @@ def load_stop_times(current_trip_id):
 
 def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks):
     """Generate figure and speed text for a given bus_number."""
+    fig = go.Figure()
     toggle_future_stops_text = "Show Next 5 Stops"
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
 
@@ -140,6 +141,13 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         stops_times_df = load_stop_times(trip_id)
         current_trip_stop_ids = stop_times_df["stop_id"].astype(float).tolist()
         current_trip_stops_df = stops_df[stops_df["stop_id"].isin(trip_stop_ids)]
+        fig.add_trace(go.Scattermapbox(
+            lat=trip_stops_df["stop_lat"],
+            lon=trip_stops_df["stop_lon"],
+            mode="markers",
+            marker=dict(size=7),
+            name="Route Stops"
+        ))
         
         delay, stop_sequence, start_time, eta_time, current_stop_id = (
             current_stop["delay"], current_stop["stop_sequence"], current_stop["start_time"], current_stop["time"], current_stop["stop_id"]
@@ -185,8 +193,6 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     # end_lat = lat + arrow_len * math.cos(bearing_rad)
     # end_lon = lon + arrow_len * math.sin(bearing_rad)
 
-    fig = go.Figure()
-
     # Bus location as marker
     fig.add_trace(go.Scattermapbox(
         lat=[lat],
@@ -196,14 +202,6 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         textposition="top center",
         marker=dict(size=12, color="blue"),
         name="Bus Position"
-    ))
-
-    fig.add_trace(go.Scattermapbox(
-        lat=trip_stops_df["stop_lat"],
-        lon=trip_stops_df["stop_lon"],
-        mode="markers",
-        marker=dict(size=7),
-        name="Route Stops"
     ))
 
     # Arrow showing heading
