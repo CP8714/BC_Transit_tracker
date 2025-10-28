@@ -123,7 +123,7 @@ def load_stop_times(current_trip_id):
                 stop_times_df = pd.concat([stop_times_df, current_trip_stops], ignore_index=True)
         return stop_times_df
 
-def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks):
+def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, loading_text):
     """Generate figure and speed text for a given bus_number."""
     fig = go.Figure()
     toggle_future_stops_text = "Show All Upcoming Stops"
@@ -323,7 +323,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
 
     timestamp_text = f"Updated at {pst_timestamp}"
 
-    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text
+    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text, loading_text
 
 # --- Unified callback ---
 from dash import callback_context
@@ -367,8 +367,7 @@ def update_map_callback(n_intervals, manual_update, bus_number, search_for_bus, 
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    output_without_loading = generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks)
-    return output_without_loading, loading_text
+    return generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, loading_text)
 
 # === Run app ===
 if __name__ == "__main__":
