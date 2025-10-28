@@ -137,7 +137,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     if not current_trip:
         deadheading = True
     else:
-        stops_times_df = load_stop_times()
+        stops_times_df = load_stop_times(trip_id)
         delay, stop_sequence, start_time, eta_time, current_stop_id = (
             current_stop["delay"], current_stop["stop_sequence"], current_stop["start_time"], current_stop["time"], current_stop["stop_id"]
         )
