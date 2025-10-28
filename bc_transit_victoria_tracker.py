@@ -348,8 +348,7 @@ def show_loading_text(manual_update, search_for_bus, bus_number):
      Input("manual-update", "n_clicks"),
      Input("bus-search-user-input", "value"),
      Input("search-for-bus", "n_clicks"),
-     Input("toggle-future-stops", "n_clicks")],
-     prevent_initial_call=True
+     Input("toggle-future-stops", "n_clicks")]
 )
 def update_map_callback(n_intervals, manual_update, bus_number, search_for_bus, toggle_future_stops_clicks):
     triggered_id = callback_context.triggered_id
