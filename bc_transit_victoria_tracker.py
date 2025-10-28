@@ -51,8 +51,6 @@ app.layout = html.Div([
     html.Button(id="toggle-future-stops", n_clicks=0, children="Show Next 5 Stops", style={"margin-bottom": "10px"}),
 
     html.H3(id="future-stop-text"),
-    
-    dcc.Graph(id="live-map"),
 
     html.H3(id="timestamp-text"),
 
