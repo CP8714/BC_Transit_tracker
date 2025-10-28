@@ -19,10 +19,9 @@ import pytz
 bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
 trip_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/trip_updates.json"
 
-# === Dash app ===
-app = dash.Dash(__name__)
+dash.register_page(__name__, path="/")
 
-app.layout = html.Div([
+layout = html.Div([
     html.H2("BC Transit Victoria – Bus Tracker"),
 
     html.Div([
