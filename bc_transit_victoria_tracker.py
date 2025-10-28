@@ -242,7 +242,8 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
             mode="markers",
             marker=dict(size=10, color="red"),
             hovertext=current_trip_stops_df["stop_name"],
-            hoverinfo="text"
+            hoverinfo="text",
+            name="Bus Stops"
         ))
 
     
