@@ -138,6 +138,9 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         deadheading = True
     else:
         stops_times_df = load_stop_times(trip_id)
+        current_trip_stop_ids = stop_times_df["stop_id"].astype(float).tolist()
+        current_trip_stops_df = stops_df[stops_df["stop_id"].isin(trip_stop_ids)]
+        
         delay, stop_sequence, start_time, eta_time, current_stop_id = (
             current_stop["delay"], current_stop["stop_sequence"], current_stop["start_time"], current_stop["time"], current_stop["stop_id"]
         )
@@ -193,6 +196,14 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         textposition="top center",
         marker=dict(size=12, color="blue"),
         name="Bus Position"
+    ))
+
+    fig.add_trace(go.Scattermapbox(
+        lat=trip_stops_df["stop_lat"],
+        lon=trip_stops_df["stop_lon"],
+        mode="markers",
+        marker=dict(size=7),
+        name="Route Stops"
     ))
 
     # Arrow showing heading
