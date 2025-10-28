@@ -322,12 +322,11 @@ from dash import callback_context
 @app.callback(
     Output("loading-text", "children"),
     [Input("manual-update", "n_clicks"),
-     Input("search-for-bus", "n_clicks"),
-     Input("bus-search-user-input", "value")],
+     Input("search-for-bus", "n_clicks")],
     prevent_initial_call=True
 )
-def show_loading_text(manual_update, search_for_bus, bus_number):
-    triggered_id = callback_context.triggered[0]["prop_id"].split(".")[0] if callback_context.triggered else None
+def show_loading_text(manual_update, search_for_bus):
+    triggered_id = callback_context.triggered_id
     if triggered_id == "manual-update":
         return f"Getting latest data on {bus_number}"
     elif triggered_id == "search-for-bus":
