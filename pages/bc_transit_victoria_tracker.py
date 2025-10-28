@@ -15,6 +15,9 @@ import fetch_trip_data
 from datetime import datetime
 import pytz
 
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+DATA_DIR = os.path.join(BASE_DIR, "data")
+
 # === GitHub data source fallback (optional) ===
 bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
 trip_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/trip_updates.json"
@@ -78,7 +81,7 @@ layout = html.Div([
 # --- Helper functions ---
 def load_buses():
     """Load latest bus_updates.json safely."""
-    data_file = os.path.join(os.path.dirname(__file__), "..", "data", "bus_updates.json")
+    data_file = os.path.join(DATA_DIR, "bus_updates.json")
     if os.path.exists(data_file):
         with open(data_file, "r") as f:
             return json.load(f)
@@ -90,7 +93,7 @@ def load_buses():
         return []
 
 def load_current_trips():
-    data_file = os.path.join(os.path.dirname(__file__), "..", "data", "trip_updates.json")
+    data_file = os.path.join(DATA_DIR, "trip_updates.json")
     if os.path.exists(data_file):
         with open(data_file, "r") as f:
             return json.load(f)
@@ -101,19 +104,19 @@ def load_current_trips():
         return []
 
 def load_trips():
-    trips_file = os.path.join(os.path.dirname(__file__), "..", "data", "trips.csv")
+    trips_file = os.path.join(DATA_DIR, "trips.csv")
     if os.path.exists(trips_file):
         trips_df = pd.read_csv(trips_file)
         return trips_df
 
 def load_stops():
-    stops_file = os.path.join(os.path.dirname(__file__), "..", "data", "stops.csv")
+    stops_file = os.path.join(DATA_DIR, "stops.csv")
     if os.path.exists(stops_file):
         stops_df = pd.read_csv(stops_file)
         return stops_df
 
 def load_stop_times(current_trip_id):
-    stop_times_file = os.path.join(os.path.dirname(__file__), "..", "data", "stop_times.csv")
+    stop_times_file = os.path.join(DATA_DIR, "stop_times.csv")
     if os.path.exists(stop_times_file):
         stop_times_df = pd.DataFrame()
         stop_times_chunks = pd.read_csv(stop_times_file, chunksize=10000)
@@ -248,7 +251,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     speed = speed * 3
     stop = stops_df.loc[stops_df["stop_id"] == stop_id, "stop_name"]
 
-    fp_routes = os.path.join(os.path.dirname(__file__), "..", "data", "routes.shp")
+    fp_routes = os.path.join(DATA_DIR, "routes.shp")
     route_data = gpd.read_file(fp_routes)
     # Route map not shown for buses heading back to yard
     if trip_headsign.empty:
