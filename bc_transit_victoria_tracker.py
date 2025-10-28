@@ -34,8 +34,7 @@ app.layout = html.Div([
             value="9542",
             debounce=True
         ),
-        html.Button("Search", id="search-for-bus", n_clicks=0),
-        html.Span("Fetching live data...", id="loading-text", style={"margin-left": "10px"})
+        html.Button("Search", id="search-for-bus", n_clicks=0)
     ], style={"margin-bottom": "10px"}),
 
     # Manual update button
@@ -314,26 +313,10 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
 
     timestamp_text = f"Updated at {pst_timestamp}"
 
-    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text, ""
+    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text
 
 # --- Unified callback ---
 from dash import callback_context
-
-@app.callback(
-    Output("loading-text", "children"),
-    [Input("manual-update", "n_clicks"),
-     Input("search-for-bus", "n_clicks")],
-    prevent_initial_call=True
-)
-def show_loading_text(manual_update, search_for_bus):
-    triggered_id = callback_context.triggered_id
-    if triggered_id == "manual-update":
-        return f"Getting latest data on {bus_number}"
-    elif triggered_id == "search-for-bus":
-        return f"Searching for latest data on {bus_number}"
-    else:
-        return ""
-    
 
 @app.callback(
     [Output("live-map", "figure"),
@@ -343,14 +326,12 @@ def show_loading_text(manual_update, search_for_bus):
      Output("speed-text", "children"),
      Output("timestamp-text", "children"),
      Output("future-stop-text", "children"),
-     Output("toggle-future-stops", "children"),
-     Output("loading-text", "children")],
+     Output("toggle-future-stops", "children")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("bus-search-user-input", "value"),
      Input("search-for-bus", "n_clicks"),
-     Input("toggle-future-stops", "n_clicks")],
-    prevent_initial_call=True
+     Input("toggle-future-stops", "n_clicks")]
 )
 def update_map_callback(n_intervals, manual_update, bus_number, search_for_bus, toggle_future_stops_clicks):
     triggered_id = callback_context.triggered_id
