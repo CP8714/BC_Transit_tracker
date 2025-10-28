@@ -377,7 +377,7 @@ from dash import callback_context
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("search-for-bus", "n_clicks"),
-     Input("toggle-future-stops", "n_clicks")]
+     Input("toggle-future-stops", "n_clicks")],
     [State("bus-search-user-input", "value")]
 )
 def update_map_callback(n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, bus_number):
