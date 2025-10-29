@@ -124,11 +124,12 @@ def get_capacity(capacity):
 
 def get_next_buses(stop_number):
     if not stop_number:
-        return "Hello"
-    return str(stop_number)
+        return "Hello", "Hello World"
+    return stop_number, "Hello World"
 
 @callback(
-    [Output("stop-name-text", "children")],
+    [Output("stop-name-text", "children"),
+     Output("desc-text", "children")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("look-up-next-buses", "n_clicks")],
@@ -150,4 +151,4 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, stop_nu
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    return [get_next_buses(stop_number)]
+    return get_next_buses(stop_number)
