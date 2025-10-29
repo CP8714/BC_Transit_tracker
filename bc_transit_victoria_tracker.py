@@ -27,8 +27,6 @@ app = dash.Dash(__name__)
 bus_tracker_layout = html.Div([
     html.H2("BC Transit Victoria – Bus Tracker"),
 
-    dcc.Link("Go to Next Buses →", href="/next_buses"),
-
     html.Div([
         html.Label("Enter Bus Number:"),
         dcc.Input(
@@ -57,6 +55,7 @@ bus_tracker_layout = html.Div([
                 html.H3(id="future-stop-text"),
                 dcc.Graph(id="live-map"),
                 html.H3(id="timestamp-text"),
+                dcc.Link("Go to Next Buses →", href="/next_buses"),
             ]
         )
     ]),
@@ -72,7 +71,6 @@ bus_tracker_layout = html.Div([
 
 next_buses_layout = html.Div([
     html.H1("Next Buses Page"),
-    dcc.Link("← Back to Bus Tracker", href="/"),
     html.Div([
         html.Label("Enter Bus Stop Number:"),
         dcc.Input(
@@ -95,6 +93,7 @@ next_buses_layout = html.Div([
             children=[
                 html.H3(id="stop-name-text"),
                 html.H3(id="stop-desc-text"),
+                dcc.Link("← Back to Bus Tracker", href="/"),
             ]
         )
     ]),
@@ -171,11 +170,10 @@ def get_capacity(capacity):
 def get_next_buses(stop_number, stops_df):
     if not stop_number:
         return "No Stop Number Entered", ""
-    stop_number = float(stop_number)
+    stop_number = int(stop_number)
     stop = stops_df.loc[stops_df["stop_id"] == stop_number, "stop_name"]
     if stop.empty:
         return f"{stop_number} is not a valid Stop Number", ""
-    stop_number = int(stop_number)
     stop_name = stop.iloc[0]
     stop_name_text = f"Next Buses For Stop {stop_number:d} ({stop_name})"
     return stop_name_text, "Hello"
