@@ -145,7 +145,7 @@ def update_map_callback(n_intervals, manual_update, look_up_next_buses, stop_num
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    return stop_number, stop_number
+    return stop_number, "testing"
 
 # === Run app ===
 if __name__ == "__main__":
