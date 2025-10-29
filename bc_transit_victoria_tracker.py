@@ -178,7 +178,7 @@ def load_scheduled_bus_times(current_stop_id):
                 bus_times_df = pd.concat([bus_times_df, next_buses], ignore_index=True)
         return bus_times_df
 
-def get_next_buses(stop_number, stops_df):
+def get_next_buses(stop_number, stops_df, trips_df):
     if not stop_number:
         return "No Stop Number Entered", ""
     stop_number = int(stop_number)
@@ -196,6 +196,9 @@ def get_next_buses(stop_number, stops_df):
     current_time = current_time.time()
     current_time = pd.to_timedelta(f"{current_time.hour:02d}:{current_time.minute:02d}:{current_time.second:02d}")
     scheduled_next_bus_times_df = scheduled_next_bus_times_df[scheduled_next_bus_times_df["arrival_time"] >= current_time]
+
+    scheduled_next_bus_times_df = scheduled_next_bus_times_df.head(10)
+    
     
     return stop_name_text, "Hello"
     
@@ -494,7 +497,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, stop_nu
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    return get_next_buses(stop_number, stops_df)
+    return get_next_buses(stop_number, stops_df, trips_df)
 
 
 if __name__ == "__main__":
