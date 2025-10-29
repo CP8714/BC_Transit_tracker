@@ -205,7 +205,7 @@ def get_next_buses(stop_number, stops_df, trips_df):
         route = next_bus["route_id"]
         route_number = route.split('-')[0] 
         headsign = next_bus["trip_headsign"]
-        arrival_time = bus["arrival_time"]
+        arrival_time = str(bus["arrival_time"]).split(" days ")[-1]
         next_bus_text = f"{arrival_time} {route_number} {headsign}"
         next_buses.append(next_bus_text)
     next_buses = [html.Div(text) for text in next_buses]
