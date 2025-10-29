@@ -51,7 +51,7 @@ layout = html.Div([
      Input("look-up-next-buses", "n_clicks"),],
     [State("stop-search-user-input", "value")]
 )
-def update_map_callback(n_intervals, manual_update, look_up_next_buses, toggle_future_stops_clicks, stop_number):
+def update_map_callback(n_intervals, manual_update, look_up_next_buses, stop_number):
     triggered_id = callback_context.triggered_id
 
     # Manual button triggers a live fetch
