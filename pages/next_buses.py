@@ -125,7 +125,7 @@ def get_capacity(capacity):
 def get_next_buses(stop_number):
     if not stop_number:
         return "Hello", "Hello World"
-    return stop_number, "Hello World"
+    return [stop_number, "Hello World"]
 
 @callback(
     [Output("stop-name-text", "children"),
