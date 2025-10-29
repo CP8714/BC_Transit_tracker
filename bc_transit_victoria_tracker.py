@@ -188,8 +188,15 @@ def get_next_buses(stop_number, stops_df):
     stop_name = stop.iloc[0]
     stop_name_text = f"Next Buses For Stop {stop_number:d} ({stop_name})"
     scheduled_next_bus_times_df = load_scheduled_bus_times(stop_number)
+    # Account for times past midnight such as 25:00:00
     scheduled_next_bus_times_df["arrival_time"] = pd.to_timedelta(scheduled_next_bus_times_df["arrival_time"])
     scheduled_next_bus_times_df = scheduled_next_bus_times_df.sort_values("arrival_time")
+
+    current_time = datetime.now(pytz.timezone("America/Los_Angeles"))
+    current_time = current_time.time()
+    current_time = pd.to_timedelta(f"{current_time.hour:02d}:{current_time.minute:02d}:{current_time.second:02d}")
+    scheduled_next_bus_times_df = scheduled_next_bus_times_df[scheduled_next_bus_times_df["arrival_time"] >= current_time]
+    
     return stop_name_text, "Hello"
     
 
