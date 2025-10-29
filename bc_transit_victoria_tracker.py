@@ -195,20 +195,21 @@ def get_next_buses(stop_number, stops_df, trips_df, current_trips):
     scheduled_next_bus_times_df["arrival_time"] = pd.to_timedelta(scheduled_next_bus_times_df["arrival_time"])
     scheduled_next_bus_times_df = scheduled_next_bus_times_df.sort_values("arrival_time")
 
-    current_time = datetime.now(pytz.timezone("America/Los_Angeles"))
-    current_time = current_time.time()
-    current_time = pd.to_timedelta(f"{current_time.hour:02d}:{current_time.minute:02d}:{current_time.second:02d}")
+    # current_time = datetime.now(pytz.timezone("America/Los_Angeles"))
+    # current_time = current_time.time()
+    # current_time = pd.to_timedelta(f"{current_time.hour:02d}:{current_time.minute:02d}:{current_time.second:02d}")
     
     scheduled_next_bus_times_df = scheduled_next_bus_times_df[scheduled_next_bus_times_df["arrival_time"] >= current_time]
 
     stop_number = str(stop_number)
+    current_time = int(datetime.datetime.now().timestamp())
     next_trip = [stop for stop in current_trips if stop["stop_id"] == stop_number]
+    next_trip = [stop for stop in next_trip if stop["time"] >= current_time]
     # Sort by arrival time 
     next_trip = sorted(next_trip, key=lambda x: x["time"])
     next_trip = next_trip[:10]
 
     next_buses.append("Next Scheduled Buses")
-
     for bus in next_trip:
         next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]].iloc[0]
         route = bus["route_id"]
