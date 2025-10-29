@@ -351,7 +351,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
 
     return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text
 
-@callback(
+@app.callback(
     [Output("live-map", "figure"),
      Output("desc-text", "children"),
      Output("stop-text", "children"),
@@ -383,3 +383,7 @@ def update_map_callback(n_intervals, manual_update, search_for_bus, toggle_futur
     trips_df = load_trips()
     stops_df = load_stops()
     return generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
