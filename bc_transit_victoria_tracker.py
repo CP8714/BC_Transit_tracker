@@ -203,18 +203,36 @@ def get_next_buses(stop_number, stops_df, trips_df, current_trips):
 
     stop_number = str(stop_number)
     next_trip = [stop for stop in current_trips if stop["stop_id"] == stop_number]
+    # Sort by arrival time 
+    next_trip = sorted(next_trip, key=lambda x: x["time"])
+    next_trip = next_trip[:10]
 
-    scheduled_next_bus_times_df = scheduled_next_bus_times_df.head(10)
     next_buses.append("Next Scheduled Buses")
-    for _, bus in scheduled_next_bus_times_df.iterrows():
-        next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]].iloc[0]
-        route = next_bus["route_id"]
+
+    for bus in next_trip:
+        next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]]
+        route = bus["route_id"]
         route_number = route.split('-')[0] 
         headsign = next_bus["trip_headsign"]
-        arrival_time = str(bus["arrival_time"]).split(" days ")[-1]
+        arrival_time = datetime.fromtimestamp(bus["time"], pytz.timezone("America/Los_Angeles"))
+        arrival_time = future_eta_time.strftime("%H:%M")
         next_bus_text = f"{arrival_time} {route_number} {headsign}"
-        next_buses.append(next_bus_text)
+        next_buses.append(next_bus_text)     
     next_buses = [html.Div(text) for text in next_buses]
+        
+        
+
+    # scheduled_next_bus_times_df = scheduled_next_bus_times_df.head(10)
+    # next_buses.append("Next Scheduled Buses")
+    # for _, bus in scheduled_next_bus_times_df.iterrows():
+    #     next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]].iloc[0]
+    #     route = next_bus["route_id"]
+    #     route_number = route.split('-')[0] 
+    #     headsign = next_bus["trip_headsign"]
+    #     arrival_time = str(bus["arrival_time"]).split(" days ")[-1]
+    #     next_bus_text = f"{arrival_time} {route_number} {headsign}"
+    #     next_buses.append(next_bus_text)
+    # next_buses = [html.Div(text) for text in next_buses]
         
     
     
