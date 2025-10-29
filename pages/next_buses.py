@@ -125,10 +125,11 @@ def get_capacity(capacity):
 def get_next_buses(stop_number):
     if not stop_number:
         return "Hello"
-    return stop_number
+    return stop_number, "Hello"
 
 @callback(
-    [Output("stop-name-text", "children")],
+    [Output("stop-name-text", "children"),
+     Output("stop-name-text", "children")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("look-up-next-buses", "n_clicks"),
