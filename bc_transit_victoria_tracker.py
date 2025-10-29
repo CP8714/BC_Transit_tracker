@@ -210,7 +210,7 @@ def get_next_buses(stop_number, stops_df, trips_df, current_trips):
     next_buses.append("Next Scheduled Buses")
 
     for bus in next_trip:
-        next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]]
+        next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]].iloc[0]
         route = bus["route_id"]
         route_number = route.split('-')[0] 
         headsign = next_bus["trip_headsign"]
