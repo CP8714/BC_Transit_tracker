@@ -54,7 +54,7 @@ layout = html.Div([
     # Auto-refresh interval
     dcc.Interval(
         id="interval-component",
-        interval=100*10000,  # 60 seconds
+        interval=60*1000,  # 60 seconds
         n_intervals=0
     ),
 ])
@@ -125,7 +125,7 @@ def get_capacity(capacity):
 def get_next_buses(stop_number):
     if not stop_number:
         return "Hello"
-    return stop_number, "Hello"
+    return (stop_number, "Hello")
 
 @callback(
     [Output("stop-name-text", "children"),
