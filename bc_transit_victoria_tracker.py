@@ -209,7 +209,7 @@ def get_next_buses(stop_number, stops_df, trips_df, current_trips):
     next_trip = sorted(next_trip, key=lambda x: x["time"])
     next_trip = next_trip[:10]
 
-    next_buses.append("Next Scheduled Buses")
+    next_buses.append("Next Buses")
     for bus in next_trip:
         next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]].iloc[0]
         route = bus["route_id"]
