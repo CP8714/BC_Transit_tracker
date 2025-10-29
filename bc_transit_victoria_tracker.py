@@ -202,7 +202,7 @@ def get_next_buses(stop_number, stops_df, trips_df, current_trips):
     # scheduled_next_bus_times_df = scheduled_next_bus_times_df[scheduled_next_bus_times_df["arrival_time"] >= current_time]
 
     stop_number = str(stop_number)
-    current_time = int(datetime.datetime.now().timestamp())
+    current_time = datetime.now(timezone.utc)
     next_trip = [stop for stop in current_trips if stop["stop_id"] == stop_number]
     next_trip = [stop for stop in next_trip if stop["time"] >= current_time]
     # Sort by arrival time 
