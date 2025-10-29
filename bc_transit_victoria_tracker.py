@@ -171,7 +171,11 @@ def get_capacity(capacity):
 def get_next_buses(stop_number):
     if not stop_number:
         return "Hello", "Hello World"
-    return stop_number, "Hello"
+    stop_number = float(stop_number)
+    stop = stops_df.loc[stops_df["stop_id"] == stop_number, "stop_name"]
+    stop_name = stop.iloc[0]
+    stop_name_text = f"Next Buses for stop {stop_number} ({stop_name})
+    return stop_name_text, "Hello"
     
 
 def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks):
