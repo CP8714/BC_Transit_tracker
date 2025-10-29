@@ -5,6 +5,13 @@ import fetch_fleet_data
 import fetch_trip_data
 from dash import callback_context
 
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+DATA_DIR = os.path.join(BASE_DIR, "data")
+
+# Fallback data
+bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
+trip_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/trip_updates.json"
+
 dash.register_page(__name__, path="/next_buses")
 
 layout = html.Div([
@@ -42,6 +49,68 @@ layout = html.Div([
         n_intervals=0
     ),
 ])
+
+
+# --- Helper functions ---
+def load_buses():
+    """Load latest bus_updates.json safely."""
+    data_file = os.path.join(DATA_DIR, "bus_updates.json")
+    if os.path.exists(data_file):
+        with open(data_file, "r") as f:
+            return json.load(f)
+    # fallback to GitHub JSON if file missing
+    try:
+        response = requests.get(bus_updates, timeout=10)
+        return response.json()
+    except:
+        return []
+
+def load_current_trips():
+    data_file = os.path.join(DATA_DIR, "trip_updates.json")
+    if os.path.exists(data_file):
+        with open(data_file, "r") as f:
+            return json.load(f)
+    try:
+        response = requests.get(trip_updates, timeout=10)
+        return response.json()
+    except:
+        return []
+
+def load_trips():
+    trips_file = os.path.join(DATA_DIR, "trips.csv")
+    if os.path.exists(trips_file):
+        trips_df = pd.read_csv(trips_file)
+        return trips_df
+
+def load_stops():
+    stops_file = os.path.join(DATA_DIR, "stops.csv")
+    if os.path.exists(stops_file):
+        stops_df = pd.read_csv(stops_file)
+        return stops_df
+
+def load_stop_times(current_trip_id):
+    stop_times_file = os.path.join(DATA_DIR, "stop_times.csv")
+    if os.path.exists(stop_times_file):
+        stop_times_df = pd.DataFrame()
+        stop_times_chunks = pd.read_csv(stop_times_file, chunksize=10000)
+        for stop_times_chunk in stop_times_chunks:
+            current_trip_stops = stop_times_chunk[stop_times_chunk["trip_id"] == current_trip_id]
+            if not current_trip_stops.empty:
+                stop_times_df = pd.concat([stop_times_df, current_trip_stops], ignore_index=True)
+        return stop_times_df
+
+def get_capacity(capacity):
+    if capacity == 0:
+        capacity_text = "Occupancy Status: Empty"
+    elif capacity == 1:
+        capacity_text = "Occupancy Status: Many Seats Available"
+    elif capacity == 2:
+        capacity_text = "Occupancy Status: Some Seats Available"
+    elif capacity == 3:
+        capacity_text = "Occupancy Status: Standing Room Only"
+    else:
+        capacity_text = "Occupancy Status: Full"
+    return capacity_text
 
 @callback(
     [Output("stop-name-text", "children"),
