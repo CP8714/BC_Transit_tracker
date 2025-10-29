@@ -123,6 +123,8 @@ def get_capacity(capacity):
 
 
 def get_next_buses(stop_number):
+    if not stop_number:
+        return "Hello", "Hello World"
     return stop_number, "Hello World"
 
 @callback(
@@ -137,7 +139,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, stop_nu
     triggered_id = callback_context.triggered_id
 
     # Manual button triggers a live fetch
-    if triggered_id == "manual-update" or triggered_id == "look_up_next_buses":
+    if triggered_id == "manual-update" or triggered_id == "look-up-next-buses":
         try:
             fetch_fleet_data.fetch()
             fetch_trip_data.fetch()
@@ -150,7 +152,3 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, stop_nu
     trips_df = load_trips()
     stops_df = load_stops()
     return get_next_buses(stop_number)
-
-# === Run app ===
-if __name__ == "__main__":
-    app.run(debug=True)
