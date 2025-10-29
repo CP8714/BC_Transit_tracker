@@ -46,7 +46,7 @@ layout = html.Div([
             type="circle",
             children=[
                 html.H3(id="stop-name-text"),
-                # html.H3(id="desc-text"),
+                html.H3(id="desc-text"),
             ]
         )
     ]),
