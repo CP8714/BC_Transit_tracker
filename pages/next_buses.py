@@ -131,8 +131,8 @@ def get_next_buses(stop_number):
     [Output("stop-name-text", "children")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
-     Input("look-up-next-buses", "n_clicks")],
-    [State("stop-search-user-input", "value")]
+     Input("look-up-next-buses", "n_clicks"),
+     Input("stop-search-user-input", "value")]
 )
 def update_stop_callback(n_intervals, manual_update, look_up_next_buses, stop_number):
     triggered_id = callback_context.triggered_id
