@@ -167,6 +167,17 @@ def get_capacity(capacity):
         capacity_text = "Occupancy Status: Full"
     return capacity_text
 
+def load_bus_times(current_stop_id):
+    stop_times_file = os.path.join("data", "stop_times.csv")
+    if os.path.exists(stop_times_file):
+        bus_times_df = pd.DataFrame()
+        bus_times_chunks = pd.read_csv(bus_times_file, chunksize=10000)
+        for bus_times_chunk in bus_times_chunks:
+            next_buses = bus_times_chunk[bus_times_chunk["stop_id"] == current_stop_id]
+            if not next_buses.empty:
+                bus_times_df = pd.concat([bus_times_df, next_buses], ignore_index=True)
+        return bus_times_df
+
 def get_next_buses(stop_number, stops_df):
     if not stop_number:
         return "No Stop Number Entered", ""
@@ -176,6 +187,8 @@ def get_next_buses(stop_number, stops_df):
         return f"{stop_number} is not a valid Stop Number", ""
     stop_name = stop.iloc[0]
     stop_name_text = f"Next Buses For Stop {stop_number:d} ({stop_name})"
+    stop_number = str(stop_number)
+    next_bus_times_df = load_bus_times(stop_number)
     return stop_name_text, "Hello"
     
 
