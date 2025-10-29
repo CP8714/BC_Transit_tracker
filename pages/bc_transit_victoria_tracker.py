@@ -12,6 +12,7 @@ import pandas as pd
 import fetch_fleet_data
 import fetch_trip_data
 from datetime import datetime
+from dash import callback_context
 import pytz
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -357,9 +358,6 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
 
 
     return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text
-
-# --- Unified callback ---
-from dash import callback_context
 
 @callback(
     [Output("live-map", "figure"),
