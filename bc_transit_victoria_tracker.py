@@ -168,8 +168,8 @@ def get_capacity(capacity):
     return capacity_text
 
 def load_bus_times(current_stop_id):
-    stop_times_file = os.path.join("data", "stop_times.csv")
-    if os.path.exists(stop_times_file):
+    bus_times_file = os.path.join("data", "stop_times.csv")
+    if os.path.exists(bus_times_file):
         bus_times_df = pd.DataFrame()
         bus_times_chunks = pd.read_csv(bus_times_file, chunksize=10000)
         for bus_times_chunk in bus_times_chunks:
