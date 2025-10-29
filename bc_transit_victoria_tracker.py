@@ -22,9 +22,9 @@ DATA_DIR = os.path.join(BASE_DIR, "data")
 bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
 trip_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/trip_updates.json"
 
-dash.register_page(__name__, path="/")
+app = dash.Dash(__name__)
 
-layout = html.Div([
+bus_tracker_layout = html.Div([
     html.H2("BC Transit Victoria – Bus Tracker"),
 
     dcc.Link("Go to Next Buses →", href="/next_buses"),
@@ -68,6 +68,43 @@ layout = html.Div([
         n_intervals=0
     ),
     
+])
+
+next_buses_layout = html.Div([
+    html.H1("Next Buses Page"),
+    dcc.Link("← Back to Bus Tracker", href="/"),
+    html.Div([
+        html.Label("Enter Bus Stop Number:"),
+        dcc.Input(
+            id="stop-search-user-input",
+            type="text",
+            placeholder="enter stop bus number e.g. 100032",
+            value="100032",
+            debounce=True
+        ),
+        html.Button("Search", id="look-up-next-buses", n_clicks=0),
+    ], style={"margin-bottom": "10px"}),
+
+    # Manual update button
+    html.Button("Update Now", id="stop-manual-update", n_clicks=0, style={"margin-bottom": "10px"}),
+
+    html.Div([
+        dcc.Loading(
+            id="loading-component",
+            type="circle",
+            children=[
+                html.H3(id="stop-name-text"),
+                html.H3(id="stop-desc-text"),
+            ]
+        )
+    ]),
+
+    # Auto-refresh interval
+    dcc.Interval(
+        id="stop-interval-component",
+        interval=60*1000,  # 60 seconds
+        n_intervals=0
+    ),
 ])
 
 # --- Helper functions ---
@@ -130,6 +167,11 @@ def get_capacity(capacity):
     else:
         capacity_text = "Occupancy Status: Full"
     return capacity_text
+
+def get_next_buses(stop_number):
+    if not stop_number:
+        return "Hello", "Hello World"
+    return stop_number, "Hello"
     
 
 def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks):
@@ -351,7 +393,25 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
 
     return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text
 
-@app.callback(
+# --- App layout with a container that will be swapped ---
+app.layout = html.Div([
+    dcc.Location(id="url", refresh=False),
+    html.Div(id="page-content")
+])
+
+
+# --- Callback to swap layouts based on URL ---
+@callback(
+    Output("page-content", "children"),
+    Input("url", "pathname")
+)
+def display_page(pathname):
+    if pathname == "/next_buses":
+        return next_buses_layout
+    else:
+        return bus_tracker_layout
+
+@callback(
     [Output("live-map", "figure"),
      Output("desc-text", "children"),
      Output("stop-text", "children"),
@@ -383,6 +443,32 @@ def update_map_callback(n_intervals, manual_update, search_for_bus, toggle_futur
     trips_df = load_trips()
     stops_df = load_stops()
     return generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks)
+
+@callback(
+    [Output("stop-name-text", "children"),
+     Output("stop-desc-text", "children")],
+    [Input("stop-interval-component", "n_intervals"),
+     Input("stop-manual-update", "n_clicks"),
+     Input("look-up-next-buses", "n_clicks"),
+     Input("stop-search-user-input", "value")]
+)
+def update_stop_callback(n_intervals, manual_update, look_up_next_buses, stop_number):
+    triggered_id = callback_context.triggered_id
+
+    # Manual button triggers a live fetch
+    if triggered_id == "manual-update" or triggered_id == "look-up-next-buses":
+        try:
+            fetch_fleet_data.fetch()
+            fetch_trip_data.fetch()
+        except Exception as e:
+            print(f"Error fetching live fleet data: {e}", flush=True)
+
+    # Load the latest bus data
+    buses = load_buses()
+    current_trips = load_current_trips()
+    trips_df = load_trips()
+    stops_df = load_stops()
+    return get_next_buses(stop_number)
 
 
 if __name__ == "__main__":
