@@ -187,7 +187,6 @@ def get_next_buses(stop_number, stops_df):
         return f"{stop_number} is not a valid Stop Number", ""
     stop_name = stop.iloc[0]
     stop_name_text = f"Next Buses For Stop {stop_number:d} ({stop_name})"
-    stop_number = str(stop_number)
     scheduled_next_bus_times_df = load_scheduled_bus_times(stop_number)
     scheduled_next_bus_times_df["arrival_time"] = pd.to_timedelta(scheduled_next_bus_times_df["arrival_time"])
     scheduled_next_bus_times_df = scheduled_next_bus_times_df.sort_values("arrival_time")
