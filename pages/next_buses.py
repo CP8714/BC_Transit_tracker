@@ -46,7 +46,7 @@ layout = html.Div([
             type="circle",
             children=[
                 html.H3(id="stop-name-text"),
-                html.H3(id="desc-text"),
+                # html.H3(id="desc-text"),
             ]
         )
     ]),
@@ -122,8 +122,7 @@ def get_capacity(capacity):
     return capacity_text
 
 @callback(
-    [Output("stop-name-text", "children"),
-     Output("desc-text", "children")],
+    [Output("stop-name-text", "children")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("look-up-next-buses", "n_clicks"),],
@@ -145,7 +144,7 @@ def update_map_callback(n_intervals, manual_update, look_up_next_buses, stop_num
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    return stop_number, "testing"
+    return stop_number
 
 # === Run app ===
 if __name__ == "__main__":
