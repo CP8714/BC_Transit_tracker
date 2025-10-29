@@ -179,12 +179,13 @@ def load_scheduled_bus_times(current_stop_id):
         return bus_times_df
 
 def get_next_buses(stop_number, stops_df, trips_df):
+    next_buses = []
     if not stop_number:
-        return "No Stop Number Entered", ""
+        return "No Stop Number Entered", next_buses
     stop_number = int(stop_number)
     stop = stops_df.loc[stops_df["stop_id"] == stop_number, "stop_name"]
     if stop.empty:
-        return f"{stop_number} is not a valid Stop Number", ""
+        return f"{stop_number} is not a valid Stop Number", next_buses
     stop_name = stop.iloc[0]
     stop_name_text = f"Next Buses For Stop {stop_number:d} ({stop_name})"
     scheduled_next_bus_times_df = load_scheduled_bus_times(stop_number)
@@ -198,9 +199,19 @@ def get_next_buses(stop_number, stops_df, trips_df):
     scheduled_next_bus_times_df = scheduled_next_bus_times_df[scheduled_next_bus_times_df["arrival_time"] >= current_time]
 
     scheduled_next_bus_times_df = scheduled_next_bus_times_df.head(10)
+    next_buses.append("Next Scheduled Buses")
+    for _, bus in scheduled_next_bus_times_df.iterrows():
+        next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]].iloc[0]
+        route = next_bus[route_id]
+        route_number = route.split('-')[0] 
+        headsign = next_bus[trip_headsign]
+        next_bus_text = f"{current_time} {route_number} {headsign}"
+        next_buses.append(next_bus_text)
+    next_buses = [html.Div(text) for text in next_buses]
+        
     
     
-    return stop_name_text, "Hello"
+    return stop_name_text, next_buses
     
 
 def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks):
