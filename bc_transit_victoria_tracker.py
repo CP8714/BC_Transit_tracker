@@ -167,7 +167,7 @@ def get_capacity(capacity):
         capacity_text = "Occupancy Status: Full"
     return capacity_text
 
-def load_bus_times(current_stop_id):
+def load_scheduled_bus_times(current_stop_id):
     bus_times_file = os.path.join("data", "stop_times.csv")
     if os.path.exists(bus_times_file):
         bus_times_df = pd.DataFrame()
@@ -188,7 +188,7 @@ def get_next_buses(stop_number, stops_df):
     stop_name = stop.iloc[0]
     stop_name_text = f"Next Buses For Stop {stop_number:d} ({stop_name})"
     stop_number = str(stop_number)
-    next_bus_times_df = load_bus_times(stop_number)
+    scheduled_next_bus_times_df = load_scheduled_bus_times(stop_number)
     return stop_name_text, "Hello"
     
 
