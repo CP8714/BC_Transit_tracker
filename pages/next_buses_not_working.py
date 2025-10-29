@@ -20,7 +20,7 @@ DATA_DIR = os.path.join(BASE_DIR, "data")
 bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
 trip_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/trip_updates.json"
 
-dash.register_page(__name__, path="/next_buses")
+dash.register_page(__name__, path="/next_buses_not_working")
 
 layout = html.Div([
     html.H1("Next Buses Page"),
