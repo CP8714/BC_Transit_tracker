@@ -199,7 +199,7 @@ def get_next_buses(stop_number, stops_df, trips_df, current_trips):
     # current_time = current_time.time()
     # current_time = pd.to_timedelta(f"{current_time.hour:02d}:{current_time.minute:02d}:{current_time.second:02d}")
     
-    scheduled_next_bus_times_df = scheduled_next_bus_times_df[scheduled_next_bus_times_df["arrival_time"] >= current_time]
+    # scheduled_next_bus_times_df = scheduled_next_bus_times_df[scheduled_next_bus_times_df["arrival_time"] >= current_time]
 
     stop_number = str(stop_number)
     current_time = int(datetime.datetime.now().timestamp())
