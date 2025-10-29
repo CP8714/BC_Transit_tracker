@@ -15,8 +15,8 @@ from datetime import datetime
 from dash import callback_context
 import pytz
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-DATA_DIR = os.path.join(BASE_DIR, "data")
+# BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+# DATA_DIR = os.path.join(BASE_DIR, "data")
 
 # === GitHub data source fallback (optional) ===
 bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
