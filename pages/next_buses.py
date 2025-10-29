@@ -46,7 +46,7 @@ layout = html.Div([
             type="circle",
             children=[
                 html.H3(id="stop-name-text"),
-                # html.H3(id="desc-text"),
+                html.H3(id="desc-text"),
             ]
         )
     ]),
@@ -121,14 +121,19 @@ def get_capacity(capacity):
         capacity_text = "Occupancy Status: Full"
     return capacity_text
 
+
+def get_next_buses(stop_number):
+    return stop_number, "Hello World"
+
 @callback(
-    [Output("stop-name-text", "children")],
+    [Output("stop-name-text", "children"),
+     Output("desc-text", "children")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("look-up-next-buses", "n_clicks"),],
     [State("stop-search-user-input", "value")]
 )
-def update_map_callback(n_intervals, manual_update, look_up_next_buses, stop_number):
+def update_stop_callback(n_intervals, manual_update, look_up_next_buses, stop_number):
     triggered_id = callback_context.triggered_id
 
     # Manual button triggers a live fetch
@@ -144,7 +149,7 @@ def update_map_callback(n_intervals, manual_update, look_up_next_buses, stop_num
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    return stop_number
+    return get_next_buses(stop_number)
 
 # === Run app ===
 if __name__ == "__main__":
