@@ -168,7 +168,7 @@ def get_capacity(capacity):
         capacity_text = "Occupancy Status: Full"
     return capacity_text
 
-def get_next_buses(stop_number):
+def get_next_buses(stop_number, stops_df):
     if not stop_number:
         return "Hello", "Hello World"
     stop_number = float(stop_number)
@@ -472,7 +472,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, stop_nu
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    return get_next_buses(stop_number)
+    return get_next_buses(stop_number, stops_df)
 
 
 if __name__ == "__main__":
