@@ -178,7 +178,7 @@ def load_scheduled_bus_times(current_stop_id):
                 bus_times_df = pd.concat([bus_times_df, next_buses], ignore_index=True)
         return bus_times_df
 
-def get_next_buses(stop_number, stops_df, trips_df):
+def get_next_buses(stop_number, stops_df, trips_df, current_trips):
     next_buses = []
     if not stop_number:
         return "No Stop Number Entered", next_buses
@@ -188,6 +188,8 @@ def get_next_buses(stop_number, stops_df, trips_df):
         return f"{stop_number} is not a valid Stop Number", next_buses
     stop_name = stop.iloc[0]
     stop_name_text = f"Next Buses For Stop {stop_number:d} ({stop_name})"
+
+    
     scheduled_next_bus_times_df = load_scheduled_bus_times(stop_number)
     # Account for times past midnight such as 25:00:00
     scheduled_next_bus_times_df["arrival_time"] = pd.to_timedelta(scheduled_next_bus_times_df["arrival_time"])
@@ -196,7 +198,11 @@ def get_next_buses(stop_number, stops_df, trips_df):
     current_time = datetime.now(pytz.timezone("America/Los_Angeles"))
     current_time = current_time.time()
     current_time = pd.to_timedelta(f"{current_time.hour:02d}:{current_time.minute:02d}:{current_time.second:02d}")
+    
     scheduled_next_bus_times_df = scheduled_next_bus_times_df[scheduled_next_bus_times_df["arrival_time"] >= current_time]
+
+    stop_number = str(stop_number)
+    next_trip = [stop for stop in current_trips if stop["stop_id"] == stop_number]
 
     scheduled_next_bus_times_df = scheduled_next_bus_times_df.head(10)
     next_buses.append("Next Scheduled Buses")
@@ -509,7 +515,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, stop_nu
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    return get_next_buses(stop_number, stops_df, trips_df)
+    return get_next_buses(stop_number, stops_df, trips_df, current_trips)
 
 
 if __name__ == "__main__":
