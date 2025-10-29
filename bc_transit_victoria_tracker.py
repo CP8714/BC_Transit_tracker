@@ -174,7 +174,7 @@ def get_next_buses(stop_number):
     stop_number = float(stop_number)
     stop = stops_df.loc[stops_df["stop_id"] == stop_number, "stop_name"]
     stop_name = stop.iloc[0]
-    stop_name_text = f"Next Buses for stop {stop_number} ({stop_name})
+    stop_name_text = f"Next Buses for stop {stop_number} ({stop_name})"
     return stop_name_text, "Hello"
     
 
