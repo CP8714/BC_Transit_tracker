@@ -173,7 +173,7 @@ def get_next_buses(stop_number, stops_df):
         return "No Stop Number Entered", ""
     stop_number = int(stop_number)
     stop = stops_df.loc[stops_df["stop_id"] == stop_number, "stop_name"]
-    if not stop:
+    if stop.empty:
         return "Entered Stop Number is not valid", ""
     stop_name = stop.iloc[0]
     stop_name_text = f"Next Buses For Stop {stop_number:d} ({stop_name})"
