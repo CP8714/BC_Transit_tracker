@@ -46,6 +46,7 @@ layout = html.Div([
             type="circle",
             children=[
                 html.H3(id="stop-name-text"),
+                html.H3(id="desc-text"),
             ]
         )
     ]),
@@ -122,7 +123,7 @@ def get_capacity(capacity):
 
 @callback(
     [Output("stop-name-text", "children"),
-     ],
+     Output("desc-text", "children")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("look-up-next-buses", "n_clicks"),],
@@ -132,7 +133,7 @@ def update_map_callback(n_intervals, manual_update, look_up_next_buses, stop_num
     triggered_id = callback_context.triggered_id
 
     # Manual button triggers a live fetch
-    if triggered_id == "manual-update" or triggered_id == "stop-search-user-input":
+    if triggered_id == "manual-update" or triggered_id == "look_up_next_buses":
         try:
             fetch_fleet_data.fetch()
             fetch_trip_data.fetch()
@@ -144,7 +145,7 @@ def update_map_callback(n_intervals, manual_update, look_up_next_buses, stop_num
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    return stop_number
+    return stop_number, stop_number
 
 # === Run app ===
 if __name__ == "__main__":
