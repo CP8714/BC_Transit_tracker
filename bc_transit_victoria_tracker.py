@@ -101,7 +101,7 @@ next_buses_layout = html.Div([
     # Auto-refresh interval
     dcc.Interval(
         id="stop-interval-component",
-        interval=60*1000,  # 60 seconds
+        interval=100*10000,  # 60 seconds
         n_intervals=0
     ),
 ])
