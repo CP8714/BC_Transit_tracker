@@ -171,7 +171,7 @@ def get_capacity(capacity):
 def get_next_buses(stop_number, stops_df):
     if not stop_number:
         return "Hello", "Hello World"
-    stop_number = float(stop_number)
+    stop_number = int(stop_number)
     stop = stops_df.loc[stops_df["stop_id"] == stop_number, "stop_name"]
     stop_name = stop.iloc[0]
     stop_name_text = f"Next Buses For Stop {stop_number:d} ({stop_name})"
