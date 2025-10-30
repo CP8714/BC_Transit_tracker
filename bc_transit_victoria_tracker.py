@@ -83,6 +83,17 @@ next_buses_layout = html.Div([
         html.Button("Search", id="look-up-next-buses", n_clicks=0),
     ], style={"margin-bottom": "10px"}),
 
+    html.Div([
+        html.Label("Enter Route Stop Number:"),
+        dcc.Input(
+            id="route-search-user-input",
+            type="text",
+            placeholder="enter route bus number e.g. 95",
+            value="",
+            debounce=True
+        ),
+    ], style={"margin-bottom": "10px"}),
+
     # Manual update button
     html.Button("Update Now", id="stop-manual-update", n_clicks=0, style={"margin-bottom": "10px"}),
 
@@ -197,33 +208,36 @@ def make_next_buses_table(next_buses):
     style={"borderCollapse": "collapse", "border": "1px solid black", "width": "100%", "marginTop": "10px"}
     )
 
-def get_next_buses(stop_number, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks):
+def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks):
     next_buses = []
-    if not stop_number:
+    if not stop_number_input:
         return html.Div("No Stop Number Entered")
-    stop_number = int(stop_number)
-    stop = stops_df.loc[stops_df["stop_id"] == stop_number, "stop_name"]
+    stop_number_input = int(stop_number_input)
+    stop = stops_df.loc[stops_df["stop_id"] == stop_number_input, "stop_name"]
     if stop.empty:
-        return html.Div(f"{stop_number} is not a valid Stop Number")
+        return html.Div(f"{stop_number_input} is not a valid Stop Number")
     stop_name = stop.iloc[0]
-    stop_name_text = f"Next Buses For Stop {stop_number:d} ({stop_name})"
+    stop_name_text = f"Next Buses For Stop {stop_number_input:d} ({stop_name})"
 
     
-    scheduled_next_bus_times_df = load_scheduled_bus_times(stop_number)
+    # scheduled_next_bus_times_df = load_scheduled_bus_times(stop_number_input)
     # Account for times past midnight such as 25:00:00
-    scheduled_next_bus_times_df["arrival_time"] = pd.to_timedelta(scheduled_next_bus_times_df["arrival_time"])
-    scheduled_next_bus_times_df = scheduled_next_bus_times_df.sort_values("arrival_time")
-
+    # scheduled_next_bus_times_df["arrival_time"] = pd.to_timedelta(scheduled_next_bus_times_df["arrival_time"])
+    # scheduled_next_bus_times_df = scheduled_next_bus_times_df.sort_values("arrival_time")
     # current_time = datetime.now(pytz.timezone("America/Los_Angeles"))
     # current_time = current_time.time()
     # current_time = pd.to_timedelta(f"{current_time.hour:02d}:{current_time.minute:02d}:{current_time.second:02d}")
-    
     # scheduled_next_bus_times_df = scheduled_next_bus_times_df[scheduled_next_bus_times_df["arrival_time"] >= current_time]
 
-    stop_number = str(stop_number)
+    stop_number_input = str(stop_number_input)
     current_time = int(datetime.now().timestamp())
-    next_trip = [stop for stop in current_trips if stop["stop_id"] == stop_number]
+
+    next_trip = [stop for stop in current_trips if stop["stop_id"] == stop_number_input]
     next_trip = [stop for stop in next_trip if stop["time"] >= current_time]
+    if route_number_input:
+        route_number_input = str(route_number_input)
+        route_number_input = route_number_input + "-VIC"
+        next_trip = [stop for stop in next_trip if stop["route_id"] == route_number_input]
     # Sort by arrival time 
     next_trip = sorted(next_trip, key=lambda x: x["time"])
     if toggle_future_buses_clicks % 2 == 0:
@@ -558,9 +572,10 @@ def update_map_callback(n_intervals, manual_update, search_for_bus, toggle_futur
      Input("stop-manual-update", "n_clicks"),
      Input("look-up-next-buses", "n_clicks"),
      Input("toggle-future-buses", "n_clicks")],
-    [State("stop-search-user-input", "value")]
+    [State("stop-search-user-input", "value"),
+     State("route-search-user-input", "value")]
 )
-def update_stop_callback(n_intervals, manual_update, look_up_next_buses, toggle_future_buses_clicks, stop_number):
+def update_stop_callback(n_intervals, manual_update, look_up_next_buses, toggle_future_buses_clicks, stop_number_input, route_number_input):
     triggered_id = callback_context.triggered_id
 
     # Manual button triggers a live fetch
@@ -580,7 +595,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, toggle_
         toggle_future_buses_text = "Show Next 10 Buses"
     else:
         toggle_future_buses_text = "Show Next 20 Buses"
-    next_buses_html = get_next_buses(stop_number, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks)
+    next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks)
     return next_buses_html, toggle_future_buses_text
 
 
