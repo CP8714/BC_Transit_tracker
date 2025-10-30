@@ -226,8 +226,7 @@ def get_next_buses(stop_number, stops_df, trips_df, current_trips, buses):
     # Sort by arrival time 
     next_trip = sorted(next_trip, key=lambda x: x["time"])
     next_trip = next_trip[:10]
-
-    next_buses.append("Next Buses")
+    
     for bus in next_trip:
         current_bus = next((b for b in buses if b["trip_id"] == bus["trip_id"]), None)
         if not current_bus:
