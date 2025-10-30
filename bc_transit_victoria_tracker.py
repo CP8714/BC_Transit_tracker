@@ -212,8 +212,11 @@ def get_next_buses(stop_number, stops_df, trips_df, current_trips, buses):
     next_buses.append("Next Buses")
     for bus in next_trip:
         current_bus = next((b for b in buses if b["trip_id"] == bus["trip_id"]), None)
-        bus_number = current_bus["id"]
-        bus_number = bus_number[-4:]
+        if not current_bus:
+            bus_number = "Unknown"
+        else:
+            bus_number = current_bus["id"]
+            bus_number = bus_number[-4:]
         next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]].iloc[0]
         route = bus["route_id"]
         route_number = route.split('-')[0] 
