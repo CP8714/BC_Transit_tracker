@@ -92,7 +92,7 @@ next_buses_layout = html.Div([
             type="circle",
             children=[
                 html.H3(id="stop-name-text"),
-                html.H3(id="stop-desc-text"),
+                html.Div(id="next-buses-output"),
                 dcc.Link("← Back to Bus Tracker", href="/"),
             ]
         )
