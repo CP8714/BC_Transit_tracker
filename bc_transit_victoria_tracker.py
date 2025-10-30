@@ -551,7 +551,7 @@ def update_map_callback(n_intervals, manual_update, search_for_bus, toggle_futur
      Input("toggle-future-buses", "n_clicks")],
     [State("stop-search-user-input", "value")]
 )
-def update_stop_callback(n_intervals, manual_update, look_up_next_buses, stop_number, toggle_future_buses_clicks):
+def update_stop_callback(n_intervals, manual_update, look_up_next_buses, toggle_future_buses_clicks, stop_number):
     triggered_id = callback_context.triggered_id
 
     # Manual button triggers a live fetch
@@ -567,8 +567,6 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, stop_nu
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    toggle_future_buses_clicks = toggle_future_buses_clicks or 0
-    toggle_future_buses_clicks = int(toggle_future_buses_clicks)
     next_buses_html = get_next_buses(stop_number, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks)
     if toggle_future_buses_clicks % 2:
         toggle_future_buses_text = "Show Next 20 Buses"
