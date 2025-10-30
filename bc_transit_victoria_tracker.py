@@ -92,6 +92,7 @@ next_buses_layout = html.Div([
             value="",
             debounce=True
         ),
+        html.Button("Search", id="look-up-next-buses-route", n_clicks=0),
     ], style={"margin-bottom": "10px"}),
 
     # Manual update button
@@ -217,7 +218,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     if stop.empty:
         return html.Div(f"{stop_number_input} is not a valid Stop Number")
     stop_name = stop.iloc[0]
-    stop_name_text = f"Next Buses For Stop {stop_number_input:d} ({stop_name})"
+    stop_name_text = f"Next Estimated Arrivals At Stop {stop_number_input:d} ({stop_name})"
 
     
     # scheduled_next_bus_times_df = load_scheduled_bus_times(stop_number_input)
@@ -238,6 +239,8 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         route_number_input = str(route_number_input)
         route_number_input = route_number_input + "-VIC"
         next_trip = [stop for stop in next_trip if stop["route_id"] == route_number_input]
+        stop_name_text = f"Next Estimated Arrivals For Route {route_number_input} At Stop {stop_number_input:d} ({stop_name})"
+        
     # Sort by arrival time 
     next_trip = sorted(next_trip, key=lambda x: x["time"])
     if toggle_future_buses_clicks % 2 == 0:
@@ -571,15 +574,16 @@ def update_map_callback(n_intervals, manual_update, search_for_bus, toggle_futur
     [Input("stop-interval-component", "n_intervals"),
      Input("stop-manual-update", "n_clicks"),
      Input("look-up-next-buses", "n_clicks"),
+     Input("look-up-next-buses-route", "n_clicks"),
      Input("toggle-future-buses", "n_clicks")],
     [State("stop-search-user-input", "value"),
      State("route-search-user-input", "value")]
 )
-def update_stop_callback(n_intervals, manual_update, look_up_next_buses, toggle_future_buses_clicks, stop_number_input, route_number_input):
+def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up_next_buses_route, toggle_future_buses_clicks, stop_number_input, route_number_input):
     triggered_id = callback_context.triggered_id
 
     # Manual button triggers a live fetch
-    if triggered_id == "manual-update" or triggered_id == "look-up-next-buses":
+    if triggered_id in ["manual-update", "look-up-next-buses", "look-up-next-buses-route"]:
         try:
             fetch_fleet_data.fetch()
             fetch_trip_data.fetch()
