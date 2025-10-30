@@ -85,13 +85,13 @@ next_buses_layout = html.Div([
 
     # Manual update button
     html.Button("Update Now", id="stop-manual-update", n_clicks=0, style={"margin-bottom": "10px"}),
-    html.Button(id="toggle-future-buses", n_clicks=0, children="Show Next 20 Buses", style={"margin-bottom": "10px"}),
 
     html.Div([
         dcc.Loading(
             id="loading-component",
             type="circle",
             children=[
+                html.Button(id="toggle-future-buses", n_clicks=0, children="Show Next 20 Buses", style={"margin-bottom": "10px"}),
                 html.Div(id="next-buses-output"),
                 dcc.Link("← Back to Bus Tracker", href="/"),
             ]
@@ -568,9 +568,9 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, toggle_
     trips_df = load_trips()
     stops_df = load_stops()
     if toggle_future_buses_clicks % 2:
-        toggle_future_buses_text = "Show Next 20 Buses"
-    else:
         toggle_future_buses_text = "Show Next 10 Buses"
+    else:
+        toggle_future_buses_text = "Show Next 20 Buses"
     next_buses_html = get_next_buses(stop_number, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks)
     return next_buses_html, toggle_future_buses_text
 
