@@ -91,7 +91,6 @@ next_buses_layout = html.Div([
             id="loading-component",
             type="circle",
             children=[
-                html.H3(id="stop-name-text"),
                 html.Div(id="next-buses-output"),
                 dcc.Link("← Back to Bus Tracker", href="/"),
             ]
@@ -541,8 +540,7 @@ def update_map_callback(n_intervals, manual_update, search_for_bus, toggle_futur
     return generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks)
 
 @callback(
-    [Output("stop-name-text", "children"),
-     Output("next-buses-table", "children")],
+    [Output("next-buses-output", "children")],
     [Input("stop-interval-component", "n_intervals"),
      Input("stop-manual-update", "n_clicks"),
      Input("look-up-next-buses", "n_clicks")],
