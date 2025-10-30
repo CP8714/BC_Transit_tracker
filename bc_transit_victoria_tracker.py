@@ -180,15 +180,15 @@ def load_scheduled_bus_times(current_stop_id):
 def make_next_buses_table(next_buses):
     return html.Table([
         html.Thead(html.Tr([
-            html.Th("Estimated Arrival Time"),
-            html.Th("Trip Headsign"),
-            html.Th("Bus Assigned"),
+            html.Th("Estimated Arrival Time", style={"border": "1px solid black"}),
+            html.Th("Trip Headsign", style={"border": "1px solid black"}),
+            html.Th("Bus Assigned", style={"border": "1px solid black"}),
         ])),
         html.Tbody([
             html.Tr([
-                html.Td(bus["arrival_time"], style={"textAlign": "center"}),
-                html.Td(bus["trip_headsign"], style={"textAlign": "center"}),
-                html.Td(bus["bus"], style={"textAlign": "center"})
+                html.Td(bus["arrival_time"], style={"border": "1px solid black", "textAlign": "center"}),
+                html.Td(bus["trip_headsign"], style={"border": "1px solid black", "textAlign": "center"}),
+                html.Td(bus["bus"], style={"border": "1px solid black", "textAlign": "center"})
             ])
             for bus in next_buses
         ])
