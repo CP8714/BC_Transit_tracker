@@ -239,7 +239,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         route_number_input = str(route_number_input)
         route_number_input = route_number_input + "-VIC"
         next_trip = [stop for stop in next_trip if stop["route_id"] == route_number_input]
-        stop_name_text = f"Next Estimated Arrivals For Route {route_number_input} At Stop {stop_number_input:d} ({stop_name})"
+        stop_name_text = f"Next Estimated Arrivals For Route {route_number_input} At Stop {stop_number_input} ({stop_name})"
         
     # Sort by arrival time 
     next_trip = sorted(next_trip, key=lambda x: x["time"])
