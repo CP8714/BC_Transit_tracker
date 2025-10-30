@@ -238,6 +238,12 @@ def get_next_buses(stop_number, stops_df, trips_df, current_trips, buses, toggle
             block = current_trip["block_id"]
             full_block = trips_df[trips_df["block_id"] == block]
             bus_number = "Unknown"
+            for _, row in full_block.iterrows():
+                current_bus = next((b for b in buses if b["trip_id"] == row["trip_id"]), None)
+                if current_bus:
+                    bus_number = current_bus["id"]
+                    bus_number = bus_number[-4:]
+                    break
         else:
             bus_number = current_bus["id"]
             bus_number = bus_number[-4:]
