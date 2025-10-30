@@ -223,7 +223,7 @@ def get_next_buses(stop_number, stops_df, trips_df, current_trips, buses):
         headsign = next_bus["trip_headsign"]
         arrival_time = datetime.fromtimestamp(bus["time"], pytz.timezone("America/Los_Angeles"))
         arrival_time = arrival_time.strftime("%H:%M")
-        next_bus_text = f"{arrival_time} {route_number} {headsign} (Bus {bus_number})"
+        next_bus_text = f"{arrival_time} {route_number} {headsign} (Run by {bus_number})"
         next_buses.append(next_bus_text)     
     next_buses = [html.Div(text) for text in next_buses]
         
