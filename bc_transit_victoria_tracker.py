@@ -186,14 +186,14 @@ def make_next_buses_table(next_buses):
         ])),
         html.Tbody([
             html.Tr([
-                html.Td(bus["arrival_time"]),
-                html.Td(bus["trip_headsign"]),
-                html.Td(bus["bus"])
+                html.Td(bus["arrival_time"], style={"textAlign": "center"}),
+                html.Td(bus["trip_headsign"], style={"textAlign": "center"}),
+                html.Td(bus["bus"], style={"textAlign": "center"})
             ])
             for bus in next_buses
         ])
     ],
-    style={"borderCollapse": "collapse", "width": "100%", "marginTop": "10px"}
+    style={"border": "1px solid black", "width": "100%", "marginTop": "10px"}
     )
 
 def get_next_buses(stop_number, stops_df, trips_df, current_trips, buses):
