@@ -200,11 +200,11 @@ def make_next_buses_table(next_buses):
 def get_next_buses(stop_number, stops_df, trips_df, current_trips, buses):
     next_buses = []
     if not stop_number:
-        return "No Stop Number Entered", next_buses
+        return html.Div("No Stop Number Entered")
     stop_number = int(stop_number)
     stop = stops_df.loc[stops_df["stop_id"] == stop_number, "stop_name"]
     if stop.empty:
-        return f"{stop_number} is not a valid Stop Number", next_buses
+        return html.Div(f"{stop_number} is not a valid Stop Number")
     stop_name = stop.iloc[0]
     stop_name_text = f"Next Buses For Stop {stop_number:d} ({stop_name})"
 
@@ -264,7 +264,10 @@ def get_next_buses(stop_number, stops_df, trips_df, current_trips, buses):
         
     
     
-    return stop_name_text, make_next_buses_table(next_buses)
+    return html.Div([
+        html.H3(stop_name_text),
+        make_next_buses_table(next_buses)
+    ])
     
 
 def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks):
