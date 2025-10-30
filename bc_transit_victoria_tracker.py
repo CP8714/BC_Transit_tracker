@@ -178,7 +178,7 @@ def load_scheduled_bus_times(current_stop_id):
                 bus_times_df = pd.concat([bus_times_df, next_buses], ignore_index=True)
         return bus_times_df
 
-def get_next_buses(stop_number, stops_df, trips_df, current_trips):
+def get_next_buses(stop_number, stops_df, trips_df, current_trips, buses):
     next_buses = []
     if not stop_number:
         return "No Stop Number Entered", next_buses
@@ -211,13 +211,15 @@ def get_next_buses(stop_number, stops_df, trips_df, current_trips):
 
     next_buses.append("Next Buses")
     for bus in next_trip:
+        current_bus = [b for b in buses if b["trip_id"] == bus["trip_id"]]
+        bus_number = current_bus["id"][-4:]
         next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]].iloc[0]
         route = bus["route_id"]
         route_number = route.split('-')[0] 
         headsign = next_bus["trip_headsign"]
         arrival_time = datetime.fromtimestamp(bus["time"], pytz.timezone("America/Los_Angeles"))
         arrival_time = arrival_time.strftime("%H:%M")
-        next_bus_text = f"{arrival_time} {route_number} {headsign}"
+        next_bus_text = f"{arrival_time} {route_number} {headsign} (Bus {bus_number})"
         next_buses.append(next_bus_text)     
     next_buses = [html.Div(text) for text in next_buses]
         
@@ -534,7 +536,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, stop_nu
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    return get_next_buses(stop_number, stops_df, trips_df, current_trips)
+    return get_next_buses(stop_number, stops_df, trips_df, current_trips, buses)
 
 
 if __name__ == "__main__":
