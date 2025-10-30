@@ -569,6 +569,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, stop_nu
     stops_df = load_stops()
     next_buses_html = get_next_buses(stop_number, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks)
     toggle_future_buses_clicks = toggle_future_buses_clicks or 0
+    toggle_future_buses_clicks = int(toggle_future_buses_clicks)
     if toggle_future_buses_clicks % 2:
         toggle_future_buses_text = "Show Next 20 Buses"
     else:
