@@ -85,6 +85,7 @@ next_buses_layout = html.Div([
 
     # Manual update button
     html.Button("Update Now", id="stop-manual-update", n_clicks=0, style={"margin-bottom": "10px"}),
+    html.Button(id="toggle-future-buses", n_clicks=0, children="Show Next 20 Buses", style={"margin-bottom": "10px"}),
 
     html.Div([
         dcc.Loading(
@@ -196,7 +197,7 @@ def make_next_buses_table(next_buses):
     style={"borderCollapse": "collapse", "border": "1px solid black", "width": "100%", "marginTop": "10px"}
     )
 
-def get_next_buses(stop_number, stops_df, trips_df, current_trips, buses):
+def get_next_buses(stop_number, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks):
     next_buses = []
     if not stop_number:
         return html.Div("No Stop Number Entered")
@@ -225,7 +226,10 @@ def get_next_buses(stop_number, stops_df, trips_df, current_trips, buses):
     next_trip = [stop for stop in next_trip if stop["time"] >= current_time]
     # Sort by arrival time 
     next_trip = sorted(next_trip, key=lambda x: x["time"])
-    next_trip = next_trip[:10]
+    if toggle_future_buses_clicks % 2 == 0:
+        next_trip = next_trip[:10]
+    else:
+        next_trip = next_trip[:20]
     
     for bus in next_trip:
         current_bus = next((b for b in buses if b["trip_id"] == bus["trip_id"]), None)
@@ -539,13 +543,15 @@ def update_map_callback(n_intervals, manual_update, search_for_bus, toggle_futur
     return generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks)
 
 @callback(
-    Output("next-buses-output", "children"),
+    [Output("next-buses-output", "children"),
+     Output("toggle-future-buses", "children")],
     [Input("stop-interval-component", "n_intervals"),
      Input("stop-manual-update", "n_clicks"),
-     Input("look-up-next-buses", "n_clicks")],
+     Input("look-up-next-buses", "n_clicks"),
+     Input("toggle-future-buses", "n_clicks")],
     [State("stop-search-user-input", "value")]
 )
-def update_stop_callback(n_intervals, manual_update, look_up_next_buses, stop_number):
+def update_stop_callback(n_intervals, manual_update, look_up_next_buses, stop_number, toggle_future_buses_clicks):
     triggered_id = callback_context.triggered_id
 
     # Manual button triggers a live fetch
@@ -561,7 +567,12 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, stop_nu
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    return get_next_buses(stop_number, stops_df, trips_df, current_trips, buses)
+    next_buses_html = get_next_buses(stop_number, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks)
+    if toggle_future_buses_clicks % 2:
+        toggle_future_buses_text = "Show Next 20 Buses"
+    else:
+        toggle_future_buses_text = "Show Next 10 Buses"
+    return next_buses_html, toggle_future_buses_text
 
 
 if __name__ == "__main__":
