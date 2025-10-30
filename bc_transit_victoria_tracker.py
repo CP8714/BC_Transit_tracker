@@ -195,7 +195,7 @@ def make_next_buses_table(next_buses):
         html.Thead(html.Tr([
             html.Th("Estimated Arrival Time", style={"border": "1px solid black"}),
             html.Th("Trip Headsign", style={"border": "1px solid black"}),
-            html.Th("Bus Assigned", style={"border": "1px solid black"}),
+            html.Th("Assigned Bus", style={"border": "1px solid black"}),
         ])),
         html.Tbody([
             html.Tr([
