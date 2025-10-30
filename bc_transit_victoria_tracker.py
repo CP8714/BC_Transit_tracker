@@ -193,7 +193,7 @@ def make_next_buses_table(next_buses):
             for bus in next_buses
         ])
     ],
-    style={"border": "1px solid black", "width": "100%", "marginTop": "10px"}
+    style={"borderCollapse": "collapse", "border": "1px solid black", "width": "100%", "marginTop": "10px"}
     )
 
 def get_next_buses(stop_number, stops_df, trips_df, current_trips, buses):
