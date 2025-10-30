@@ -178,6 +178,25 @@ def load_scheduled_bus_times(current_stop_id):
                 bus_times_df = pd.concat([bus_times_df, next_buses], ignore_index=True)
         return bus_times_df
 
+def make_next_buses_table(next_buses):
+    return html.Table([
+        html.Thead(html.Tr([
+            html.Th("Estimated Arrival Time"),
+            html.Th("Trip Headsign"),
+            html.Th("Bus Assigned"),
+        ])),
+        html.Tbody([
+            html.Tr([
+                html.Td(bus["arrival_time"]),
+                html.Td(bus["trip_headsign"]),
+                html.Td(bus["bus"])
+            ])
+            for bus in next_buses
+        ])
+    ],
+    style={"borderCollapse": "collapse", "width": "100%", "marginTop": "10px"}
+    )
+
 def get_next_buses(stop_number, stops_df, trips_df, current_trips, buses):
     next_buses = []
     if not stop_number:
@@ -223,9 +242,11 @@ def get_next_buses(stop_number, stops_df, trips_df, current_trips, buses):
         headsign = next_bus["trip_headsign"]
         arrival_time = datetime.fromtimestamp(bus["time"], pytz.timezone("America/Los_Angeles"))
         arrival_time = arrival_time.strftime("%H:%M")
-        next_bus_text = f"{arrival_time} {route_number} {headsign} (Run by {bus_number})"
-        next_buses.append(next_bus_text)     
-    next_buses = [html.Div(text) for text in next_buses]
+        next_buses.append({
+            "arrival_time": arrival_time,
+            "trip_headsign": f"{route_number} {headsign}",
+            "bus": f"{bus_number}"
+        })
         
         
 
@@ -243,7 +264,7 @@ def get_next_buses(stop_number, stops_df, trips_df, current_trips, buses):
         
     
     
-    return stop_name_text, next_buses
+    return stop_name_text, make_next_buses_table(next_buses)
     
 
 def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks):
@@ -518,7 +539,7 @@ def update_map_callback(n_intervals, manual_update, search_for_bus, toggle_futur
 
 @callback(
     [Output("stop-name-text", "children"),
-     Output("stop-desc-text", "children")],
+     Output("next-buses-table", "children")],
     [Input("stop-interval-component", "n_intervals"),
      Input("stop-manual-update", "n_clicks"),
      Input("look-up-next-buses", "n_clicks")],
