@@ -243,8 +243,8 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     stop_number_input = str(stop_number_input)
     current_time = int(datetime.now().timestamp())
 
-    current_time_test = pytz.timezone("America/Los_Angeles")
-    current_time_test = datetime.now(current_time_test)
+    pst = pytz.timezone("America/Los_Angeles")
+    current_time_test = datetime.now(pst)
     today = pd.Timestamp(datetime.now(pst).date(), tz=pst)
     
     scheduled_next_bus_times_df = load_scheduled_bus_times(float(stop_number_input))
