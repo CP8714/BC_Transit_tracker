@@ -77,7 +77,8 @@ next_buses_layout = html.Div([
             type="text",
             placeholder="enter stop bus number e.g. 100032",
             value="100032",
-            debounce=True
+            debounce=True,
+            style={"width": "250px"}
         ),
         html.Button("Search", id="look-up-next-buses", n_clicks=0),
     ], style={"margin-bottom": "10px"}),
@@ -87,9 +88,10 @@ next_buses_layout = html.Div([
         dcc.Input(
             id="route-search-user-input",
             type="text",
-            placeholder="enter route bus number e.g. 95",
+            placeholder="(Optional) enter route number e.g. 95",
             value="",
-            debounce=True
+            debounce=True,
+            style={"width": "250px"}
         ),
         html.Button("Search", id="look-up-next-buses-route", n_clicks=0),
     ], style={"margin-bottom": "10px"}),
