@@ -273,9 +273,8 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             next_bus_text_test = f"{arrival_time} {route_number} {headsign}"
             next_trips.append(bus_test["trip_id"])
             next_buses_test.append(next_bus_text_test)
-
-    
-    # next_buses = [html.Div(text) for text in next_buses]
+            
+    next_buses_test = [html.Div(text) for text in next_buses]
 
 
     
@@ -327,6 +326,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     
     return html.Div([
         html.H3(stop_name_text),
+        html.H3(next_buses_test),
         make_next_buses_table(next_buses)
     ])
     
