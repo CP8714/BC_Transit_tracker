@@ -462,7 +462,15 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
                 future_stop_id = float(stop["stop_id"])
                 future_stop_name = stops_df.loc[stops_df["stop_id"] == future_stop_id, "stop_name"]
                 future_stop_name = future_stop_name.iloc[0]
-                future_stops_text = f"{future_stop_name} (Stop {future_stop_id}): {future_eta_time}"
+                future_stops_text = html.Span([
+                    f"{future_stop_name} (Stop ",
+                    dcc.Link(
+                        str(future_stop_id),
+                        href=f"/next_buses?stop_id={future_stop_id}",
+                        style={"textDecoration": "underline", "color": "blue"}
+                    ),
+                    f"): {future_eta_time}"
+                ])
                 all_future_stops_eta.append(future_stops_text)
             # Only include the next 5 stops depending on if the "Show Next 5 stops" button has been clicked
             if toggle_future_stops_clicks % 2 == 0 and len(future_stops) >= 5:
@@ -699,6 +707,17 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up
         toggle_future_buses_text = "Show Next 20 Buses"
     next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks)
     return next_buses_html, toggle_future_buses_text
+
+@callback(
+    Output("stop-search-user-input", "value"),
+    Input("url", "search")
+)
+def set_stop_input(stop_search):
+    if stop_search:
+        query_params = parse_qs(stop_search.lstrip("?"))
+        stop_id = query_params.get("stop_id", [None])[0]
+        return stop_id
+    return ""
 
 
 if __name__ == "__main__":
