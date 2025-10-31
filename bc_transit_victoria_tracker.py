@@ -358,12 +358,14 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         block_trips = []
         block = trip_id.split(":")[2]
         full_block = trips_df[trips_df["block_id"].astype(str) == block]
-        block_trips.append(f"{bus_number} will be running the following trips:")
+        block_trips.append(f"{bus_number} will be running the following trips today:")
 
         # Load all stop times for all trips in the block
         stop_times_df = load_block_departure_times(full_block["trip_id"].tolist())
 
         full_block = full_block.merge(stop_times_df, on="trip_id", how="left")
+        full_block["departure_time"] = pd.to_timedelta(full_block["departure_time"])
+        full_block = full_block.sort_values(by="departure_time")
         
         for _, row in full_block.iterrows():
             # stop_times_df = load_stop_times(row["trip_id"])
