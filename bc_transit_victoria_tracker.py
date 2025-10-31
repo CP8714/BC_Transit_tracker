@@ -14,6 +14,7 @@ import fetch_trip_data
 from datetime import datetime
 from dash import callback_context
 import pytz
+from urllib.parse import parse_qs, urlparse
 
 # === GitHub data source fallback (optional) ===
 bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
@@ -221,7 +222,11 @@ def make_next_buses_table(next_buses):
             html.Tr([
                 html.Td(bus["arrival_time"], style={"border": "1px solid black", "textAlign": "center"}),
                 html.Td(bus["trip_headsign"], style={"border": "1px solid black", "textAlign": "center"}),
-                html.Td(bus["bus"], style={"border": "1px solid black", "textAlign": "center"})
+                html.Td(
+                    html.A(bus["bus"], href=f"/?bus={bus['bus']}", style={"textDecoration": "none", "color": "blue"})
+                    if bus["bus"] != "Unknown" else bus["bus"],
+                    style={"border": "1px solid black", "textAlign": "center"})
+                )
             ])
             for bus in next_buses
         ])
@@ -612,11 +617,20 @@ def display_page(pathname):
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("search-for-bus", "n_clicks"),
-     Input("toggle-future-stops", "n_clicks")],
+     Input("toggle-future-stops", "n_clicks"),
+     Input("url", "href")],
     [State("bus-search-user-input", "value")]
 )
-def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, bus_number):
+def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, href, bus_number):
     triggered_id = callback_context.triggered_id
+
+    # Check if there is a bus number in the url and use it if so
+    if href:
+        parsed_url = urlparse(href)
+        query_params = parse_qs(parsed_url.query)
+        if "bus" in query_params:
+            bus_number = query_params["bus"][0]
+        
 
     # Manual button triggers a live fetch
     if triggered_id == "manual-update" or triggered_id == "search-for-bus":
