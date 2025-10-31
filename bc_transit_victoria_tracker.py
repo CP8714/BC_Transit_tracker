@@ -243,12 +243,14 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     stop_number_input = str(stop_number_input)
     current_time = int(datetime.now().timestamp())
 
+    current_time_test = pytz.timezone("America/Los_Angeles")
+    current_time_test = datetime.now(current_time_test)
     
     scheduled_next_bus_times_df = load_scheduled_bus_times(float(stop_number_input))
     # Account for times past midnight such as 25:00:00
     scheduled_next_bus_times_df["arrival_time"] = pd.to_timedelta(scheduled_next_bus_times_df["arrival_time"])
     scheduled_next_bus_times_df = scheduled_next_bus_times_df.sort_values("arrival_time")
-    scheduled_next_bus_times_df = scheduled_next_bus_times_df[scheduled_next_bus_times_df["arrival_time"] >= current_time]
+    scheduled_next_bus_times_df = scheduled_next_bus_times_df[scheduled_next_bus_times_df["arrival_time"] >= current_time_test]
 
     scheduled_next_bus_times_df = scheduled_next_bus_times_df.head(20)
     next_buses_test = []
