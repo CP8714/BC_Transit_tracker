@@ -343,7 +343,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     else:
         block_trips = []
         block = trip_id.split(":")[2]
-        full_block = trips_df[trips_df["block_id"].astype(str).str.strip() == block]
+        full_block = trips_df[trips_df["block_id"].astype(str) == block]
         block_trips.append(f"{bus_number} will be running the following trips:")
 
         # Temporary
