@@ -60,6 +60,8 @@ bus_tracker_layout = html.Div([
         )
     ]),
 
+    html.H3(id="block-trips"),
+
     # Auto-refresh interval
     dcc.Interval(
         id="interval-component",
@@ -339,6 +341,19 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     if not current_trip:
         deadheading = True
     else:
+        block_trips = []
+        block = trip_id.split(":")[2]
+        full_block = trips_df[trips_df["block_id"] == block]
+        block_trips.append(f"{bus_number} will be running the following trips:")
+        for _, row in full_block.iterrows():
+            stop_times_df = load_stop_times(row["trip_id"])
+            stop_times_df = stop_times_df[stop_times_df["stop_sequence"] == 1]
+            departure_time = stop_times_df["departure_time"]
+            route_number = row["route_id"].split("-")[0]
+            headsign = row["trip_headsign"]
+
+            block_trip_text = f"{route_number} {headsign} leaving at {departure_time}"
+            block_trips.append(block_trip_text)
 
         # Get lon and lat coordinates for all stops on current route to be displayed on map
         stop_times_df = load_stop_times(trip_id)
@@ -516,7 +531,7 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
             stop_text = f"Current Stop: {stop}"
 
 
-    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text
+    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text, block_trips
 
 # --- App layout with a container that will be swapped ---
 app.layout = html.Div([
@@ -544,7 +559,8 @@ def display_page(pathname):
      Output("speed-text", "children"),
      Output("timestamp-text", "children"),
      Output("future-stop-text", "children"),
-     Output("toggle-future-stops", "children")],
+     Output("toggle-future-stops", "children"),
+     Output("block-trips", "children")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("search-for-bus", "n_clicks"),
