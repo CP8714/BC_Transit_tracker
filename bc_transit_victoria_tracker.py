@@ -462,7 +462,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
                 future_stop_id = float(stop["stop_id"])
                 future_stop_name = stops_df.loc[stops_df["stop_id"] == future_stop_id, "stop_name"]
                 future_stop_name = future_stop_name.iloc[0]
-                future_stops_text = f"{future_stop_name}: {future_eta_time}"
+                future_stops_text = f"{future_stop_name} (Stop {future_stop_id}): {future_eta_time}"
                 all_future_stops_eta.append(future_stops_text)
             # Only include the next 5 stops depending on if the "Show Next 5 stops" button has been clicked
             if toggle_future_stops_clicks % 2 == 0 and len(future_stops) >= 5:
