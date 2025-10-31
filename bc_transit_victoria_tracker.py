@@ -192,6 +192,20 @@ def load_scheduled_bus_times(current_stop_id):
                 bus_times_df = pd.concat([bus_times_df, next_buses], ignore_index=True)
         return bus_times_df
 
+def load_block_departure_times(trip_ids):
+    stop_times_file = os.path.join("data", "stop_times.csv")
+    departure_times_list = []
+    if os.path.exists(stop_times_file):
+        departure_times_chunks = pd.read_csv(stop_times_file, chunksize=10000, usecols=["trip_id", "stop_sequence", "departure_time"])
+        for departure_times_chunk in departure_times_chunks:
+            departure_times = departure_times_chunk[departure_times_chunk["trip_id"].isin(trip_ids) & (departure_times_chunk["stop_sequence"] == 1)]
+            if not departure_times.empty:
+                departure_times_list.append(departure_times)
+        if departure_times_list:
+            return pd.concat(departure_times_list, ignore_index=True)
+    return pd.DataFrame(columns=["trip_id", "stop_sequence", "departure_time"])
+
+
 def make_next_buses_table(next_buses):
     return html.Table([
         html.Thead(html.Tr([
@@ -346,20 +360,21 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         full_block = trips_df[trips_df["block_id"].astype(str) == block]
         block_trips.append(f"{bus_number} will be running the following trips:")
 
-        # Temporary
-        if full_block.empty:
-            block_trips.append("No trips found for this block.")
+        # Load all stop times for all trips in the block
+        stop_times_df = load_block_departure_times(full_block["trip_id"].tolist())
 
+        full_block = full_block.merge(stop_times_df, on="trip_id", how="left")
         
         for _, row in full_block.iterrows():
             # stop_times_df = load_stop_times(row["trip_id"])
             # stop_times_df = stop_times_df[stop_times_df["stop_sequence"] == 1]
             # departure_time = stop_times_df["departure_time"]
+            departure_time = row["departure_time"]
             route_number = row["route_id"].split("-")[0]
             headsign = row["trip_headsign"]
 
-            # block_trip_text = f"{route_number} {headsign} leaving at {departure_time}"
-            block_trip_text = f"{route_number} {headsign}"
+            block_trip_text = f"{route_number} {headsign} leaving at {departure_time}"
+            # block_trip_text = f"{route_number} {headsign}"
             block_trips.append(block_trip_text)
 
         block_trips = [html.Div(text) for text in block_trips]
