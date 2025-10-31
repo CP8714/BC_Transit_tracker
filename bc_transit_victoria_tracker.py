@@ -342,9 +342,9 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         deadheading = True
     else:
         block_trips = []
-        block = str(trip_id).split(":")[2]
+        block = trip_id.split(":")[2]
         full_block = trips_df[trips_df["block_id"] == block]
-        block_trips.append(f"{bus_number} will be running the following trips:")
+        block_trips.append(f"{bus_number} will be running the following trips: {block}")
         for _, row in full_block.iterrows():
             stop_times_df = load_stop_times(row["trip_id"])
             stop_times_df = stop_times_df[stop_times_df["stop_sequence"] == 1]
