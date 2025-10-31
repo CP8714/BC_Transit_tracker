@@ -244,7 +244,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     current_time = int(datetime.now().timestamp())
 
     
-    scheduled_next_bus_times_df = load_scheduled_bus_times(stop_number_input)
+    scheduled_next_bus_times_df = load_scheduled_bus_times(float(stop_number_input))
     # Account for times past midnight such as 25:00:00
     scheduled_next_bus_times_df["arrival_time"] = pd.to_timedelta(scheduled_next_bus_times_df["arrival_time"])
     scheduled_next_bus_times_df = scheduled_next_bus_times_df.sort_values("arrival_time")
