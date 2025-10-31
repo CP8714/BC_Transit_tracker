@@ -262,8 +262,8 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         route = next_bus["route_id"]
         route_number = route.split('-')[0] 
         headsign = next_bus["trip_headsign"]
-        arrival_time = str(bus_test["arrival_time"]).split(" days ")[-1]
-        arrival_time = arrival_time.strftime("%H:%M")
+        # arrival_time = str(bus_test["arrival_time"]).split(" days ")[-1]
+        arrival_time = bus_test["arrival_time"].strftime("%H:%M")
         first_number, second_number, _ = bus_test["trip_id"].split(":")
         already_added_trip = any(i.split(":")[0] == first_number and i.split(":")[1] == second_number for i in next_trips)
         if not next_trips:
