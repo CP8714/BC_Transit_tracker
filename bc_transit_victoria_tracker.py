@@ -362,6 +362,8 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
             block_trip_text = f"{route_number} {headsign}"
             block_trips.append(block_trip_text)
 
+        block_trips = [html.Div(text) for text in block_trips]
+
         # Get lon and lat coordinates for all stops on current route to be displayed on map
         stop_times_df = load_stop_times(trip_id)
         current_trip_stop_ids = stop_times_df["stop_id"].astype(float).tolist()
