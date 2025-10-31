@@ -352,13 +352,14 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
 
         
         for _, row in full_block.iterrows():
-            stop_times_df = load_stop_times(row["trip_id"])
-            stop_times_df = stop_times_df[stop_times_df["stop_sequence"] == 1]
-            departure_time = stop_times_df["departure_time"]
+            # stop_times_df = load_stop_times(row["trip_id"])
+            # stop_times_df = stop_times_df[stop_times_df["stop_sequence"] == 1]
+            # departure_time = stop_times_df["departure_time"]
             route_number = row["route_id"].split("-")[0]
             headsign = row["trip_headsign"]
 
-            block_trip_text = f"{route_number} {headsign} leaving at {departure_time}"
+            # block_trip_text = f"{route_number} {headsign} leaving at {departure_time}"
+            block_trip_text = f"{route_number} {headsign}"
             block_trips.append(block_trip_text)
 
         # Get lon and lat coordinates for all stops on current route to be displayed on map
