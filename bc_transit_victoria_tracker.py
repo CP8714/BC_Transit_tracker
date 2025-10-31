@@ -243,41 +243,40 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     stop_number_input = str(stop_number_input)
     current_time = int(datetime.now().timestamp())
 
-    current_time_test = pytz.timezone("America/Los_Angeles")
-    current_time_test = datetime.now(current_time_test).strftime("%H:%M:%S")
-    # today = pd.Timestamp(datetime.now(pst).date(), tz=pst)
+    # current_time_test = pytz.timezone("America/Los_Angeles")
+    # current_time_test = datetime.now(current_time_test).strftime("%H:%M:%S")
+    # # today = pd.Timestamp(datetime.now(pst).date(), tz=pst)
     
-    scheduled_next_bus_times_df = load_scheduled_bus_times(float(stop_number_input))
-    # Account for times past midnight such as 25:00:00
-    # scheduled_next_bus_times_df["arrival_time"] = today + pd.to_timedelta(scheduled_next_bus_times_df["arrival_time"])
-    scheduled_next_bus_times_df = scheduled_next_bus_times_df.sort_values("arrival_time")
-    scheduled_next_bus_times_df = scheduled_next_bus_times_df[scheduled_next_bus_times_df["arrival_time"] >= current_time_test]
+    # scheduled_next_bus_times_df = load_scheduled_bus_times(float(stop_number_input))
+    # # Account for times past midnight such as 25:00:00
+    # scheduled_next_bus_times_df = scheduled_next_bus_times_df.sort_values("arrival_time")
+    # scheduled_next_bus_times_df = scheduled_next_bus_times_df[scheduled_next_bus_times_df["arrival_time"] >= current_time_test]
 
-    scheduled_next_bus_times_df = scheduled_next_bus_times_df.head(20)
-    next_buses_test = []
-    next_trips = []
-    next_buses_test.append("Next Scheduled Buses")
-    for _, bus_test in scheduled_next_bus_times_df.iterrows():
-        next_bus = trips_df[trips_df["trip_id"] == bus_test["trip_id"]].iloc[0]
-        route = next_bus["route_id"]
-        route_number = route.split('-')[0] 
-        headsign = next_bus["trip_headsign"]
-        # arrival_time = str(bus_test["arrival_time"]).split(" days ")[-1]
-        # arrival_time = bus_test["arrival_time"].strftime("%H:%M")
-        arrival_time = bus_test["arrival_time"]
-        arrival_time = arrival_time[:-3]
-        first_number, second_number, _ = bus_test["trip_id"].split(":")
-        already_added_trip = any(i.split(":")[0] == first_number and i.split(":")[1] == second_number for i in next_trips)
-        if not next_trips:
-            next_bus_text_test = f"{arrival_time} {route_number} {headsign}"
-            next_trips.append(bus_test["trip_id"])
-            next_buses_test.append(next_bus_text_test)
-        elif not already_added_trip:
-            next_bus_text_test = f"{arrival_time} {route_number} {headsign} {first_number} {second_number} {bus_test["trip_id"]}"
-            next_trips.append(bus_test["trip_id"])
-            next_buses_test.append(next_bus_text_test)
+    # scheduled_next_bus_times_df = scheduled_next_bus_times_df.head(20)
+    # next_buses_test = []
+    # next_trips = []
+    # next_buses_test.append("Next Scheduled Buses")
+    # for _, bus_test in scheduled_next_bus_times_df.iterrows():
+    #     next_bus = trips_df[trips_df["trip_id"] == bus_test["trip_id"]].iloc[0]
+    #     route = next_bus["route_id"]
+    #     route_number = route.split('-')[0] 
+    #     headsign = next_bus["trip_headsign"]
+    #     # arrival_time = str(bus_test["arrival_time"]).split(" days ")[-1]
+    #     # arrival_time = bus_test["arrival_time"].strftime("%H:%M")
+    #     arrival_time = bus_test["arrival_time"]
+    #     arrival_time = arrival_time[:-3]
+    #     first_number, second_number, _ = bus_test["trip_id"].split(":")
+    #     already_added_trip = any(i.split(":")[0] == first_number and i.split(":")[1] == second_number for i in next_trips)
+    #     if not next_trips:
+    #         next_bus_text_test = f"{arrival_time} {route_number} {headsign}"
+    #         next_trips.append(bus_test["trip_id"])
+    #         next_buses_test.append(next_bus_text_test)
+    #     elif not already_added_trip:
+    #         next_bus_text_test = f"{arrival_time} {route_number} {headsign} {first_number} {second_number} {bus_test["trip_id"]}"
+    #         next_trips.append(bus_test["trip_id"])
+    #         next_buses_test.append(next_bus_text_test)
             
-    next_buses_test = [html.Div(text) for text in next_buses_test]
+    # next_buses_test = [html.Div(text) for text in next_buses_test]
 
 
     
@@ -329,7 +328,6 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     
     return html.Div([
         html.H3(stop_name_text),
-        html.H3(next_buses_test),
         make_next_buses_table(next_buses)
     ])
     
