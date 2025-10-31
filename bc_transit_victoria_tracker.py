@@ -15,9 +15,6 @@ from datetime import datetime
 from dash import callback_context
 import pytz
 
-# BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-# DATA_DIR = os.path.join(BASE_DIR, "data")
-
 # === GitHub data source fallback (optional) ===
 bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
 trip_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/trip_updates.json"
@@ -121,6 +118,7 @@ next_buses_layout = html.Div([
 ])
 
 # --- Helper functions ---
+# Returns dictionary of bus_updates.json, the realtime update file for buses
 def load_buses():
     """Load latest bus_updates.json safely."""
     data_file = os.path.join("data", "bus_updates.json")
@@ -134,6 +132,7 @@ def load_buses():
     except:
         return []
 
+# Returns dictionary of trip_updates.json, the realtime update file for trips
 def load_current_trips():
     data_file = os.path.join("data", "trip_updates.json")
     if os.path.exists(data_file):
@@ -145,18 +144,21 @@ def load_current_trips():
     except:
         return []
 
+# Returns dataframe of trips.csv
 def load_trips():
     trips_file = os.path.join("data", "trips.csv")
     if os.path.exists(trips_file):
         trips_df = pd.read_csv(trips_file)
         return trips_df
 
+# Returns dataframe of stops.csv
 def load_stops():
     stops_file = os.path.join("data", "stops.csv")
     if os.path.exists(stops_file):
         stops_df = pd.read_csv(stops_file)
         return stops_df
 
+# Finds all the stops that are served by at current_trip_id and returns a dataframe containing them along with all other info from stop_times.csv
 def load_stop_times(current_trip_id):
     stop_times_file = os.path.join("data", "stop_times.csv")
     if os.path.exists(stop_times_file):
@@ -168,6 +170,7 @@ def load_stop_times(current_trip_id):
                 stop_times_df = pd.concat([stop_times_df, current_trip_stops], ignore_index=True)
         return stop_times_df
 
+# Returns appropriate text for bus capacity depending on the capacity input value
 def get_capacity(capacity):
     if capacity == 0:
         capacity_text = "Occupancy Status: Empty"
@@ -181,6 +184,7 @@ def get_capacity(capacity):
         capacity_text = "Occupancy Status: Full"
     return capacity_text
 
+# Finds all the trips that stop at current_stop_id and returns a dataframe containing them along with all other info from stop_times.csv
 def load_scheduled_bus_times(current_stop_id):
     bus_times_file = os.path.join("data", "stop_times.csv")
     if os.path.exists(bus_times_file):
@@ -192,6 +196,7 @@ def load_scheduled_bus_times(current_stop_id):
                 bus_times_df = pd.concat([bus_times_df, next_buses], ignore_index=True)
         return bus_times_df
 
+# Finds the initial trip departure time from stop_times.csv for all the trips in trips_ids and returns a dataframe containing them
 def load_block_departure_times(trip_ids):
     stop_times_file = os.path.join("data", "stop_times.csv")
     departure_times_list = []
@@ -364,8 +369,13 @@ def generate_map(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         stop_times_df = load_block_departure_times(full_block["trip_id"].tolist())
 
         full_block = full_block.merge(stop_times_df, on="trip_id", how="left")
+        # Allow departure_time to exceed 24:00:00 ie 25:00:00
         full_block["departure_time"] = pd.to_timedelta(full_block["departure_time"])
         full_block = full_block.sort_values(by="departure_time")
+        # Only keep hours and minutes
+        full_block["departure_time"] = full_block["departure_time"].apply(
+            lambda t: f"{int(t.total_seconds() // 3600):02d}:{int((t.total_seconds() % 3600) // 60):02d}"
+        )
         
         for _, row in full_block.iterrows():
             # stop_times_df = load_stop_times(row["trip_id"])
