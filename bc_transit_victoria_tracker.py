@@ -245,11 +245,11 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
 
     pst = pytz.timezone("America/Los_Angeles")
     current_time_test = datetime.now(pst)
-    today = pd.Timestamp(datetime.now(pst).date(), tz=pst)
+    # today = pd.Timestamp(datetime.now(pst).date(), tz=pst)
     
     scheduled_next_bus_times_df = load_scheduled_bus_times(float(stop_number_input))
     # Account for times past midnight such as 25:00:00
-    scheduled_next_bus_times_df["arrival_time"] = today + pd.to_timedelta(scheduled_next_bus_times_df["arrival_time"])
+    # scheduled_next_bus_times_df["arrival_time"] = today + pd.to_timedelta(scheduled_next_bus_times_df["arrival_time"])
     scheduled_next_bus_times_df = scheduled_next_bus_times_df.sort_values("arrival_time")
     scheduled_next_bus_times_df = scheduled_next_bus_times_df[scheduled_next_bus_times_df["arrival_time"] >= current_time_test]
 
@@ -267,11 +267,11 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         first_number, second_number, _ = bus_test["trip_id"].split(":")
         already_added_trip = any(i.split(":")[0] == first_number and i.split(":")[1] == second_number for i in next_trips)
         if not next_trips:
-            next_bus_text_test = f"{arrival_time} {route_number} {headsign}"
+            next_bus_text_test = f"{arrival_time} {route_number} {headsign} first-if"
             next_trips.append(bus_test["trip_id"])
             next_buses_test.append(next_bus_text_test)
         elif not already_added_trip:
-            next_bus_text_test = f"{arrival_time} {route_number} {headsign}"
+            next_bus_text_test = f"{arrival_time} {route_number} {headsign} correct if-statement"
             next_trips.append(bus_test["trip_id"])
             next_buses_test.append(next_bus_text_test)
             
