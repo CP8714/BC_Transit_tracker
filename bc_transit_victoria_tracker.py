@@ -225,7 +225,7 @@ def make_next_buses_table(next_buses):
                 html.Td(
                     html.A(bus["bus"], href=f"/?bus={bus['bus']}", style={"textDecoration": "none", "color": "blue"})
                     if bus["bus"] != "Unknown" else bus["bus"],
-                    style={"border": "1px solid black", "textAlign": "center"})
+                    style={"border": "1px solid black", "textAlign": "center"}
                 )
             ])
             for bus in next_buses
