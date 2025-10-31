@@ -269,11 +269,11 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         first_number, second_number, _ = bus_test["trip_id"].split(":")
         already_added_trip = any(i.split(":")[0] == first_number and i.split(":")[1] == second_number for i in next_trips)
         if not next_trips:
-            next_bus_text_test = f"{arrival_time} {route_number} {headsign} first-if"
+            next_bus_text_test = f"{arrival_time} {route_number} {headsign}"
             next_trips.append(bus_test["trip_id"])
             next_buses_test.append(next_bus_text_test)
         elif not already_added_trip:
-            next_bus_text_test = f"{arrival_time} {route_number} {headsign} correct if-statement"
+            next_bus_text_test = f"{arrival_time} {route_number} {headsign} {first_number} {second_number} {bus_test["trip_id"]}"
             next_trips.append(bus_test["trip_id"])
             next_buses_test.append(next_bus_text_test)
             
