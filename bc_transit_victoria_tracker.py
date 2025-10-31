@@ -254,12 +254,12 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     next_buses_test = []
     next_trips = []
     next_buses_test.append("Next Scheduled Buses")
-    for _, bus in scheduled_next_bus_times_df.iterrows():
-        next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]].iloc[0]
+    for _, bus_test in scheduled_next_bus_times_df.iterrows():
+        next_bus = trips_df[trips_df["trip_id"] == bus_test["trip_id"]].iloc[0]
         route = next_bus["route_id"]
         route_number = route.split('-')[0] 
         headsign = next_bus["trip_headsign"]
-        arrival_time = str(bus["arrival_time"]).split(" days ")[-1]
+        arrival_time = str(bus_test["arrival_time"]).split(" days ")[-1]
         already_added_trip = any(i.split(":")[0] == first and i.split(":")[1] == second for i in next_trips)
         if not next_trips:
             next_bus_text_test = f"{arrival_time} {route_number} {headsign}"
