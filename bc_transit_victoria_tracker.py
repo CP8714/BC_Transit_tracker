@@ -368,7 +368,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     ])
     
 
-def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks):
+def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, new_url):
     """Generate figure and speed text for a given bus_number."""
     fig = go.Figure()
     toggle_future_stops_text = "Show All Upcoming Stops"
@@ -624,7 +624,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
             stop_text = f"Current Stop: {stop}"
 
 
-    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text, block_trips
+    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text, block_trips, new_url
 
 # --- App layout with a container that will be swapped ---
 app.layout = html.Div([
@@ -674,7 +674,8 @@ def display_page(pathname):
      Output("timestamp-text", "children"),
      Output("future-stop-text", "children"),
      Output("toggle-future-stops", "children"),
-     Output("block-trips", "children")],
+     Output("block-trips", "children"),
+     Output("url", "href")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("search-for-bus", "n_clicks"),
@@ -706,7 +707,8 @@ def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_futur
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    return get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks)
+    new_url = "/bus_tracker"
+    return get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, new_url)
 
 
 # Update bus number value in search bar of bus_tracker if bus number detected in url
