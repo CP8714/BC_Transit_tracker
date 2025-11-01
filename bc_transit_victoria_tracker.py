@@ -380,7 +380,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         toggle_future_stops_text = "Show Next 5 Stops"
         
     if not bus:
-        return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available", "", [], toggle_future_stops_text, "", new_url
+        return fig, f"{bus_number} is not running at the moment {test}", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available", "", [], toggle_future_stops_text, "", new_url
 
     lat, lon, speed, route, bus_id, capacity, trip_id, stop_id, bearing, timestamp = (
         bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"], bus["stop_id"], bus["bearing"], bus["timestamp"]
