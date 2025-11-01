@@ -351,7 +351,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         toggle_future_stops_text = "Show Next 5 Stops"
         
     if not bus:
-        return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available", "", [], toggle_future_stops_text, "", reset_url
+        return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available", "", [], toggle_future_stops_text, ""
 
     lat, lon, speed, route, bus_id, capacity, trip_id, stop_id, bearing, timestamp = (
         bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"], bus["stop_id"], bus["bearing"], bus["timestamp"]
@@ -441,7 +441,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
                 hoverinfo="text",
                 name=f"Position of {bus_id}"
             ))
-            return fig, f"{bus_number} is currently Not In Service", "Next Stop: Not Available", capacity_text, speed_text, timestamp_text, [], toggle_future_stops_text, block_trips, reset_url
+            return fig, f"{bus_number} is currently Not In Service", "Next Stop: Not Available", capacity_text, speed_text, timestamp_text, [], toggle_future_stops_text, block_trips
             
         delay, stop_sequence, start_time, eta_time, current_stop_id = (
             current_stop["delay"], current_stop["stop_sequence"], current_stop["start_time"], current_stop["time"], current_stop["stop_id"]
@@ -595,14 +595,13 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
             stop_text = f"Current Stop: {stop}"
 
 
-    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text, block_trips, reset_url
+    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text, block_trips
 
 # --- App layout with a container that will be swapped ---
 app.layout = html.Div([
     dcc.Location(id="url", refresh=False),
     html.Div(id="page-content")
 ])
-
 
 # --- Callback to swap layouts based on URL ---
 @callback(
@@ -626,8 +625,7 @@ def display_page(pathname):
      Output("timestamp-text", "children"),
      Output("future-stop-text", "children"),
      Output("toggle-future-stops", "children"),
-     Output("block-trips", "children"),
-     Output("url", "href")],
+     Output("block-trips", "children")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("search-for-bus", "n_clicks"),
@@ -661,7 +659,7 @@ def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_futur
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    return get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url)
+    return get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks)
 
 
 # Update bus number value in search bar of bus_tracker if bus number detected in url
@@ -733,6 +731,25 @@ def set_stop_input(stop_search):
         query_params = parse_qs(stop_search.lstrip("?"))
         stop_id = query_params.get("stop_id", [None])[0]
         return stop_id
+    return no_update
+
+
+@callback(
+    Output("url", "href"),
+    Input("url", "href")
+)
+def reset_url(href):
+    if not href:
+        return no_update
+
+    parsed = urlparse(href)
+
+    if parsed.path == "/bus_tracker" and parsed.query:
+        return "/bus_tracker"
+
+    if parsed.path == "/next_buses" and parsed.query:
+        return "/next_buses"
+
     return no_update
 
 
