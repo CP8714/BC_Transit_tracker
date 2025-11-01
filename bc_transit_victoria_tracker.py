@@ -14,7 +14,7 @@ import fetch_trip_data
 from datetime import datetime
 from dash import callback_context
 import pytz
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, urlparse, urlencode
 
 # === GitHub data source fallback (optional) ===
 bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
