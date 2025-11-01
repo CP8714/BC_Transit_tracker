@@ -339,7 +339,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     ])
     
 
-def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks):
+def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, bus_callback_done):
     """Generate figure and speed text for a given bus_number."""
     fig = go.Figure()
     toggle_future_stops_text = "Show All Upcoming Stops"
@@ -351,7 +351,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         toggle_future_stops_text = "Show Next 5 Stops"
         
     if not bus:
-        return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available", "", [], toggle_future_stops_text, ""
+        return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available", "", [], toggle_future_stops_text, "", bus_callback_done
 
     lat, lon, speed, route, bus_id, capacity, trip_id, stop_id, bearing, timestamp = (
         bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"], bus["stop_id"], bus["bearing"], bus["timestamp"]
@@ -441,7 +441,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
                 hoverinfo="text",
                 name=f"Position of {bus_id}"
             ))
-            return fig, f"{bus_number} is currently Not In Service", "Next Stop: Not Available", capacity_text, speed_text, timestamp_text, [], toggle_future_stops_text, block_trips
+            return fig, f"{bus_number} is currently Not In Service", "Next Stop: Not Available", capacity_text, speed_text, timestamp_text, [], toggle_future_stops_text, block_trips, bus_callback_done
             
         delay, stop_sequence, start_time, eta_time, current_stop_id = (
             current_stop["delay"], current_stop["stop_sequence"], current_stop["start_time"], current_stop["time"], current_stop["stop_id"]
@@ -595,11 +595,13 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
             stop_text = f"Current Stop: {stop}"
 
 
-    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text, block_trips
+    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text, block_trips, bus_callback_done
 
 # --- App layout with a container that will be swapped ---
 app.layout = html.Div([
     dcc.Location(id="url", refresh=False),
+    dcc.Store(id="bus-callback-done", data=False, storage_type="memory"),
+    dcc.Store(id="next-buses-callback-done", data=False, storage_type="memory"),
     html.Div(id="page-content")
 ])
 
@@ -625,7 +627,8 @@ def display_page(pathname):
      Output("timestamp-text", "children"),
      Output("future-stop-text", "children"),
      Output("toggle-future-stops", "children"),
-     Output("block-trips", "children")],
+     Output("block-trips", "children"),
+     Output("bus-callback-done", "data")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("search-for-bus", "n_clicks"),
@@ -659,7 +662,7 @@ def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_futur
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    return get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks)
+    return get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, True)
 
 
 # Update bus number value in search bar of bus_tracker if bus number detected in url
@@ -680,7 +683,8 @@ def update_bus_input_from_url(search_input):
 
 @callback(
     [Output("next-buses-output", "children"),
-     Output("toggle-future-buses", "children")],
+     Output("toggle-future-buses", "children"),
+     Output("next-buses-callback-done", "data)],
     [Input("stop-interval-component", "n_intervals"),
      Input("stop-manual-update", "n_clicks"),
      Input("look-up-next-buses", "n_clicks"),
@@ -720,7 +724,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up
     else:
         toggle_future_buses_text = "Show Next 20 Buses"
     next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks)
-    return next_buses_html, toggle_future_buses_text
+    return next_buses_html, toggle_future_buses_text, True
 
 @callback(
     Output("stop-search-user-input", "value"),
@@ -736,21 +740,41 @@ def set_stop_input(stop_search):
 
 @callback(
     Output("url", "href"),
-    Input("url", "href")
+    Output("bus-callback-done", "data")
+    [Input("url", "href"),
+    Input("bus-callback-done", "data")],
+    prevent_initial_call=True
 )
-def reset_url(href):
+def reset_bus_url(href, bus_done):
+    if not bus_done:
+        raise PreventUpdate
     if not href:
         return no_update
-
     parsed = urlparse(href)
 
     if parsed.path == "/bus_tracker" and parsed.query:
-        return "/bus_tracker"
+        return "/bus_tracker", False
+
+    raise PreventUpdate
+
+@callback(
+    Output("url", "href"),
+    Output("next-buses-callback-done", "data"),
+    [Input("url", "href"),
+    Input("next-buses-callback-done", "data")],
+    prevent_initial_call=True
+)
+def reset_stop_url(href, bus_done):
+    if not bus_done:
+        raise PreventUpdate
+    if not href:
+        raise PreventUpdate
+    parsed = urlparse(href)
 
     if parsed.path == "/next_buses" and parsed.query:
-        return "/next_buses"
+        return "/next_buses", False
 
-    return no_update
+    raise PreventUpdate
 
 
 if __name__ == "__main__":
