@@ -135,7 +135,7 @@ next_buses_layout = html.Div([
             children=[
                 html.Button(id="toggle-future-buses", n_clicks=0, children="Show Next 20 Buses", style={"margin-bottom": "10px"}),
                 html.Div(id="next-buses-output"),
-                dcc.Link("← GO to Bus Tracker", href="/bus_tracker"),
+                dcc.Link("← Go to Bus Tracker", href="/bus_tracker"),
             ]
         )
     ]),
@@ -742,7 +742,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up
     triggered_id = callback_context.triggered_id
 
     # Check if there is a stop number in the url and use it if so
-    if triggered_id == "url" and href:
+    if href:
         parsed_url = urlparse(href)
         query_params = parse_qs(parsed_url.query)
         if "stop_id" in query_params:
