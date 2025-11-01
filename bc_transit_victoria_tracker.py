@@ -28,33 +28,26 @@ home_layout = html.Div([
     html.Div([
         html.Label("Enter Bus Number:"),
         dcc.Input(
-            id="bus-search-user-input",
+            id="bus-search-home",
             type="text",
             placeholder="enter bus number e.g. 9542",
             value="9542",
             debounce=True
         ),
-        html.Button("Search", id="search-for-bus", n_clicks=0),
+        html.Button("Search", id="search-for-bus-home", n_clicks=0),
     ], style={"margin-bottom": "10px"}),
 
     html.Div([
         html.Label("Enter Stop Number:"),
         dcc.Input(
-            id="stop-search-user-input",
+            id="stop-search-home",
             type="text",
             placeholder="enter stop bus number e.g. 100032",
             value="100032",
             debounce=True
         ),
-        html.Button("Search", id="search-for-stop", n_clicks=0),
-    ], style={"margin-bottom": "10px"}),
-
-    # Auto-refresh interval
-    dcc.Interval(
-        id="interval-component",
-        interval=100*10000,  # 60 seconds
-        n_intervals=0
-    ),
+        html.Button("Search", id="search-for-stop-home", n_clicks=0),
+    ], style={"margin-bottom": "10px"})
     
 ])
 
@@ -142,7 +135,7 @@ next_buses_layout = html.Div([
             children=[
                 html.Button(id="toggle-future-buses", n_clicks=0, children="Show Next 20 Buses", style={"margin-bottom": "10px"}),
                 html.Div(id="next-buses-output"),
-                dcc.Link("← Back to Bus Tracker", href="/"),
+                dcc.Link("← GO to Bus Tracker", href="/bus_tracker"),
             ]
         )
     ]),
@@ -261,7 +254,7 @@ def make_next_buses_table(next_buses):
                 html.Td(bus["arrival_time"], style={"border": "1px solid black", "textAlign": "center"}),
                 html.Td(bus["trip_headsign"], style={"border": "1px solid black", "textAlign": "center"}),
                 html.Td(
-                    html.A(bus["bus"], href=f"/?bus={bus['bus']}", style={"textDecoration": "none", "color": "blue"})
+                    html.A(bus["bus"], href=f"/bus_tracker?bus={bus['bus']}", style={"textDecoration": "none", "color": "blue"})
                     if bus["bus"] != "Unknown" else bus["bus"],
                     style={"border": "1px solid black", "textAlign": "center"}
                 )
@@ -639,6 +632,24 @@ app.layout = html.Div([
     html.Div(id="page-content")
 ])
 
+@callback(
+    Output("url", "href"),
+    Input("search-for-bus-home", "n_clicks"),
+    Input("search-for-stop-home", "n_clicks"),
+    State("bus-search-home", "value"),
+    State("stop-search-home", "value"),
+    prevent_initial_call=True
+)
+def navigate_from_home(bus_clicks, stop_clicks, bus_value, stop_value):
+    triggered_id = callback_context.triggered_id
+    if triggered_id == "bus-search-btn" and bus_value:
+        params = urlencode({"bus": bus_value})
+        return f"/bus_tracker?{params}"
+    elif triggered_id == "stop-search-btn" and stop_value:
+        params = urlencode({"stop": stop_value})
+        return f"/next_buses?{params}"
+    return "/"
+
 
 # --- Callback to swap layouts based on URL ---
 @callback(
@@ -648,8 +659,10 @@ app.layout = html.Div([
 def display_page(pathname):
     if pathname == "/next_buses":
         return next_buses_layout
-    else:
+    elif pathname == "/bus_tracker":
         return bus_tracker_layout
+    else:
+        return home_layout
 
 @callback(
     [Output("live-map", "figure"),
