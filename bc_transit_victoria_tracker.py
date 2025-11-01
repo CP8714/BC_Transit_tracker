@@ -633,7 +633,7 @@ app.layout = html.Div([
 ])
 
 @callback(
-    Output("url", "href"),
+    Output("url", "pathname"),
     Input("search-for-bus-home", "n_clicks"),
     Input("search-for-stop-home", "n_clicks"),
     State("bus-search-home", "value"),
