@@ -682,12 +682,20 @@ def update_bus_input_from_url(search_input):
      Input("stop-manual-update", "n_clicks"),
      Input("look-up-next-buses", "n_clicks"),
      Input("look-up-next-buses-route", "n_clicks"),
-     Input("toggle-future-buses", "n_clicks")],
+     Input("toggle-future-buses", "n_clicks"),
+     Input("url", "href")],
     [State("stop-search-user-input", "value"),
      State("route-search-user-input", "value")]
 )
-def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up_next_buses_route, toggle_future_buses_clicks, stop_number_input, route_number_input):
+def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up_next_buses_route, toggle_future_buses_clicks, href, stop_number_input, route_number_input):
     triggered_id = callback_context.triggered_id
+
+    # Check if there is a stop number in the url and use it if so
+    if href:
+        parsed_url = urlparse(href)
+        query_params = parse_qs(parsed_url.query)
+        if "stop_id" in query_params:
+            stop_number_input = query_params["stop_id"][0]
 
     # Manual button triggers a live fetch
     if triggered_id in ["manual-update", "look-up-next-buses", "look-up-next-buses-route"]:
