@@ -106,7 +106,7 @@ next_buses_layout = html.Div([
             children=[
                 html.Button(id="toggle-future-buses", n_clicks=0, children="Show Next 20 Buses", style={"margin-bottom": "10px"}),
                 html.Div(id="next-buses-output"),
-                dcc.Link("← Back to Bus Tracker", href="/"),
+                dcc.Link("← Back to Bus Tracker", href="/bus_tracker"),
             ]
         )
     ]),
@@ -225,7 +225,7 @@ def make_next_buses_table(next_buses):
                 html.Td(bus["arrival_time"], style={"border": "1px solid black", "textAlign": "center"}),
                 html.Td(bus["trip_headsign"], style={"border": "1px solid black", "textAlign": "center"}),
                 html.Td(
-                    html.A(bus["bus"], href=f"/?bus={bus['bus']}", style={"textDecoration": "none", "color": "blue"})
+                    html.A(bus["bus"], href=f"/bus_tracker?bus={bus['bus']}", style={"textDecoration": "none", "color": "blue"})
                     if bus["bus"] != "Unknown" else bus["bus"],
                     style={"border": "1px solid black", "textAlign": "center"}
                 )
@@ -610,7 +610,9 @@ app.layout = html.Div([
     Input("url", "pathname")
 )
 def display_page(pathname):
-    if pathname == "/next_buses":
+    if pathname == "/bus_tracker":
+        return bus_tracker_layout
+    elif pathname == "/next_buses":
         return next_buses_layout
     else:
         return bus_tracker_layout
