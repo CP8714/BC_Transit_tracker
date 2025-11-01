@@ -633,8 +633,7 @@ app.layout = html.Div([
 ])
 
 @callback(
-    Output("url", "pathname"),
-    Output("url", "search"),
+    Output("url", "href"),
     Input("search-for-bus-home", "n_clicks"),
     Input("search-for-stop-home", "n_clicks"),
     State("bus-search-home", "value"),
@@ -644,12 +643,12 @@ app.layout = html.Div([
 def navigate_from_home(bus_clicks, stop_clicks, bus_value, stop_value):
     triggered_id = callback_context.triggered_id
     if triggered_id == "search-for-bus-home" and bus_value:
-        params = urlencode({"bus": bus_value})
-        return "/bus_tracker", f"?{params}"
+        # params = urlencode({"bus": bus_value})
+        return f"/bus_tracker?bus={bus_value}"
     elif triggered_id == "search-for-stop-home" and stop_value:
-        params = urlencode({"stop": stop_value})
-        return "/next_buses", f"?{params}"
-    return no_update, no_update
+        # params = urlencode({"stop": stop_value})
+        return f"/next_buses?stop={stop_value}"
+    return "/"
 
 
 # --- Callback to swap layouts based on URL ---
