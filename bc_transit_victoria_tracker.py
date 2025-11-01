@@ -339,7 +339,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     ])
     
 
-def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url):
+def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks):
     """Generate figure and speed text for a given bus_number."""
     fig = go.Figure()
     toggle_future_stops_text = "Show All Upcoming Stops"
