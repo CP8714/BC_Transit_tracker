@@ -647,7 +647,7 @@ def navigate_from_home(bus_clicks, stop_clicks, bus_value, stop_value):
         params = urlencode({"bus": bus_value})
         return "/bus_tracker", f"?{params}"
     elif triggered_id == "search-for-stop-home" and stop_value:
-        params = urlencode({"stop": stop_value})
+        params = urlencode({"stop_id": stop_value})
         return "/next_buses", f"?{params}"
     return no_update, no_update
 
