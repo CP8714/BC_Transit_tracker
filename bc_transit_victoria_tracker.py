@@ -644,10 +644,10 @@ def navigate_from_home(bus_clicks, stop_clicks, bus_value, stop_value):
     triggered_id = callback_context.triggered_id
     if triggered_id == "search-for-bus-home" and bus_value:
         params = urlencode({"bus": bus_value})
-        return f"/bus_tracker?bus={params}"
+        return f"/bus_tracker?{params}"
     elif triggered_id == "search-for-stop-home" and stop_value:
         params = urlencode({"stop": stop_value})
-        return f"/next_buses?stop={params}"
+        return f"/next_buses?{params}"
     return "/"
 
 
