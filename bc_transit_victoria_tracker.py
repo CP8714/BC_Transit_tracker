@@ -748,7 +748,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up
         parsed_url = urlparse(href)
         query_params = parse_qs(parsed_url.query)
         test = "href 1"
-        test = query_params
+        test = f"{query_params} and {parsed_url} and {href}"
         if "stop_id" in query_params:
             test = "href 2"
             stop_number_input = query_params["stop_id"][0]
