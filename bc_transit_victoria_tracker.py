@@ -70,12 +70,13 @@ bus_tracker_layout = html.Div([
 
 next_buses_layout = html.Div([
 
+    html.H1("Next Buses Page"),
+
     html.Div([
         dcc.Loading(
             id="loading-component",
             type="circle",
             children=[
-                html.H1("Next Buses Page"),
                 html.Div([
                     html.Label("Enter Bus Stop Number:"),
                     dcc.Input(
