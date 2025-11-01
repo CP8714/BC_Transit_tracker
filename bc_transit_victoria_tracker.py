@@ -76,7 +76,7 @@ next_buses_layout = html.Div([
             id="stop-search-user-input",
             type="text",
             placeholder="enter stop bus number e.g. 100032",
-            value="100032",
+            value="",
             debounce=True,
             style={"width": "250px"}
         ),
