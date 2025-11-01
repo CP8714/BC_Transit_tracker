@@ -674,12 +674,12 @@ def display_page(pathname):
      Output("future-stop-text", "children"),
      Output("toggle-future-stops", "children"),
      Output("block-trips", "children"),
-     Output("url", "pathname")],
+     Output("url", "href")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("search-for-bus", "n_clicks"),
      Input("toggle-future-stops", "n_clicks"),
-     Input("url", "pathname")],
+     Input("url", "href")],
     [State("bus-search-user-input", "value")]
 )
 def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, pathname, bus_number):
