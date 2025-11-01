@@ -684,7 +684,7 @@ def update_bus_input_from_url(search_input):
 @callback(
     [Output("next-buses-output", "children"),
      Output("toggle-future-buses", "children"),
-     Output("next-buses-callback-done", "data)],
+     Output("next-buses-callback-done", "data")],
     [Input("stop-interval-component", "n_intervals"),
      Input("stop-manual-update", "n_clicks"),
      Input("look-up-next-buses", "n_clicks"),
