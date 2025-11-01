@@ -637,13 +637,15 @@ def display_page(pathname):
 )
 def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, href, bus_number):
     triggered_id = callback_context.triggered_id
+    reset_url = no_update
 
     # Check if there is a bus number in the url and use it if so
-    if href:
+    if href and "/bus_tracker" in href:
         parsed_url = urlparse(href)
         query_params = parse_qs(parsed_url.query)
         if "bus" in query_params:
             bus_number = query_params["bus"][0]
+        reset_url = "/bus_tracker"
         
 
     # Manual button triggers a live fetch
@@ -659,7 +661,6 @@ def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_futur
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    reset_url = "/bus_tracker"
     return get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url)
 
 
