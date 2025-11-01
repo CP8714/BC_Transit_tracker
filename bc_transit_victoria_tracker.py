@@ -687,7 +687,7 @@ def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_futur
     triggered_id = callback_context.triggered_id
 
     # Check if there is a bus number in the url and use it if so
-    if href:
+    if triggered_id == "url" and  href:
         parsed_url = urlparse(href)
         query_params = parse_qs(parsed_url.query)
         if "bus" in query_params:
