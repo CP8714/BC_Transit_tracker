@@ -76,27 +76,34 @@ next_buses_layout = html.Div([
             type="circle",
             children=[
                 html.H1("Next Buses Page"),
-                html.Label("Enter Bus Stop Number:"),
-                dcc.Input(
-                    id="stop-search-user-input",
-                    type="text",
-                    placeholder="enter stop bus number e.g. 100032",
-                    value="",
-                    debounce=True,
-                    style={"width": "250px"}
-                ),
-                html.Button("Search", id="look-up-next-buses", n_clicks=0),
+                html.Div([
+                    html.Label("Enter Bus Stop Number:"),
+                    dcc.Input(
+                        id="stop-search-user-input",
+                        type="text",
+                        placeholder="enter stop bus number e.g. 100032",
+                        value="",
+                        debounce=True,
+                        style={"width": "250px"}
+                    ),
+                    html.Button("Search", id="look-up-next-buses", n_clicks=0),
+                ], style={"margin-bottom": "10px"}),
+
+                html.Div([
+                    html.Label("Enter Route Stop Number:"),
+                    dcc.Input(
+                        id="route-search-user-input",
+                        type="text",
+                        placeholder="(Optional) enter route number e.g. 95",
+                        value="",
+                        debounce=True,
+                        style={"width": "250px"}
+                    ),
+                    html.Button("Search", id="look-up-next-buses-route", n_clicks=0),
+                ], style={"margin-bottom": "10px"}),
+            
+                # Manual update button
                 html.Button("Update Now", id="stop-manual-update", n_clicks=0, style={"margin-bottom": "10px"}),
-                html.Label("Enter Route Stop Number:"),
-                dcc.Input(
-                    id="route-search-user-input",
-                    type="text",
-                    placeholder="(Optional) enter route number e.g. 95",
-                    value="",
-                    debounce=True,
-                    style={"width": "250px"}
-                ),
-                html.Button("Search", id="look-up-next-buses-route", n_clicks=0),
                 html.Button(id="toggle-future-buses", n_clicks=0, children="Show Next 20 Buses", style={"margin-bottom": "10px"}),
                 html.Div(id="next-buses-output"),
                 dcc.Link("← Back to Bus Tracker", href="/bus_tracker"),
