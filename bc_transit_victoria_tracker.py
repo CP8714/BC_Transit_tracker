@@ -671,18 +671,19 @@ def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_futur
 )
 def update_bus_input_from_url(search_input):
     if not search_input:
-        return dash.no_update
+        return no_update
 
     params = parse_qs(search_input.lstrip("?"))
     bus_number = params.get("bus", [None])[0]
     if bus_number:
         return bus_number
-    return dash.no_update
+    return no_update
 
 
 @callback(
     [Output("next-buses-output", "children"),
-     Output("toggle-future-buses", "children")],
+     Output("toggle-future-buses", "children"),
+     Output("url", "href")],
     [Input("stop-interval-component", "n_intervals"),
      Input("stop-manual-update", "n_clicks"),
      Input("look-up-next-buses", "n_clicks"),
@@ -694,6 +695,7 @@ def update_bus_input_from_url(search_input):
 )
 def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up_next_buses_route, toggle_future_buses_clicks, href, stop_number_input, route_number_input):
     triggered_id = callback_context.triggered_id
+    reset_url = no_update
 
     # Check if there is a stop number in the url and use it if so
     if href:
@@ -701,6 +703,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up
         query_params = parse_qs(parsed_url.query)
         if "stop_id" in query_params:
             stop_number_input = query_params["stop_id"][0]
+        reset_url = "/next_buses"
 
     # Manual button triggers a live fetch
     if triggered_id in ["manual-update", "look-up-next-buses", "look-up-next-buses-route"]:
@@ -720,18 +723,20 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up
     else:
         toggle_future_buses_text = "Show Next 20 Buses"
     next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks)
-    return next_buses_html, toggle_future_buses_text
+    return next_buses_html, toggle_future_buses_text, reset_url
 
 @callback(
     Output("stop-search-user-input", "value"),
     Input("url", "search")
 )
 def set_stop_input(stop_search):
-    if stop_search:
-        query_params = parse_qs(stop_search.lstrip("?"))
-        stop_id = query_params.get("stop_id", [None])[0]
+    if not stop_search:
+        return no_update
+    query_params = parse_qs(stop_search.lstrip("?"))
+    stop_id = query_params.get("stop_id", [None])[0]
+    if stop_id:
         return stop_id
-    return ""
+    return no_update
 
 
 if __name__ == "__main__":
