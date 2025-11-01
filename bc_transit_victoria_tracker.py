@@ -682,7 +682,7 @@ def display_page(pathname):
      Input("url", "pathname")],
     [State("bus-search-user-input", "value")]
 )
-def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, href, bus_number):
+def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, pathname, bus_number):
     triggered_id = callback_context.triggered_id
 
     # Check if there is a bus number in the url and use it if so
