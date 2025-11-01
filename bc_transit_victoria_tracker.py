@@ -730,11 +730,9 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up
     Input("url", "search")
 )
 def set_stop_input(stop_search):
-    if not stop_search:
-        return no_update
-    query_params = parse_qs(stop_search.lstrip("?"))
-    stop_id = query_params.get("stop_id", [None])[0]
-    if stop_id:
+    if stop_search:
+        query_params = parse_qs(stop_search.lstrip("?"))
+        stop_id = query_params.get("stop_id", [None])[0]
         return stop_id
     return no_update
 
