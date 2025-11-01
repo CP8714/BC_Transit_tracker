@@ -12,7 +12,7 @@ import pandas as pd
 import fetch_fleet_data
 import fetch_trip_data
 from datetime import datetime
-from dash import callback_context
+from dash import callback_context, no_update
 import pytz
 from urllib.parse import parse_qs, urlparse, urlencode
 
@@ -31,7 +31,7 @@ home_layout = html.Div([
             id="bus-search-home",
             type="text",
             placeholder="enter bus number e.g. 9542",
-            value="9542",
+            value="",
             debounce=True
         ),
         html.Button("Search", id="search-for-bus-home", n_clicks=0),
@@ -43,7 +43,7 @@ home_layout = html.Div([
             id="stop-search-home",
             type="text",
             placeholder="enter stop bus number e.g. 100032",
-            value="100032",
+            value="",
             debounce=True
         ),
         html.Button("Search", id="search-for-stop-home", n_clicks=0),
@@ -633,7 +633,8 @@ app.layout = html.Div([
 ])
 
 @callback(
-    Output("url", "href"),
+    Output("url", "pathname"),
+    Output("url", "search"),
     Input("search-for-bus-home", "n_clicks"),
     Input("search-for-stop-home", "n_clicks"),
     State("bus-search-home", "value"),
@@ -644,11 +645,11 @@ def navigate_from_home(bus_clicks, stop_clicks, bus_value, stop_value):
     triggered_id = callback_context.triggered_id
     if triggered_id == "search-for-bus-home" and bus_value:
         params = urlencode({"bus": bus_value})
-        return f"/bus_tracker?{params}"
+        return "/bus_tracker", f"?{params}"
     elif triggered_id == "search-for-stop-home" and stop_value:
         params = urlencode({"stop": stop_value})
-        return f"/next_buses?{params}"
-    return "/"
+        return "/next_buses", f"?{params}"
+    return no_update, no_update
 
 
 # --- Callback to swap layouts based on URL ---
