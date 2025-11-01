@@ -368,7 +368,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     ])
     
 
-def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, new_url):
+def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, new_url, test):
     """Generate figure and speed text for a given bus_number."""
     fig = go.Figure()
     toggle_future_stops_text = "Show All Upcoming Stops"
@@ -411,7 +411,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         block_trips = []
         block = trip_id.split(":")[2]
         full_block = trips_df[trips_df["block_id"].astype(str) == block]
-        block_trips.append(f"{bus_number} will be running the following trips today:")
+        block_trips.append(f"{bus_number} will be running the following trips today: {test}")
 
         # Load all stop times for all trips in the block
         stop_times_df = load_block_departure_times(full_block["trip_id"].tolist())
@@ -651,18 +651,18 @@ def navigate_from_home(bus_clicks, stop_clicks, bus_value, stop_value):
     return "/"
 
 
-# # --- Callback to swap layouts based on URL ---
-# @callback(
-#     Output("page-content", "children"),
-#     Input("url", "pathname")
-# )
-# def display_page(pathname):
-#     if pathname.startswith("/next_buses"):
-#         return next_buses_layout
-#     elif pathname.startswith("/bus_tracker"):
-#         return bus_tracker_layout
-#     else:
-#         return home_layout
+# --- Callback to swap layouts based on URL ---
+@callback(
+    Output("page-content", "children"),
+    Input("url", "pathname")
+)
+def display_page(pathname):
+    if pathname.startswith("/next_buses"):
+        return next_buses_layout
+    elif pathname.startswith("/bus_tracker"):
+        return bus_tracker_layout
+    else:
+        return home_layout
 
 @callback(
     [Output("live-map", "figure"),
@@ -686,6 +686,7 @@ def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_futur
     triggered_id = callback_context.triggered_id
 
     # Check if there is a bus number in the url and use it if so
+    test = pathname
     if pathname and pathname.startswith("/bus_tracker/"):
         bus_number = pathname.split("/bus_tracker/")[1]
 
@@ -703,7 +704,7 @@ def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_futur
     trips_df = load_trips()
     stops_df = load_stops()
     new_url = "/bus_tracker"
-    return get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, new_url)
+    return get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, new_url, test)
 
 
 # Update bus number value in search bar of bus_tracker if bus number detected in url
