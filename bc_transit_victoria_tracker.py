@@ -22,8 +22,44 @@ trip_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs
 
 app = dash.Dash(__name__)
 
-bus_tracker_layout = html.Div([
+home_layout = html.Div([
     html.H2("BC Transit Victoria – Bus Tracker"),
+
+    html.Div([
+        html.Label("Enter Bus Number:"),
+        dcc.Input(
+            id="bus-search-user-input",
+            type="text",
+            placeholder="enter bus number e.g. 9542",
+            value="9542",
+            debounce=True
+        ),
+        html.Button("Search", id="search-for-bus", n_clicks=0),
+    ], style={"margin-bottom": "10px"}),
+
+    html.Div([
+        html.Label("Enter Stop Number:"),
+        dcc.Input(
+            id="stop-search-user-input",
+            type="text",
+            placeholder="enter stop bus number e.g. 100032",
+            value="100032",
+            debounce=True
+        ),
+        html.Button("Search", id="search-for-stop", n_clicks=0),
+    ], style={"margin-bottom": "10px"}),
+
+    # Auto-refresh interval
+    dcc.Interval(
+        id="interval-component",
+        interval=100*10000,  # 60 seconds
+        n_intervals=0
+    ),
+    
+])
+
+bus_tracker_layout = html.Div([
+    html.H2("Bus Tracker"),
 
     html.Div([
         html.Label("Enter Bus Number:"),
