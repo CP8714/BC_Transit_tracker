@@ -69,28 +69,24 @@ bus_tracker_layout = html.Div([
 ])
 
 next_buses_layout = html.Div([
-    html.H1("Next Buses Page"),
-    html.Div([
-        html.Label("Enter Bus Stop Number:"),
-        dcc.Input(
-            id="stop-search-user-input",
-            type="text",
-            placeholder="enter stop bus number e.g. 100032",
-            value="",
-            debounce=True,
-            style={"width": "250px"}
-        ),
-        html.Button("Search", id="look-up-next-buses", n_clicks=0),
-    ], style={"margin-bottom": "10px"}),
-
-    # Manual update button
-    html.Button("Update Now", id="stop-manual-update", n_clicks=0, style={"margin-bottom": "10px"}),
 
     html.Div([
         dcc.Loading(
             id="loading-component",
             type="circle",
             children=[
+                html.H1("Next Buses Page"),
+                html.Label("Enter Bus Stop Number:"),
+                dcc.Input(
+                    id="stop-search-user-input",
+                    type="text",
+                    placeholder="enter stop bus number e.g. 100032",
+                    value="",
+                    debounce=True,
+                    style={"width": "250px"}
+                ),
+                html.Button("Search", id="look-up-next-buses", n_clicks=0),
+                html.Button("Update Now", id="stop-manual-update", n_clicks=0, style={"margin-bottom": "10px"}),
                 html.Label("Enter Route Stop Number:"),
                 dcc.Input(
                     id="route-search-user-input",
