@@ -657,9 +657,9 @@ def navigate_from_home(bus_clicks, stop_clicks, bus_value, stop_value):
     Input("url", "pathname")
 )
 def display_page(pathname):
-    if pathname == "/next_buses":
+    if pathname.startswith("/next_buses"):
         return next_buses_layout
-    elif pathname == "/bus_tracker":
+    elif pathname.startswith("/bus_tracker"):
         return bus_tracker_layout
     else:
         return home_layout
