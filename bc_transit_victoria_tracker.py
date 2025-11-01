@@ -733,9 +733,9 @@ def update_bus_input_from_url(search_input):
      Input("stop-manual-update", "n_clicks"),
      Input("look-up-next-buses", "n_clicks"),
      Input("look-up-next-buses-route", "n_clicks"),
-     Input("toggle-future-buses", "n_clicks"),
-     Input("url", "href")],
-    [State("stop-search-user-input", "value"),
+     Input("toggle-future-buses", "n_clicks")],
+    [State("url", "href"),
+     State("stop-search-user-input", "value"),
      State("route-search-user-input", "value")]
 )
 def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up_next_buses_route, toggle_future_buses_clicks, href, stop_number_input, route_number_input):
