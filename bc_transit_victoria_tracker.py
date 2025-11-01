@@ -687,12 +687,11 @@ def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_futur
     triggered_id = callback_context.triggered_id
 
     # Check if there is a bus number in the url and use it if so
-    if triggered_id == "url" and href:
+    if href:
         parsed_url = urlparse(href)
         query_params = parse_qs(parsed_url.query)
         if "bus" in query_params:
-            bus_number = query_params["bus"][0]
-        
+            bus_number = query_params["bus"][0]   
 
     # Manual button triggers a live fetch
     if triggered_id == "manual-update" or triggered_id == "search-for-bus":
