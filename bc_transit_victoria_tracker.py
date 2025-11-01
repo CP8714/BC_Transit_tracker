@@ -682,8 +682,7 @@ def update_bus_input_from_url(search_input):
 
 @callback(
     [Output("next-buses-output", "children"),
-     Output("toggle-future-buses", "children"),
-     Output("url", "href")],
+     Output("toggle-future-buses", "children")],
     [Input("stop-interval-component", "n_intervals"),
      Input("stop-manual-update", "n_clicks"),
      Input("look-up-next-buses", "n_clicks"),
@@ -723,7 +722,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up
     else:
         toggle_future_buses_text = "Show Next 20 Buses"
     next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks)
-    return next_buses_html, toggle_future_buses_text, reset_url
+    return next_buses_html, toggle_future_buses_text
 
 @callback(
     Output("stop-search-user-input", "value"),
