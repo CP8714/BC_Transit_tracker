@@ -678,9 +678,9 @@ def display_page(pathname):
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("search-for-bus", "n_clicks"),
-     Input("toggle-future-stops", "n_clicks"),
-     Input("url", "href")],
-    [State("bus-search-user-input", "value")]
+     Input("toggle-future-stops", "n_clicks")],
+    [State("url", "href"),
+    State("bus-search-user-input", "value")]
 )
 def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, pathname, bus_number):
     triggered_id = callback_context.triggered_id
@@ -710,7 +710,7 @@ def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_futur
 # Update bus number value in search bar of bus_tracker if bus number detected in url
 @callback(
     Output("bus-search-user-input", "value"),
-    Input("url", "search")
+    State("url", "search")
 )
 def update_bus_input_from_url(search_input):
     if not search_input:
@@ -769,7 +769,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up
 
 @callback(
     Output("stop-search-user-input", "value"),
-    Input("url", "search")
+    State("url", "search")
 )
 def set_stop_input(stop_search):
     if stop_search:
