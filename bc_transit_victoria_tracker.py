@@ -628,7 +628,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
 
 # --- App layout with a container that will be swapped ---
 app.layout = html.Div([
-    dcc.Location(id="url", refresh=False),
+    dcc.Location(id="url", refresh=True),
     html.Div(id="page-content")
 ])
 
