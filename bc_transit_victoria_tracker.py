@@ -674,23 +674,20 @@ def display_page(pathname):
      Output("future-stop-text", "children"),
      Output("toggle-future-stops", "children"),
      Output("block-trips", "children"),
-     Output("url", "href")],
+     Output("url", "pathname")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("search-for-bus", "n_clicks"),
      Input("toggle-future-stops", "n_clicks"),
-     Input("url", "href")],
+     Input("url", "pathname")],
     [State("bus-search-user-input", "value")]
 )
 def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, href, bus_number):
     triggered_id = callback_context.triggered_id
 
     # Check if there is a bus number in the url and use it if so
-    if href:
-        parsed_url = urlparse(href)
-        query_params = parse_qs(parsed_url.query)
-        if "bus" in query_params:
-            bus_number = query_params["bus"][0]   
+    if pathname and pathname.startswith("/bus_tracker/"):
+        bus_number = pathname.split("/bus_tracker/")[1]
 
     # Manual button triggers a live fetch
     if triggered_id == "manual-update" or triggered_id == "search-for-bus":
