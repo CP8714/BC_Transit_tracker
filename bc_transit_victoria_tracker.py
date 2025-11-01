@@ -697,7 +697,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up
     reset_url = no_update
 
     # Check if there is a stop number in the url and use it if so
-    if href and "/next_buses" in href and not in ["manual-update", "look-up-next-buses", "look-up-next-buses-route"]:
+    if href and "/next_buses" in href and triggered_id not in ["manual-update", "look-up-next-buses", "look-up-next-buses-route"]:
         parsed_url = urlparse(href)
         query_params = parse_qs(parsed_url.query)
         if "stop_id" in query_params:
