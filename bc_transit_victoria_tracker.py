@@ -651,18 +651,18 @@ def navigate_from_home(bus_clicks, stop_clicks, bus_value, stop_value):
     return "/"
 
 
-# --- Callback to swap layouts based on URL ---
-@callback(
-    Output("page-content", "children"),
-    Input("url", "pathname")
-)
-def display_page(pathname):
-    if pathname.startswith("/next_buses"):
-        return next_buses_layout
-    elif pathname.startswith("/bus_tracker"):
-        return bus_tracker_layout
-    else:
-        return home_layout
+# # --- Callback to swap layouts based on URL ---
+# @callback(
+#     Output("page-content", "children"),
+#     Input("url", "pathname")
+# )
+# def display_page(pathname):
+#     if pathname.startswith("/next_buses"):
+#         return next_buses_layout
+#     elif pathname.startswith("/bus_tracker"):
+#         return bus_tracker_layout
+#     else:
+#         return home_layout
 
 @callback(
     [Output("live-map", "figure"),
