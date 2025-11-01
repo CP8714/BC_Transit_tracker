@@ -633,8 +633,7 @@ app.layout = html.Div([
 ])
 
 @callback(
-    Output("url", "pathname"),
-    Output("url", "search"),
+    Output("url", "href"),
     Input("search-for-bus-home", "n_clicks"),
     Input("search-for-stop-home", "n_clicks"),
     State("bus-search-home", "value"),
@@ -645,11 +644,11 @@ def navigate_from_home(bus_clicks, stop_clicks, bus_value, stop_value):
     triggered_id = callback_context.triggered_id
     if triggered_id == "search-for-bus-home" and bus_value:
         params = urlencode({"bus": bus_value})
-        return "/bus_tracker", f"?{params}"
+        return "/bus_tracker"
     elif triggered_id == "search-for-stop-home" and stop_value:
         params = urlencode({"stop_id": stop_value})
-        return "/next_buses", f"?{params}"
-    return no_update, no_update
+        return "/next_buses"
+    return "/"
 
 
 # --- Callback to swap layouts based on URL ---
@@ -741,13 +740,10 @@ def update_bus_input_from_url(search_input):
 def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up_next_buses_route, toggle_future_buses_clicks, href, stop_number_input, route_number_input):
     triggered_id = callback_context.triggered_id
 
-    test = "no href"
-
     # Check if there is a stop number in the url and use it if so
     if href:
         parsed_url = urlparse(href)
         query_params = parse_qs(parsed_url.query)
-        test = "href 1"
         test = f"{query_params} and {parsed_url} and {href}"
         if "stop_id" in query_params:
             test = "href 2"
