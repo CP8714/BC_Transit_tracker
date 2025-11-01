@@ -740,7 +740,7 @@ def set_stop_input(stop_search):
 
 @callback(
     Output("url", "href"),
-    Output("bus-callback-done", "data")
+    Output("bus-callback-done", "data"),
     [Input("url", "href"),
     Input("bus-callback-done", "data")],
     prevent_initial_call=True
