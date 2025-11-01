@@ -265,7 +265,7 @@ def make_next_buses_table(next_buses):
     style={"borderCollapse": "collapse", "border": "1px solid black", "width": "100%", "marginTop": "10px"}
     )
 
-def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks):
+def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks, test):
     next_buses = []
     if not stop_number_input:
         return html.Div("No Stop Number Entered")
@@ -325,7 +325,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         route_number_input = route_number_input + "-VIC"
         next_trip = [stop for stop in next_trip if stop["route_id"] == route_number_input]
         route_number_input = route_number_input.split('-')[0] 
-        stop_name_text = f"Next Estimated Arrivals For Route {route_number_input} At Stop {stop_number_input} ({stop_name})"
+        stop_name_text = f"Next Estimated Arrivals For Route {route_number_input} At Stop {stop_number_input} ({stop_name}) {test}"
         
     # Sort by arrival time 
     next_trip = sorted(next_trip, key=lambda x: x["time"])
@@ -741,11 +741,15 @@ def update_bus_input_from_url(search_input):
 def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up_next_buses_route, toggle_future_buses_clicks, href, stop_number_input, route_number_input):
     triggered_id = callback_context.triggered_id
 
+    test = "no href"
+
     # Check if there is a stop number in the url and use it if so
     if href:
         parsed_url = urlparse(href)
         query_params = parse_qs(parsed_url.query)
+        test = "href 1"
         if "stop_id" in query_params:
+            test = "href 2"
             stop_number_input = query_params["stop_id"][0]
 
     # Manual button triggers a live fetch
@@ -765,7 +769,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up
         toggle_future_buses_text = "Show Next 10 Buses"
     else:
         toggle_future_buses_text = "Show Next 20 Buses"
-    next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks)
+    next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks, test)
     return next_buses_html, toggle_future_buses_text
 
 @callback(
