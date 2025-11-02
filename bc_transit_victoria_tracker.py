@@ -87,8 +87,12 @@ bus_tracker_layout = html.Div([
                 dcc.Graph(id="live-map"),
                 html.H3(id="block-trips"),
                 html.H3(id="timestamp-text"),
-                dcc.Link("Go to Next Buses →", href="/next_buses"),
-                dcc.Link("← Go back to Home", href="/"),
+                html.Div(
+                    dcc.Link("Go to Next Buses →", href="/next_buses"),
+                ),
+                html.Div(
+                    dcc.Link("← Go back to Home", href="/"),
+                ),
             ]
         )
     ]),
@@ -143,8 +147,12 @@ next_buses_layout = html.Div([
                 html.Div(
                     html.Button(id="toggle-future-buses", n_clicks=0, children="Show Next 20 Buses", style={"margin-bottom": "10px"}), style={"margin-bottom": "10px"}),
                 html.Div(id="next-buses-output"),
-                dcc.Link("Go to Bus Tracker →", href="/bus_tracker"),
-                dcc.Link("← Go back to Home", href="/"),
+                html.Div(
+                    dcc.Link("Go to Next Buses →", href="/next_buses"),
+                ),
+                html.Div(
+                    dcc.Link("← Go back to Home", href="/"),
+                ),
             ]
         )
     ]),
