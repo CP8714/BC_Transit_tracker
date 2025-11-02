@@ -31,7 +31,7 @@ home_layout = html.Div([
             id="loading-component",
             type="circle",
             children=[
-                html.Label("Press to go to the Bus Tracker Page"),
+                html.H3("Press to go to the Bus Tracker Page"),
                 dcc.Link(
                     html.Button("Go to Bus Tracker", id="go-to-bus-tracker"),
                     href="/bus_tracker"
@@ -45,7 +45,7 @@ home_layout = html.Div([
             id="loading-component",
             type="circle",
             children=[
-                html.Label("Press to go to the Next Buses Page"),
+                html.H3("Press to go to the Next Buses Page"),
                 dcc.Link(
                     html.Button("Go to Next Buses", id="go-to-next-buses"),
                     href="/next_buses"
@@ -88,6 +88,7 @@ bus_tracker_layout = html.Div([
                 html.H3(id="block-trips"),
                 html.H3(id="timestamp-text"),
                 dcc.Link("Go to Next Buses →", href="/next_buses"),
+                dcc.Link("← Go back to Home", href="/"),
             ]
         )
     ]),
@@ -142,7 +143,8 @@ next_buses_layout = html.Div([
                 html.Div(
                     html.Button(id="toggle-future-buses", n_clicks=0, children="Show Next 20 Buses", style={"margin-bottom": "10px"}), style={"margin-bottom": "10px"}),
                 html.Div(id="next-buses-output"),
-                dcc.Link("← Back to Bus Tracker", href="/bus_tracker"),
+                dcc.Link("Go to Bus Tracker →", href="/bus_tracker"),
+                dcc.Link("← Go back to Home", href="/"),
             ]
         )
     ]),
