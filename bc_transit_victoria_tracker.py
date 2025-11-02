@@ -242,7 +242,7 @@ def make_next_buses_table(next_buses):
 def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks):
     next_buses = []
     if not stop_number_input:
-        return html.Div("No Stop Number Entered")
+        return html.Div("Please Enter A Stop Number")
     stop_number_input = int(stop_number_input)
     stop = stops_df.loc[stops_df["stop_id"] == stop_number_input, "stop_name"]
     if stop.empty:
