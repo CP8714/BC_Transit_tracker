@@ -22,6 +22,39 @@ trip_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs
 
 app = dash.Dash(__name__)
 
+
+home_layout = html.Div([
+    html.H1("Welcome to the BC Transit Victoria Tracker"),
+
+    html.Div([
+        dcc.Loading(
+            id="loading-component",
+            type="circle",
+            children=[
+                html.Label("Press to go to the Bus Tracker Page"),
+                dcc.Link(
+                    html.Button("Go to Bus Tracker", id="go-to-bus-tracker"),
+                    href="/bus_tracker"
+                )
+            ]
+        )
+    ]),
+
+    html.Div([
+        dcc.Loading(
+            id="loading-component",
+            type="circle",
+            children=[
+                html.Label("Press to go to the Next Buses Page"),
+                dcc.Link(
+                    html.Button("Go to Next Buses", id="go-to-next-buses"),
+                    href="/next_buses"
+                )
+            ]
+        )
+    ])
+])
+
 bus_tracker_layout = html.Div([
     html.H2("BC Transit Victoria – Bus Tracker"),
 
@@ -618,7 +651,7 @@ def display_page(pathname):
     elif pathname == "/next_buses":
         return next_buses_layout
     else:
-        return bus_tracker_layout
+        return home_layout
 
 @callback(
     [Output("live-map", "figure"),
