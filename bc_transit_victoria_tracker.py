@@ -774,7 +774,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up
         reset_url = "/next_buses"
 
     # Manual button triggers a live fetch
-    if triggered_id in ["manual-update", "look-up-next-buses", "look-up-next-buses-route"]:
+    if triggered_id in ["manual-update", "look-up-next-buses", "look-up-next-buses-route", "stop-dropdown"]:
         try:
             fetch_fleet_data.fetch()
             fetch_trip_data.fetch()
