@@ -753,16 +753,17 @@ def update_bus_input_from_url(search_input):
      Input("look-up-next-buses", "n_clicks"),
      Input("look-up-next-buses-route", "n_clicks"),
      Input("toggle-future-buses", "n_clicks"),
-     Input("url", "href")],
+     Input("url", "href"),
+     Input("stop-dropdown", "value")],
     [State("stop-search-user-input", "value"),
      State("route-search-user-input", "value"),
      State("stop-dropdown", "value")]
 )
-def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up_next_buses_route, toggle_future_buses_clicks, href, stop_number_input, route_number_input, stop_dropdown_value):
+def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up_next_buses_route, toggle_future_buses_clicks, href, stop_dropdown_value, stop_number_input, route_number_input, stop_dropdown_state):
     triggered_id = callback_context.triggered_id
     reset_url = no_update
 
-    if stop_dropdown_value:
+    if triggered_id == "stop-dropdown" and stop_dropdown_value:
         stop_number_input = stop_dropdown_value
         
     # Check if there is a stop number in the url and use it if so
