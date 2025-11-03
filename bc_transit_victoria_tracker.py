@@ -747,7 +747,7 @@ def update_bus_input_from_url(search_input):
      Input("toggle-future-buses", "n_clicks"),
      Input("url", "href"),
      Input("stop-dropdown", "value"),
-     Input("route-dropdown", "value)],
+     Input("route-dropdown", "value")],
     [State("stop-dropdown", "value"),
      State("route-dropdown", "value")]
 )
