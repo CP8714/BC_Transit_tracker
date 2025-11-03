@@ -387,7 +387,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
 
 def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url, triggered_id):
 
-    recenter_map = triggered_id in ["search-for-bus", "manual-update"]
+    recenter_map = triggered_id
 
     
     """Generate figure and speed text for a given bus_number."""
