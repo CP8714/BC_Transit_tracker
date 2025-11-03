@@ -205,7 +205,7 @@ def load_stops():
         return stops_df
 
 # Returns dataframe of routes.csv
-def load_stops():
+def load_routes():
     routes_file = os.path.join("data", "routes.csv")
     if os.path.exists(routes_file):
         routes_df = pd.read_csv(routes_file)
