@@ -65,7 +65,6 @@ bus_tracker_layout = html.Div([
             type="text",
             placeholder="enter bus number e.g. 9542",
             value="9542",
-            clearable=True,
             debounce=True
         ),
         html.Button("Search", id="search-for-bus", n_clicks=0),
@@ -139,7 +138,6 @@ next_buses_layout = html.Div([
                         placeholder="(Optional) enter route number e.g. 95",
                         value="",
                         debounce=True,
-                        clearable=True,
                         style={"width": "250px"}
                     ),
                     html.Button("Search", id="look-up-next-buses-route", n_clicks=0),
