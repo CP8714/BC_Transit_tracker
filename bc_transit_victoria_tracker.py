@@ -774,7 +774,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up
     trips_df = load_trips()
     stops_df = load_stops()
     stop_options = [
-        {"label": f"{row["stop_name"]} (Stop {int(row["stop_id"])}), "value": row["stop_id"]}
+        {"label": f"{row["stop_name"]} (Stop {int(row["stop_id"])})", "value": row["stop_id"]}
         for _, row in stops_df.iterrows()
     ]
     if toggle_future_buses_clicks % 2:
