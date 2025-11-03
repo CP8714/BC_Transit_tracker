@@ -755,11 +755,17 @@ def update_bus_input_from_url(search_input):
      Input("toggle-future-buses", "n_clicks"),
      Input("url", "href")],
     [State("stop-search-user-input", "value"),
-     State("route-search-user-input", "value")]
+     State("route-search-user-input", "value"),
+     State("stop-dropdown", "value")]
 )
-def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up_next_buses_route, toggle_future_buses_clicks, href, stop_number_input, route_number_input):
+def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up_next_buses_route, toggle_future_buses_clicks, href, stop_number_input, route_number_input, stop_dropdown_value):
     triggered_id = callback_context.triggered_id
     reset_url = no_update
+
+    if stop_dropdown_value:
+        stop_number = stop_dropdown_value
+    else:
+        stop_number = stop_number_input
 
     # Check if there is a stop number in the url and use it if so
     if href and "/next_buses" in href and triggered_id not in ["manual-update", "look-up-next-buses", "look-up-next-buses-route"]:
