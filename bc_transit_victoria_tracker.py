@@ -386,6 +386,10 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     
 
 def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url):
+
+    recenter_map = triggered_id in ["search-for-bus", "manual-update"]
+
+    
     """Generate figure and speed text for a given bus_number."""
     fig = go.Figure()
     toggle_future_stops_text = "Show All Upcoming Stops"
@@ -468,11 +472,12 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
             fig.update_layout(
                 mapbox = dict(
                     style="open-street-map",
-                    center={"lat": lat, "lon": lon},
-                    zoom=14
+                    center={"lat": lat, "lon": lon} if recenter_map else no_update,
+                    zoom=14 if recenter_map else no_update,
                 ),
                 height=600,
-                margin={"r":0,"t":0,"l":0,"b":0}
+                margin={"r":0,"t":0,"l":0,"b":0},
+                uirevision=None if recenter_map else "follow-bus"
             )
 
             # Bus location as marker
@@ -547,8 +552,8 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     fig.update_layout(
         mapbox = dict(
             style="open-street-map",
-            center={"lat": lat, "lon": lon},
-            zoom=14,
+            center={"lat": lat, "lon": lon} if recenter_map else no_update,
+            zoom=14 if recenter_map else no_update,
             layers=[
                 dict(
                     sourcetype="geojson",
@@ -560,7 +565,8 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
             ]
         ),
         height=600,
-        margin={"r":0,"t":0,"l":0,"b":0}
+        margin={"r":0,"t":0,"l":0,"b":0},
+        uirevision=None if recenter_map else "follow-bus"
     )
 
     if not deadheading:
