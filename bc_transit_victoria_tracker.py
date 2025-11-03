@@ -122,6 +122,12 @@ next_buses_layout = html.Div([
             type="circle",
             children=[
                 html.Div([
+                    dcc.Dropdown(
+                        id="stop-dropdown",
+                        options=[],
+                        placeholder="Select a stop...",
+                        searchable=True
+                    ),
                     html.Label("Enter Bus Stop Number:"),
                     dcc.Input(
                         id="stop-search-user-input",
@@ -740,7 +746,8 @@ def update_bus_input_from_url(search_input):
 
 @callback(
     [Output("next-buses-output", "children"),
-     Output("toggle-future-buses", "children")],
+     Output("toggle-future-buses", "children"),
+     Output("stop-dropdown", "options")],
     [Input("stop-interval-component", "n_intervals"),
      Input("stop-manual-update", "n_clicks"),
      Input("look-up-next-buses", "n_clicks"),
@@ -784,7 +791,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up
     else:
         toggle_future_buses_text = "Show Next 20 Buses"
     next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks)
-    return next_buses_html, toggle_future_buses_text
+    return next_buses_html, toggle_future_buses_text, stop_options
 
 @callback(
     Output("stop-search-user-input", "value"),
