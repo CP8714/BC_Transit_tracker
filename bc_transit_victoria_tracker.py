@@ -476,17 +476,24 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
             )
 
             # Bus location as marker
-            fig.add_trace(go.Scattermapbox(
-                lat=[lat],
-                lon=[lon],
-                mode="markers+text",
-                text=[bus_id],
-                textposition="top center",
-                marker=dict(size=12, color="blue"),
-                hovertext=[bus_id],
-                hoverinfo="text",
-                name=f"Position of {bus_id}"
-            ))
+            fig.update_layout(
+                mapbox=dict(
+                    style="open-street-map",
+                    center={"lat": lat, "lon": lon},  # <-- keep updating this
+                    zoom=14,
+                    layers=[
+                        dict(
+                            sourcetype="geojson",
+                            source=route_geojson,
+                            type="line",
+                            line=dict(width=2),
+                            below="traces"
+                        )
+                    ]
+                ),
+                height=600,
+                margin={"r": 0, "t": 0, "l": 0, "b": 0},
+                uirevision=False
             return fig, f"{bus_number} is currently Not In Service", "Next Stop: Not Available", capacity_text, speed_text, timestamp_text, [], toggle_future_stops_text, block_trips, reset_url
             
         delay, stop_sequence, start_time, eta_time, current_stop_id = (
@@ -585,7 +592,8 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         marker=dict(size=12, color="blue"),
         hovertext=[bus_id],
         hoverinfo="text",
-        name=f"Position of {bus_id}"
+        name=f"Position of {bus_id}",
+        uirevision=None
     ))
 
     # Possible future arrow
