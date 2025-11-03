@@ -83,7 +83,7 @@ bus_tracker_layout = html.Div([
                 html.H3(id="capacity-text"),
                 html.H3(id="speed-text"),
             ]
-        )
+        ),
         dcc.Loading(
             id="next-stop-loading-component",
             type="circle",
@@ -91,14 +91,14 @@ bus_tracker_layout = html.Div([
                 html.Button(id="toggle-future-stops", n_clicks=0, children="Show All Upcoming Stops", style={"margin-bottom": "10px"}),
                 html.H3(id="future-stop-text"),
             ]
-        )
+        ),
         dcc.Loading(
             id="map-loading-component",
             type="circle",
             children=[
                 dcc.Graph(id="live-map")
             ]
-        )
+        ),
         dcc.Loading(
             id="block-and-timestamp-loading-component",
             type="circle",
