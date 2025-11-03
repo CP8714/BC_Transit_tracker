@@ -782,7 +782,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses_route, t
         for _, row in stops_df.iterrows()
     ]
     route_options = [
-    {"label": f"{row["route_short_name"]} {row["route_long_name]}", "value": row["route_short_name"]}
+    {"label": f"{row["route_short_name"]} {row["route_long_name"]}", "value": row["route_short_name"]}
         for _, row in routes_df.iterrows()
     ]    
     if toggle_future_buses_clicks % 2:
