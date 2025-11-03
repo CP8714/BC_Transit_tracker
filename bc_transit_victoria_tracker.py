@@ -128,16 +128,6 @@ next_buses_layout = html.Div([
                         placeholder="Select a stop...",
                         searchable=True
                     ),
-                    html.Label("Enter Bus Stop Number:"),
-                    dcc.Input(
-                        id="stop-search-user-input",
-                        type="text",
-                        placeholder="enter stop bus number e.g. 100032",
-                        value="",
-                        debounce=True,
-                        style={"width": "250px"}
-                    ),
-                    html.Button("Search", id="look-up-next-buses", n_clicks=0),
                 ], style={"margin-bottom": "10px"}),
 
                 html.Div([
@@ -755,16 +745,12 @@ def update_bus_input_from_url(search_input):
      Input("toggle-future-buses", "n_clicks"),
      Input("url", "href"),
      Input("stop-dropdown", "value")],
-    [State("stop-search-user-input", "value"),
-     State("route-search-user-input", "value"),
+    [State("route-search-user-input", "value"),
      State("stop-dropdown", "value")]
 )
-def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up_next_buses_route, toggle_future_buses_clicks, href, stop_dropdown_value, stop_number_input, route_number_input, stop_dropdown_state):
+def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up_next_buses_route, toggle_future_buses_clicks, href, stop_number_input, route_number_input, stop_dropdown_state):
     triggered_id = callback_context.triggered_id
     reset_url = no_update
-
-    if triggered_id == "stop-dropdown" and stop_dropdown_value:
-        stop_number_input = stop_dropdown_value
         
     # Check if there is a stop number in the url and use it if so
     if href and "/next_buses" in href and triggered_id not in ["manual-update", "look-up-next-buses", "look-up-next-buses-route"]:
@@ -788,7 +774,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses, look_up
     trips_df = load_trips()
     stops_df = load_stops()
     stop_options = [
-        {"label": row["stop_name"], "value": row["stop_id"]}
+        {"label": f"{row["stop_name"]} (Stop {int(row["stop_id"])}), "value": row["stop_id"]}
         for _, row in stops_df.iterrows()
     ]
     if toggle_future_buses_clicks % 2:
