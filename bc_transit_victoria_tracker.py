@@ -776,6 +776,10 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses_route, t
         {"label": f"{row["stop_name"]} (Stop {int(row["stop_id"])})", "value": int(row["stop_id"])}
         for _, row in stops_df.iterrows()
     ]
+    # route_options = [
+    # {"label": f"{row["stop_name"]} (Stop {int(row["stop_id"])})", "value": int(row["stop_id"])}
+        # for _, row in stops_df.iterrows()
+    # ]    
     if toggle_future_buses_clicks % 2:
         toggle_future_buses_text = "Show Next 10 Buses"
     else:
