@@ -131,16 +131,12 @@ next_buses_layout = html.Div([
                 ], style={"margin-bottom": "10px"}),
 
                 html.Div([
-                    html.Label("Enter Route Number:"),
-                    dcc.Input(
-                        id="route-search-user-input",
-                        type="text",
-                        placeholder="(Optional) enter route number e.g. 95",
-                        value="",
-                        debounce=True,
-                        style={"width": "250px"}
+                    dcc.Dropdown(
+                        id="route-dropdown",
+                        options=[],
+                        placeholder="(Optional) Type a route number e.g. 95",
+                        searchable=True
                     ),
-                    html.Button("Search", id="look-up-next-buses-route", n_clicks=0),
                 ], style={"margin-bottom": "10px"}),
             
                 html.Div(
@@ -207,6 +203,13 @@ def load_stops():
     if os.path.exists(stops_file):
         stops_df = pd.read_csv(stops_file)
         return stops_df
+
+# Returns dataframe of routes.csv
+def load_stops():
+    routes_file = os.path.join("data", "routes.csv")
+    if os.path.exists(routes_file):
+        routes_df = pd.read_csv(routes_file)
+        return routes_df
 
 # Finds all the stops that are served by at current_trip_id and returns a dataframe containing them along with all other info from stop_times.csv
 def load_stop_times(current_trip_id):
@@ -737,22 +740,23 @@ def update_bus_input_from_url(search_input):
 @callback(
     [Output("next-buses-output", "children"),
      Output("toggle-future-buses", "children"),
-     Output("stop-dropdown", "options")],
+     Output("stop-dropdown", "options").
+     Output("route-dropdown", "options")],
     [Input("stop-interval-component", "n_intervals"),
      Input("stop-manual-update", "n_clicks"),
-     Input("look-up-next-buses-route", "n_clicks"),
      Input("toggle-future-buses", "n_clicks"),
      Input("url", "href"),
-     Input("stop-dropdown", "value")],
-    [State("route-search-user-input", "value"),
-     State("stop-dropdown", "value")]
+     Input("stop-dropdown", "value"),
+     Input("route-dropdown", "value)],
+    [State("stop-dropdown", "value"),
+     State("route-dropdown", "value")]
 )
-def update_stop_callback(n_intervals, manual_update, look_up_next_buses_route, toggle_future_buses_clicks, href, stop_number_input, route_number_input, stop_dropdown_state):
+def update_stop_callback(n_intervals, manual_update, look_up_next_buses_route, toggle_future_buses_clicks, href, stop_number_input, route_number_input, stop_dropdown_state, route_dropdown_state):
     triggered_id = callback_context.triggered_id
     reset_url = no_update
         
     # Check if there is a stop number in the url and use it if so
-    if href and "/next_buses" in href and triggered_id not in ["manual-update", "look-up-next-buses-route"]:
+    if href and "/next_buses" in href and triggered_id not in ["manual-update"]:
         parsed_url = urlparse(href)
         query_params = parse_qs(parsed_url.query)
         if "stop_id" in query_params:
@@ -760,7 +764,7 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses_route, t
         reset_url = "/next_buses"
 
     # Manual button triggers a live fetch
-    if triggered_id in ["manual-update", "look-up-next-buses-route", "stop-dropdown"]:
+    if triggered_id in ["manual-update", "route-dropdown", "stop-dropdown"]:
         try:
             fetch_fleet_data.fetch()
             fetch_trip_data.fetch()
@@ -772,20 +776,21 @@ def update_stop_callback(n_intervals, manual_update, look_up_next_buses_route, t
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
+    routes_df = load_routes()
     stop_options = [
         {"label": f"{row["stop_name"]} (Stop {int(row["stop_id"])})", "value": int(row["stop_id"])}
         for _, row in stops_df.iterrows()
     ]
-    # route_options = [
-    # {"label": f"{row["stop_name"]} (Stop {int(row["stop_id"])})", "value": int(row["stop_id"])}
-        # for _, row in stops_df.iterrows()
-    # ]    
+    route_options = [
+    {"label": f"{row["route_short_name"]} {row["route_long_name]}", "value": row["route_short_name"]}
+        for _, row in routes_df.iterrows()
+    ]    
     if toggle_future_buses_clicks % 2:
         toggle_future_buses_text = "Show Next 10 Buses"
     else:
         toggle_future_buses_text = "Show Next 20 Buses"
     next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks)
-    return next_buses_html, toggle_future_buses_text, stop_options
+    return next_buses_html, toggle_future_buses_text, stop_options, route_options
 
 
 if __name__ == "__main__":
