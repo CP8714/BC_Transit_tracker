@@ -740,7 +740,7 @@ def update_bus_input_from_url(search_input):
 @callback(
     [Output("next-buses-output", "children"),
      Output("toggle-future-buses", "children"),
-     Output("stop-dropdown", "options").
+     Output("stop-dropdown", "options"),
      Output("route-dropdown", "options")],
     [Input("stop-interval-component", "n_intervals"),
      Input("stop-manual-update", "n_clicks"),
