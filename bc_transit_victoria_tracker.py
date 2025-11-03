@@ -385,7 +385,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     ])
     
 
-def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url):
+def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url, triggered_id):
 
     recenter_map = triggered_id in ["search-for-bus", "manual-update"]
 
@@ -713,7 +713,7 @@ def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_futur
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    return get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url)
+    return get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url, triggered_id)
 
 
 # Update bus number value in search bar of bus_tracker if bus number detected in url
