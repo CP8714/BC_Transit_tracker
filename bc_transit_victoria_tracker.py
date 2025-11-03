@@ -75,34 +75,22 @@ bus_tracker_layout = html.Div([
 
     html.Div([
         dcc.Loading(
-            id="info-loading-component",
+            id="loading-component-1",
             type="circle",
             children=[
                 html.H3(id="desc-text"),
                 html.H3(id="stop-text"),
                 html.H3(id="capacity-text"),
                 html.H3(id="speed-text"),
-            ]
-        ),
-        dcc.Loading(
-            id="next-stop-loading-component",
-            type="circle",
-            children=[
                 html.Button(id="toggle-future-stops", n_clicks=0, children="Show All Upcoming Stops", style={"margin-bottom": "10px"}),
                 html.H3(id="future-stop-text"),
             ]
         ),
         dcc.Loading(
-            id="map-loading-component",
+            id="loading-component-2",
             type="circle",
             children=[
                 dcc.Graph(id="live-map")
-            ]
-        ),
-        dcc.Loading(
-            id="block-and-timestamp-loading-component",
-            type="circle",
-            children=[
                 html.H3(id="block-trips"),
                 html.H3(id="timestamp-text"),
                 html.Div(
