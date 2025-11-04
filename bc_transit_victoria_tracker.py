@@ -636,10 +636,10 @@ def display_page(pathname):
      Input("search-for-bus", "n_clicks"),
      Input("toggle-future-stops", "n_clicks"),
      Input("url", "href"),
-    Input("clear-bus-input", "n_clicks")],
+     Input("clear-bus-input", "n_clicks")],
     [State("bus-search-user-input", "value")]
 )
-def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, href, bus_number, clear_bus_input):
+def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, href, clear_bus_input, bus_number):
     triggered_id = callback_context.triggered_id
     reset_url = no_update
 
