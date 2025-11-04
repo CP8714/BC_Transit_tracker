@@ -68,6 +68,7 @@ bus_tracker_layout = html.Div([
             debounce=True
         ),
         html.Button("Search", id="search-for-bus", n_clicks=0),
+        html.Button("Clear", id="clear-bus-input", n_clicks=0)
     ], style={"margin-bottom": "10px"}),
 
     # Manual update button
@@ -678,6 +679,15 @@ def update_bus_input_from_url(search_input):
     bus_number = params.get("bus", [None])[0]
     if bus_number:
         return bus_number
+    return no_update
+
+@callback(
+    Output("stop-search-user-input", "value"),
+    Input("clear-bus-input", "n_clicks")
+)
+def clear_bus_input(n_clicks):
+    if n_clicks:
+        return ""
     return no_update
 
 
