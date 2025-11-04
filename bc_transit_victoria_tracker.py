@@ -621,7 +621,7 @@ def display_page(pathname):
 
 
 @callback(
-    Output("url", "href"),
+    [Output("url", "href")],
     [Input("url", "href"),
     Input("bus-callback-done", "data"),
     Input("stop-callback-done", "data")]
