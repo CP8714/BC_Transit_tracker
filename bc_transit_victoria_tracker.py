@@ -141,7 +141,7 @@ next_buses_layout = html.Div([
             
                 html.Div(
                     # Manual update button
-                    html.Button("Update Now", id="stop-manual-update", n_clicks=0, style={"margin-bottom": "10px"}), style={"margin-bottom": "10px"}),
+                    html.Button("Search", id="stop-search", n_clicks=0, style={"margin-bottom": "10px"}), style={"margin-bottom": "10px"}),
                 html.Div(
                     html.Button(id="toggle-future-buses", n_clicks=0, children="Show Next 20 Buses", style={"margin-bottom": "10px"}), style={"margin-bottom": "10px"}),
                 html.Div(id="next-buses-output"),
@@ -743,7 +743,7 @@ def update_bus_input_from_url(search_input):
      Output("stop-dropdown", "options"),
      Output("route-dropdown", "options")],
     [Input("stop-interval-component", "n_intervals"),
-     Input("stop-manual-update", "n_clicks"),
+     Input("stop-search", "n_clicks"),
      Input("toggle-future-buses", "n_clicks"),
      Input("url", "href"),
      Input("stop-dropdown", "value"),
@@ -751,12 +751,12 @@ def update_bus_input_from_url(search_input):
     [State("stop-dropdown", "value"),
      State("route-dropdown", "value")]
 )
-def update_stop_callback(n_intervals, manual_update, toggle_future_buses_clicks, href, stop_number_input, route_number_input, stop_dropdown_state, route_dropdown_state):
+def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, href, stop_number_input, route_number_input, stop_dropdown_state, route_dropdown_state):
     triggered_id = callback_context.triggered_id
     reset_url = no_update
         
     # Check if there is a stop number in the url and use it if so
-    if href and "/next_buses" in href and triggered_id not in ["manual-update"]:
+    if href and "/next_buses" in href and triggered_id not in ["stop-search", "route-dropdown", "stop-dropdown"]:
         parsed_url = urlparse(href)
         query_params = parse_qs(parsed_url.query)
         if "stop_id" in query_params:
@@ -764,7 +764,7 @@ def update_stop_callback(n_intervals, manual_update, toggle_future_buses_clicks,
         reset_url = "/next_buses"
 
     # Manual button triggers a live fetch
-    if triggered_id in ["manual-update", "route-dropdown", "stop-dropdown"]:
+    if triggered_id not in ["route-dropdown", "stop-dropdown"]:
         try:
             fetch_fleet_data.fetch()
             fetch_trip_data.fetch()
