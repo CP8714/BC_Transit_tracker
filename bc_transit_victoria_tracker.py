@@ -745,9 +745,9 @@ def update_bus_input_from_url(search_input):
     [Input("stop-interval-component", "n_intervals"),
      Input("stop-search", "n_clicks"),
      Input("toggle-future-buses", "n_clicks"),
-     Input("url", "href"),
-     Input("stop-dropdown", "value"),
-     Input("route-dropdown", "value")]
+     Input("url", "href")],
+    [State("stop-dropdown", "value"),
+     State("route-dropdown", "value")]
 )
 def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, href, stop_number_input, route_number_input):
     triggered_id = callback_context.triggered_id
