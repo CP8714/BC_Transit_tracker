@@ -643,7 +643,7 @@ def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_futur
     triggered_id = callback_context.triggered_id
     reset_url = no_update
 
-    if triggered_id == == "clear-bus-input":
+    if triggered_id == "clear-bus-input":
         return (no_update, no_update, no_update, no_update, no_update, no_update, no_update, no_update, no_update, no_update, "")
         
 
