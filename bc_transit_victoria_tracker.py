@@ -621,10 +621,10 @@ def display_page(pathname):
 
 
 @callback(
-    [Output("url", "href")],
-    [Input("url", "href"),
+    Output("url", "href"),
+    Input("url", "href"),
     Input("bus-callback-done", "data"),
-    Input("stop-callback-done", "data")]
+    Input("stop-callback-done", "data")
     prevent_initial_call=True
 )
 def clean_url(href, bus_callback_done, stop_callback_done):
