@@ -146,7 +146,7 @@ next_buses_layout = html.Div([
                     html.Button(id="toggle-future-buses", n_clicks=0, children="Show Next 20 Buses", style={"margin-bottom": "10px"}), style={"margin-bottom": "10px"}),
                 html.Div(id="next-buses-output"),
                 html.Div(
-                    dcc.Link("Go to Bus Tracker →", href="/next_buses"),
+                    dcc.Link("Go to Bus Tracker →", href="/bus_tracker"),
                 ),
                 html.Div(
                     dcc.Link("← Go back to Home", href="/"),
