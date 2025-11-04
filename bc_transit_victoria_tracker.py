@@ -754,20 +754,18 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
     reset_url = no_update
         
     # Check if there is a stop number in the url and use it if so
-    if href and "/next_buses" in href and triggered_id not in ["stop-search", "route-dropdown", "stop-dropdown"]:
+    if href and "/next_buses" in href and triggered_id not in ["stop-search"]:
         parsed_url = urlparse(href)
         query_params = parse_qs(parsed_url.query)
         if "stop_id" in query_params:
             stop_number_input = query_params["stop_id"][0]
         reset_url = "/next_buses"
 
-    # Manual button triggers a live fetch
-    if triggered_id not in ["route-dropdown", "stop-dropdown"]:
-        try:
-            fetch_fleet_data.fetch()
-            fetch_trip_data.fetch()
-        except Exception as e:
-            print(f"Error fetching live fleet data: {e}", flush=True)
+    try:
+        fetch_fleet_data.fetch()
+        fetch_trip_data.fetch()
+    except Exception as e:
+        print(f"Error fetching live fleet data: {e}", flush=True)
 
     # Load the latest bus data
     buses = load_buses()
