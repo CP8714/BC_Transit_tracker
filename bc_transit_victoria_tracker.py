@@ -308,18 +308,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     if route_number_input:
         route_number_input = str(route_number_input)
         route_number_input = route_number_input + "-VIC"
-        route_number_input_a = route_number_input + "A-VIC"
-        route_number_input_b = route_number_input + "B-VIC"
-        route_number_input_x = route_number_input + "X-VIC"
-        next_trip = [
-            stop for stop in next_trip
-            if stop["route_id"] in (
-                route_number_input,
-                route_number_input_a,
-                route_number_input_b,
-                route_number_input_x
-            )
-        ]
+        next_trip = [stop for stop in next_trip if stop["route_id"] == route_number_input]
         route_number_input = route_number_input.split('-')[0] 
         stop_name_text = f"Next Estimated Arrivals For Route {route_number_input} At Stop {stop_number_input} ({stop_name})"
         
