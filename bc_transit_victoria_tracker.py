@@ -672,22 +672,6 @@ def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_futur
     return get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url, triggered_id, no_update)
 
 
-# Update bus number value in search bar of bus_tracker if bus number detected in url
-@callback(
-    Output("bus-search-user-input", "value"),
-    Input("url", "search")
-)
-def update_bus_input_from_url(search_input):
-    if not search_input:
-        return no_update
-
-    params = parse_qs(search_input.lstrip("?"))
-    bus_number = params.get("bus", [None])[0]
-    if bus_number:
-        return bus_number
-    return no_update
-
-
 @callback(
     [Output("next-buses-output", "children"),
      Output("toggle-future-buses", "children"),
