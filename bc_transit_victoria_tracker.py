@@ -682,7 +682,7 @@ def update_bus_input_from_url(search_input):
     return no_update
 
 @callback(
-    Output("stop-search-user-input", "value"),
+    Output("bus-search-user-input", "value"),
     Input("clear-bus-input", "n_clicks")
 )
 def clear_bus_input(n_clicks):
