@@ -127,6 +127,7 @@ next_buses_layout = html.Div([
                 html.Div([
                     dcc.Dropdown(
                         id="stop-dropdown",
+                        className = "next-buses-dropdown",
                         options=[],
                         placeholder="Type in the Name or Number of a Stop",
                         searchable=True
@@ -136,6 +137,7 @@ next_buses_layout = html.Div([
                 html.Div([
                     dcc.Dropdown(
                         id="route-dropdown",
+                        className = "next-buses-dropdown",
                         options=[],
                         placeholder="(Optional) Type a route number e.g. 95",
                         searchable=True
