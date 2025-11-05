@@ -65,7 +65,8 @@ bus_tracker_layout = html.Div([
             type="text",
             placeholder="enter bus number e.g. 9542",
             value="9542",
-            debounce=True
+            debounce=True,
+            n_submit=0
         ),
         html.Button("Search", id="search-for-bus", n_clicks=0),
         html.Button("Clear", id="clear-bus-input", n_clicks=0)
@@ -356,7 +357,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
 def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url, triggered_id, update_bus_input):
 
     recenter_map = (
-        triggered_id in ["search-for-bus", "manual-update", "url"] 
+        triggered_id in ["search-for-bus", "manual-update", "url", "bus-search-user-input"] 
         or triggered_id is None
     )
 
@@ -663,7 +664,7 @@ def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_futur
         
 
     # Manual button triggers a live fetch
-    if triggered_id == "manual-update" or triggered_id == "search-for-bus":
+    if triggered_id in ["manual-update", "search-for-bus", "bus-search-user-input"]
         try:
             fetch_fleet_data.fetch()
             fetch_trip_data.fetch()
