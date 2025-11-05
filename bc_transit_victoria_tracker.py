@@ -460,12 +460,12 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
             fig.update_layout(
                 mapbox = dict(
                     style="open-street-map",
-                    center={"lat": lat, "lon": lon} if recenter_map,
-                    zoom=14 if recenter_map else no_update,
+                    center={"lat": lat, "lon": lon},
+                    zoom=14,
                 ),
                 height=600,
                 margin={"r":0,"t":0,"l":0,"b":0},
-                uirevision=None if recenter_map else "follow-bus"
+                uirevision=None
             )
 
             # Bus location as marker
