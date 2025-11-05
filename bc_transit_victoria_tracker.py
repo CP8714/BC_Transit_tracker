@@ -639,7 +639,6 @@ def display_page(pathname):
      Input("toggle-future-stops", "n_clicks"),
      Input("url", "href"),
      Input("clear-bus-input", "n_clicks"),
-     Input("stop-interval-component", "n_intervals"),
      Input("stop-search", "n_clicks")],
     [State("bus-search-user-input", "value")]
 )
