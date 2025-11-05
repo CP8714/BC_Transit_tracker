@@ -319,7 +319,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     if route_number_input:
         route_number_input = str(route_number_input)
 
-        if include_variants == "include_variants"
+        if include_variants == "include_variants":
             route_variants = [f"{route_number_input}-VIC", f"{route_number_input}A-VIC", f"{route_number_input}B-VIC", f"{route_number_input}X-VIC"]
             next_trip = [stop for stop in next_trip if stop["route_id"] in route_variants]
         else:
