@@ -30,25 +30,25 @@ button:hover {
 }
 
 
-.Select-control {
+.next-buses-dropdown .Select-control {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.Select-input input {
+.next-buses-dropdown .Select-input input {
     color: #003366;
     /* Style the input field where text is typed */
 }
 
-.Select-menu-outer {
+ .next-buses-dropdown .Select-menu-outer {
     background-color: #f9f9f9;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
-.Select-option {
+.next-buses-dropdown .Select-option {
     padding: 8px 12px;
 }
 
-.Select-option:hover {
+.next-buses-dropdown .Select-option:hover {
     background-color: #ddd;
 }
