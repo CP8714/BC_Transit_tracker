@@ -132,7 +132,7 @@ next_buses_layout = html.Div([
                         placeholder="Type in the Name or Number of a Stop",
                         searchable=True
                     ),
-                ], style={"margin-bottom": "10px"}),
+                ]),
 
                 html.Div([
                     dcc.Dropdown(
@@ -142,7 +142,7 @@ next_buses_layout = html.Div([
                         placeholder="(Optional) Type a route number e.g. 95",
                         searchable=True
                     ),
-                ], style={"margin-bottom": "10px"}),
+                ]),
 
                 html.Div([
                     dcc.Checklist(
