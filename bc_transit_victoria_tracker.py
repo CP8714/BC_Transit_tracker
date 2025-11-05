@@ -140,7 +140,17 @@ next_buses_layout = html.Div([
                         searchable=True
                     ),
                 ], style={"margin-bottom": "10px"}),
-            
+
+                html.Div([
+                    dcc.Checklist(
+                        id="variant-checklist",    
+                        options=[
+                            {"label": "Include Variants (eg 6A and 6B for the 6)", "value": "include_variants"},
+                        ],
+                        value=[]
+                     )
+                ], style={"margin-bottom": "10px"}),
+          
                 html.Div(
                     # Manual update button
                     html.Button("Search", id="stop-search", n_clicks=0, style={"margin-bottom": "10px"}), style={"margin-bottom": "10px"}),
@@ -289,7 +299,7 @@ def make_next_buses_table(next_buses):
     style={"borderCollapse": "collapse", "border": "1px solid black", "width": "100%", "marginTop": "10px"}
     )
 
-def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks):
+def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks, include_variants):
     next_buses = []
     if not stop_number_input:
         return html.Div("Please Enter A Stop Number")
@@ -308,8 +318,15 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     next_trip = [stop for stop in next_trip if stop["time"] >= current_time]
     if route_number_input:
         route_number_input = str(route_number_input)
-        route_number_input = route_number_input + "-VIC"
-        next_trip = [stop for stop in next_trip if stop["route_id"] == route_number_input]
+
+        if include_variants == "include_variants"
+            route_variants = [f"{route_number_input}-VIC", f"{route_number_input}A-VIC", f"{route_number_input}B-VIC", f"{route_number_input}X-VIC"]
+            next_trip = [stop for stop in next_trip if stop["route_id"] in route_variants]
+        else:
+            route_number_input = str(route_number_input)
+            route_number_input = route_number_input + "-VIC"
+            next_trip = [stop for stop in next_trip if stop["route_id"] == route_number_input]
+            
         route_number_input = route_number_input.split('-')[0] 
         stop_name_text = f"Next Estimated Arrivals For Route {route_number_input} At Stop {stop_number_input} ({stop_name})"
         
@@ -688,11 +705,12 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
     [Input("stop-interval-component", "n_intervals"),
      Input("stop-search", "n_clicks"),
      Input("toggle-future-buses", "n_clicks"),
-     Input("url", "href")],
+     Input("url", "href"),
+     Input("variant-checklist", "value")],
     [State("stop-dropdown", "value"),
      State("route-dropdown", "value")]
 )
-def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, href, stop_number_input, route_number_input):
+def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, href, include_variants, stop_number_input, route_number_input):
     triggered_id = callback_context.triggered_id
     reset_url = no_update
         
@@ -728,7 +746,7 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
         toggle_future_buses_text = "Show Next 10 Buses"
     else:
         toggle_future_buses_text = "Show Next 20 Buses"
-    next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks)
+    next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks, include_variants)
     return next_buses_html, toggle_future_buses_text, stop_options, route_options
 
 
