@@ -702,7 +702,7 @@ def update_bus_callback(bus_n_intervals, manual_update, search_for_bus, toggle_f
         next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks)
         return no_update, no_update, no_update, no_update, no_update, no_update, no_update, no_update, no_update, reset_url, no_update, next_buses_html, toggle_future_buses_text, stop_options, route_options
 
-    raise PreventUpdate
+    return
 
 
 if __name__ == "__main__":
