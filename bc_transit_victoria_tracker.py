@@ -680,7 +680,7 @@ def update_bus_callback(bus_n_intervals, manual_update, search_for_bus, toggle_f
         return get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url, triggered_id, no_update, no_update, no_update, no_update, no_update)
             
     elif "/next_buses" in href:
-        if href and "/next_buses" in href and triggered_id not in ["stop-search"]:
+        if href and triggered_id not in ["stop-search"]:
             parsed_url = urlparse(href)
             query_params = parse_qs(parsed_url.query)
             if "stop_id" in query_params:
