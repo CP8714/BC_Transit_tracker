@@ -153,9 +153,9 @@ next_buses_layout = html.Div([
           
                 html.Div(
                     # Manual update button
-                    html.Button("Search", id="stop-search", n_clicks=0, style={"margin-bottom": "10px"}), style={"margin-bottom": "10px"}),
+                    html.Button("Search", id="stop-search", className="button", n_clicks=0, style={"margin-bottom": "10px"}), style={"margin-bottom": "10px"}),
                 html.Div(
-                    html.Button(id="toggle-future-buses", n_clicks=0, children="Show Next 20 Buses", style={"margin-bottom": "10px"}), style={"margin-bottom": "10px"}),
+                    html.Button(id="toggle-future-buses", className="button", n_clicks=0, children="Show Next 20 Buses", style={"margin-bottom": "10px"}), style={"margin-bottom": "10px"}),
                 html.Div(id="next-buses-output"),
                 html.Div(
                     dcc.Link("Go to Bus Tracker →", href="/bus_tracker"),
