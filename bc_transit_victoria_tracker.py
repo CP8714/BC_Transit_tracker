@@ -65,6 +65,7 @@ bus_tracker_layout = html.Div([
             type="text",
             placeholder="enter bus number e.g. 9542",
             value="9542",
+            className="input"
             debounce=True,
             n_submit=0
         ),
