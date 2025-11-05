@@ -352,7 +352,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         make_next_buses_table(next_buses)
     ])
     
-def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url, triggered_id, update_bus_input, next_buses_output, toggle_future-buses, stop_dropdown, route_ropdown):
+def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url, triggered_id, update_bus_input, next_buses_output, toggle_future_buses, stop_dropdown, route_ropdown):
 
     recenter_map = triggered_id
 
