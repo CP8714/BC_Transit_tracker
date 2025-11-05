@@ -635,17 +635,21 @@ def display_page(pathname):
      Output("bus-search-user-input", "value"),
      Output("next-buses-output", "children"),
      Output("toggle-future-buses", "children"),
-     Output("stop-dropdown", "options"),
-     Output("route-dropdown", "options")],
+     Output("stop-dropdown", "options")],
     [Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("search-for-bus", "n_clicks"),
      Input("toggle-future-stops", "n_clicks"),
      Input("url", "href"),
-     Input("clear-bus-input", "n_clicks")],
-    [State("bus-search-user-input", "value")]
+     Input("clear-bus-input", "n_clicks"),
+     Input("stop-interval-component", "n_intervals"),
+     Input("stop-search", "n_clicks"),
+     Input("toggle-future-buses", "n_clicks")],
+    [State("bus-search-user-input", "value"),
+     State("stop-dropdown", "value"),
+     State("route-dropdown", "value")]
 )
-def update_bus_callback(bus_n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, href, clear_bus_input, bus_number):
+def update_bus_callback(bus_n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, href, clear_bus_input, stop_n_intervals, stop_search, toggle_future_buses_clicks, bus_number, stop_number_input, route_number_input):
     triggered_id = callback_context.triggered_id
     reset_url = no_update
 
