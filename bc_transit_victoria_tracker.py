@@ -145,7 +145,7 @@ next_buses_layout = html.Div([
                     dcc.Checklist(
                         id="variant-checklist",    
                         options=[
-                            {"label": "Include Variants (eg 6A and 6B for the 6)", "value": "include_variants"},
+                            {"label": "Include Variants (e.g. 6A and 6B for the 6)", "value": "include_variants"},
                         ],
                         value=[]
                      )
@@ -320,7 +320,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         route_number_input = str(route_number_input)
 
         if include_variants:
-            route_variants = [f"{route_number_input}-VIC", f"{route_number_input}A-VIC", f"{route_number_input}B-VIC", f"{route_number_input}X-VIC"]
+            route_variants = [f"{route_number_input}-VIC", f"{route_number_input}A-VIC", f"{route_number_input}B-VIC", f"{route_number_input}N-VIC", f"{route_number_input}X-VIC"]
             next_trip = [stop for stop in next_trip if stop["route_id"] in route_variants]
         else:
             route_number_input = str(route_number_input)
@@ -426,7 +426,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         stop_times_df = load_block_departure_times(full_block["trip_id"].tolist())
 
         full_block = full_block.merge(stop_times_df, on="trip_id", how="left")
-        # Allow departure_time to exceed 24:00:00 ie 25:00:00
+        # Allow departure_time to exceed 24:00:00 e.g. 25:00:00
         full_block["departure_time"] = pd.to_timedelta(full_block["departure_time"])
         full_block = full_block.sort_values(by="departure_time")
         # Only keep hours and minutes
@@ -715,7 +715,7 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
     reset_url = no_update
         
     # Check if there is a stop number in the url and use it if so
-    if href and "/next_buses" in href and triggered_id not in ["stop-search"]:
+    if href and "/next_buses" in href and triggered_id not in ["stop-search", "variant-checklist"]:
         parsed_url = urlparse(href)
         query_params = parse_qs(parsed_url.query)
         if "stop_id" in query_params:
