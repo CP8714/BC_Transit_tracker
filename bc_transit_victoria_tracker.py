@@ -124,7 +124,7 @@ next_buses_layout = html.Div([
             id="loading-component",
             type="circle",
             children=[
-                html.Div([
+                html.Div(
                     dcc.Dropdown(
                         id="stop-dropdown",
                         className = "next-buses-dropdown",
@@ -132,9 +132,9 @@ next_buses_layout = html.Div([
                         placeholder="Type in the Name or Number of a Stop",
                         searchable=True
                     ),
-                ]),
+                ),
 
-                html.Div([
+                html.Div(
                     dcc.Dropdown(
                         id="route-dropdown",
                         className = "next-buses-dropdown",
@@ -142,7 +142,7 @@ next_buses_layout = html.Div([
                         placeholder="(Optional) Type a route number e.g. 95",
                         searchable=True
                     ),
-                ]),
+                ),
 
                 html.Div([
                     dcc.Checklist(
