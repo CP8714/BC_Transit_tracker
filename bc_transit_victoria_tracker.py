@@ -642,9 +642,7 @@ def display_page(pathname):
      Input("stop-interval-component", "n_intervals"),
      Input("stop-search", "n_clicks"),
      Input("toggle-future-buses", "n_clicks")],
-    [State("bus-search-user-input", "value"),
-     State("stop-dropdown", "value"),
-     State("route-dropdown", "value")]
+    [State("bus-search-user-input", "value")]
 )
 def update_bus_callback(bus_n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, href, clear_bus_input, stop_n_intervals, stop_search, toggle_future_buses_clicks, bus_number, stop_number_input, route_number_input):
     triggered_id = callback_context.triggered_id
