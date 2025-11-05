@@ -318,19 +318,17 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     next_trip = [stop for stop in next_trip if stop["time"] >= current_time]
     if route_number_input:
         route_number_input = str(route_number_input)
-        variants_test = "no variants"
 
-        if include_variants == "include_variants":
+        if include_variants:
             route_variants = [f"{route_number_input}-VIC", f"{route_number_input}A-VIC", f"{route_number_input}B-VIC", f"{route_number_input}X-VIC"]
             next_trip = [stop for stop in next_trip if stop["route_id"] in route_variants]
-            variants_test = "variants included"
         else:
             route_number_input = str(route_number_input)
             route_number_input = route_number_input + "-VIC"
             next_trip = [stop for stop in next_trip if stop["route_id"] == route_number_input]
             
         route_number_input = route_number_input.split('-')[0] 
-        stop_name_text = f"Next Estimated Arrivals For Route {route_number_input} At Stop {stop_number_input} ({stop_name}) ({variants_test})"
+        stop_name_text = f"Next Estimated Arrivals For Route {route_number_input} At Stop {stop_number_input} ({stop_name})"
         
     # Sort by arrival time 
     next_trip = sorted(next_trip, key=lambda x: x["time"])
