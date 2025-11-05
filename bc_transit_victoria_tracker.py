@@ -638,7 +638,8 @@ def display_page(pathname):
      Output("block-trips", "children"),
      Output("url", "href"),
      Output("bus-search-user-input", "value")],
-    [Input("interval-component", "n_intervals"),
+    [Input("bus-search-user-input", "n_submit"),
+     Input("interval-component", "n_intervals"),
      Input("manual-update", "n_clicks"),
      Input("search-for-bus", "n_clicks"),
      Input("toggle-future-stops", "n_clicks"),
@@ -646,7 +647,7 @@ def display_page(pathname):
      Input("clear-bus-input", "n_clicks")],
     [State("bus-search-user-input", "value")]
 )
-def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, href, clear_bus_input, bus_number):
+def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, href, clear_bus_input, bus_number):
     triggered_id = callback_context.triggered_id
     reset_url = no_update
 
