@@ -664,7 +664,7 @@ def update_bus_callback(n_intervals, manual_update, search_for_bus, toggle_futur
         
 
     # Manual button triggers a live fetch
-    if triggered_id in ["manual-update", "search-for-bus", "bus-search-user-input"]
+    if triggered_id in ["manual-update", "search-for-bus", "bus-search-user-input"]:
         try:
             fetch_fleet_data.fetch()
             fetch_trip_data.fetch()
