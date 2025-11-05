@@ -33,7 +33,7 @@ home_layout = html.Div([
             children=[
                 html.H3("Press to go to the Bus Tracker Page"),
                 dcc.Link(
-                    html.Button("Go to Bus Tracker", id="go-to-bus-tracker"),
+                    html.Button("Go to Bus Tracker", id="go-to-bus-tracker", className="button"),
                     href="/bus_tracker"
                 )
             ]
@@ -47,7 +47,7 @@ home_layout = html.Div([
             children=[
                 html.H3("Press to go to the Next Buses Page"),
                 dcc.Link(
-                    html.Button("Go to Next Buses", id="go-to-next-buses"),
+                    html.Button("Go to Next Buses", id="go-to-next-buses", className="button"),
                     href="/next_buses"
                 )
             ]
@@ -68,12 +68,12 @@ bus_tracker_layout = html.Div([
             debounce=True,
             n_submit=0
         ),
-        html.Button("Search", id="search-for-bus", n_clicks=0),
-        html.Button("Clear", id="clear-bus-input", n_clicks=0)
+        html.Button("Search", id="search-for-bus", className="button",  n_clicks=0),
+        html.Button("Clear", id="clear-bus-input", className="button", n_clicks=0)
     ], style={"margin-bottom": "10px"}),
 
     # Manual update button
-    html.Button("Update Now", id="manual-update", n_clicks=0, style={"margin-bottom": "10px"}),
+    html.Button("Update Now", id="manual-update", className="button", n_clicks=0),
 
     html.Div([
         dcc.Loading(
@@ -84,7 +84,7 @@ bus_tracker_layout = html.Div([
                 html.H3(id="stop-text"),
                 html.H3(id="capacity-text"),
                 html.H3(id="speed-text"),
-                html.Button(id="toggle-future-stops", n_clicks=0, children="Show All Upcoming Stops", style={"margin-bottom": "10px"}),
+                html.Button(id="toggle-future-stops", className="button", n_clicks=0, children="Show All Upcoming Stops"),
                 html.H3(id="future-stop-text"),
             ]
         ),
