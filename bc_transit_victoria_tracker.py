@@ -679,30 +679,28 @@ def update_bus_callback(bus_n_intervals, manual_update, search_for_bus, toggle_f
             reset_url = "/bus_tracker"
         return get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url, triggered_id, no_update, no_update, no_update, no_update, no_update)
             
-    elif "/next_buses" in href:
-        if href and triggered_id not in ["stop-search"]:
-            parsed_url = urlparse(href)
-            query_params = parse_qs(parsed_url.query)
-            if "stop_id" in query_params:
-                stop_number_input = query_params["stop_id"][0]
-            reset_url = "/next_buses"
+    # elif "/next_buses" in href:
+    #     if href and triggered_id not in ["stop-search"]:
+    #         parsed_url = urlparse(href)
+    #         query_params = parse_qs(parsed_url.query)
+    #         if "stop_id" in query_params:
+    #             stop_number_input = query_params["stop_id"][0]
+    #         reset_url = "/next_buses"
 
-        stop_options = [
-            {"label": f"{row["stop_name"]} (Stop {int(row["stop_id"])})", "value": int(row["stop_id"])}
-            for _, row in stops_df.iterrows()
-        ]
-        route_options = [
-            {"label": f"{row["route_short_name"]} {row["route_long_name"]}", "value": row["route_short_name"]}
-            for _, row in routes_df.iterrows()
-        ]
-        if toggle_future_buses_clicks % 2:
-            toggle_future_buses_text = "Show Next 10 Buses"
-        else:
-            toggle_future_buses_text = "Show Next 20 Buses"
-        next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks)
-        return no_update, no_update, no_update, no_update, no_update, no_update, no_update, no_update, no_update, reset_url, no_update, next_buses_html, toggle_future_buses_text, stop_options, route_options
-
-    return
+    #     stop_options = [
+    #         {"label": f"{row["stop_name"]} (Stop {int(row["stop_id"])})", "value": int(row["stop_id"])}
+    #         for _, row in stops_df.iterrows()
+    #     ]
+    #     route_options = [
+    #         {"label": f"{row["route_short_name"]} {row["route_long_name"]}", "value": row["route_short_name"]}
+    #         for _, row in routes_df.iterrows()
+    #     ]
+    #     if toggle_future_buses_clicks % 2:
+    #         toggle_future_buses_text = "Show Next 10 Buses"
+    #     else:
+    #         toggle_future_buses_text = "Show Next 20 Buses"
+    #     next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks)
+    #     return no_update, no_update, no_update, no_update, no_update, no_update, no_update, no_update, no_update, reset_url, no_update, next_buses_html, toggle_future_buses_text, stop_options, route_options
 
 
 if __name__ == "__main__":
