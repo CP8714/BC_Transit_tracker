@@ -475,9 +475,12 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
             all_future_stops_eta = []
             all_future_stops_eta.append("Next Stop ETAs")
             for stop in future_stops:
-                future_eta_time = datetime.fromtimestamp(stop["time"], pytz.timezone("America/Los_Angeles"))
-                future_eta_time = future_eta_time.strftime("%H:%M")
-                # future_stop_id = float(stop["stop_id"])
+                if stop["time"] == 0:
+                    future_eta_time = stop["start_time"]
+                    future_eta_time = future_eta_time[:-3]
+                else:
+                    future_eta_time = datetime.fromtimestamp(stop["time"], pytz.timezone("America/Los_Angeles"))
+                    future_eta_time = future_eta_time.strftime("%H:%M")
                 future_stop_id = int(stop["stop_id"])
                 future_stop_name = stops_df.loc[stops_df["stop_id"] == future_stop_id, "stop_name"]
                 future_stop_name = future_stop_name.iloc[0]
