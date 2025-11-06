@@ -87,3 +87,7 @@ button:hover {
     background-color: #050557;
     transition: background-color 0.2s ease-in-out;
 }
+
+.nav-link.active {
+    background-color: #0073e6;
+}
