@@ -24,13 +24,13 @@ button:hover {
 }
 
 input-button, .button {
-    background-color: #64D10A;
+    background-color: #FFFFFF;
     color: white;
     border: none;
     padding: 8px 16px;
     border-radius: 5px;
     cursor: pointer;
-    margin-left: 5px;
+    margin-left: 20px;
 }
 
 input-button:hover {
