@@ -86,5 +86,5 @@ button:hover {
 
 .nav-link:hover {
     background-color: #050557;
-    transition: background-color 0.2s ease-in-out;
+    text-decoration: underline;
 }
