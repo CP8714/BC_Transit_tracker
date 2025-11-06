@@ -30,6 +30,11 @@ button:hover {
 }
 
 
+.next-buses-dropdown {
+    width: 200px;
+}
+
+
 .next-buses-dropdown .Select-control {
     border: 1px solid #ccc !important;
     border-radius: 5px !important;
