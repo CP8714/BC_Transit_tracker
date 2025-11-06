@@ -23,6 +23,20 @@ button:hover {
     background-color: #3F8A00;
 }
 
+input-button, .button {
+    background-color: #64D10A;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+input-button:hover {
+    background-color: #3F8A00;
+}
+
 .input {
     width: 250px;
     padding: 7px;
