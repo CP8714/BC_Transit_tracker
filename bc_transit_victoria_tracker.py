@@ -407,7 +407,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     )
 
     """Generate figure and speed text for a given bus_number."""
-    fig = go.Figure(layout=go.Layout(paper_bgcolor="#f8f9fa", plot_bgcolor="#f8f9fa"))
+    fig = go.Figure(layout=go.Layout(paper_bgcolor="#f8f9fa"))
     toggle_future_stops_text = "Show All Upcoming Stops"
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
 
