@@ -57,3 +57,28 @@ button:hover {
 .next-buses-dropdown .Select-option:hover {
     background-color: #ddd !important;
 }
+
+.navbar {
+    background-color: #003366;   /* Dark blue */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    position: sticky;    /* Stays at top */
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Navbar links */
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
