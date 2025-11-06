@@ -90,7 +90,7 @@ bus_tracker_layout = html.Div([
     ]),
 
     # Manual update button
-    html.Button("Update Now", id="manual-update", className="button", n_clicks=0),
+    html.Button("Update Now", id="manual-update", className="update-now-button", n_clicks=0),
 
     html.Div([
         dcc.Loading(
@@ -101,7 +101,7 @@ bus_tracker_layout = html.Div([
                 html.H3(id="stop-text"),
                 html.H3(id="capacity-text"),
                 html.H3(id="speed-text"),
-                html.Button(id="toggle-future-stops", className="button", n_clicks=0, children="Show All Upcoming Stops"),
+                html.Button(id="toggle-future-stops", className="toggle-button", n_clicks=0, children="Show All Upcoming Stops"),
                 html.H3(id="future-stop-text"),
             ]
         ),
