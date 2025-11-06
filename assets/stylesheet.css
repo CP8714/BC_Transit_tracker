@@ -88,3 +88,10 @@ button:hover {
     background-color: #050557;
     text-decoration: underline;
 }
+
+.grid-container {
+    display: grid;
+    height: 100vh;
+    gap: 10px;
+}
+
