@@ -37,30 +37,6 @@ button:hover {
     margin-bottom: 10px;
 }
 
-
-.next-buses-dropdown .Select-control {
-    border: 1px solid #ccc !important;
-    border-radius: 5px !important;
-}
-
-.next-buses-dropdown .Select-input input {
-    color: #003366 !important;
-    /* Style the input field where text is typed */
-}
-
- .next-buses-dropdown .Select-menu-outer {
-    background-color: #f9f9f9 !important;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2) !important;
-}
-
-.next-buses-dropdown .Select-option {
-    padding: 8px 12px !important;
-}
-
-.next-buses-dropdown .Select-option:hover {
-    background-color: #ddd !important;
-}
-
 .navbar {
     background-color: #003366;   /* Dark blue */
     color: white;
@@ -87,11 +63,5 @@ button:hover {
 .nav-link:hover {
     background-color: #050557;
     text-decoration: underline;
-}
-
-.grid-container {
-    display: grid;
-    height: 100vh;
-    gap: 10px;
 }
 
