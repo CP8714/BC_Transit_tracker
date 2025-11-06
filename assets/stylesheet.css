@@ -76,6 +76,7 @@ button:hover {
 
 /* Navbar links */
 .nav-link {
+    display: block;
     color: white;
     text-decoration: none;
     font-weight: bold;
@@ -86,8 +87,4 @@ button:hover {
 .nav-link:hover {
     background-color: #050557;
     transition: background-color 0.2s ease-in-out;
-}
-
-.nav-link.active {
-    background-color: #0073e6;
 }
