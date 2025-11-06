@@ -10,7 +10,7 @@ h1, h2, h3, label {
     padding: 5px;
 }
 
-button, .button {
+.button {
     background-color: #64D10A;
     color: white;
     border: none;
@@ -23,8 +23,8 @@ button:hover {
     background-color: #3F8A00;
 }
 
-input-button, .button {
-    background-color: #FFFFFF;
+.input-button {
+    background-color: #64D10A;
     color: white;
     border: none;
     padding: 8px 16px;
