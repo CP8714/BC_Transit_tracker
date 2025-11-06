@@ -63,67 +63,69 @@ home_layout = html.Div([
     ])
 ])
 
-bus_tracker_layout = html.Div([
-    html.Div(
-        className="navbar",
-        children=[
-            dcc.Link("Home", href="/", className="nav-link"),
-            dcc.Link("Bus Tracker", href="/bus_tracker", className="nav-link"),
-            dcc.Link("Next Buses", href="/next_buses", className="nav-link"),
-        ]
-    ),
-    html.H2("BC Transit Victoria – Bus Tracker"),
-
-    html.Div([
-        html.Label("Enter Bus Number:"),
-        dcc.Input(
-            id="bus-search-user-input",
-            type="text",
-            placeholder="enter bus number e.g. 9542",
-            value="9542",
-            className="input",
-            debounce=True,
-            n_submit=0
-        ),
-        html.Button("Search", id="search-for-bus", className="button",  n_clicks=0),
-        html.Button("Clear", id="clear-bus-input", className="button", n_clicks=0)
-    ], style={"margin-bottom": "10px"}),
-
-    # Manual update button
-    html.Button("Update Now", id="manual-update", className="button", n_clicks=0),
-
-    html.Div([
-        dcc.Loading(
-            id="loading-component-1",
-            type="circle",
+bus_tracker_layout = html.Div(
+    className="grid-container", 
+    children=[
+        html.Div(
+            className="navbar",
             children=[
-                html.H3(id="desc-text"),
-                html.H3(id="stop-text"),
-                html.H3(id="capacity-text"),
-                html.H3(id="speed-text"),
-                html.Button(id="toggle-future-stops", className="button", n_clicks=0, children="Show All Upcoming Stops"),
-                html.H3(id="future-stop-text"),
+                dcc.Link("Home", href="/", className="nav-link"),
+                dcc.Link("Bus Tracker", href="/bus_tracker", className="nav-link"),
+                dcc.Link("Next Buses", href="/next_buses", className="nav-link"),
             ]
         ),
-        dcc.Loading(
-            id="loading-component-2",
-            type="circle",
-            children=[
-                dcc.Graph(id="live-map"),
-                html.H3(id="block-trips"),
-                html.H3(id="timestamp-text"),
-            ]
-        )
-    ]),
-
-    # Auto-refresh interval
-    dcc.Interval(
-        id="interval-component",
-        interval=60*10000,  # 60 seconds
-        n_intervals=0
-    ),
+        html.H2("BC Transit Victoria – Bus Tracker"),
     
-])
+        html.Div([
+            html.Label("Enter Bus Number:"),
+            dcc.Input(
+                id="bus-search-user-input",
+                type="text",
+                placeholder="enter bus number e.g. 9542",
+                value="9542",
+                className="input",
+                debounce=True,
+                n_submit=0
+            ),
+            html.Button("Search", id="search-for-bus", className="button",  n_clicks=0),
+            html.Button("Clear", id="clear-bus-input", className="button", n_clicks=0)
+        ], style={"margin-bottom": "10px"}),
+    
+        # Manual update button
+        html.Button("Update Now", id="manual-update", className="button", n_clicks=0),
+    
+        html.Div([
+            dcc.Loading(
+                id="loading-component-1",
+                type="circle",
+                children=[
+                    html.H3(id="desc-text"),
+                    html.H3(id="stop-text"),
+                    html.H3(id="capacity-text"),
+                    html.H3(id="speed-text"),
+                    html.Button(id="toggle-future-stops", className="button", n_clicks=0, children="Show All Upcoming Stops"),
+                    html.H3(id="future-stop-text"),
+                ]
+            ),
+            dcc.Loading(
+                id="loading-component-2",
+                type="circle",
+                children=[
+                    dcc.Graph(id="live-map"),
+                    html.H3(id="block-trips"),
+                    html.H3(id="timestamp-text"),
+                ]
+            )
+        ]),
+    
+        # Auto-refresh interval
+        dcc.Interval(
+            id="interval-component",
+            interval=60*10000,  # 60 seconds
+            n_intervals=0
+        ),
+    ]    
+)
 
 next_buses_layout = html.Div([
 
