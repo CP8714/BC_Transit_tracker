@@ -430,10 +430,10 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     )
 
     deadheading = False
+    block_trips = []
     if not current_trip:
         deadheading = True
     else:
-        block_trips = []
         block = trip_id.split(":")[2]
         full_block = trips_df[trips_df["block_id"].astype(str) == block]
         block_trips.append(f"{bus_number} will be running the following trips today:")
