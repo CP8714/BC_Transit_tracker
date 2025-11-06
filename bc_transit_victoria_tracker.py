@@ -28,8 +28,8 @@ home_layout = html.Div([
         className="navbar",
         children=[
             dcc.Link("Home", href="/", className="nav-link"),
-            dcc.Link("Next Buses", href="/next_buses", className="nav-link"),
             dcc.Link("Bus Tracker", href="/bus_tracker", className="nav-link"),
+            dcc.Link("Next Buses", href="/next_buses", className="nav-link"),
         ]
     ),
     html.H1("Welcome to the BC Transit Victoria Tracker"),
@@ -68,8 +68,8 @@ bus_tracker_layout = html.Div([
         className="navbar",
         children=[
             dcc.Link("Home", href="/", className="nav-link"),
-            dcc.Link("Next Buses", href="/next_buses", className="nav-link"),
             dcc.Link("Bus Tracker", href="/bus_tracker", className="nav-link"),
+            dcc.Link("Next Buses", href="/next_buses", className="nav-link"),
         ]
     ),
     html.H2("BC Transit Victoria – Bus Tracker"),
