@@ -31,6 +31,34 @@ button:hover {
     background-color: #3F8A00;
 }
 
+.update-now-button {
+    background-color: #64D10A;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+update-now-button:hover {
+    background-color: #3F8A00;
+}
+
+.toggle-button {
+    background-color: #64D10A;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+toggle-button:hover {
+    background-color: #3F8A00;
+}
+
 .input-button {
     background-color: #64D10A;
     color: white;
