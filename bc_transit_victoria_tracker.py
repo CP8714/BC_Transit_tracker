@@ -87,7 +87,7 @@ bus_tracker_layout = html.Div([
         ),
         html.Button("Search", id="search-for-bus", className="button",  n_clicks=0),
         html.Button("Clear", id="clear-bus-input", className="button", n_clicks=0)
-    ], style={"margin-bottom": "10px"}),
+    ]),
 
     # Manual update button
     html.Button("Update Now", id="manual-update", className="button", n_clicks=0),
@@ -175,9 +175,9 @@ next_buses_layout = html.Div([
           
                 html.Div(
                     # Manual update button
-                    html.Button("Search", id="stop-search", className="button", n_clicks=0, style={"margin-bottom": "10px"}), style={"margin-bottom": "10px"}),
+                    html.Button("Search", id="stop-search", className="button", n_clicks=0),
                 html.Div(
-                    html.Button(id="toggle-future-buses", className="button", n_clicks=0, children="Show Next 20 Buses", style={"margin-bottom": "10px"}), style={"margin-bottom": "10px"}),
+                    html.Button(id="toggle-future-buses", className="button", n_clicks=0, children="Show Next 20 Buses"),
                 html.Div(id="next-buses-output"),
             ]
         )
