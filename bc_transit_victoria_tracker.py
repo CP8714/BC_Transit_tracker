@@ -109,7 +109,7 @@ bus_tracker_layout = html.Div([
             id="loading-component-2",
             type="circle",
             children=[
-                dcc.Graph(id="live-map"),
+                dcc.Graph(id="live-map", className="map-container"),
                 html.H3(id="block-trips"),
                 html.H3(id="timestamp-text"),
                 html.Div(
