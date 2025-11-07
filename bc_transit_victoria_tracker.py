@@ -111,7 +111,7 @@ bus_tracker_layout = html.Div([
                 html.H3(id="stop-text"),
                 html.H3(id="capacity-text"),
                 html.H3(id="speed-text"),
-                html.Button(id="toggle-future-stops", className="toggle-button", n_clicks=0, children="Show All Upcoming Stops"),
+                html.Button(id="toggle-future-stops", className="toggle-future-stops-button", n_clicks=0, children="Show All Upcoming Stops"),
                 html.H3(id="future-stop-text"),
             ]
         ),
