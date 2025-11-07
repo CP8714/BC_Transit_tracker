@@ -182,10 +182,10 @@ next_buses_layout = html.Div([
           
                 html.Div(
                     # Manual update button
-                    html.Button("Search", id="stop-search", className="input-button", n_clicks=0),
+                    html.Button("Search", id="stop-search", className="next-buses-button", n_clicks=0),
                 ),
                 html.Div(
-                    html.Button(id="toggle-future-buses", className="input-button", n_clicks=0, children="Show Next 20 Buses"),
+                    html.Button(id="toggle-future-buses", className="next-buses-button", n_clicks=0, children="Show Next 20 Buses"),
                 ),
                 html.Div(id="next-buses-output"),
             ]
