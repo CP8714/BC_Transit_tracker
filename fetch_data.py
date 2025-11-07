@@ -22,26 +22,31 @@ def fetch():
     # Section of code where the static data is read and stored in csv files
     static_response = requests.get(static_url)
     static_response.raise_for_status()
+    
+    # Opening the zip file containing all the static data files
     z = zipfile.ZipFile(io.BytesIO(static_response.content))
 
+    # Reading the trips.txt file containing info on all trips and saving it to trips.csv
     trips_df = pd.read_csv(z.open("trips.txt"))
     trips_df.to_csv("data/trips.csv", index=False)
 
+    # Reading the trips.txt file containing info on all stops and saving it to stops.csv
     stops_df = pd.read_csv(z.open("stops.txt"))
     stops_df.to_csv("data/stops.csv", index=False)
 
+    # Reading the trips.txt file containing info on all route and saving it to routes.csv
     routes_df = pd.read_csv(z.open("routes.txt"))
     routes_df.to_csv("data/routes.csv", index=False)
 
+    # Reading the stop_times.txt file containing info on all scheduled times for all trips serving every stop and saving it to stop_times.csv
     stop_times_df = pd.read_csv(z.open("stop_times.txt"))
     stop_times_df.to_csv("data/stop_times.csv", index=False)
 
+    # Section of code where the realtime data related to each specific bus currently running is read and saved
+
+    # Reading the realtime bus data
     fleet_feed = gtfs_realtime_pb2.FeedMessage()
     fleet_feed.ParseFromString(fleet_update_response.content)
-
-    
-    # Section of code where the realtime data related to each specific bus currently running is read and saved
-    
     fleet_update_response = requests.get(fleet_update_url, timeout=10)
     fleet_update_response.raise_for_status()
 
