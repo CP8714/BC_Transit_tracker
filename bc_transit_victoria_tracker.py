@@ -84,9 +84,11 @@ bus_tracker_layout = html.Div([
             id="loading-component-map",
             type="circle",
             children=[
+                # Map which shows the bus' currently location as well as the route it is currently running and which stops it is serving
                 dcc.Graph(id="live-map"),
                 html.Div([
-                    html.Label("Enter Bus Number:"),
+                    html.Label("Enter Bus Number:"),\
+                    # Input where the user will tell the site which bus they want to track
                     dcc.Input(
                         id="bus-search-user-input",
                         type="text",
@@ -97,10 +99,11 @@ bus_tracker_layout = html.Div([
                         n_submit=0
                     ),
                     html.Button("Search", id="search-for-bus", className="input-button",  n_clicks=0),
+                    # Button used to clear the input
                     html.Button("Clear", id="clear-bus-input", className="input-button", n_clicks=0)
                 ]),
                 
-                # Manual update button
+                # Manual update button so users can get the most up-to-date info on the bus
                 html.Button("Update Now", id="manual-update", className="update-now-button", n_clicks=0),
             ]
     ),
