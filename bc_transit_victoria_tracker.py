@@ -73,9 +73,9 @@ bus_tracker_layout = html.Div([
         ]
     ),
     html.H2("BC Transit Victoria – Bus Tracker", className="h2-bus-page-title"),
-    dcc.Graph(id="live-map"),
 
     html.Div([
+        dcc.Graph(id="live-map"),
         html.Label("Enter Bus Number:"),
         dcc.Input(
             id="bus-search-user-input",
