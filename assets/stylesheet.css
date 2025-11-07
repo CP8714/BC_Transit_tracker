@@ -32,6 +32,7 @@ button:hover {
 }
 
 .update-now-button {
+    position: relative;
     background-color: #64D10A;
     color: white;
     border: none;
@@ -102,7 +103,6 @@ input-button:hover {
 
 /* Navbar links */
 .nav-link {
-    position: relative;
     display: block;
     color: white;
     text-decoration: none;
