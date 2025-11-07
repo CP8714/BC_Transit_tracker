@@ -89,7 +89,7 @@ next-buses-button:hover {
 }
 
 /* Settings for the Show Next 5 Stops/Show All Upcoming Stops button on the bus tracker page */
-toggle-future-stops-button {
+.toggle-future-stops-button {
     background-color: #64D10A;
     color: white;
     border: none;
