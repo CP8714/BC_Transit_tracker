@@ -1,3 +1,4 @@
+/* Setting the background color and text font */
 body {
     background-color: #f8f9fa;
     font-family: Arial, sans-serif;
@@ -5,17 +6,20 @@ body {
     padding: 0px;
 }
 
+/* Setting the text color */
 h1, h2, label {
     color: #003366;
     padding: 5px;
 }
 
+/* Setting title text for the bus tracker page as the relative position for the map */
 .h2-bus-page-title {
     position: relative;
     color: #003366;
     padding: 5px;
 }
 
+/* Same settings as H2 but with smaller margins for the top and bottom */
 h3 {
     color: #003366;
     padding: 5px;
@@ -24,6 +28,7 @@ h3 {
 
 }
 
+/* Settings for the description text in the home page */
 h4 {
     color: #003366;
     padding: 5px;
@@ -33,6 +38,7 @@ h4 {
 
 }
 
+/* Settings for buttons */
 .button {
     background-color: #64D10A;
     color: white;
@@ -42,10 +48,12 @@ h4 {
     cursor: pointer;
 }
 
+/* Color when hovering over a button */
 button:hover {
     background-color: #3F8A00;
 }
 
+/* Settings for the update now button in the bus tracker page, same settings as regular buttons except more margin for the top */
 .update-now-button {
     background-color: #64D10A;
     color: white;
@@ -56,10 +64,12 @@ button:hover {
     margin-top: 10px;
 }
 
+/* Same hover setting as normal buttons */
 update-now-button:hover {
     background-color: #3F8A00;
 }
 
+/* Settings for the buttons in the next buses page */
 .next-buses-button {
     background-color: #64D10A;
     color: white;
@@ -71,6 +81,7 @@ update-now-button:hover {
     margin-left: 5px;
 }
 
+/* Same hover setting as other buttons */
 next-buses-button:hover {
     background-color: #3F8A00;
 }
