@@ -24,6 +24,7 @@ app = dash.Dash(__name__)
 
 # Layout of the home page
 home_layout = html.Div([
+    # Navbar which appears on the top of every page
     html.Div(
         className="navbar",
         children=[
@@ -69,6 +70,7 @@ home_layout = html.Div([
 
 # Layout of the bus tracker page where users get information about a specific bus
 bus_tracker_layout = html.Div([
+    # Navbar which appears on the top of every page
     html.Div(
         className="navbar",
         children=[
@@ -139,7 +141,7 @@ bus_tracker_layout = html.Div([
 # Layout of the next buses page where users get information about the next trips arriving at a specific stop. 
 # Users can also select to filter by a specific route as well as its variations
 next_buses_layout = html.Div([
-
+    # Navbar which appears on the top of every page
     html.Div(
         className="navbar",
         children=[
