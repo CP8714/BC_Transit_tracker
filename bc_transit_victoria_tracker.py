@@ -220,7 +220,7 @@ next_buses_layout = html.Div([
 ])
 
 # --- Helper functions ---
-# Returns dictionary of bus_updates.json, the realtime update file for buses
+# Returns dictionary containing data from bus_updates.json, the realtime update file for buses
 def load_buses():
     """Load latest bus_updates.json safely."""
     data_file = os.path.join("data", "bus_updates.json")
@@ -234,7 +234,7 @@ def load_buses():
     except:
         return []
 
-# Returns dictionary of trip_updates.json, the realtime update file for trips
+# Returns dictionary containing data trip_updates.json, the realtime update file for trips
 def load_current_trips():
     data_file = os.path.join("data", "trip_updates.json")
     if os.path.exists(data_file):
@@ -246,21 +246,21 @@ def load_current_trips():
     except:
         return []
 
-# Returns dataframe of trips.csv
+# Returns dataframe of trips.csv, the static file containing info on all trips
 def load_trips():
     trips_file = os.path.join("data", "trips.csv")
     if os.path.exists(trips_file):
         trips_df = pd.read_csv(trips_file)
         return trips_df
 
-# Returns dataframe of stops.csv
+# Returns dataframe of stops.csv, the static file containing info on all stops
 def load_stops():
     stops_file = os.path.join("data", "stops.csv")
     if os.path.exists(stops_file):
         stops_df = pd.read_csv(stops_file)
         return stops_df
 
-# Returns dataframe of routes.csv
+# Returns dataframe of routes.csv, the static file containing info on all routes
 def load_routes():
     routes_file = os.path.join("data", "routes.csv")
     if os.path.exists(routes_file):
@@ -319,7 +319,7 @@ def load_block_departure_times(trip_ids):
             return pd.concat(departure_times_list, ignore_index=True)
     return pd.DataFrame(columns=["trip_id", "stop_sequence", "departure_time"])
 
-
+# Makes a table with the estimated next arrival times, the route, and bus assigned based on the input next_buses 
 def make_next_buses_table(next_buses):
     return html.Table([
         html.Thead(html.Tr([
@@ -331,6 +331,7 @@ def make_next_buses_table(next_buses):
             html.Tr([
                 html.Td(bus["arrival_time"], style={"border": "1px solid black", "textAlign": "center"}),
                 html.Td(bus["trip_headsign"], style={"border": "1px solid black", "textAlign": "center"}),
+                # Add a link to the bus tracker page on the bus number if it's known so users can search up info on that bus
                 html.Td(
                     html.A(bus["bus"], href=f"/bus_tracker?bus={bus['bus']}", style={"textDecoration": "none", "color": "blue"})
                     if bus["bus"] != "Unknown" else bus["bus"],
