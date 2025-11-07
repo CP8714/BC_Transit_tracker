@@ -118,6 +118,7 @@ input-button:hover {
     background-color: #3F8A00;
 }
 
+/* Settings for the input in the bus tracker page where the user types in the bus number that they would like to track */
 .input {
     width: 250px;
     padding: 7px;
@@ -128,10 +129,12 @@ input-button:hover {
 }
 
 
+/* Dropdowns used to select the stop and route in the next buses page */
 .next-buses-dropdown {
     margin-bottom: 10px;
 }
 
+/* Navbar shown on the top in every page */
 .navbar {
     background-color: #003366;   /* Dark blue */
     color: white;
@@ -155,10 +158,12 @@ input-button:hover {
     font-size: 18px;
 }
 
+/* Navbar hover setting */
 .nav-link:hover {
     text-decoration: underline;
 }
 
+/* Settings for the map shown in the bus tracker page, showing the current location of the bus */
 #live-map {
     position: absolute;
     width: 800px;
