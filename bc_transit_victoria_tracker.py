@@ -32,7 +32,7 @@ home_layout = html.Div([
             dcc.Link("Next Buses", href="/next_buses", className="nav-link"),
         ]
     ),
-    html.H1("Welcome to the BC Transit Victoria Tracker"),
+    html.H1("Welcome to the BCTVic Tracker"),
 
     html.Div([
         dcc.Loading(
@@ -72,7 +72,7 @@ bus_tracker_layout = html.Div([
             dcc.Link("Next Buses", href="/next_buses", className="nav-link"),
         ]
     ),
-    html.H2("BC Transit Victoria – Bus Tracker", className="h2-bus-page-title"),
+    html.H2("Bus Tracker Page", className="h2-bus-page-title"),
     dcc.Loading(
             id="loading-component-map",
             type="circle",
