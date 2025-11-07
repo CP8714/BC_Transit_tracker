@@ -138,8 +138,8 @@ next_buses_layout = html.Div([
         className="navbar",
         children=[
             dcc.Link("Home", href="/", className="nav-link"),
-            dcc.Link("Next Buses", href="/next_buses", className="nav-link"),
             dcc.Link("Bus Tracker", href="/bus_tracker", className="nav-link"),
+            dcc.Link("Next Buses", href="/next_buses", className="nav-link"),
         ]
     ),
 
