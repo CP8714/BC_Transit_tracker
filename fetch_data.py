@@ -38,18 +38,19 @@ def fetch():
     routes_df = pd.read_csv(z.open("routes.txt"))
     routes_df.to_csv("data/routes.csv", index=False)
 
-    # Reading the stop_times.txt file containing info on all scheduled times for all trips serving every stop and saving it to stop_times.csv
+    # Reading the stop_times.txt file containing info on scheduled arrival times for all trips for every stop served and saving it to stop_times.csv
     stop_times_df = pd.read_csv(z.open("stop_times.txt"))
     stop_times_df.to_csv("data/stop_times.csv", index=False)
+    
 
     # Section of code where the realtime data related to each specific bus currently running is read and saved
-
     # Reading the realtime bus data
     fleet_feed = gtfs_realtime_pb2.FeedMessage()
     fleet_feed.ParseFromString(fleet_update_response.content)
     fleet_update_response = requests.get(fleet_update_url, timeout=10)
     fleet_update_response.raise_for_status()
 
+    # Saving the data of every bus currently running into a dictionary and adding it to the buses
     buses = []
     for entity in fleet_feed.entity:
         if entity.HasField("vehicle"):
@@ -66,16 +67,19 @@ def fetch():
                 "timestamp": datetime.utcnow().isoformat()
             })
             
-    # Save to bus_updates.json
+    # Overwriting the content of bus_updates.json with buses
     with open("data/bus_updates.json", "w") as f:
         json.dump(buses, f, indent=2)
+        
 
-
+    # Section of code where the realtime data related to each specific trip currently being run or scheduled to run in the next 2 hours is read and saved
+    # Reading the realtime bus data
     trip_update_response = requests.get(trip_update_url, timeout=10)
     trip_update_response.raise_for_status()
-
     trip_feed = gtfs_realtime_pb2.FeedMessage()
     trip_feed.ParseFromString(trip_update_response.content)
+
+    # Saving the data of every trip currently being run or scheduled to run in the next 2 hours currently running into a dictionary and adding it to the trips
     trips = []
     for entity in trip_feed.entity:
         trip_entity = entity.trip_update
@@ -102,7 +106,7 @@ def fetch():
                         "time": stop.arrival.time
                     })
 
-    # Save to trip_updates.json
+    # Overwriting the content of bus_updates.json with trips
     with open("data/trip_updates.json", "w") as f:
         json.dump(trips, f, indent=2)
 
