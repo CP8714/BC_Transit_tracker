@@ -39,7 +39,7 @@ home_layout = html.Div([
             id="loading-component",
             type="circle",
             children=[
-                html.H3("Press to go to the Bus Tracker Page"),
+                html.H3("Bus Tracker tracks a specific bus"),
                 dcc.Link(
                     html.Button("Go to Bus Tracker", id="go-to-bus-tracker", className="button"),
                     href="/bus_tracker"
@@ -53,7 +53,7 @@ home_layout = html.Div([
             id="loading-component",
             type="circle",
             children=[
-                html.H3("Press to go to the Next Buses Page"),
+                html.H3("Next Buses shows the next buses arriving at a specific stop"),
                 dcc.Link(
                     html.Button("Go to Next Buses", id="go-to-next-buses", className="button"),
                     href="/next_buses"
