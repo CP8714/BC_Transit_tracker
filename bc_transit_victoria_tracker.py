@@ -162,7 +162,7 @@ next_buses_layout = html.Div([
 
     html.Div([
         dcc.Loading(
-            id="loading-component",
+            id="loading-component-next-buses-1",
             type="circle",
             children=[
                 html.Div(
@@ -196,8 +196,13 @@ next_buses_layout = html.Div([
                         ],
                         value=[]
                      )
-                ], style={"margin-bottom": "10px"}),
-          
+                ], style={"margin-bottom": "10px"})
+            ]
+        ),
+        dcc.Loading(
+            id="loading-component-next-buses-2",
+            type="circle",
+            children=[
                 html.Div(
                     # Search button which will search for the next departures based on the user inputs and display them in a table
                     html.Button("Search", id="stop-search", className="next-buses-button", n_clicks=0),
