@@ -6,8 +6,10 @@ import pandas as pd
 import zipfile
 import io
 
-# Script used to download the vehicleupdates.pb and tripupdates.pb files from BC Transit's website respectfully containing realtime data of all BC Transit buses (excluding Handydart) 
-# currently running and trips currently being run or will be run in the next 2 hours in Victoria, BC. This data is then saved as json files in the /data folder. Static data containing information
+# Script used to download the vehicleupdates.pb and tripupdates.pb files from BC Transit's website 
+# respectfully containing realtime data of all BC Transit buses (excluding Handydart) 
+# currently running and trips currently being run or will be run in the next 2 hours in Victoria, BC. 
+# This data is then saved as json files in the /data folder. Static data containing information
 # such as trip and route information is also downloaded and stored in csv files in the /data folder.
 # Due to the large memory used when downloading the static data, this script is only used by the GitHub Workflow.
 
