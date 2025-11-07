@@ -387,9 +387,11 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     # Show the next 20 arrivals if ............................................................................................................. 
     else:
         next_trip = next_trip[:20]
-    
+
+    # Search up which bus is running each of the next trips in next_trip
     for bus in next_trip:
         current_bus = next((b for b in buses if b["trip_id"] == bus["trip_id"]), None)
+        # If there is no bus currently running that trip, check the blocks to see if one is scheduled. If not, set bus_number to "Unknown"
         if not current_bus:
             current_trip = trips_df[trips_df["trip_id"] == bus["trip_id"]].iloc[0]
             block = current_trip["block_id"]
