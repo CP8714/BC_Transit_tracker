@@ -396,6 +396,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             bus_number = "Unknown"
             current_trip = trips_df[trips_df["trip_id"] == bus["trip_id"]]
             if not current_trip.empty:
+                current_trip = current_trip.iloc[0]
                 block = current_trip["block_id"]
                 full_block = trips_df[trips_df["block_id"] == block]
                 for _, row in full_block.iterrows():
