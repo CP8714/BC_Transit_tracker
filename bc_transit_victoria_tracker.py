@@ -119,6 +119,7 @@ bus_tracker_layout = html.Div([
                 html.H3(id="stop-text"),
                 html.H3(id="capacity-text"),
                 html.H3(id="speed-text"),
+                # Button where the user can toggle whether they want to only see the next 5 stops served by the bus or all upcoming stops
                 html.Button(id="toggle-future-stops", className="toggle-future-stops-button", n_clicks=0, children="Show All Upcoming Stops"),
                 html.H3(id="future-stop-text"),
             ]
@@ -165,7 +166,7 @@ next_buses_layout = html.Div([
             type="circle",
             children=[
                 html.Div(
-                    # Dropdown 
+                    # Dropdown where the user selects which stop they want to see the next departures for
                     dcc.Dropdown(
                         id="stop-dropdown",
                         className = "next-buses-dropdown",
@@ -176,6 +177,7 @@ next_buses_layout = html.Div([
                 ),
 
                 html.Div(
+                    # Dropdown where the user can optionally filter the next departures by selecting a specific route
                     dcc.Dropdown(
                         id="route-dropdown",
                         className = "next-buses-dropdown",
@@ -186,6 +188,7 @@ next_buses_layout = html.Div([
                 ),
 
                 html.Div([
+                    # Checklist where the user can select whether they want to also see variations of their selected route or not
                     dcc.Checklist(
                         id="variant-checklist",    
                         options=[
@@ -196,10 +199,11 @@ next_buses_layout = html.Div([
                 ], style={"margin-bottom": "10px"}),
           
                 html.Div(
-                    # Manual update button
+                    # Search button which will search for the next departures based on the user inputs and display them in a table
                     html.Button("Search", id="stop-search", className="next-buses-button", n_clicks=0),
                 ),
                 html.Div(
+                    # Button where the users can toggle whether they want to see the next 10 or 20 departures
                     html.Button(id="toggle-future-buses", className="next-buses-button", n_clicks=0, children="Show Next 20 Buses"),
                 ),
                 html.Div(id="next-buses-output"),
