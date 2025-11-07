@@ -519,7 +519,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         
         if future_stops:
             all_future_stops_eta = []
-            all_future_stops_eta.append("Next Stop ETAs")
+            all_future_stops_eta.append("Next Stop ETAs (click on stop numbers to see the next departures at that stop)")
             for stop in future_stops:
                 if stop["time"] == 0:
                     future_eta_time = stop["start_time"]
