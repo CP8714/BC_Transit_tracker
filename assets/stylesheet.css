@@ -38,7 +38,7 @@ h4 {
 
 }
 
-/* Settings for buttons */
+/* Settings for buttons on the home page */
 .home-button {
     background-color: #64D10A;
     color: white;
@@ -48,12 +48,12 @@ h4 {
     cursor: pointer;
 }
 
-/* Color when hovering over a button */
+/* Color when hovering over a button on the home page */
 home-button:hover {
     background-color: #3F8A00;
 }
 
-/* Settings for the update now button in the bus tracker page, same settings as regular buttons except more margin for the top */
+/* Settings for the update now button in the bus tracker page */
 .update-now-button {
     background-color: #64D10A;
     color: white;
