@@ -16,7 +16,7 @@ from dash import callback_context, no_update
 import pytz
 from urllib.parse import parse_qs, urlparse
 
-# === GitHub data source fallback (optional) ===
+# Fallback data
 bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
 trip_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/trip_updates.json"
 
