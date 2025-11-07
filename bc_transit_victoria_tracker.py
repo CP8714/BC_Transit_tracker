@@ -87,7 +87,7 @@ bus_tracker_layout = html.Div([
                 # Map which shows the bus' currently location as well as the route it is currently running and which stops it is serving
                 dcc.Graph(id="live-map"),
                 html.Div([
-                    html.Label("Enter Bus Number:"),\
+                    html.Label("Enter Bus Number:"),
                     # Input where the user will tell the site which bus they want to track
                     dcc.Input(
                         id="bus-search-user-input",
