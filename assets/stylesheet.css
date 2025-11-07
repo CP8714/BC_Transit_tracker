@@ -102,6 +102,7 @@ input-button:hover {
 
 /* Navbar links */
 .nav-link {
+    position: relative;
     display: block;
     color: white;
     text-decoration: none;
@@ -112,5 +113,11 @@ input-button:hover {
 
 .nav-link:hover {
     text-decoration: underline;
+}
+
+#live-map {
+    position: absolute;
+    top: 40px;
+    right: 20px;
 }
 
