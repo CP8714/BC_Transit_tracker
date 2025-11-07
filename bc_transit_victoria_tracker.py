@@ -344,26 +344,30 @@ def make_next_buses_table(next_buses):
     style={"borderCollapse": "collapse", "border": "1px solid black", "width": "100%", "marginTop": "10px"}
     )
 
+# Returns the outputs for the next buses page
 def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks, include_variants):
     next_buses = []
+    # If no stop number is selected, return the following line of text
     if not stop_number_input:
-        return html.Div("Please Enter A Stop Number")
+        return html.Div("Please Select A Stop")
     stop_number_input = int(stop_number_input)
     stop = stops_df.loc[stops_df["stop_id"] == stop_number_input, "stop_name"]
+    # If the stop number entered does not match any known number, return the following line of text
     if stop.empty:
         return html.Div(f"{stop_number_input} is not a valid Stop Number")
     stop_name = stop.iloc[0]
     stop_name_text = f"Next Estimated Arrivals At Stop {stop_number_input:d} ({stop_name}), (Click on a bus number to see info about that specific bus)"
 
     stop_number_input = str(stop_number_input)
+    # Get current time to determine the next arrivals
     current_time = int(datetime.now().timestamp())
     
-
+    # Filter the next trips arriving based on the selected stop and the current time
     next_trip = [stop for stop in current_trips if stop["stop_id"] == stop_number_input]
     next_trip = [stop for stop in next_trip if stop["time"] >= current_time]
     if route_number_input:
         route_number_input = str(route_number_input)
-
+        # If the user wants to include variants, include any trips for that route number which also ends with A, B, N, or X
         if include_variants:
             route_variants = [f"{route_number_input}-VIC", f"{route_number_input}A-VIC", f"{route_number_input}B-VIC", f"{route_number_input}N-VIC", f"{route_number_input}X-VIC"]
             next_trip = [stop for stop in next_trip if stop["route_id"] in route_variants]
@@ -371,14 +375,16 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             route_number_input = str(route_number_input)
             route_number_input = route_number_input + "-VIC"
             next_trip = [stop for stop in next_trip if stop["route_id"] == route_number_input]
-            
+
         route_number_input = route_number_input.split('-')[0] 
         stop_name_text = f"Next Estimated Arrivals For Route {route_number_input} At Stop {stop_number_input} ({stop_name}), (Click on a bus number to see info about that specific bus)"
         
-    # Sort by arrival time 
+    # Sort the next trips by arrival time 
     next_trip = sorted(next_trip, key=lambda x: x["time"])
+    # Show only the next 10 arrivals if toggle_future_buses_clicks................................................................................
     if toggle_future_buses_clicks % 2 == 0:
         next_trip = next_trip[:10]
+    # Show the next 20 arrivals if ............................................................................................................. 
     else:
         next_trip = next_trip[:20]
     
