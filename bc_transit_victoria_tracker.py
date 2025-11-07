@@ -418,11 +418,6 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
 
 def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url, triggered_id, update_bus_input):
 
-    recenter_map = (
-        triggered_id in ["search-for-bus", "manual-update", "url", "bus-search-user-input"] 
-        or triggered_id is None
-    )
-
     """Generate figure and speed text for a given bus_number."""
     fig = go.Figure(layout=go.Layout(paper_bgcolor="#f8f9fa"))
     toggle_future_stops_text = "Show All Upcoming Stops"
