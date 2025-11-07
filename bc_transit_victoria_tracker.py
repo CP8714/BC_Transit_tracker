@@ -393,7 +393,8 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         current_bus = next((b for b in buses if b["trip_id"] == bus["trip_id"]), None)
         # If there is no bus currently running that trip, check the blocks to see if one is scheduled. If not, set bus_number to "Unknown"
         if not current_bus:
-            current_trip = trips_df[trips_df["trip_id"] == bus["trip_id"]].iloc[0]
+            # current_trip = trips_df[trips_df["trip_id"] == bus["trip_id"]].iloc[0]
+            current_trip = trips_df[trips_df["trip_id"] == bus["trip_id"]]
             block = current_trip["block_id"]
             full_block = trips_df[trips_df["block_id"] == block]
             bus_number = "Unknown"
