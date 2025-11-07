@@ -21,7 +21,8 @@ def fetch():
     trip_update_url = "https://bct.tmix.se/gtfs-realtime/tripupdates.pb?operatorIds=48"
     static_url = "https://bct.tmix.se/Tmix.Cap.TdExport.WebApi/gtfs/?operatorIds=48"
     
-    # Section of code where the static data is read and stored in csv files
+    # --- Section of code where the static data is read and stored in csv files ---
+    # Downloading the zip file containing the static data
     static_response = requests.get(static_url)
     static_response.raise_for_status()
     
@@ -45,7 +46,7 @@ def fetch():
     stop_times_df.to_csv("data/stop_times.csv", index=False)
     
 
-    # Section of code where the realtime data related to each specific bus currently running is read and saved
+    # --- Section of code where the realtime data related to each specific bus currently running is read and saved ---
     # Reading the realtime bus data
     fleet_feed = gtfs_realtime_pb2.FeedMessage()
     fleet_feed.ParseFromString(fleet_update_response.content)
@@ -74,7 +75,7 @@ def fetch():
         json.dump(buses, f, indent=2)
         
 
-    # Section of code where the realtime data related to each specific trip currently being run or scheduled to run in the next 2 hours is read and saved
+    # --- Section of code where the realtime data related to each specific trip currently being run or scheduled to run in the next 2 hours is read and saved ---
     # Reading the realtime bus data
     trip_update_response = requests.get(trip_update_url, timeout=10)
     trip_update_response.raise_for_status()
