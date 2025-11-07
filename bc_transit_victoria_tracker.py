@@ -113,6 +113,8 @@ bus_tracker_layout = html.Div([
             id="loading-component-1",
             type="circle",
             children=[
+                # Info about the bus such as how late/early it is, what is its next stop, what is its current capacity/how busy it is, 
+                # its current speed, and what are the next stops it will be serving 
                 html.H3(id="desc-text"),
                 html.H3(id="stop-text"),
                 html.H3(id="capacity-text"),
@@ -125,8 +127,9 @@ bus_tracker_layout = html.Div([
             id="loading-component-2",
             type="circle",
             children=[
-                # dcc.Graph(id="live-map"),
+                # All of the trips that this bus will, has or is currently running today
                 html.H3(id="block-trips"),
+                # Timestamp indicating when the data was received by BC Transit
                 html.H3(id="timestamp-text"),
             ]
         )
@@ -135,7 +138,7 @@ bus_tracker_layout = html.Div([
     # Auto-refresh interval
     dcc.Interval(
         id="interval-component",
-        interval=60*10000,  # 60 seconds
+        interval=60*10000,
         n_intervals=0
     ),
     
@@ -206,7 +209,7 @@ next_buses_layout = html.Div([
     # Auto-refresh interval
     dcc.Interval(
         id="stop-interval-component",
-        interval=100*10000,  # 60 seconds
+        interval=100*10000,
         n_intervals=0
     ),
 ])
