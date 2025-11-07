@@ -3,7 +3,7 @@ from google.transit import gtfs_realtime_pb2
 import json
 
 # Script used to download the tripupdates.pb file from BC Transit's website containing realtime data of all trips currently being run
-# or will be run in the next 2 hours and save the data into trip_updates.json in the /data folder
+# or will be run in the next 2 hours in Victoria, BC and save the data into trip_updates.json in the /data folder
 
 def fetch():
     trip_update_url = "https://bct.tmix.se/gtfs-realtime/tripupdates.pb?operatorIds=48"
