@@ -12,6 +12,8 @@ import io
 # This data is then saved as json files in the /data folder. Static data containing information
 # such as trip and route information is also downloaded and stored in csv files in the /data folder.
 # Due to the large memory used when downloading the static data, this script is only used by the GitHub Workflow.
+# The website instead runs with fetch_fleet_data.py and fetch_trip_data.py and retrieves the static data
+# in /data from the last run of the GitHub Workflow
 
 def fetch():
     # The urls from which the realtime and static data is dowanloaded
