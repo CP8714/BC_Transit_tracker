@@ -3,7 +3,8 @@ from google.transit import gtfs_realtime_pb2
 import json
 from datetime import datetime
 
-# Script used to download the vehicleupdates.pb file from BC Transit's website and save the data into bus_updates.json in the /data folder
+# Script used to download the vehicleupdates.pb file from BC Transit's website containing realtime data of all BC Transit buses (excluding Handydart) 
+# currently running in Victoria, BC and save the data into bus_updates.json in the /data folder
 
 def fetch():
     fleet_update_url = "https://bct.tmix.se/gtfs-realtime/vehicleupdates.pb?operatorIds=48"
