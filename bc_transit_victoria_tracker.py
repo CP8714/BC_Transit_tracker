@@ -43,7 +43,7 @@ home_layout = html.Div([
             children=[
                 html.H3("Bus Tracker tracks a specific bus"),
                 dcc.Link(
-                    html.Button("Go to Bus Tracker", id="go-to-bus-tracker", className="button"),
+                    html.Button("Go to Bus Tracker", id="go-to-bus-tracker", className="home-button"),
                     href="/bus_tracker"
                 )
             ]
@@ -57,7 +57,7 @@ home_layout = html.Div([
             children=[
                 html.H3("Next Buses shows the arrival times of the next buses arriving at a specific stop"),
                 dcc.Link(
-                    html.Button("Go to Next Buses", id="go-to-next-buses", className="button"),
+                    html.Button("Go to Next Buses", id="go-to-next-buses", className="home-button"),
                     href="/next_buses"
                 )
             ]
