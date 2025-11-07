@@ -18,7 +18,7 @@ def fetch():
     for entity in fleet_feed.entity:
         if entity.HasField("vehicle"):
             # Download the vehicle's id as well as its current position, speed, route, capacity, trip, next stop, bearing 
-            # along with the timestamp indicating when the data was received
+            # along with the timestamp indicating when the data was received. Bearing is currently not used
             buses.append({
                 "id": entity.vehicle.vehicle.id,
                 "lat": entity.vehicle.position.latitude,
