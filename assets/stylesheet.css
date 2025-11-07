@@ -64,7 +64,7 @@ home-button:hover {
     margin-top: 10px;
 }
 
-/* Same hover setting as normal buttons */
+/* Same hover setting as all buttons */
 update-now-button:hover {
     background-color: #3F8A00;
 }
@@ -81,12 +81,13 @@ update-now-button:hover {
     margin-left: 5px;
 }
 
-/* Same hover setting as other buttons */
+/* Same hover setting as all buttons */
 next-buses-button:hover {
     background-color: #3F8A00;
 }
 
-.toggle-button {
+/* Settings for the Show Next 5 Stops/Show All Upcoming Stops button on the bus tracker page */
+toggle-future-stops-button {
     background-color: #64D10A;
     color: white;
     border: none;
@@ -96,7 +97,8 @@ next-buses-button:hover {
     margin-top: 10px;
 }
 
-toggle-button:hover {
+/* Same hover setting as all buttons */
+toggle-future-stops-button:hover {
     background-color: #3F8A00;
 }
 
