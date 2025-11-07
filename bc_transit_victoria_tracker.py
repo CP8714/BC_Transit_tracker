@@ -72,7 +72,7 @@ bus_tracker_layout = html.Div([
             dcc.Link("Next Buses", href="/next_buses", className="nav-link"),
         ]
     ),
-    html.H2("BC Transit Victoria – Bus Tracker"),
+    html.H2("BC Transit Victoria – Bus Tracker", className="h2-bus-page-title"),
 
     html.Div([
         html.Label("Enter Bus Number:"),
