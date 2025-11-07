@@ -102,6 +102,7 @@ toggle-future-stops-button:hover {
     background-color: #3F8A00;
 }
 
+/* Settings for the Search and Clear buttons on the bus tracker page */
 .input-button {
     background-color: #64D10A;
     color: white;
@@ -112,6 +113,7 @@ toggle-future-stops-button:hover {
     margin-left: 5px;
 }
 
+/* Same hover setting as all buttons */
 input-button:hover {
     background-color: #3F8A00;
 }
