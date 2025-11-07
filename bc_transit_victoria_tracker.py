@@ -353,7 +353,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             next_trip = [stop for stop in next_trip if stop["route_id"] == route_number_input]
             
         route_number_input = route_number_input.split('-')[0] 
-        stop_name_text = f"Next Estimated Arrivals For Route {route_number_input} At Stop {stop_number_input} ({stop_name}), , (Click on a bus number to see info about that specific bus)"
+        stop_name_text = f"Next Estimated Arrivals For Route {route_number_input} At Stop {stop_number_input} ({stop_name}), (Click on a bus number to see info about that specific bus)"
         
     # Sort by arrival time 
     next_trip = sorted(next_trip, key=lambda x: x["time"])
