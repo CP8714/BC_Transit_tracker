@@ -3,6 +3,8 @@ from google.transit import gtfs_realtime_pb2
 import json
 from datetime import datetime
 
+# Script used to download the vehicleupdates.pb file from BC Transit's website and save the data into bus_updates.json in the /data folder
+
 def fetch():
     fleet_update_url = "https://bct.tmix.se/gtfs-realtime/vehicleupdates.pb?operatorIds=48"
     fleet_update_response = requests.get(fleet_update_url, timeout=10)
@@ -14,6 +16,8 @@ def fetch():
     buses = []
     for entity in fleet_feed.entity:
         if entity.HasField("vehicle"):
+            # Download the vehicle's id as well as its current position, speed, route, capacity, trip, next stop, bearing 
+            # along with the timestamp indicating when the data was received
             buses.append({
                 "id": entity.vehicle.vehicle.id,
                 "lat": entity.vehicle.position.latitude,
