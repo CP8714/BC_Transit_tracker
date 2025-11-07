@@ -16,13 +16,13 @@ from dash import callback_context, no_update
 import pytz
 from urllib.parse import parse_qs, urlparse
 
-# Fallback data
+# Fallback data from the last run of the Github Workflow
 bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
 trip_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/trip_updates.json"
 
 app = dash.Dash(__name__)
 
-
+# Layout of the home page
 home_layout = html.Div([
     html.Div(
         className="navbar",
@@ -67,6 +67,7 @@ home_layout = html.Div([
     html.H4("This website uses publicly available General Transit Feed Specification (GTFS) data from BC Transit to provide users with the ability to view information of a specific bus such as its location, how early/late it is, and the estimated times that it will be arriving at specific stops. This website also allows users to see what are the estimated arrivals times of the next buses arriving at a specific stop"),
 ])
 
+# Layout of the bus tracker page where users get information about a specific bus
 bus_tracker_layout = html.Div([
     html.Div(
         className="navbar",
@@ -135,6 +136,8 @@ bus_tracker_layout = html.Div([
     
 ])
 
+# Layout of the next buses page where users get information about the next trips arriving at a specific stop. 
+# Users can also select to filter by a specific route as well as its variations
 next_buses_layout = html.Div([
 
     html.Div(
