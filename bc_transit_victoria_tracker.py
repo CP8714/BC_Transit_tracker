@@ -386,10 +386,10 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         
     # Sort the next trips by arrival time 
     next_trip = sorted(next_trip, key=lambda x: x["time"])
-    # Show only the next 10 arrivals if toggle_future_buses_clicks................................................................................
+    # Show only the next 10 arrivals if the Show Next 10 Buses/20 Buses button has not been pressed or been pressed an even amount of times
     if toggle_future_buses_clicks % 2 == 0:
         next_trip = next_trip[:10]
-    # Show the next 20 arrivals if ............................................................................................................. 
+    # Show the next 20 arrivals if the Show Next 10 Buses/20 Buses button has been pressed an odd amount of times
     else:
         next_trip = next_trip[:20]
 
