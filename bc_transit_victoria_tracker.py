@@ -34,6 +34,8 @@ home_layout = html.Div([
     ),
     html.H1("Welcome to the BCTVic Tracker"),
 
+    html.H2("A Tracking and Next Bus tool for British Columbia Transit (BC Transit) in Victoria, BC"),
+
     html.Div([
         dcc.Loading(
             id="loading-component",
@@ -53,14 +55,18 @@ home_layout = html.Div([
             id="loading-component",
             type="circle",
             children=[
-                html.H3("Next Buses shows the next buses arriving at a specific stop"),
+                html.H3("Next Buses shows the arrival times of the next buses arriving at a specific stop"),
                 dcc.Link(
                     html.Button("Go to Next Buses", id="go-to-next-buses", className="button"),
                     href="/next_buses"
                 )
             ]
         )
-    ])
+    ]),
+    
+    html.H3("This website uses publicly available General Transit Feed Specification (GTFS) data from BC Transit to provide users with the ability
+    to view information of a specific bus such as its location, how early/late it is, and the estimated times that it will be arriving at specific stops. This website
+    also allows users to see what are the estimated arrivals times of the next buses arriving at a specific stop"),
 ])
 
 bus_tracker_layout = html.Div([
