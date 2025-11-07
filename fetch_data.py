@@ -14,15 +14,12 @@ import io
 # Due to the large memory used when downloading the static data, this script is only used by the GitHub Workflow.
 
 def fetch():
+    # The urls from which the realtime and static data is dowanloaded
     fleet_update_url = "https://bct.tmix.se/gtfs-realtime/vehicleupdates.pb?operatorIds=48"
     trip_update_url = "https://bct.tmix.se/gtfs-realtime/tripupdates.pb?operatorIds=48"
     static_url = "https://bct.tmix.se/Tmix.Cap.TdExport.WebApi/gtfs/?operatorIds=48"
-    fleet_update_response = requests.get(fleet_update_url, timeout=10)
-    fleet_update_response.raise_for_status()
-
-    trip_update_response = requests.get(trip_update_url, timeout=10)
-    trip_update_response.raise_for_status()
-
+    
+    # Section of code where the static data is read and stored in csv files
     static_response = requests.get(static_url)
     static_response.raise_for_status()
     z = zipfile.ZipFile(io.BytesIO(static_response.content))
@@ -42,6 +39,12 @@ def fetch():
     fleet_feed = gtfs_realtime_pb2.FeedMessage()
     fleet_feed.ParseFromString(fleet_update_response.content)
 
+    
+    # Section of code where the realtime data related to each specific bus currently running is read and saved
+    
+    fleet_update_response = requests.get(fleet_update_url, timeout=10)
+    fleet_update_response.raise_for_status()
+
     buses = []
     for entity in fleet_feed.entity:
         if entity.HasField("vehicle"):
@@ -57,10 +60,14 @@ def fetch():
                 "bearing": entity.vehicle.position.bearing,
                 "timestamp": datetime.utcnow().isoformat()
             })
-
+            
     # Save to bus_updates.json
     with open("data/bus_updates.json", "w") as f:
         json.dump(buses, f, indent=2)
+
+
+    trip_update_response = requests.get(trip_update_url, timeout=10)
+    trip_update_response.raise_for_status()
 
     trip_feed = gtfs_realtime_pb2.FeedMessage()
     trip_feed.ParseFromString(trip_update_response.content)
