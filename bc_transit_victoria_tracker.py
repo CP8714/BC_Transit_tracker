@@ -77,27 +77,26 @@ bus_tracker_layout = html.Div([
             id="loading-component-map",
             type="circle",
             children=[
-                dcc.Graph(id="live-map")
+                dcc.Graph(id="live-map"),
+                html.Div([
+                    html.Label("Enter Bus Number:"),
+                    dcc.Input(
+                        id="bus-search-user-input",
+                        type="text",
+                        placeholder="enter bus number e.g. 9542",
+                        value="9542",
+                        className="input",
+                        debounce=True,
+                        n_submit=0
+                    ),
+                    html.Button("Search", id="search-for-bus", className="input-button",  n_clicks=0),
+                    html.Button("Clear", id="clear-bus-input", className="input-button", n_clicks=0)
+                ]),
+                
+                # Manual update button
+                html.Button("Update Now", id="manual-update", className="update-now-button", n_clicks=0),
             ]
     ),
-
-    html.Div([
-        html.Label("Enter Bus Number:"),
-        dcc.Input(
-            id="bus-search-user-input",
-            type="text",
-            placeholder="enter bus number e.g. 9542",
-            value="9542",
-            className="input",
-            debounce=True,
-            n_submit=0
-        ),
-        html.Button("Search", id="search-for-bus", className="input-button",  n_clicks=0),
-        html.Button("Clear", id="clear-bus-input", className="input-button", n_clicks=0)
-    ]),
-
-    # Manual update button
-    html.Button("Update Now", id="manual-update", className="update-now-button", n_clicks=0),
 
     html.Div([
         dcc.Loading(
@@ -519,7 +518,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         
         if future_stops:
             all_future_stops_eta = []
-            all_future_stops_eta.append("Next Stop ETAs (click on stop numbers to see the next departures at that stop)")
+            all_future_stops_eta.append("Next Stop ETAs (click on a stop number to see the next departures at that stop)")
             for stop in future_stops:
                 if stop["time"] == 0:
                     future_eta_time = stop["start_time"]
