@@ -91,8 +91,7 @@ bus_tracker_layout = html.Div([
                         id="live-map"
                     ),
                     className="map-container"
-                )
-                dcc.Interval(id="resize-interval", interval=1000, n_intervals=0, max_intervals=1),
+                ),
                 html.Div([
                     html.Label("Enter Bus Number:"),
                     # Input where the user will tell the site which bus they want to track
