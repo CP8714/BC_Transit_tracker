@@ -48,10 +48,10 @@ def fetch():
 
     # --- Section of code where the realtime data related to each specific bus currently running is read and saved ---
     # Reading the realtime bus data
-    fleet_feed = gtfs_realtime_pb2.FeedMessage()
-    fleet_feed.ParseFromString(fleet_update_response.content)
     fleet_update_response = requests.get(fleet_update_url, timeout=10)
     fleet_update_response.raise_for_status()
+    fleet_feed = gtfs_realtime_pb2.FeedMessage()
+    fleet_feed.ParseFromString(fleet_update_response.content)
 
     # Saving the data of every bus currently running into a dictionary and adding it to the buses
     buses = []
