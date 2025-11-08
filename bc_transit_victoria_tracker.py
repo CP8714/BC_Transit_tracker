@@ -314,7 +314,10 @@ def load_scheduled_bus_times(current_stop_id):
                 bus_times_df = pd.concat([bus_times_df, next_buses], ignore_index=True)
         return bus_times_df
 
-# **This function is currently not being used**
+# Loads all the stop times of the first stop for all the trips in trip_ids
+# ----------------------------------------------------------------------------------
+# trips_ids is a list of trip ids that a specific bus is running
+# ----------------------------------------------------------------------------------
 def load_block_departure_times(trip_ids):
     stop_times_file = os.path.join("data", "stop_times.csv")
     departure_times_list = []
@@ -517,10 +520,10 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         full_block = trips_df[trips_df["block_id"].astype(str) == block]
         block_trips.append(f"{bus_number} will be running the following trips today:")
 
-        # Load all stop times for all trips in the block
+        # Load all the first stop departure times for all trips in the block
         stop_times_df = load_block_departure_times(full_block["trip_id"].tolist())
 
-        # 
+        # Merge full_block and stop_times_df so that all the relevant info about every trip run by that bus is now in a single dataframe
         full_block = full_block.merge(stop_times_df, on="trip_id", how="left")
         # Allow departure_time to exceed 24:00:00 e.g. 25:00:00
         full_block["departure_time"] = pd.to_timedelta(full_block["departure_time"])
@@ -529,25 +532,27 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         full_block["departure_time"] = full_block["departure_time"].apply(
             lambda t: f"{int(t.total_seconds() // 3600):02d}:{int((t.total_seconds() % 3600) // 60):02d}"
         )
-        
+
+        # Create output detailing all the trips run by that bus
         for _, row in full_block.iterrows():
             departure_time = row["departure_time"]
             route_number = row["route_id"].split("-")[0]
             headsign = row["trip_headsign"]
             block_trip_text = f"{route_number} {headsign} leaving at {departure_time}"
             block_trips.append(block_trip_text)
-
         block_trips = [html.Div(text) for text in block_trips]
 
         # Get lon and lat coordinates for all stops on current route to be displayed on map
-         = load_stop_times(trip_id)
-        current_trip_stop_ids = ["stop_id"].astype(float).tolist()
+        stop_times_df = load_stop_times(trip_id)
+        current_trip_stop_ids = stop_times_df["stop_id"].astype(float).tolist()
         current_trip_stops_df = stops_df[stops_df["stop_id"].isin(current_trip_stop_ids)]
 
+        # Get the text to be displayed saying how busy that bus currently is
         capacity_text = get_capacity(capacity)
 
+        # If the data is not currently stating the bus' next stop, it is stated that it is Not In Service
         if not current_stop:
-            # Add route on map
+            # Initialize the map with it being centered on the bus' current location
             fig.update_layout(
                 mapbox = dict(
                     style="open-street-map",
@@ -559,7 +564,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
                 uirevision=None
             )
 
-            # Bus location as marker
+            # Add the bus location as a blue marker
             fig.add_trace(go.Scattermapbox(
                 lat=[lat],
                 lon=[lon],
