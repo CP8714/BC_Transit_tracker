@@ -14,6 +14,11 @@ h1, h2, label {
     padding: 5px;
 }
 
+.info-1-container {
+    height: 300px;
+}
+
+
 /* Setting title text for the bus tracker page as the relative position for the map */
 .h2-bus-page-title {
     color: #003366;
@@ -186,6 +191,5 @@ h4 {
 .map-container {
     position: relative;   
     width: 1600px; 
-    height: 600px;
 }
 
