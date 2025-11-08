@@ -52,7 +52,7 @@ h4 {
 
 /* Color when hovering over a button on the home page */
 home-button:hover {
-    background-color: #3F8A00;
+    background-color: #3F8A00 !important;
 }
 
 /* Settings for the update now button in the bus tracker page */
@@ -67,7 +67,7 @@ home-button:hover {
 }
 
 /* Same hover setting as all buttons */
-update-now-button:hover {
+.update-now-button:hover {
     background-color: #3F8A00;
 }
 
@@ -84,7 +84,7 @@ update-now-button:hover {
 }
 
 /* Same hover setting as all buttons */
-next-buses-button:hover {
+.next-buses-button:hover {
     background-color: #3F8A00;
 }
 
@@ -100,7 +100,7 @@ next-buses-button:hover {
 }
 
 /* Same hover setting as all buttons */
-toggle-future-stops-button:hover {
+.toggle-future-stops-button:hover {
     background-color: #3F8A00;
 }
 
@@ -116,7 +116,7 @@ toggle-future-stops-button:hover {
 }
 
 /* Same hover setting as all buttons */
-input-button:hover {
+.input-button:hover {
     background-color: #3F8A00;
 }
 
