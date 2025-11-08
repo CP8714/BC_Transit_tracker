@@ -85,8 +85,13 @@ bus_tracker_layout = html.Div([
             id="loading-component-map",
             type="circle",
             children=[
-                # Map which shows the bus' currently location as well as the route it is currently running and which stops it is serving
-                dcc.Graph(id="live-map"),
+                # Map which shows the bus' current location as well as the route it is currently running and which stops it is serving
+                html.Div(
+                    dcc.Graph(
+                        id="live-map"
+                    ),
+                    className="map-container"
+                )
                 dcc.Interval(id="resize-interval", interval=1000, n_intervals=0, max_intervals=1),
                 html.Div([
                     html.Label("Enter Bus Number:"),
