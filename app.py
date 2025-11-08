@@ -85,13 +85,6 @@ bus_tracker_layout = html.Div([
             id="loading-component-map",
             type="circle",
             children=[
-                # Map which shows the bus' current location as well as the route it is currently running and which stops it is serving
-                html.Div(
-                    dcc.Graph(
-                        id="live-map"
-                    ),
-                    className="map-container"
-                ),
                 html.Div([
                     html.Label("Enter Bus Number:"),
                     # Input where the user will tell the site which bus they want to track
@@ -138,6 +131,13 @@ bus_tracker_layout = html.Div([
                 html.H3(id="block-trips"),
                 # Timestamp indicating when the data was received by BC Transit
                 html.H3(id="timestamp-text"),
+                # Map which shows the bus' current location as well as the route it is currently running and which stops it is serving
+                html.Div(
+                    dcc.Graph(
+                        id="live-map"
+                    ),
+                    className="map-container"
+                ),
             ]
         )
     ]),
