@@ -694,9 +694,11 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     
     stop = stop.iloc[0]
     if deadheading:
+        # If the bus is currently Not In Service and heading to a transit yard, set the below text for the description and next stop text
         if stop_id == 900000 or stop_id == 930000:
             desc_text = f"{bus_id} is currently returning back to a transit yard"
             stop_text = f"Next Stop: {stop}"
+        # If the bus is currently Not In Service and heading to a run another route, set the below text for the description and next stop text
         else:
             desc_text = f"{bus_id} is currently deadheading to run another route"
             stop_text = f"First Stop: {stop}"
@@ -704,24 +706,29 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         # Remove seconds from start_time
         start_time = start_time[:5]
         trip_headsign = trip_headsign.iloc[0]
+        # Checking if the bus is on schedule
         if delay == 0:
+            # Checking if the next stop is the first one
             if stop_sequence == 1:
                 desc_text = f"{bus_id} will be running the {route_number} {trip_headsign} departing at {start_time}"
             else:
                 desc_text = f"{bus_id} is currently on schedule running the {route_number} {trip_headsign}"
+        # Checking if the bus is currently early
         elif delay < 0:
             delay = delay * -1
+            # Checking if the next stop is the first one
             if delay == 1:
                 desc_text = f"{bus_id} is currently {delay:d} minute early running the {route_number} {trip_headsign}"
             else:
                 desc_text = f"{bus_id} is currently {delay:d} minutes early running the {route_number} {trip_headsign}"
         else:
             if delay == 1:
+                # Checking if the next stop is the first one
                 desc_text = f"{bus_id} is currently {delay:d} minute late running the {route_number} {trip_headsign}"
             else:
                 desc_text = f"{bus_id} is currently {delay:d} minutes late running the {route_number} {trip_headsign}"
 
-        
+        # Checking if the bus is currently moving
         if speed > 0:
             stop_text = f"Next Stop: {stop} (ETA: {eta_time})"
         else:
@@ -730,14 +737,13 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
 
     return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text, block_trips, reset_url, update_bus_input
 
-# --- App layout with a container that will be swapped ---
 app.layout = html.Div([
     dcc.Location(id="url", refresh=False),
     html.Div(id="page-content")
 ])
 
 
-# --- Callback to swap layouts based on URL ---
+# Callback to set the page layout based on the URL 
 @callback(
     Output("page-content", "children"),
     Input("url", "pathname")
@@ -750,6 +756,7 @@ def display_page(pathname):
     else:
         return home_layout
 
+# Callback which sets the outputs of the bus tracker page
 @callback(
     [Output("live-map", "figure"),
      Output("desc-text", "children"),
@@ -775,11 +782,12 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
     triggered_id = callback_context.triggered_id
     reset_url = no_update
 
+    # If the Clear button on the bus tracker page is pressed, clear the input
     if triggered_id == "clear-bus-input":
         return (no_update, no_update, no_update, no_update, no_update, no_update, no_update, no_update, no_update, no_update, "")
         
 
-    # Check if there is a bus number in the url and use it if so
+    # Check if there is a bus number in the current url and if so, use it as the bus number input
     if href and "/bus_tracker" in href:
         parsed_url = urlparse(href)
         query_params = parse_qs(parsed_url.query)
@@ -788,7 +796,7 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
         reset_url = "/bus_tracker"
         
 
-    # Manual button triggers a live fetch
+    # Clicking the Manual Update or Search buttons or pressing the Enter key triggers a fetch for the most recent trip and bus realtime data
     if triggered_id in ["manual-update", "search-for-bus", "bus-search-user-input"]:
         try:
             fetch_fleet_data.fetch()
@@ -796,14 +804,14 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
         except Exception as e:
             print(f"Error fetching live fleet data: {e}", flush=True)
 
-    # Load the latest bus data
+    # Load the latest data in the /data folder for bus_updates.json, trip_updates.json, trips.csv, and stops.csv
     buses = load_buses()
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
     return get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url, triggered_id, no_update)
 
-
+# Callback which sets the outputs of the next buses page
 @callback(
     [Output("next-buses-output", "children"),
      Output("toggle-future-buses", "children"),
