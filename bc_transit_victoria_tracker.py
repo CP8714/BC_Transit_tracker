@@ -512,6 +512,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     if not current_trip:
         deadheading = True
     else:
+        # Get the block id that the bus is running and find all trips it is running and their respective departure times
         block = trip_id.split(":")[2]
         full_block = trips_df[trips_df["block_id"].astype(str) == block]
         block_trips.append(f"{bus_number} will be running the following trips today:")
@@ -519,6 +520,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         # Load all stop times for all trips in the block
         stop_times_df = load_block_departure_times(full_block["trip_id"].tolist())
 
+        # 
         full_block = full_block.merge(stop_times_df, on="trip_id", how="left")
         # Allow departure_time to exceed 24:00:00 e.g. 25:00:00
         full_block["departure_time"] = pd.to_timedelta(full_block["departure_time"])
@@ -538,8 +540,8 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         block_trips = [html.Div(text) for text in block_trips]
 
         # Get lon and lat coordinates for all stops on current route to be displayed on map
-        stop_times_df = load_stop_times(trip_id)
-        current_trip_stop_ids = stop_times_df["stop_id"].astype(float).tolist()
+         = load_stop_times(trip_id)
+        current_trip_stop_ids = ["stop_id"].astype(float).tolist()
         current_trip_stops_df = stops_df[stops_df["stop_id"].isin(current_trip_stop_ids)]
 
         capacity_text = get_capacity(capacity)
