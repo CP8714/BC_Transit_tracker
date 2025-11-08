@@ -20,4 +20,4 @@ ENV PORT 8080
 EXPOSE 8080
 
 # Start the Dash app using Gunicorn
-CMD exec gunicorn --bind :$PORT app:server
+CMD exec gunicorn --workers 2 --threads 2 --bind :$PORT app:server
