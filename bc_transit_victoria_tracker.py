@@ -21,6 +21,7 @@ bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/
 trip_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/trip_updates.json"
 
 app = dash.Dash(__name__)
+server = app.server
 
 # Layout of the home page
 home_layout = html.Div([
