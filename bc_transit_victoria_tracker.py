@@ -285,6 +285,9 @@ def load_stop_times(current_trip_id):
         return stop_times_df
 
 # Returns appropriate text for bus capacity depending on the capacity input value
+# ----------------------------------------------------------------------------------
+# capacity is an int value which determines how busy the bus is
+# ----------------------------------------------------------------------------------
 def get_capacity(capacity):
     if capacity == 0:
         capacity_text = "Occupancy Status: Empty"
@@ -298,7 +301,8 @@ def get_capacity(capacity):
         capacity_text = "Occupancy Status: Full"
     return capacity_text
 
-# Finds all the trips that stop at current_stop_id and returns a dataframe containing them along with all other info from stop_times.csv
+
+# **This function is currently not being used**
 def load_scheduled_bus_times(current_stop_id):
     bus_times_file = os.path.join("data", "stop_times.csv")
     if os.path.exists(bus_times_file):
@@ -310,7 +314,7 @@ def load_scheduled_bus_times(current_stop_id):
                 bus_times_df = pd.concat([bus_times_df, next_buses], ignore_index=True)
         return bus_times_df
 
-# Finds the initial trip departure time from stop_times.csv for all the trips in trips_ids and returns a dataframe containing them
+# **This function is currently not being used**
 def load_block_departure_times(trip_ids):
     stop_times_file = os.path.join("data", "stop_times.csv")
     departure_times_list = []
@@ -324,7 +328,10 @@ def load_block_departure_times(trip_ids):
             return pd.concat(departure_times_list, ignore_index=True)
     return pd.DataFrame(columns=["trip_id", "stop_sequence", "departure_time"])
 
-# Makes a table with the estimated next arrival times, the route, and bus assigned based on the input next_buses 
+# Makes a table with the estimated next arrival times, the route, and bus from the dictionaries in next_buses
+# ----------------------------------------------------------------------------------
+# next_buses which is a list of dictonaries, each containing the estimated next arrival times, the route, and bus
+# ----------------------------------------------------------------------------------
 def make_next_buses_table(next_buses):
     return html.Table([
         html.Thead(html.Tr([
@@ -350,6 +357,16 @@ def make_next_buses_table(next_buses):
     )
 
 # Returns the outputs for the next buses page
+# ----------------------------------------------------------------------------------
+# stop_number_input is the stop number selected by the user
+# route_number_input is the route number selected by the user
+# stops_df dataframe containing all the data from stops.json
+# trips_df dataframe containing all the data from trips.json
+# current_trips dictionary containing all the realtime data from trip_updates.json
+# buses is the dictionary containing all the realtime data from bus_updates.json
+# toggle_future_buses_clicks is the number of times the Show Next 10 Buses/Show Next 20 Buses button has been clicked
+# include_variants is the value determining if the user wants to include variants of the selected route or not
+# ----------------------------------------------------------------------------------
 def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks, include_variants):
     next_buses = []
     # If no stop number is selected, return the following line of text
@@ -386,7 +403,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         
     # Sort the next trips by arrival time 
     next_trip = sorted(next_trip, key=lambda x: x["time"])
-    # Show only the next 10 arrivals if the Show Next 10 Buses/20 Buses button has not been pressed or been pressed an even amount of times
+    # Show only the next 10 arrivals if the Show Next 10 Buses/Show Next 20 Buses button has not been pressed or been pressed an even amount of times
     if toggle_future_buses_clicks % 2 == 0:
         next_trip = next_trip[:10]
     # Show the next 20 arrivals if the Show Next 10 Buses/20 Buses button has been pressed an odd amount of times
@@ -407,16 +424,19 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
                 for _, row in full_block.iterrows():
                     current_bus = next((b for b in buses if b["trip_id"] == row["trip_id"]), None)
                     if current_bus:
+                        # The bus number is only the final four digits of the its id
                         bus_number = current_bus["id"]
                         bus_number = bus_number[-4:]
                         break
         else:
+            # The bus number is only the final four digits of the its id
             bus_number = current_bus["id"]
             bus_number = bus_number[-4:]
         next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]].iloc[0]
         route = bus["route_id"]
         route_number = route.split('-')[0] 
         headsign = next_bus["trip_headsign"]
+        # Getting the arrival time and converting it to PST and only invcluding hours and minutes
         arrival_time = datetime.fromtimestamp(bus["time"], pytz.timezone("America/Los_Angeles"))
         arrival_time = arrival_time.strftime("%H:%M")
         next_buses.append({
@@ -424,35 +444,54 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             "trip_headsign": f"{route_number} {headsign}",
             "bus": f"{bus_number}"
         })    
-    
+    # Returning the text describing the stop and route selected by the user as well as the table containing the next arrivals
     return html.Div([
         html.H3(stop_name_text),
         make_next_buses_table(next_buses)
     ])
-    
 
+
+# Returns the outputs for the bus tracker page
+# ----------------------------------------------------------------------------------
+# buses is the dictionary containing all the realtime data from bus_updates.json
+# bus_number is the string value of the bus which the user wants to track
+# current_trips is the dictionary containing all the realtime data from trip_updates.json
+# trips_df dataframe containing all the data from trips.json
+# stops_df dataframe containing all the data from stops.json
+# toggle_future_stops_clicks is the number of times the Show Next 5 Stops/Show All Upcoming Stops button has been clicked
+# reset_url is the new url that is to be used at the end of the current update_bus_callback
+# triggered_id is the id of what triggered update_bus_callback
+# update_bus_input is used to determine if the user has clicked the Clear button for the input
+# ----------------------------------------------------------------------------------
 def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url, triggered_id, update_bus_input):
-
-    """Generate figure and speed text for a given bus_number."""
+    # Generate the initial figure for the map and use the same background color as for the rest of the website
     fig = go.Figure(layout=go.Layout(paper_bgcolor="#f8f9fa"))
     toggle_future_stops_text = "Show All Upcoming Stops"
+    # Search for the inputted bus in buses featuring the realtime data from buses_updates.json and get all the data of that bus
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
 
+    # Update the text for the Show All Upcoming Stops/Show Next 5 Stops depending on how many times the button has been pressed
     if toggle_future_stops_clicks % 2 == 0:
         toggle_future_stops_text = "Show All Upcoming Stops"
     else:
         toggle_future_stops_text = "Show Next 5 Stops"
-        
+
+    # If no results for the inputted bus, it is not running right now
     if not bus:
         return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available", "", [], toggle_future_stops_text, "", reset_url, update_bus_input
 
+    # Get the position, current route, its id, how busy it is, its current trip, next stop, and bearing along with the timestamp that BC Transit received this data
     lat, lon, speed, route, bus_id, capacity, trip_id, stop_id, bearing, timestamp = (
         bus["lat"], bus["lon"], bus["speed"], bus["route"], bus["id"][6:], bus["capacity"], bus["trip_id"], bus["stop_id"], bus["bearing"], bus["timestamp"]
     )
+
+    # Get the realtime data from current_trips of the current trip being run by that bus
     current_trip = [trip for trip in current_trips if trip["trip_id"] == trip_id]
+    # Get the data regarding the next stop which will be served by that bus
     current_stop = next((stop for stop in current_trip if stop["stop_id"] == stop_id), None)
     future_stops_eta = []
 
+    # Get the text regarding how busy that bus currently is
     capacity_text = get_capacity(capacity)
 
     # Parse timestamp as UTC time
