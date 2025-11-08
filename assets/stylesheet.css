@@ -57,7 +57,7 @@ h4 {
 /* Settings for the update now button in the bus tracker page */
 .update-now-button {
     position: absolute;
-    bottom: 500px;
+    bottom: 600px;
     background-color: #64D10A;
     color: white;
     border: none;
@@ -91,6 +91,8 @@ h4 {
 
 /* Settings for the Show Next 5 Stops/Show All Upcoming Stops button on the bus tracker page */
 .toggle-future-stops-button {
+    position: absolute;
+    bottom: 600px;
     background-color: #64D10A;
     color: white;
     border: none;
