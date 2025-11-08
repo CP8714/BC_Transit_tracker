@@ -637,13 +637,15 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         
     
     # stop_id in stops_df is a float so stop_id from buses must be converted to a float 
-    stop_id = float(stop_id)
+    if stop_id:
+        stop_id = float(stop_id)
+        stop = stops_df.loc[stops_df["stop_id"] == stop_id, "stop_name"]
+        stop = stop.iloc[0]
     # Get rid of the -VIC part of the route_id
     route_number = route.split('-')[0] 
     trip_headsign = trips_df.loc[trips_df["trip_id"] == trip_id, "trip_headsign"]
     # Converting speed from m/s to km/h
     speed = speed * 3.6
-    stop = stops_df.loc[stops_df["stop_id"] == stop_id, "stop_name"]
 
     # Load the routes.shp file get the lines for all routes and then select the one being currently run by that bus
     fp_routes = os.path.join("data", "routes.shp")
@@ -701,12 +703,15 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         name=f"Position of {bus_id}"
     ))
     
-    stop = stop.iloc[0]
     if deadheading:
         # If the bus is currently Not In Service and heading to a transit yard, set the below text for the description and next stop text
         if stop_id == 900000 or stop_id == 930000:
             desc_text = f"{bus_id} is currently returning back to a transit yard"
             stop_text = f"Next Stop: {stop}"
+        # If the bus is currently Not In Service and sitting at a transit yard, set the below text for the description and next stop text
+        elif not stop_id:
+            desc_text = f"{bus_id} is sitting at a transit yard"
+            stop_text = f"Next Stop: Not Available"
         # If the bus is currently Not In Service and heading to a run another route, set the below text for the description and next stop text
         else:
             desc_text = f"{bus_id} is currently deadheading to run another route"
