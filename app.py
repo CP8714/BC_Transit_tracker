@@ -436,18 +436,20 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             # The bus number is only the final four digits of the its id
             bus_number = current_bus["id"]
             bus_number = bus_number[-4:]
-        next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]].iloc[0]
-        route = bus["route_id"]
-        route_number = route.split('-')[0] 
-        headsign = next_bus["trip_headsign"]
-        # Getting the arrival time and converting it to PST and only invcluding hours and minutes
-        arrival_time = datetime.fromtimestamp(bus["time"], pytz.timezone("America/Los_Angeles"))
-        arrival_time = arrival_time.strftime("%H:%M")
-        next_buses.append({
-            "arrival_time": arrival_time,
-            "trip_headsign": f"{route_number} {headsign}",
-            "bus": f"{bus_number}"
-        })    
+        next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]]
+        if not next_bus.empty:
+            next_bus = next_bus.iloc[0]
+            route = bus["route_id"]
+            route_number = route.split('-')[0] 
+            headsign = next_bus["trip_headsign"]
+            # Getting the arrival time and converting it to PST and only invcluding hours and minutes
+            arrival_time = datetime.fromtimestamp(bus["time"], pytz.timezone("America/Los_Angeles"))
+            arrival_time = arrival_time.strftime("%H:%M")
+            next_buses.append({
+                "arrival_time": arrival_time,
+                "trip_headsign": f"{route_number} {headsign}",
+                "bus": f"{bus_number}"
+            })    
     # Returning the text describing the stop and route selected by the user as well as the table containing the next arrivals
     return html.Div([
         html.H3(stop_name_text),
