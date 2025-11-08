@@ -8,6 +8,11 @@ body {
     padding: 0px;
 }
 
+.info-1-container {
+    position: absolute;
+    bottom: 300px;
+}
+
 /* Setting the text color */
 h1, h2, label {
     color: #003366;
@@ -29,10 +34,8 @@ h3 {
 
 }
 
-/* H3 settings for the bus tracker page, same as other pages but with absolute positioning to account for the map */
-.h3-bus-tracker {
-    position: absolute;
-    bottom: 300px;
+/* H3 settings for the bus tracker page */
+.info-1-container h3 {
     color: #003366;
     padding: 5px;
     margin-top: 7px;
@@ -102,8 +105,6 @@ h4 {
 
 /* Settings for the Show Next 5 Stops/Show All Upcoming Stops button on the bus tracker page */
 .toggle-future-stops-button {
-    position: absolute;
-    bottom: 600px;
     background-color: #64D10A;
     color: white;
     border: none;
