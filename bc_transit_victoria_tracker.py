@@ -367,7 +367,7 @@ def make_next_buses_table(next_buses):
 # trips_df dataframe containing all the data from trips.json
 # current_trips dictionary containing all the realtime data from trip_updates.json
 # buses is the dictionary containing all the realtime data from bus_updates.json
-# toggle_future_buses_clicks is the number of times the Show Next 10 Buses/Show Next 20 Buses button has been clicked
+# toggle_future_buses_clicks is the number of times the "Show Next 10 Buses"/"Show Next 20 Buses" button has been clicked
 # include_variants is the value determining if the user wants to include variants of the selected route or not
 # ----------------------------------------------------------------------------------
 def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks, include_variants):
@@ -406,7 +406,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         
     # Sort the next trips by arrival time 
     next_trip = sorted(next_trip, key=lambda x: x["time"])
-    # Show only the next 10 arrivals if the Show Next 10 Buses/Show Next 20 Buses button has not been pressed or been pressed an even amount of times
+    # Show only the next 10 arrivals if the "Show Next 10 Buses"/"Show Next 20 Buses" button has not been pressed or been pressed an even amount of times
     if toggle_future_buses_clicks % 2 == 0:
         next_trip = next_trip[:10]
     # Show the next 20 arrivals if the Show Next 10 Buses/20 Buses button has been pressed an odd amount of times
@@ -461,7 +461,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
 # current_trips is the dictionary containing all the realtime data from trip_updates.json
 # trips_df dataframe containing all the data from trips.json
 # stops_df dataframe containing all the data from stops.json
-# toggle_future_stops_clicks is the number of times the Show Next 5 Stops/Show All Upcoming Stops button has been clicked
+# toggle_future_stops_clicks is the number of times the "Show Next 5 Stops"/"Show All Upcoming Stops" button has been clicked
 # reset_url is the new url that is to be used at the end of the current update_bus_callback
 # triggered_id is the id of what triggered update_bus_callback
 # update_bus_input is used to determine if the user has clicked the Clear button for the input
@@ -473,7 +473,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     # Search for the inputted bus in buses featuring the realtime data from buses_updates.json and get all the data of that bus
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
 
-    # Update the text for the Show All Upcoming Stops/Show Next 5 Stops depending on how many times the button has been pressed
+    # Update the text for the "Show All Upcoming Stops"/"Show Next 5 Stops" depending on how many times the button has been pressed
     if toggle_future_stops_clicks % 2 == 0:
         toggle_future_stops_text = "Show All Upcoming Stops"
     else:
@@ -805,7 +805,7 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
         except Exception as e:
             print(f"Error fetching live fleet data: {e}", flush=True)
 
-    # Load the latest data in the /data folder for bus_updates.json, trip_updates.json, trips.csv, and stops.csv
+    # Load the latest data in the /data folder from bus_updates.json, trip_updates.json, trips.csv, and stops.csv
     buses = load_buses()
     current_trips = load_current_trips()
     trips_df = load_trips()
@@ -828,7 +828,6 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
 )
 def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, href, stop_number_input, route_number_input, include_variants):
     triggered_id = callback_context.triggered_id
-    reset_url = no_update
         
     # Check if there is a stop number in the url and use it if so
     if href and "/next_buses" in href and triggered_id not in ["stop-search"]:
@@ -836,33 +835,39 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
         query_params = parse_qs(parsed_url.query)
         if "stop_id" in query_params:
             stop_number_input = query_params["stop_id"][0]
-        reset_url = "/next_buses"
 
+    # Get the most up-to-date realtime data for trip_updates.json and bus_updates.json
     try:
         fetch_fleet_data.fetch()
         fetch_trip_data.fetch()
     except Exception as e:
         print(f"Error fetching live fleet data: {e}", flush=True)
 
-    # Load the latest bus data
+    # Load the latest bus data in the /data folder from bus_updates.json, trip_updates.json, trips.csv, and stops.csv
     buses = load_buses()
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
     routes_df = load_routes()
+
+    # Populate the stop dropdown with the values being the stop ids and the labels having both the stop ids and the stop names
     stop_options = [
         {"label": f"{row["stop_name"]} (Stop {int(row["stop_id"])})", "value": int(row["stop_id"])}
         for _, row in stops_df.iterrows()
     ]
+    # Populate the route dropdown with the values being the route numbers and the labels having both the route numbers and the destinations
     route_options = [
     {"label": f"{row["route_short_name"]} {row["route_long_name"]}", "value": row["route_short_name"]}
         for _, row in routes_df.iterrows()
     ]    
+    # Change the text of the "Show Next 10 Buses"/"Show Next 20 Buses" button depending on how many times it has been clicked
     if toggle_future_buses_clicks % 2:
         toggle_future_buses_text = "Show Next 10 Buses"
     else:
         toggle_future_buses_text = "Show Next 20 Buses"
+    # Get the main output for the next buses page containing the table with the next bus arrivals as well as the text stating the user inputs
     next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks, include_variants)
+    # Returns the above outputs, populate the dropdowns, and set the text for the "Show Next 10 Buses"/"Show Next 20 Buses" button
     return next_buses_html, toggle_future_buses_text, stop_options, route_options
 
 
