@@ -633,7 +633,8 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     # Get rid of the -VIC part of the route_id
     route_number = route.split('-')[0] 
     trip_headsign = trips_df.loc[trips_df["trip_id"] == trip_id, "trip_headsign"]
-    speed = speed * 3
+    # Converting speed from m/s to km/h
+    speed = speed * 3.6
     stop = stops_df.loc[stops_df["stop_id"] == stop_id, "stop_name"]
 
     # Load the routes.shp file get the lines for all routes and then select the one being currently run by that bus
