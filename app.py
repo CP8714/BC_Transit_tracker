@@ -100,13 +100,6 @@ bus_tracker_layout = html.Div([
                     html.Button("Search", id="search-for-bus", className="input-button",  n_clicks=0),
                     # Button used to clear the input
                     html.Button("Clear", id="clear-bus-input", className="input-button", n_clicks=0),
-                    # Map which shows the bus' current location as well as the route it is currently running and which stops it is serving
-                    html.Div(
-                        dcc.Graph(
-                            id="live-map"
-                        ),
-                        className="map-container"
-                    ),
                 ]),
                 
                 # Manual update button so users can get the most up-to-date info on the bus
@@ -143,6 +136,13 @@ bus_tracker_layout = html.Div([
                 html.H3(id="block-trips", className="h3-bus-tracker"),
                 # Timestamp indicating when the data was received by BC Transit
                 html.H3(id="timestamp-text", className="h3-bus-tracker"),
+                # Map which shows the bus' current location as well as the route it is currently running and which stops it is serving
+                html.Div(
+                    dcc.Graph(
+                        id="live-map"
+                    ),
+                    className="map-container"
+                ),
             ]
         )
     ]),
