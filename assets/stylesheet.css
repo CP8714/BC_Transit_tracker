@@ -14,6 +14,7 @@ h1, h2, label {
     padding: 5px;
 }
 
+/* Container for all bus info in the bus tracker page apart from the map */
 .info-1-container {
     height: 300px;
 }
@@ -188,6 +189,7 @@ h4 {
     z-index: 10;
 }
 
+/* Container for the map in the bus tracker page */
 .map-container {
     position: relative;   
     width: 1600px; 
