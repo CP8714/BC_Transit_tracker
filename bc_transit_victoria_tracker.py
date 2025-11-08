@@ -494,19 +494,19 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     # Get the text regarding how busy that bus currently is
     capacity_text = get_capacity(capacity)
 
-    # Parse timestamp as UTC time
+    # Convert the timestamp time to PST and only include hours, minutes, and seconds for the timestamp output
     utc_time = datetime.fromisoformat(timestamp).replace(tzinfo=pytz.utc)
-    
-    # Convert to PST 
     pst_time = utc_time.astimezone(pytz.timezone("America/Los_Angeles"))
     pst_timestamp = pst_time.strftime("%H:%M:%S")
     timestamp_text = f"Updated at {pst_timestamp}"
-    
+
+    # Speed text output
     speed_text = (
         f"Current Speed: {speed:.1f} km/h"
         if speed else f"Current Speed: 0 km/h"
     )
 
+    # Determine if the bus is actually running a trip or heading back to a transit yard
     deadheading = False
     block_trips = []
     if not current_trip:
@@ -529,15 +529,10 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         )
         
         for _, row in full_block.iterrows():
-            # stop_times_df = load_stop_times(row["trip_id"])
-            # stop_times_df = stop_times_df[stop_times_df["stop_sequence"] == 1]
-            # departure_time = stop_times_df["departure_time"]
             departure_time = row["departure_time"]
             route_number = row["route_id"].split("-")[0]
             headsign = row["trip_headsign"]
-
             block_trip_text = f"{route_number} {headsign} leaving at {departure_time}"
-            # block_trip_text = f"{route_number} {headsign}"
             block_trips.append(block_trip_text)
 
         block_trips = [html.Div(text) for text in block_trips]
