@@ -482,6 +482,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
 def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url, triggered_id, update_bus_input):
     # Generate the initial figure for the map and use the same background color as for the rest of the website
     fig = go.Figure(layout=go.Layout(paper_bgcolor="#f8f9fa"))
+    fig.update_layout(height=600)
     toggle_future_stops_text = "Show All Upcoming Stops"
     # Search for the inputted bus in buses featuring the realtime data from buses_updates.json and get all the data of that bus
     bus = next((b for b in buses if b["id"].endswith(bus_number)), None)
