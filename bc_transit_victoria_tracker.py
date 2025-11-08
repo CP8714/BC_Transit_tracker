@@ -630,20 +630,22 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     
     # stop_id in stops_df is a float so stop_id from buses must be converted to a float 
     stop_id = float(stop_id)
+    # Get rid of the -VIC part of the route_id
     route_number = route.split('-')[0] 
     trip_headsign = trips_df.loc[trips_df["trip_id"] == trip_id, "trip_headsign"]
     speed = speed * 3
     stop = stops_df.loc[stops_df["stop_id"] == stop_id, "stop_name"]
 
+    # Load the routes.shp file get the lines for all routes and then select the one being currently run by that bus
     fp_routes = os.path.join("data", "routes.shp")
     route_data = gpd.read_file(fp_routes)
-    # Route map not shown for buses heading back to yard
+    # Route map not shown for buses heading back to a transit yard
     if trip_headsign.empty:
         route = "0"
     current_route = route_data[route_data["route_id"] == route]
     route_geojson = json.loads(current_route.to_json())
 
-    # Add route on map
+    # Add the route line to the map and have it centered on the bus' current position
     fig.update_layout(
         mapbox = dict(
             style="open-street-map",
@@ -664,6 +666,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         uirevision=None
     )
 
+    # If the bus is currently running a route, add the stop locations for that route on the map as red markers
     if not deadheading:
         # Add stops of current route to map
         fig.add_trace(go.Scattermapbox(
@@ -676,7 +679,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
             name="Bus Stops"
         ))
 
-    # Bus location as marker
+    # Add the current bus location as a blue marker
     fig.add_trace(go.Scattermapbox(
         lat=[lat],
         lon=[lon],
