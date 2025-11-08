@@ -118,17 +118,21 @@ bus_tracker_layout = html.Div([
         dcc.Loading(
             id="loading-component-1",
             type="circle",
-            className="info-1-container",
             children=[
-                # Info about the bus such as how late/early it is, what is its next stop, what is its current capacity/how busy it is, 
-                # its current speed, and what are the next stops it will be serving 
-                html.H3(id="desc-text"),
-                html.H3(id="stop-text"),
-                html.H3(id="capacity-text"),
-                html.H3(id="speed-text"),
-                # Button where the user can toggle whether they want to only see the next 5 stops served by the bus or all upcoming stops
-                html.Button(id="toggle-future-stops", className="toggle-future-stops-button", n_clicks=0, children="Show All Upcoming Stops"),
-                html.H3(id="future-stop-text"),
+                html.Div(
+                    className="info-1-container",
+                    children=[
+                        # Info about the bus such as how late/early it is, what is its next stop, what is its current capacity/how busy it is, 
+                        # its current speed, and what are the next stops it will be serving 
+                        html.H3(id="desc-text"),
+                        html.H3(id="stop-text"),
+                        html.H3(id="capacity-text"),
+                        html.H3(id="speed-text"),
+                        # Button where the user can toggle whether they want to only see the next 5 stops served by the bus or all upcoming stops
+                        html.Button(id="toggle-future-stops", className="toggle-future-stops-button", n_clicks=0, children="Show All Upcoming Stops"),
+                        html.H3(id="future-stop-text"),
+                    ]
+                )
             ]
         ),
         dcc.Loading(
