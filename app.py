@@ -118,7 +118,7 @@ bus_tracker_layout = html.Div([
         dcc.Loading(
             id="loading-component-1",
             type="circle",
-            className="info-1-container"
+            className="info-1-container",
             children=[
                 # Info about the bus such as how late/early it is, what is its next stop, what is its current capacity/how busy it is, 
                 # its current speed, and what are the next stops it will be serving 
