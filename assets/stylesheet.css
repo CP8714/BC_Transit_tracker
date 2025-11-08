@@ -181,7 +181,7 @@ h4 {
 #live-map {
     position: absolute;
     width: 800px;
-    height: 200px;
+    height: 500px;
     bottom: 70px;
     left: 750px;
     z-index: 10;
@@ -190,6 +190,6 @@ h4 {
 .map-container {
     position: relative;   
     width: 1600px;        
-    height: 300px;        
+    height: 500px;        
 }
 
