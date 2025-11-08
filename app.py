@@ -853,12 +853,12 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
 
     # Populate the stop dropdown with the values being the stop ids and the labels having both the stop ids and the stop names
     stop_options = [
-        {"label": f"{row["stop_name"]} (Stop {int(row["stop_id"])})", "value": int(row["stop_id"])}
+        {"label": f"{row['stop_name']} (Stop {int(row['stop_id'])})", "value": int(row['stop_id'])}
         for _, row in stops_df.iterrows()
     ]
     # Populate the route dropdown with the values being the route numbers and the labels having both the route numbers and the destinations
     route_options = [
-    {"label": f"{row["route_short_name"]} {row["route_long_name"]}", "value": row["route_short_name"]}
+    {"label": f"{row['route_short_name']} {row['route_long_name']}", "value": row['route_short_name']}
         for _, row in routes_df.iterrows()
     ]    
     # Change the text of the "Show Next 10 Buses"/"Show Next 20 Buses" button depending on how many times it has been clicked
