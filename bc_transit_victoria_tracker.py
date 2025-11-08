@@ -578,17 +578,21 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
             ))
             return fig, f"{bus_number} is currently Not In Service", "Next Stop: Not Available", capacity_text, speed_text, timestamp_text, [], toggle_future_stops_text, block_trips, reset_url, update_bus_input
             
+        # Get the current delay of the next stop, what stop is the next one, the start time of this trip, the eta of the next stop, and its id
         delay, stop_sequence, start_time, eta_time, current_stop_id = (
             current_stop["delay"], current_stop["stop_sequence"], current_stop["start_time"], current_stop["time"], current_stop["stop_id"]
         )
+        # Converting the delay into minutes
         delay = delay // 60
-        # Converting from Unix to PST
+        # Converting the eta time into PST and only keeping minutes and hours
         eta_time = datetime.fromtimestamp(eta_time, pytz.timezone("America/Los_Angeles"))
         eta_time = eta_time.strftime("%H:%M")
 
+        # Only keeping the stops that haven't yet been served by that bus
         future_stops = [stop for stop in current_trip if stop["stop_sequence"] >= current_stop["stop_sequence"]]
         
         if future_stops:
+            
             all_future_stops_eta = []
             all_future_stops_eta.append("Next Stop ETAs (click on a stop number to see the next departures at that stop)")
             for stop in future_stops:
