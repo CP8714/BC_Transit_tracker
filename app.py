@@ -121,13 +121,13 @@ bus_tracker_layout = html.Div([
             children=[
                 # Info about the bus such as how late/early it is, what is its next stop, what is its current capacity/how busy it is, 
                 # its current speed, and what are the next stops it will be serving 
-                html.H3(id="desc-text"),
-                html.H3(id="stop-text"),
-                html.H3(id="capacity-text"),
-                html.H3(id="speed-text"),
+                html.H3(id="desc-text", className="h3-bus-tracker"),
+                html.H3(id="stop-text", className="h3-bus-tracker"),
+                html.H3(id="capacity-text", className="h3-bus-tracker"),
+                html.H3(id="speed-text", className="h3-bus-tracker"),
                 # Button where the user can toggle whether they want to only see the next 5 stops served by the bus or all upcoming stops
                 html.Button(id="toggle-future-stops", className="toggle-future-stops-button", n_clicks=0, children="Show All Upcoming Stops"),
-                html.H3(id="future-stop-text"),
+                html.H3(id="future-stop-text", className="h3-bus-tracker"),
             ]
         ),
         dcc.Loading(
@@ -135,9 +135,9 @@ bus_tracker_layout = html.Div([
             type="circle",
             children=[
                 # All of the trips that this bus will, has or is currently running today
-                html.H3(id="block-trips"),
+                html.H3(id="block-trips", className="h3-bus-tracker"),
                 # Timestamp indicating when the data was received by BC Transit
-                html.H3(id="timestamp-text"),
+                html.H3(id="timestamp-text", className="h3-bus-tracker"),
             ]
         )
     ]),
