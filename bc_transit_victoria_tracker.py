@@ -590,12 +590,14 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
 
         # Only keeping the stops that haven't yet been served by that bus
         future_stops = [stop for stop in current_trip if stop["stop_sequence"] >= current_stop["stop_sequence"]]
-        
+
+        # Creating the next stops output
         if future_stops:
-            
             all_future_stops_eta = []
             all_future_stops_eta.append("Next Stop ETAs (click on a stop number to see the next departures at that stop)")
             for stop in future_stops:
+                # If the next stop is the first one, get the start time as the eta and remove seconds
+                # Otherwise, get the eta time of the next stop and convert it to PST and only keep hours and minutes
                 if stop["time"] == 0:
                     future_eta_time = stop["start_time"]
                     future_eta_time = future_eta_time[:-3]
@@ -605,6 +607,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
                 future_stop_id = int(stop["stop_id"])
                 future_stop_name = stops_df.loc[stops_df["stop_id"] == future_stop_id, "stop_name"]
                 future_stop_name = future_stop_name.iloc[0]
+                # For each line, have the stop number be a link to the next buses page so the user can search up the next buses arriving at that specific stop
                 future_stops_text = html.Span([
                     f"{future_stop_name} (Stop ",
                     dcc.Link(
@@ -618,6 +621,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
             # Only include the next 5 stops depending on if the "Show Next 5 stops" button has been clicked
             if toggle_future_stops_clicks % 2 == 0 and len(future_stops) >= 5:
                 future_stops_eta = all_future_stops_eta[:6]
+            # Include all future stops depending on if the "Show All Upcoming Stops" button has been clicked
             else:
                 future_stops_eta = all_future_stops_eta
             future_stops_eta = [html.Div(text) for text in future_stops_eta]
