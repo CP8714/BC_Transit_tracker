@@ -10,7 +10,7 @@ body {
 
 .info-1-container {
     position: absolute;
-    bottom: 300px;
+    bottom: 600px;
 }
 
 /* Setting the text color */
@@ -71,7 +71,7 @@ h4 {
 /* Settings for the update now button in the bus tracker page */
 .update-now-button {
     position: absolute;
-    bottom: 500px;
+    bottom: 600px;
     background-color: #64D10A;
     color: white;
     border: none;
