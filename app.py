@@ -592,9 +592,13 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         )
         # Converting the delay into minutes
         delay = delay // 60
-        # Converting the eta time into PST and only keeping minutes and hours
-        eta_time = datetime.fromtimestamp(eta_time, pytz.timezone("America/Los_Angeles"))
-        eta_time = eta_time.strftime("%H:%M")
+        if eta_time == 0 and stop_sequence == 1:
+                    eta_time = start_time
+                    eta_time = eta_time[:-3]
+        else:
+            # Converting the eta time into PST and only keeping minutes and hours
+            eta_time = datetime.fromtimestamp(eta_time, pytz.timezone("America/Los_Angeles"))
+            eta_time = eta_time.strftime("%H:%M")
 
         # Only keeping the stops that haven't yet been served by that bus
         future_stops = [stop for stop in current_trip if stop["stop_sequence"] >= current_stop["stop_sequence"]]
