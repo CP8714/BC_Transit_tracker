@@ -32,7 +32,7 @@ h3 {
 /* H3 settings for the bus tracker page, same as other pages but with absolute positioning to account for the map */
 .h3-bus-tracker {
     position: absolute;
-    bottom: 600px;
+    bottom: 300px;
     color: #003366;
     padding: 5px;
     margin-top: 7px;
@@ -68,7 +68,7 @@ h4 {
 /* Settings for the update now button in the bus tracker page */
 .update-now-button {
     position: absolute;
-    bottom: 600px;
+    bottom: 500px;
     background-color: #64D10A;
     color: white;
     border: none;
