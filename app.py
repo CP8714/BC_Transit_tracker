@@ -124,6 +124,10 @@ bus_tracker_layout = html.Div([
                         # Button where the user can toggle whether they want to only see the next 5 stops served by the bus or all upcoming stops
                         html.Button(id="toggle-future-stops", className="toggle-future-stops-button", n_clicks=0, children="Show All Upcoming Stops"),
                         html.H3(id="future-stop-text"),
+                        # All of the trips that this bus will, has or is currently running today
+                        html.H3(id="block-trips", className="h3-bus-tracker"),
+                        # Timestamp indicating when the data was received by BC Transit
+                        html.H3(id="timestamp-text", className="h3-bus-tracker"),
                     ]
                 )
             ]
@@ -132,10 +136,6 @@ bus_tracker_layout = html.Div([
             id="loading-component-2",
             type="circle",
             children=[
-                # All of the trips that this bus will, has or is currently running today
-                html.H3(id="block-trips", className="h3-bus-tracker"),
-                # Timestamp indicating when the data was received by BC Transit
-                html.H3(id="timestamp-text", className="h3-bus-tracker"),
                 # Map which shows the bus' current location as well as the route it is currently running and which stops it is serving
                 html.Div(
                     dcc.Graph(
