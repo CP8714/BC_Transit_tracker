@@ -15,10 +15,17 @@ from datetime import datetime
 from dash import callback_context, no_update
 import pytz
 from urllib.parse import parse_qs, urlparse
+from flask import Flask, send_from_directory
 
 # Fallback data from the last run of the Github Workflow
 bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
 trip_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/trip_updates.json"
+
+server = Flask(__name__)
+
+@server.route("/robots.txt")
+def robots():
+    return send_from_directory(".", "robots.txt")
 
 app = dash.Dash(__name__)
 
