@@ -85,7 +85,7 @@ home_layout = html.Div([
         )
     ]),
     
-    html.H4("This website uses publicly available General Transit Feed Specification (GTFS) data from BC Transit to provide users with the ability to view information of a specific bus such as its location, how early/late it is, and the estimated times that it will be arriving at specific stops. This website also allows users to see what are the estimated arrivals times of the next buses arriving at a specific stop"),
+    html.H4("This website uses publicly available General Transit Feed Specification (GTFS) data from BC Transit to provide users with the ability to view information of a specific bus such as its location, how early/late it is, and the estimated times that it will be arriving at specific stops. This website also allows users to see what are the estimated arrivals times of the next buses arriving at a specific stop and also allows them to only see the next arrivals for buses running a specific route"),
 ])
 
 # Layout of the bus tracker page where users get information about a specific bus
