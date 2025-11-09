@@ -48,7 +48,7 @@ home_layout = html.Div([
             dcc.Link("Next Buses", href="/next_buses", className="nav-link"),
         ]
     ),
-    html.H1("Welcome to the BCT-Vic Tracker"),
+    html.H1("Welcome to the BCTVicTracker"),
 
     html.H2("A Tracking and Next Bus tool for British Columbia Transit (BC Transit) in Victoria, BC"),
 
@@ -57,7 +57,7 @@ home_layout = html.Div([
             id="loading-component",
             type="circle",
             children=[
-                html.H3("Bus Tracker tracks a specific bus"),
+                html.H3("Bus Tracker tracks a specific bus (e.g. 9542)"),
                 dcc.Link(
                     html.Button("Go to Bus Tracker", id="go-to-bus-tracker", className="home-button"),
                     href="/bus_tracker"
@@ -71,7 +71,7 @@ home_layout = html.Div([
             id="loading-component",
             type="circle",
             children=[
-                html.H3("Next Buses shows the arrival times of the next buses arriving at a specific stop"),
+                html.H3("Next Buses shows the arrival times of the next buses arriving at a specific stop (e.g. 100032 - Douglas St at Fort St)"),
                 dcc.Link(
                     html.Button("Go to Next Buses", id="go-to-next-buses", className="home-button"),
                     href="/next_buses"
