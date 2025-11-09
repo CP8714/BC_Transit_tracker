@@ -35,7 +35,7 @@ def sitemap():
     </urlset>"""
     return Response(xml, mimetype="application/xml")
 
-app = dash.Dash(__name__, server=server)
+app = dash.Dash(__name__, server=server, title="BCTVicTracker")
 
 # Layout of the home page
 home_layout = html.Div([
