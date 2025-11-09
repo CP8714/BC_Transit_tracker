@@ -35,7 +35,13 @@ def sitemap():
     </urlset>"""
     return Response(xml, mimetype="application/xml")
 
-app = dash.Dash(__name__, server=server, title="BCTVicTracker")
+app = dash.Dash(
+    __name__, 
+    server=server, 
+    title="BCTVicTracker",
+    meta_tags=[
+        {"name": "description", "content": "Track BC Transit buses live in Victoria, BC. Get realtime info about a bus or see when the next buses are arriving at a stop"}
+    ])
 
 # Layout of the home page
 home_layout = html.Div([
