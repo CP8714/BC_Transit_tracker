@@ -15,13 +15,27 @@ from datetime import datetime
 from dash import callback_context, no_update
 import pytz
 from urllib.parse import parse_qs, urlparse
+from flask import Flask, Response
 
 # Fallback data from the last run of the Github Workflow
 bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
 trip_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/trip_updates.json"
 
-app = dash.Dash(__name__)
-server = app.server
+server = Flask(__name__)
+
+@server.route("/sitemap.xml")
+def sitemap():
+    xml = """<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      <url>
+        <loc>https://www.bctvictracker.ca/</loc>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+      </url>
+    </urlset>"""
+    return Response(xml, mimetype="application/xml")
+
+app = dash.Dash(__name__, server=server)
 
 # Layout of the home page
 home_layout = html.Div([
