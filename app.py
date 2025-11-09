@@ -5,7 +5,6 @@ import dash
 from dash import html, dcc, register_page, callback
 from dash.dependencies import Output, Input, State
 import plotly.graph_objects as go
-import math
 import os
 import requests
 import pandas as pd
