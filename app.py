@@ -240,7 +240,7 @@ next_buses_layout = html.Div([
                 ),
                 html.Div(
                     # Button where the users can toggle whether they want to see the next 10 or 20 departures
-                    html.Button(id="toggle-future-buses", className="next-buses-button", n_clicks=0, children="Show Next 20 Buses"),
+                    html.Button(id="toggle-future-buses", className="next-buses-button", n_clicks=0, children="Show Up To Next 20 Buses"),
                 ),
                 html.Div(id="next-buses-output"),
             ]
@@ -398,7 +398,7 @@ def make_next_buses_table(next_buses):
 # trips_df dataframe containing all the data from trips.json
 # current_trips dictionary containing all the realtime data from trip_updates.json
 # buses is the dictionary containing all the realtime data from bus_updates.json
-# toggle_future_buses_clicks is the number of times the "Show Next 10 Buses"/"Show Next 20 Buses" button has been clicked
+# toggle_future_buses_clicks is the number of times the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button has been clicked
 # include_variants is the value determining if the user wants to include variants of the selected route or not
 # ----------------------------------------------------------------------------------
 def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks, include_variants):
@@ -437,10 +437,10 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         
     # Sort the next trips by arrival time 
     next_trip = sorted(next_trip, key=lambda x: x["time"])
-    # Show only the next 10 arrivals if the "Show Next 10 Buses"/"Show Next 20 Buses" button has not been pressed or been pressed an even amount of times
+    # Show only the next 10 arrivals if the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button has not been pressed or been pressed an even amount of times
     if toggle_future_buses_clicks % 2 == 0:
         next_trip = next_trip[:10]
-    # Show the next 20 arrivals if the Show Next 10 Buses/20 Buses button has been pressed an odd amount of times
+    # Show the next 20 arrivals if the Show Up To Next 10 Buses/Show Up To Next 20 Buses button has been pressed an odd amount of times
     else:
         next_trip = next_trip[:20]
 
@@ -903,14 +903,14 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
     {"label": f"{row['route_short_name']} {row['route_long_name']}", "value": row['route_short_name']}
         for _, row in routes_df.iterrows()
     ]    
-    # Change the text of the "Show Next 10 Buses"/"Show Next 20 Buses" button depending on how many times it has been clicked
+    # Change the text of the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button depending on how many times it has been clicked
     if toggle_future_buses_clicks % 2:
-        toggle_future_buses_text = "Show Next 10 Buses"
+        toggle_future_buses_text = "Show Up To Next 10 Buses"
     else:
-        toggle_future_buses_text = "Show Next 20 Buses"
+        toggle_future_buses_text = "Show Up To Next 20 Buses"
     # Get the main output for the next buses page containing the table with the next bus arrivals as well as the text stating the user inputs
     next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks, include_variants)
-    # Returns the above outputs, populate the dropdowns, and set the text for the "Show Next 10 Buses"/"Show Next 20 Buses" button
+    # Returns the above outputs, populate the dropdowns, and set the text for the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button
     return next_buses_html, toggle_future_buses_text, stop_options, route_options
 
 
