@@ -422,7 +422,8 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     stop_lat = stop["stop_lat"]
     stop_lon = stop["stop_lon"]
     
-    map_fig = go.Figure(height=400)
+    map_fig = go.Figure()
+    map_fig.update_layout(height=400)
     map_fig.add_trace(go.Scattermapbox(
         lat=[stop_lat],
         lon=[stop_lon],
