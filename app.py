@@ -475,6 +475,9 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
 
     # Search up which bus is running each of the next trips in next_trip
     for bus in next_trip:
+        bus_lat_list = []
+        bus_lon_list = []
+        bus_number_list = []
         current_bus = next((b for b in buses if b["trip_id"] == bus["trip_id"]), None)
         # If there is no bus currently running that trip, check the blocks to see if one is scheduled. If not, set bus_number to "Unknown"
         if not current_bus:
@@ -495,6 +498,9 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             # The bus number is only the final four digits of the its id
             bus_number = current_bus["id"]
             bus_number = bus_number[-4:]
+            bus_lat_list.append(current_bus["lat"])
+            bus_lon_list.append(current_bus["lon"])
+            bus_number_list.append(bus_number)
         next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]]
         if not next_bus.empty:
             next_bus = next_bus.iloc[0]
