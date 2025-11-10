@@ -35,12 +35,19 @@ h3 {
 
 }
 
-/* Settings for the instruction text in the bus page */
+/* Settings for the instruction text in the bus tracker page */
 .h4-bus-page-instruction {
     color: #003366;
     padding: 5px;
     margin-top: 7px;
     width: 650px;
+}
+
+/* Settings for the instruction text in the next buses page */
+.h4-stop-page-instruction {
+    color: #003366;
+    padding: 5px;
+    margin-top: 7px;
 }
 
 /* H3 settings for the bus tracker page */
