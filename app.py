@@ -513,7 +513,10 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     return html.Div([
         html.H3(stop_name_text),
         make_next_buses_table(next_buses),
-        dcc.Graph(figure=map_fig)
+        html.Div(
+            dcc.Graph(figure=map_fig),
+            className="next-buses-map-container"
+        )
     ])
 
 
