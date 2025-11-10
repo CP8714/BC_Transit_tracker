@@ -433,6 +433,8 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             style="open-street-map",
             center={"lat": stop_lat, "lon": stop_lon},
             zoom=15,
+            hovertext=[stop_name],
+            hoverinfo="text",
         ),
         margin={"r":0, "t":0, "l":0, "b":0},
     )
