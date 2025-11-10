@@ -53,7 +53,7 @@ home_layout = html.Div([
             dcc.Link("Next Buses", href="/next_buses", className="nav-link"),
         ]
     ),
-    html.H1("Welcome to the BCTVicTracker"),
+    html.H1("Welcome to BCTVicTracker"),
 
     html.H2("A Tracking and Next Bus tool for British Columbia Transit (BC Transit) in Victoria, BC"),
 
