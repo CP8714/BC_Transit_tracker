@@ -413,11 +413,14 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     if not stop_number_input:
         return html.Div("Please Select A Stop")
     stop_number_input = int(stop_number_input)
-    stop = stops_df.loc[stops_df["stop_id"] == stop_number_input, "stop_name"]
+    stop = stops_df.loc[stops_df["stop_id"] == stop_number_input]
     # If the stop number entered does not match any known number, return the following line of text
     if stop.empty:
         return html.Div(f"{stop_number_input} is not a valid Stop Number")
-    stop_name = stop.iloc[0]
+    stop = stop.iloc[0]
+    stop_name = stop["stop_name"]
+    stop_lat = stop["stop_lat"]
+    stop_lon = stop["stop_lon"]
     stop_name_text = f"Next Estimated Arrivals At Stop {stop_number_input:d} ({stop_name}), (Click on a bus number to see info about that specific bus)"
 
     stop_number_input = str(stop_number_input)
