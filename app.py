@@ -16,7 +16,7 @@ import pytz
 from urllib.parse import parse_qs, urlparse
 from flask import Flask, Response
 
-# Fallback data from the last run of the Github Workflow
+# Fallback data from the last run of the Github Actions Workflow
 bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
 trip_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/trip_updates.json"
 
@@ -100,12 +100,14 @@ bus_tracker_layout = html.Div([
         ]
     ),
     html.H2("Bus Tracker Page", className="h2-bus-page-title"),
+
+    html.H3("This is the Bus Tracker Page where you can get information about a specific bus can such as its current location, how busy it is, and how early/late it is. To use this page, you need to enter a bus number of the bus you want to track such as 9542 and press the Search button. You can also press the Update Now button or press the Enter button on your keyboard", , className="h3-bus-page-instruction"),
     dcc.Loading(
             id="loading-component-map",
             type="circle",
             children=[
                 html.Div([
-                    html.Label("Enter Bus Number:"),
+                    html.Label("(Required) Enter Bus Number:"),
                     # Input where the user will tell the site which bus they want to track
                     dcc.Input(
                         id="bus-search-user-input",
