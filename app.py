@@ -192,7 +192,8 @@ next_buses_layout = html.Div([
 
     html.H1("Next Buses Page"),
 
-    html.H4("This is the Next Buses Page where you can get information about the next arrivals for a specific stop can such as what route the next bus is running, the estimated arrival time, and what bus is running that trip. To use this page, you need to select a stop in the top dropdown menu. You can type in the street name (e.g. Douglas St) or the stop number (e.g. 100032) or simply scroll through the options and then select the stop you wish to get the next arrivals for. Optionally, you can also filter the next arrivals by a specific route by using the second dropdown menu where you can choose the route you want to only see the next arrivals for. You can also choose to have variants of that route also be displayed (e.g. you'll see the 6A if you select the 6)", className="h4-stop-page-instruction"),
+    html.H4("This is the Next Buses Page where you can get information about the next arrivals for a specific stop can such as what route the next bus is running, the estimated arrival time, and what bus is running that trip.", className="h4-stop-page-instruction"), 
+    html.H4("To use this page, you need to select a stop in the top dropdown menu. You can type in the street name (e.g. Douglas St) or the stop number (e.g. 100032) or simply scroll through the options and then select the stop you wish to get the next arrivals for. Optionally, you can also filter the next arrivals by a specific route by using the second dropdown menu where you can choose the route you want to only see the next arrivals for. You can also choose to have variants of that route also be displayed (e.g. you'll see the 6A if you select the 6)", className="h4-stop-page-instruction"),
 
     html.Div([
         dcc.Loading(
