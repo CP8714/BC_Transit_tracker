@@ -421,6 +421,24 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     stop_name = stop["stop_name"]
     stop_lat = stop["stop_lat"]
     stop_lon = stop["stop_lon"]
+    map_fig = go.Figure(go.Scattermapbox(
+        lat=[stop_lat],
+        lon=[stop_lon],
+        height=400,
+        mode="markers",
+        marker=dict(size=14, color="red"),
+        text=[stop_name],
+    ))
+    map_fig.update_layout(
+        mapbox=dict(
+            style="open-street-map",
+            center={"lat": stop_lat, "lon": stop_lon},
+            zoom=15,
+        ),
+        height=400,
+        margin={"r":0, "t":0, "l":0, "b":0},
+    )
+    
     stop_name_text = f"Next Estimated Arrivals At Stop {stop_number_input:d} ({stop_name}), (Click on a bus number to see info about that specific bus)"
 
     stop_number_input = str(stop_number_input)
@@ -792,7 +810,8 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
 
 app.layout = html.Div([
     dcc.Location(id="url", refresh=False),
-    html.Div(id="page-content")
+    html.Div(id="page-content"),
+    dcc.Graph(figure=map_fig)
 ])
 
 
