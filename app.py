@@ -201,7 +201,7 @@ next_buses_layout = html.Div([
                         id="stop-dropdown",
                         className = "next-buses-dropdown",
                         options=[],
-                        placeholder="Type in the Name or Number and/or select a Stop",
+                        placeholder="(Required) Type in the Name or Number of a Stop and/or select a Stop",
                         searchable=True
                     ),
                 ),
