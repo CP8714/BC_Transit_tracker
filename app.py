@@ -510,7 +510,8 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     # Returning the text describing the stop and route selected by the user as well as the table containing the next arrivals
     return html.Div([
         html.H3(stop_name_text),
-        make_next_buses_table(next_buses)
+        make_next_buses_table(next_buses),
+        dcc.Graph(figure=map_fig)
     ])
 
 
@@ -811,7 +812,6 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
 app.layout = html.Div([
     dcc.Location(id="url", refresh=False),
     html.Div(id="page-content"),
-    dcc.Graph(figure=map_fig)
 ])
 
 
