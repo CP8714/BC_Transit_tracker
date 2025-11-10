@@ -421,20 +421,21 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     stop_name = stop["stop_name"]
     stop_lat = stop["stop_lat"]
     stop_lon = stop["stop_lon"]
-    map_fig = go.Figure(go.Scattermapbox(
+    
+    map_fig = go.Figure(height=400)
+    map_fig.add_trace(go.Scattermapbox(
         lat=[stop_lat],
         lon=[stop_lon],
         mode="markers",
-        marker=dict(size=14, color="red"),
+        marker=dict(size=12, color="red"),
         text=[stop_name],
+        hoverinfo="text",
     ))
     map_fig.update_layout(
         mapbox=dict(
             style="open-street-map",
             center={"lat": stop_lat, "lon": stop_lon},
             zoom=15,
-            hovertext=[stop_name],
-            hoverinfo="text",
         ),
         margin={"r":0, "t":0, "l":0, "b":0},
     )
