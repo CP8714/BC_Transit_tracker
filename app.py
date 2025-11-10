@@ -424,7 +424,6 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     map_fig = go.Figure(go.Scattermapbox(
         lat=[stop_lat],
         lon=[stop_lon],
-        height=400,
         mode="markers",
         marker=dict(size=14, color="red"),
         text=[stop_name],
@@ -435,7 +434,6 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             center={"lat": stop_lat, "lon": stop_lon},
             zoom=15,
         ),
-        height=400,
         margin={"r":0, "t":0, "l":0, "b":0},
     )
     
