@@ -436,7 +436,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         mapbox=dict(
             style="open-street-map",
             center={"lat": stop_lat, "lon": stop_lon},
-            zoom=15,
+            zoom=13,
         ),
         margin={"r":0, "t":0, "l":0, "b":0},
     )
@@ -506,7 +506,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
                 lat=bus_lat_list,
                 lon=bus_lon_list,
                 mode="markers",
-                marker=dict(size=10, color="red"),
+                marker=dict(size=10, color="blue"),
                 hovertext=bus_number_list,
                 hoverinfo="text",
                 name="Bus Positions"
