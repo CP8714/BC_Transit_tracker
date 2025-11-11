@@ -502,7 +502,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             bus_lon_list.append(current_bus["lon"])
             bus_number_list.append(bus_number)
         if bus_lat_list:
-            fig.add_trace(go.Scattermapbox(
+            map_fig.add_trace(go.Scattermapbox(
                 lat=bus_lat_list,
                 lon=bus_lon_list,
                 mode="markers",
