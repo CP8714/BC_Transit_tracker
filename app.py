@@ -501,6 +501,16 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             bus_lat_list.append(current_bus["lat"])
             bus_lon_list.append(current_bus["lon"])
             bus_number_list.append(bus_number)
+        if bus_lat_list:
+            fig.add_trace(go.Scattermapbox(
+                lat=bus_lat_list,
+                lon=bus_lon_list,
+                mode="markers",
+                marker=dict(size=10, color="red"),
+                hovertext=bus_number_list,
+                hoverinfo="text",
+                name="Bus Positions"
+            ))
         next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]]
         if not next_bus.empty:
             next_bus = next_bus.iloc[0]
