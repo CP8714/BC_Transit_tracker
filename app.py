@@ -510,7 +510,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
                 marker=dict(size=10, color="blue"),
                 hovertext=bus_number_list,
                 hoverinfo="text",
-                name="Bus Locations"
+                name="Bus Locations",
                 showlegend=False
             ))
         next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]]
