@@ -431,6 +431,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         marker=dict(size=12, color="red"),
         text=[stop_name],
         hoverinfo="text",
+        name="stop location"
     ))
     map_fig.update_layout(
         mapbox=dict(
@@ -509,7 +510,8 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
                 marker=dict(size=10, color="blue"),
                 hovertext=bus_number_list,
                 hoverinfo="text",
-                name="Bus Positions"
+                name="Bus Locations"
+                showlegend=False
             ))
         next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]]
         if not next_bus.empty:
