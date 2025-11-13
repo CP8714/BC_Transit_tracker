@@ -540,11 +540,11 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         html.H3(stop_name_text),
         html.H3("Scheduled Assigned Bus means the bus is not currently running that trip"),
         make_next_buses_table(next_buses),
-        html.Div(
+        html.Div([
             html.H3("Map showing the stop location and the locations of the next arriving buses (Buses that are scheduled are not shown)"),
             dcc.Graph(figure=map_fig),
             className="next-buses-map-container"
-        )
+        ])
     ])
 
 
