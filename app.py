@@ -385,7 +385,7 @@ def make_next_buses_table(next_buses):
                 html.Td(bus["trip_headsign"], style={"border": "1px solid black", "textAlign": "center"}),
                 # Add a link to the bus tracker page on the bus number if it's known so users can search up info on that bus
                 html.Td(
-                    html.A(bus["bus"], href=f"/bus_tracker?bus={bus['bus']}", style={"textDecoration": "none", "color": "blue"})
+                    html.A(bus["bus"], href=f"/bus_tracker?bus={bus['bus'][:4]}", style={"textDecoration": "none", "color": "blue"})
                     if bus["bus"] != "Unknown" else bus["bus"],
                     style={"border": "1px solid black", "textAlign": "center"}
                 )
