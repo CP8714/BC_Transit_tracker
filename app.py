@@ -475,10 +475,10 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         next_trip = next_trip[:20]
 
     # Search up which bus is running each of the next trips in next_trip
+    bus_lat_list = []
+    bus_lon_list = []
+    bus_number_list = []
     for bus in next_trip:
-        bus_lat_list = []
-        bus_lon_list = []
-        bus_number_list = []
         current_bus = next((b for b in buses if b["trip_id"] == bus["trip_id"]), None)
         # If there is no bus currently running that trip, check the blocks to see if one is scheduled. If not, set bus_number to "Unknown"
         if not current_bus:
@@ -502,17 +502,6 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             bus_lat_list.append(current_bus["lat"])
             bus_lon_list.append(current_bus["lon"])
             bus_number_list.append(bus_number)
-        if bus_lat_list:
-            map_fig.add_trace(go.Scattermapbox(
-                lat=bus_lat_list,
-                lon=bus_lon_list,
-                mode="markers",
-                marker=dict(size=10, color="blue"),
-                hovertext=bus_number_list,
-                hoverinfo="text",
-                name="Bus Locations",
-                showlegend=False
-            ))
         next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]]
         if not next_bus.empty:
             next_bus = next_bus.iloc[0]
@@ -526,7 +515,17 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
                 "arrival_time": arrival_time,
                 "trip_headsign": f"{route_number} {headsign}",
                 "bus": f"{bus_number}"
-            })    
+            })
+    if bus_lat_list:
+        map_fig.add_trace(go.Scattermapbox(
+            lat=bus_lat_list,
+            lon=bus_lon_list,
+            mode="markers",
+            marker=dict(size=10, color="blue"),
+            hovertext=bus_number_list,
+            hoverinfo="text",
+            name="Bus Locations",
+        ))
     # Returning the text describing the stop and route selected by the user as well as the table containing the next arrivals
     return html.Div([
         html.H3(stop_name_text),
