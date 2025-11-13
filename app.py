@@ -479,6 +479,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     bus_lon_list = []
     bus_number_list = []
     for bus in next_trip:
+        scheduled = False
         current_bus = next((b for b in buses if b["trip_id"] == bus["trip_id"]), None)
         # If there is no bus currently running that trip, check the blocks to see if one is scheduled. If not, set bus_number to "Unknown"
         if not current_bus:
@@ -494,6 +495,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
                         # The bus number is only the final four digits of the its id
                         bus_number = current_bus["id"]
                         bus_number = bus_number[-4:]
+                        scheduled = True
                         break
         else:
             # The bus number is only the final four digits of the its id
@@ -511,11 +513,18 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             # Getting the arrival time and converting it to PST and only including hours and minutes
             arrival_time = datetime.fromtimestamp(bus["time"], pytz.timezone("America/Los_Angeles"))
             arrival_time = arrival_time.strftime("%H:%M")
-            next_buses.append({
-                "arrival_time": arrival_time,
-                "trip_headsign": f"{route_number} {headsign}",
-                "bus": f"{bus_number}"
-            })
+            if scheduled:
+                next_buses.append({
+                    "arrival_time": arrival_time,
+                    "trip_headsign": f"{route_number} {headsign}",
+                    "bus": f"{bus_number} (scheduled)"
+                })
+            else:
+                next_buses.append({
+                    "arrival_time": arrival_time,
+                    "trip_headsign": f"{route_number} {headsign}",
+                    "bus": f"{bus_number}"
+                })
     if bus_lat_list:
         map_fig.add_trace(go.Scattermapbox(
             lat=bus_lat_list,
