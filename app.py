@@ -101,7 +101,7 @@ bus_tracker_layout = html.Div([
     ),
     html.H2("Bus Tracker Page", className="h2-bus-page-title"),
 
-    html.H4("This is the Bus Tracker Page where you can get information about a specific bus can such as its current location, how busy it is, and how early/late it is.", className="h4-bus-page-instruction"),
+    html.H4("This is the Bus Tracker Page where you can get information about a specific bus such as its current location, how busy it is, and how early/late it is.", className="h4-bus-page-instruction"),
     html.H4("To use this page, you need to enter a bus number of the bus you want to track such as 9542 and press the Search button. You can also press the Update Now button or press the Enter button on your keyboard. Clicking any of those three will also refresh the page and give you the most up-to-date info on that bus", className="h4-bus-page-instruction"),
     dcc.Loading(
             id="loading-component-map",
