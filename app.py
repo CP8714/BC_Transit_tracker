@@ -533,7 +533,6 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             marker=dict(size=10, color="blue"),
             hovertext=bus_number_list,
             hoverinfo="text",
-            customdata=bus_number_list,
             name="Bus Locations",
         ))
     # Returning the text describing the stop and route selected by the user as well as the table containing the next arrivals
@@ -545,7 +544,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             className="next-buses-map-container",
             children = [
             html.H3("Map showing the locations of the next arriving buses (Buses that are scheduled are not shown)"),
-            dcc.Graph(id="next-buses-map", figure=map_fig),
+            dcc.Graph(figure=map_fig),
             ]
         )
     ])
@@ -890,7 +889,6 @@ def display_page(pathname):
 def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, href, clear_bus_input, bus_number):
     triggered_id = callback_context.triggered_id
     reset_url = no_update
-        
 
     # If the Clear button on the bus tracker page is pressed, clear the input
     if triggered_id == "clear-bus-input":
@@ -926,23 +924,17 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
     [Output("next-buses-output", "children"),
      Output("toggle-future-buses", "children"),
      Output("stop-dropdown", "options"),
-     Output("route-dropdown", "options"),
-     Output("url", "href")],
+     Output("route-dropdown", "options")],
     [Input("stop-interval-component", "n_intervals"),
      Input("stop-search", "n_clicks"),
      Input("toggle-future-buses", "n_clicks"),
-     Input("url", "href"),
-     Input("next-buses-map", "clickData")],
+     Input("url", "href")],
     [State("stop-dropdown", "value"),
      State("route-dropdown", "value"),
      State("variant-checklist", "value")]
 )
-def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, href, next_bus_clicks, stop_number_input, route_number_input, include_variants):
+def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, href, stop_number_input, route_number_input, include_variants):
     triggered_id = callback_context.triggered_id
-
-    if triggered_id == "next-buses-map":
-        selected_bus_number = clickData["points"][0]["customdata"]
-        return no_update, no_update, no_update, no_update, no_update, f"/bus_tracker?bus={selected_bus_number}"
         
     # Check if there is a stop number in the url and use it if so
     if href and "/next_buses" in href and triggered_id not in ["stop-search"]:
@@ -983,7 +975,7 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
     # Get the main output for the next buses page containing the table with the next bus arrivals as well as the text stating the user inputs
     next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks, include_variants)
     # Returns the above outputs, populate the dropdowns, and set the text for the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button
-    return next_buses_html, toggle_future_buses_text, stop_options, route_options, no_update
+    return next_buses_html, toggle_future_buses_text, stop_options, route_options
 
 
 if __name__ == "__main__":
