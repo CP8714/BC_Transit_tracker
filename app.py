@@ -533,6 +533,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             marker=dict(size=10, color="blue"),
             hovertext=bus_number_list,
             hoverinfo="text",
+            customdata=bus_number_list,
             name="Bus Locations",
         ))
     # Returning the text describing the stop and route selected by the user as well as the table containing the next arrivals
@@ -544,7 +545,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             className="next-buses-map-container",
             children = [
             html.H3("Map showing the locations of the next arriving buses (Buses that are scheduled are not shown)"),
-            dcc.Graph(figure=map_fig),
+            dcc.Graph(id="next-buses-map", figure=map_fig),
             ]
         )
     ])
@@ -883,12 +884,18 @@ def display_page(pathname):
      Input("search-for-bus", "n_clicks"),
      Input("toggle-future-stops", "n_clicks"),
      Input("url", "href"),
-     Input("clear-bus-input", "n_clicks")],
+     Input("clear-bus-input", "n_clicks"),
+     Input("next-buses-map", "clickData")],
     [State("bus-search-user-input", "value")]
 )
-def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, href, clear_bus_input, bus_number):
+def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, href, clear_bus_input, next_bus_clicks, bus_number):
     triggered_id = callback_context.triggered_id
     reset_url = no_update
+
+    if triggered_id == "next-buses-map":
+        selected_bus_number = clickData["points"][0]["customdata"]
+        return (no_update, no_update, no_update, no_update, no_update, no_update, no_update, no_update, no_update, f"/bus_tracker?bus={selected_bus_number}", no_update)
+        
 
     # If the Clear button on the bus tracker page is pressed, clear the input
     if triggered_id == "clear-bus-input":
