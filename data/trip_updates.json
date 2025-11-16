@@ -1,201 +1,21 @@
 [
   {
-    "trip_id": "11036122:10002809:10050347",
-    "route_id": "6-VIC",
-    "start_time": "26:20:00",
-    "stop_id": "101034",
-    "delay": 126,
-    "stop_sequence": 27,
-    "time": 1763289546
-  },
-  {
-    "trip_id": "11036122:10002809:10050347",
-    "route_id": "6-VIC",
-    "start_time": "26:20:00",
-    "stop_id": "101089",
-    "delay": 126,
-    "stop_sequence": 28,
-    "time": 1763289606
-  },
-  {
-    "trip_id": "11036122:10002809:10050347",
-    "route_id": "6-VIC",
-    "start_time": "26:20:00",
-    "stop_id": "101146",
-    "delay": 126,
-    "stop_sequence": 29,
-    "time": 1763289666
-  },
-  {
-    "trip_id": "11036122:10002809:10050347",
-    "route_id": "6-VIC",
-    "start_time": "26:20:00",
-    "stop_id": "101166",
-    "delay": 126,
-    "stop_sequence": 30,
-    "time": 1763289666
-  },
-  {
-    "trip_id": "11036122:10002809:10050347",
-    "route_id": "6-VIC",
-    "start_time": "26:20:00",
-    "stop_id": "101257",
-    "delay": 126,
-    "stop_sequence": 31,
-    "time": 1763289786
-  },
-  {
-    "trip_id": "11036122:10002809:10050347",
-    "route_id": "6-VIC",
-    "start_time": "26:20:00",
-    "stop_id": "101316",
-    "delay": 126,
-    "stop_sequence": 32,
-    "time": 1763289846
-  },
-  {
-    "trip_id": "11036122:10002809:10050347",
-    "route_id": "6-VIC",
-    "start_time": "26:20:00",
-    "stop_id": "101345",
-    "delay": 126,
-    "stop_sequence": 33,
-    "time": 1763289846
-  },
-  {
-    "trip_id": "11036122:10002809:10050347",
-    "route_id": "6-VIC",
-    "start_time": "26:20:00",
-    "stop_id": "101399",
-    "delay": 126,
-    "stop_sequence": 34,
-    "time": 1763289906
-  },
-  {
-    "trip_id": "11036122:10002809:10050347",
-    "route_id": "6-VIC",
-    "start_time": "26:20:00",
-    "stop_id": "101412",
-    "delay": 126,
-    "stop_sequence": 35,
-    "time": 1763289906
-  },
-  {
-    "trip_id": "11036122:10002809:10050347",
-    "route_id": "6-VIC",
-    "start_time": "26:20:00",
-    "stop_id": "102490",
-    "delay": 126,
-    "stop_sequence": 36,
-    "time": 1763289966
-  },
-  {
-    "trip_id": "11036506:10030630:10050512",
-    "route_id": "15-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100068",
-    "delay": -78,
-    "stop_sequence": 11,
-    "time": 1763289582
-  },
-  {
-    "trip_id": "11036506:10030630:10050512",
-    "route_id": "15-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100048",
-    "delay": -78,
-    "stop_sequence": 12,
-    "time": 1763289642
-  },
-  {
-    "trip_id": "11036506:10030630:10050512",
-    "route_id": "15-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100050",
-    "delay": 0,
-    "stop_sequence": 13,
-    "time": 1763289720
-  },
-  {
-    "trip_id": "11036506:10030630:10050512",
-    "route_id": "15-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100077",
-    "delay": 0,
-    "stop_sequence": 14,
-    "time": 1763289780
-  },
-  {
-    "trip_id": "11036506:10030630:10050512",
-    "route_id": "15-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100941",
-    "delay": 0,
-    "stop_sequence": 15,
-    "time": 1763289840
-  },
-  {
-    "trip_id": "11036506:10030630:10050512",
-    "route_id": "15-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100097",
-    "delay": 0,
-    "stop_sequence": 16,
-    "time": 1763289900
-  },
-  {
-    "trip_id": "11036506:10030630:10050512",
-    "route_id": "15-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100134",
-    "delay": 0,
-    "stop_sequence": 17,
-    "time": 1763289900
-  },
-  {
-    "trip_id": "11036506:10030630:10050512",
-    "route_id": "15-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100148",
-    "delay": 0,
-    "stop_sequence": 18,
-    "time": 1763289960
-  },
-  {
-    "trip_id": "11036506:10030630:10050512",
-    "route_id": "15-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100204",
-    "delay": 0,
-    "stop_sequence": 19,
-    "time": 1763290020
-  },
-  {
-    "trip_id": "11036506:10030630:10050512",
-    "route_id": "15-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100242",
-    "delay": 0,
-    "stop_sequence": 20,
-    "time": 1763290080
-  },
-  {
     "trip_id": "11036506:10030630:10050512",
     "route_id": "15-VIC",
     "start_time": "26:28:00",
     "stop_id": "100276",
-    "delay": 0,
+    "delay": -70,
     "stop_sequence": 21,
-    "time": 1763290080
+    "time": 1763290010
   },
   {
     "trip_id": "11036506:10030630:10050512",
     "route_id": "15-VIC",
     "start_time": "26:28:00",
     "stop_id": "100307",
-    "delay": 0,
+    "delay": -70,
     "stop_sequence": 22,
-    "time": 1763290140
+    "time": 1763290070
   },
   {
     "trip_id": "11036506:10030630:10050512",
@@ -273,152 +93,53 @@
     "trip_id": "11036303:10000902:10051638",
     "route_id": "4-VIC",
     "start_time": "26:21:00",
-    "stop_id": "100595",
-    "delay": 708,
-    "stop_sequence": 11,
-    "time": 1763289528
-  },
-  {
-    "trip_id": "11036303:10000902:10051638",
-    "route_id": "4-VIC",
-    "start_time": "26:21:00",
-    "stop_id": "100505",
-    "delay": 708,
-    "stop_sequence": 12,
-    "time": 1763289588
-  },
-  {
-    "trip_id": "11036303:10000902:10051638",
-    "route_id": "4-VIC",
-    "start_time": "26:21:00",
-    "stop_id": "100448",
-    "delay": 708,
-    "stop_sequence": 13,
-    "time": 1763289588
-  },
-  {
-    "trip_id": "11036303:10000902:10051638",
-    "route_id": "4-VIC",
-    "start_time": "26:21:00",
-    "stop_id": "100396",
-    "delay": 708,
-    "stop_sequence": 14,
-    "time": 1763289648
-  },
-  {
-    "trip_id": "11036303:10000902:10051638",
-    "route_id": "4-VIC",
-    "start_time": "26:21:00",
-    "stop_id": "100336",
-    "delay": 708,
-    "stop_sequence": 15,
-    "time": 1763289708
-  },
-  {
-    "trip_id": "11036303:10000902:10051638",
-    "route_id": "4-VIC",
-    "start_time": "26:21:00",
-    "stop_id": "100311",
-    "delay": 708,
-    "stop_sequence": 16,
-    "time": 1763289708
-  },
-  {
-    "trip_id": "11036303:10000902:10051638",
-    "route_id": "4-VIC",
-    "start_time": "26:21:00",
-    "stop_id": "100298",
-    "delay": 708,
-    "stop_sequence": 17,
-    "time": 1763289708
-  },
-  {
-    "trip_id": "11036303:10000902:10051638",
-    "route_id": "4-VIC",
-    "start_time": "26:21:00",
-    "stop_id": "100278",
-    "delay": 708,
-    "stop_sequence": 18,
-    "time": 1763289768
-  },
-  {
-    "trip_id": "11036303:10000902:10051638",
-    "route_id": "4-VIC",
-    "start_time": "26:21:00",
-    "stop_id": "100261",
-    "delay": 708,
-    "stop_sequence": 19,
-    "time": 1763289768
-  },
-  {
-    "trip_id": "11036303:10000902:10051638",
-    "route_id": "4-VIC",
-    "start_time": "26:21:00",
-    "stop_id": "102630",
-    "delay": 708,
-    "stop_sequence": 20,
-    "time": 1763289828
-  },
-  {
-    "trip_id": "11036303:10000902:10051638",
-    "route_id": "4-VIC",
-    "start_time": "26:21:00",
-    "stop_id": "100177",
-    "delay": 708,
-    "stop_sequence": 21,
-    "time": 1763289948
-  },
-  {
-    "trip_id": "11036303:10000902:10051638",
-    "route_id": "4-VIC",
-    "start_time": "26:21:00",
     "stop_id": "100132",
-    "delay": 708,
+    "delay": 715,
     "stop_sequence": 22,
-    "time": 1763290008
+    "time": 1763290015
   },
   {
     "trip_id": "11036303:10000902:10051638",
     "route_id": "4-VIC",
     "start_time": "26:21:00",
     "stop_id": "100082",
-    "delay": 669,
+    "delay": 676,
     "stop_sequence": 23,
-    "time": 1763290089
+    "time": 1763290096
   },
   {
     "trip_id": "11036303:10000902:10051638",
     "route_id": "4-VIC",
     "start_time": "26:21:00",
     "stop_id": "100042",
-    "delay": 669,
+    "delay": 676,
     "stop_sequence": 24,
-    "time": 1763290149
+    "time": 1763290156
   },
   {
     "trip_id": "11036303:10000902:10051638",
     "route_id": "4-VIC",
     "start_time": "26:21:00",
     "stop_id": "100017",
-    "delay": 669,
+    "delay": 676,
     "stop_sequence": 25,
-    "time": 1763290209
+    "time": 1763290216
   },
   {
     "trip_id": "11036303:10000902:10051638",
     "route_id": "4-VIC",
     "start_time": "26:21:00",
     "stop_id": "100025",
-    "delay": 669,
+    "delay": 676,
     "stop_sequence": 26,
-    "time": 1763290329
+    "time": 1763290336
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100025",
-    "delay": 545,
+    "delay": 556,
     "stop_sequence": 1,
     "time": 0
   },
@@ -427,243 +148,243 @@
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100032",
-    "delay": 607,
+    "delay": 618,
     "stop_sequence": 2,
-    "time": 1763290445
+    "time": 1763290456
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100076",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 3,
-    "time": 1763290599
+    "time": 1763290610
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100394",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 4,
-    "time": 1763290659
+    "time": 1763290670
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100146",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 5,
-    "time": 1763290719
+    "time": 1763290730
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100178",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 6,
-    "time": 1763290779
+    "time": 1763290790
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100198",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 7,
-    "time": 1763290839
+    "time": 1763290850
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "102012",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 8,
-    "time": 1763290899
+    "time": 1763290910
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100237",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 9,
-    "time": 1763290959
+    "time": 1763290970
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100266",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 10,
-    "time": 1763290959
+    "time": 1763290970
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100280",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 11,
-    "time": 1763291019
+    "time": 1763291030
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100301",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 12,
-    "time": 1763291019
+    "time": 1763291030
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100322",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 13,
-    "time": 1763291079
+    "time": 1763291090
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100337",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 14,
-    "time": 1763291079
+    "time": 1763291090
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100385",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 15,
-    "time": 1763291139
+    "time": 1763291150
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100442",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 16,
-    "time": 1763291139
+    "time": 1763291150
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100514",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 17,
-    "time": 1763291199
+    "time": 1763291210
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100566",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 18,
-    "time": 1763291259
+    "time": 1763291270
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100618",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 19,
-    "time": 1763291259
+    "time": 1763291270
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100653",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 20,
-    "time": 1763291319
+    "time": 1763291330
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100763",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 21,
-    "time": 1763291379
+    "time": 1763291390
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100827",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 22,
-    "time": 1763291439
+    "time": 1763291450
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100864",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 23,
-    "time": 1763291439
+    "time": 1763291450
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100913",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 24,
-    "time": 1763291439
+    "time": 1763291450
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100937",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 25,
-    "time": 1763291499
+    "time": 1763291510
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100951",
-    "delay": 639,
+    "delay": 650,
     "stop_sequence": 26,
-    "time": 1763291499
+    "time": 1763291510
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "100071",
-    "delay": 643,
+    "delay": 653,
     "stop_sequence": 27,
-    "time": 1763291559
+    "time": 1763291570
   },
   {
     "trip_id": "11036307:10041766:10051638",
     "route_id": "4-VIC",
     "start_time": "26:43:00",
     "stop_id": "101036",
-    "delay": 677,
+    "delay": 687,
     "stop_sequence": 28,
-    "time": 1763291641
+    "time": 1763291651
   },
   {
     "trip_id": "11036307:10041766:10051638",
@@ -672,608 +393,482 @@
     "stop_id": "102420",
     "delay": 0,
     "stop_sequence": 29,
-    "time": 1763291709
-  },
-  {
-    "trip_id": "11035439:10002059:10051652",
-    "route_id": "95-VIC",
-    "start_time": "26:30:00",
-    "stop_id": "100146",
-    "delay": 147,
-    "stop_sequence": 5,
-    "time": 1763289567
-  },
-  {
-    "trip_id": "11035439:10002059:10051652",
-    "route_id": "95-VIC",
-    "start_time": "26:30:00",
-    "stop_id": "100198",
-    "delay": 147,
-    "stop_sequence": 6,
-    "time": 1763289687
-  },
-  {
-    "trip_id": "11035439:10002059:10051652",
-    "route_id": "95-VIC",
-    "start_time": "26:30:00",
-    "stop_id": "100358",
-    "delay": 147,
-    "stop_sequence": 7,
-    "time": 1763289807
-  },
-  {
-    "trip_id": "11035439:10002059:10051652",
-    "route_id": "95-VIC",
-    "start_time": "26:30:00",
-    "stop_id": "100456",
-    "delay": 147,
-    "stop_sequence": 8,
-    "time": 1763289867
-  },
-  {
-    "trip_id": "11035439:10002059:10051652",
-    "route_id": "95-VIC",
-    "start_time": "26:30:00",
-    "stop_id": "100554",
-    "delay": 147,
-    "stop_sequence": 9,
-    "time": 1763289927
-  },
-  {
-    "trip_id": "11035439:10002059:10051652",
-    "route_id": "95-VIC",
-    "start_time": "26:30:00",
-    "stop_id": "100709",
-    "delay": 147,
-    "stop_sequence": 10,
-    "time": 1763290047
+    "time": 1763291718
   },
   {
     "trip_id": "11035439:10002059:10051652",
     "route_id": "95-VIC",
     "start_time": "26:30:00",
     "stop_id": "100817",
-    "delay": 147,
+    "delay": 85,
     "stop_sequence": 11,
-    "time": 1763290107
+    "time": 1763290045
   },
   {
     "trip_id": "11035439:10002059:10051652",
     "route_id": "95-VIC",
     "start_time": "26:30:00",
     "stop_id": "101063",
-    "delay": 147,
+    "delay": 85,
     "stop_sequence": 12,
-    "time": 1763290287
+    "time": 1763290225
   },
   {
     "trip_id": "11035439:10002059:10051652",
     "route_id": "95-VIC",
     "start_time": "26:30:00",
     "stop_id": "101254",
-    "delay": 147,
+    "delay": 85,
     "stop_sequence": 13,
-    "time": 1763290467
+    "time": 1763290405
   },
   {
     "trip_id": "11035439:10002059:10051652",
     "route_id": "95-VIC",
     "start_time": "26:30:00",
     "stop_id": "101260",
-    "delay": 147,
+    "delay": 85,
     "stop_sequence": 14,
-    "time": 1763290527
+    "time": 1763290465
   },
   {
     "trip_id": "11035439:10002059:10051652",
     "route_id": "95-VIC",
     "start_time": "26:30:00",
     "stop_id": "101245",
-    "delay": 147,
+    "delay": 85,
     "stop_sequence": 15,
-    "time": 1763290587
+    "time": 1763290525
   },
   {
     "trip_id": "11035439:10002059:10051652",
     "route_id": "95-VIC",
     "start_time": "26:30:00",
     "stop_id": "101275",
-    "delay": 147,
+    "delay": 85,
     "stop_sequence": 16,
-    "time": 1763290647
+    "time": 1763290585
   },
   {
     "trip_id": "11035439:10002059:10051652",
     "route_id": "95-VIC",
     "start_time": "26:30:00",
     "stop_id": "101326",
-    "delay": 147,
+    "delay": 85,
     "stop_sequence": 17,
-    "time": 1763290707
+    "time": 1763290645
   },
   {
     "trip_id": "11035439:10002059:10051652",
     "route_id": "95-VIC",
     "start_time": "26:30:00",
     "stop_id": "101380",
-    "delay": 147,
+    "delay": 85,
     "stop_sequence": 18,
-    "time": 1763290767
+    "time": 1763290705
   },
   {
     "trip_id": "11035439:10002059:10051652",
     "route_id": "95-VIC",
     "start_time": "26:30:00",
     "stop_id": "101467",
-    "delay": 147,
+    "delay": 85,
     "stop_sequence": 19,
-    "time": 1763290827
+    "time": 1763290765
   },
   {
     "trip_id": "11035439:10002059:10051652",
     "route_id": "95-VIC",
     "start_time": "26:30:00",
     "stop_id": "101513",
-    "delay": 147,
+    "delay": 85,
     "stop_sequence": 20,
-    "time": 1763290887
+    "time": 1763290825
   },
   {
     "trip_id": "11035439:10002059:10051652",
     "route_id": "95-VIC",
     "start_time": "26:30:00",
     "stop_id": "101546",
-    "delay": 147,
+    "delay": 85,
     "stop_sequence": 21,
-    "time": 1763290947
+    "time": 1763290885
   },
   {
     "trip_id": "11035439:10002059:10051652",
     "route_id": "95-VIC",
     "start_time": "26:30:00",
     "stop_id": "101597",
-    "delay": 147,
+    "delay": 85,
     "stop_sequence": 22,
-    "time": 1763291007
+    "time": 1763290945
   },
   {
     "trip_id": "11035439:10002059:10051652",
     "route_id": "95-VIC",
     "start_time": "26:30:00",
     "stop_id": "101632",
-    "delay": 147,
+    "delay": 85,
     "stop_sequence": 23,
-    "time": 1763291127
+    "time": 1763291065
   },
   {
     "trip_id": "11035439:10002059:10051652",
     "route_id": "95-VIC",
     "start_time": "26:30:00",
     "stop_id": "102442",
-    "delay": 147,
+    "delay": 85,
     "stop_sequence": 24,
-    "time": 1763291247
+    "time": 1763291185
   },
   {
     "trip_id": "11035439:10002059:10051652",
     "route_id": "95-VIC",
     "start_time": "26:30:00",
     "stop_id": "101542",
-    "delay": 147,
+    "delay": 85,
     "stop_sequence": 25,
-    "time": 1763291307
-  },
-  {
-    "trip_id": "11035845:10035523:10052026",
-    "route_id": "27-VIC",
-    "start_time": "26:32:00",
-    "stop_id": "100063",
-    "delay": 125,
-    "stop_sequence": 4,
-    "time": 1763289545
-  },
-  {
-    "trip_id": "11035845:10035523:10052026",
-    "route_id": "27-VIC",
-    "start_time": "26:32:00",
-    "stop_id": "100079",
-    "delay": 250,
-    "stop_sequence": 5,
-    "time": 1763289670
-  },
-  {
-    "trip_id": "11035845:10035523:10052026",
-    "route_id": "27-VIC",
-    "start_time": "26:32:00",
-    "stop_id": "100093",
-    "delay": 235,
-    "stop_sequence": 6,
-    "time": 1763289715
-  },
-  {
-    "trip_id": "11035845:10035523:10052026",
-    "route_id": "27-VIC",
-    "start_time": "26:32:00",
-    "stop_id": "100125",
-    "delay": 206,
-    "stop_sequence": 7,
-    "time": 1763289746
-  },
-  {
-    "trip_id": "11035845:10035523:10052026",
-    "route_id": "27-VIC",
-    "start_time": "26:32:00",
-    "stop_id": "100143",
-    "delay": 246,
-    "stop_sequence": 8,
-    "time": 1763289786
-  },
-  {
-    "trip_id": "11035845:10035523:10052026",
-    "route_id": "27-VIC",
-    "start_time": "26:32:00",
-    "stop_id": "100159",
-    "delay": 200,
-    "stop_sequence": 9,
-    "time": 1763289800
-  },
-  {
-    "trip_id": "11035845:10035523:10052026",
-    "route_id": "27-VIC",
-    "start_time": "26:32:00",
-    "stop_id": "100181",
-    "delay": 224,
-    "stop_sequence": 10,
-    "time": 1763289824
-  },
-  {
-    "trip_id": "11035845:10035523:10052026",
-    "route_id": "27-VIC",
-    "start_time": "26:32:00",
-    "stop_id": "100211",
-    "delay": 179,
-    "stop_sequence": 11,
-    "time": 1763289839
+    "time": 1763291245
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "100265",
-    "delay": 170,
+    "delay": 290,
     "stop_sequence": 12,
-    "time": 1763289890
+    "time": 1763290010
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "100321",
-    "delay": 143,
+    "delay": 263,
     "stop_sequence": 13,
-    "time": 1763289923
+    "time": 1763290043
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "100411",
-    "delay": 137,
+    "delay": 257,
     "stop_sequence": 14,
-    "time": 1763289977
+    "time": 1763290097
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "100450",
-    "delay": 130,
+    "delay": 250,
     "stop_sequence": 15,
-    "time": 1763290030
+    "time": 1763290150
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "100485",
-    "delay": 93,
+    "delay": 213,
     "stop_sequence": 16,
-    "time": 1763290053
+    "time": 1763290173
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "100549",
-    "delay": 82,
+    "delay": 202,
     "stop_sequence": 17,
-    "time": 1763290102
+    "time": 1763290222
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "100577",
-    "delay": 113,
+    "delay": 233,
     "stop_sequence": 18,
-    "time": 1763290133
+    "time": 1763290253
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "100615",
-    "delay": 74,
+    "delay": 194,
     "stop_sequence": 19,
-    "time": 1763290154
+    "time": 1763290274
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "100656",
-    "delay": 63,
+    "delay": 183,
     "stop_sequence": 20,
-    "time": 1763290203
+    "time": 1763290323
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "100697",
-    "delay": 96,
+    "delay": 216,
     "stop_sequence": 21,
-    "time": 1763290236
+    "time": 1763290356
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "100731",
-    "delay": 52,
+    "delay": 172,
     "stop_sequence": 22,
-    "time": 1763290252
+    "time": 1763290372
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "102602",
-    "delay": 78,
+    "delay": 198,
     "stop_sequence": 23,
-    "time": 1763290278
+    "time": 1763290398
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "100829",
-    "delay": 64,
+    "delay": 184,
     "stop_sequence": 24,
-    "time": 1763290324
+    "time": 1763290444
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "100888",
-    "delay": 56,
+    "delay": 176,
     "stop_sequence": 25,
-    "time": 1763290376
+    "time": 1763290496
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "100933",
-    "delay": 46,
+    "delay": 166,
     "stop_sequence": 26,
-    "time": 1763290426
+    "time": 1763290546
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "100970",
-    "delay": 80,
+    "delay": 200,
     "stop_sequence": 27,
-    "time": 1763290460
+    "time": 1763290580
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "100994",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 28,
-    "time": 1763290506
+    "time": 1763290629
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101041",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 29,
-    "time": 1763290566
+    "time": 1763290689
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101065",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 30,
-    "time": 1763290626
+    "time": 1763290749
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101078",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 31,
-    "time": 1763290626
+    "time": 1763290749
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101099",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 32,
-    "time": 1763290686
+    "time": 1763290809
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101110",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 33,
-    "time": 1763290746
+    "time": 1763290869
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101129",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 34,
-    "time": 1763290746
+    "time": 1763290869
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101174",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 35,
-    "time": 1763290806
+    "time": 1763290929
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101224",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 36,
-    "time": 1763290806
+    "time": 1763290929
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101256",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 37,
-    "time": 1763290806
+    "time": 1763290929
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101294",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 38,
-    "time": 1763290866
+    "time": 1763290989
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101332",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 39,
-    "time": 1763290926
+    "time": 1763291049
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101349",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 40,
-    "time": 1763290926
+    "time": 1763291049
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101359",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 41,
-    "time": 1763290986
+    "time": 1763291109
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101390",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 42,
-    "time": 1763290986
+    "time": 1763291109
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101422",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 43,
-    "time": 1763291046
+    "time": 1763291169
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101431",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 44,
-    "time": 1763291046
+    "time": 1763291169
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101426",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 45,
-    "time": 1763291046
+    "time": 1763291169
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101420",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 46,
-    "time": 1763291106
+    "time": 1763291229
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101405",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 47,
-    "time": 1763291106
+    "time": 1763291229
   },
   {
     "trip_id": "11035845:10035523:10052026",
     "route_id": "27-VIC",
     "start_time": "26:32:00",
     "stop_id": "101357",
-    "delay": 66,
+    "delay": 189,
     "stop_sequence": 48,
-    "time": 1763291166
+    "time": 1763291289
   },
   {
     "trip_id": "11035847:10030309:10052026",
     "route_id": "27-VIC",
     "start_time": "27:05:00",
     "stop_id": "101357",
-    "delay": 72,
+    "delay": 189,
     "stop_sequence": 1,
     "time": 0
   },
@@ -1282,162 +877,162 @@
     "route_id": "27-VIC",
     "start_time": "27:05:00",
     "stop_id": "101308",
-    "delay": 72,
+    "delay": 189,
     "stop_sequence": 2,
-    "time": 1763291232
+    "time": 1763291349
   },
   {
     "trip_id": "11035847:10030309:10052026",
     "route_id": "27-VIC",
     "start_time": "27:05:00",
     "stop_id": "101265",
-    "delay": 72,
+    "delay": 189,
     "stop_sequence": 3,
-    "time": 1763291232
+    "time": 1763291349
   },
   {
     "trip_id": "11035847:10030309:10052026",
     "route_id": "27-VIC",
     "start_time": "27:05:00",
     "stop_id": "101238",
-    "delay": 72,
+    "delay": 189,
     "stop_sequence": 4,
-    "time": 1763291292
+    "time": 1763291409
   },
   {
     "trip_id": "11035847:10030309:10052026",
     "route_id": "27-VIC",
     "start_time": "27:05:00",
     "stop_id": "101170",
-    "delay": 72,
+    "delay": 189,
     "stop_sequence": 5,
-    "time": 1763291292
+    "time": 1763291409
   },
   {
     "trip_id": "11035847:10030309:10052026",
     "route_id": "27-VIC",
     "start_time": "27:05:00",
     "stop_id": "101137",
-    "delay": 72,
+    "delay": 189,
     "stop_sequence": 6,
-    "time": 1763291352
+    "time": 1763291469
   },
   {
     "trip_id": "11035847:10030309:10052026",
     "route_id": "27-VIC",
     "start_time": "27:05:00",
     "stop_id": "101105",
-    "delay": 72,
+    "delay": 189,
     "stop_sequence": 7,
-    "time": 1763291412
+    "time": 1763291529
   },
   {
     "trip_id": "11035847:10030309:10052026",
     "route_id": "27-VIC",
     "start_time": "27:05:00",
     "stop_id": "101074",
-    "delay": 75,
+    "delay": 192,
     "stop_sequence": 8,
-    "time": 1763291412
+    "time": 1763291529
   },
   {
     "trip_id": "11035847:10030309:10052026",
     "route_id": "27-VIC",
     "start_time": "27:05:00",
     "stop_id": "101028",
-    "delay": 46,
+    "delay": 164,
     "stop_sequence": 9,
-    "time": 1763291445
+    "time": 1763291562
   },
   {
     "trip_id": "11035847:10030309:10052026",
     "route_id": "27-VIC",
     "start_time": "27:05:00",
     "stop_id": "100995",
-    "delay": 63,
+    "delay": 181,
     "stop_sequence": 10,
-    "time": 1763291463
+    "time": 1763291581
   },
   {
     "trip_id": "11035847:10030309:10052026",
     "route_id": "27-VIC",
     "start_time": "27:05:00",
     "stop_id": "100980",
-    "delay": 72,
+    "delay": 188,
     "stop_sequence": 11,
-    "time": 1763291502
+    "time": 1763291618
   },
   {
     "trip_id": "11035847:10030309:10052026",
     "route_id": "27-VIC",
     "start_time": "27:05:00",
     "stop_id": "100931",
-    "delay": 48,
+    "delay": 164,
     "stop_sequence": 12,
-    "time": 1763291566
+    "time": 1763291682
   },
   {
     "trip_id": "11035847:10030309:10052026",
     "route_id": "27-VIC",
     "start_time": "27:05:00",
     "stop_id": "100898",
-    "delay": 81,
+    "delay": 196,
     "stop_sequence": 13,
-    "time": 1763291597
+    "time": 1763291713
   },
   {
     "trip_id": "11035847:10030309:10052026",
     "route_id": "27-VIC",
     "start_time": "27:05:00",
     "stop_id": "100867",
-    "delay": 42,
+    "delay": 158,
     "stop_sequence": 14,
-    "time": 1763291619
+    "time": 1763291735
   },
   {
     "trip_id": "11035847:10030309:10052026",
     "route_id": "27-VIC",
     "start_time": "27:05:00",
     "stop_id": "100811",
-    "delay": 84,
+    "delay": 211,
     "stop_sequence": 15,
-    "time": 1763291664
+    "time": 1763291787
   },
   {
     "trip_id": "11035847:10030309:10052026",
     "route_id": "27-VIC",
     "start_time": "27:05:00",
     "stop_id": "102643",
-    "delay": 41,
+    "delay": 169,
     "stop_sequence": 16,
-    "time": 1763291681
+    "time": 1763291809
   },
   {
     "trip_id": "11035847:10030309:10052026",
     "route_id": "27-VIC",
     "start_time": "27:05:00",
     "stop_id": "100727",
-    "delay": 69,
+    "delay": 197,
     "stop_sequence": 17,
-    "time": 1763291709
+    "time": 1763291837
   },
   {
     "trip_id": "11035847:10030309:10052026",
     "route_id": "27-VIC",
     "start_time": "27:05:00",
     "stop_id": "100685",
-    "delay": 32,
+    "delay": 160,
     "stop_sequence": 18,
-    "time": 1763291728
+    "time": 1763291856
   },
   {
     "trip_id": "11035847:10030309:10052026",
     "route_id": "27-VIC",
     "start_time": "27:05:00",
     "stop_id": "100636",
-    "delay": 5,
+    "delay": 133,
     "stop_sequence": 19,
-    "time": 1763291765
+    "time": 1763291893
   },
   {
     "trip_id": "11035847:10030309:10052026",
@@ -1446,491 +1041,230 @@
     "stop_id": "100595",
     "delay": 0,
     "stop_sequence": 20,
-    "time": 1763291765
-  },
-  {
-    "trip_id": "11035844:10046926:10052691",
-    "route_id": "28-VIC",
-    "start_time": "26:17:00",
-    "stop_id": "100970",
-    "delay": 37,
-    "stop_sequence": 27,
-    "time": 1763289517
-  },
-  {
-    "trip_id": "11035844:10046926:10052691",
-    "route_id": "28-VIC",
-    "start_time": "26:17:00",
-    "stop_id": "100994",
-    "delay": 48,
-    "stop_sequence": 28,
-    "time": 1763289588
-  },
-  {
-    "trip_id": "11035844:10046926:10052691",
-    "route_id": "28-VIC",
-    "start_time": "26:17:00",
-    "stop_id": "101039",
-    "delay": 48,
-    "stop_sequence": 29,
-    "time": 1763289648
-  },
-  {
-    "trip_id": "11035844:10046926:10052691",
-    "route_id": "28-VIC",
-    "start_time": "26:17:00",
-    "stop_id": "101077",
-    "delay": 48,
-    "stop_sequence": 30,
-    "time": 1763289708
-  },
-  {
-    "trip_id": "11035844:10046926:10052691",
-    "route_id": "28-VIC",
-    "start_time": "26:17:00",
-    "stop_id": "101108",
-    "delay": 48,
-    "stop_sequence": 31,
-    "time": 1763289768
-  },
-  {
-    "trip_id": "11035844:10046926:10052691",
-    "route_id": "28-VIC",
-    "start_time": "26:17:00",
-    "stop_id": "101123",
-    "delay": 48,
-    "stop_sequence": 32,
-    "time": 1763289768
-  },
-  {
-    "trip_id": "11035844:10046926:10052691",
-    "route_id": "28-VIC",
-    "start_time": "26:17:00",
-    "stop_id": "101149",
-    "delay": 48,
-    "stop_sequence": 33,
-    "time": 1763289828
-  },
-  {
-    "trip_id": "11035844:10046926:10052691",
-    "route_id": "28-VIC",
-    "start_time": "26:17:00",
-    "stop_id": "101220",
-    "delay": 48,
-    "stop_sequence": 34,
-    "time": 1763289888
-  },
-  {
-    "trip_id": "11035844:10046926:10052691",
-    "route_id": "28-VIC",
-    "start_time": "26:17:00",
-    "stop_id": "101236",
-    "delay": 48,
-    "stop_sequence": 35,
-    "time": 1763289948
-  },
-  {
-    "trip_id": "11035844:10046926:10052691",
-    "route_id": "28-VIC",
-    "start_time": "26:17:00",
-    "stop_id": "101274",
-    "delay": 48,
-    "stop_sequence": 36,
-    "time": 1763289948
-  },
-  {
-    "trip_id": "11035844:10046926:10052691",
-    "route_id": "28-VIC",
-    "start_time": "26:17:00",
-    "stop_id": "101305",
-    "delay": 48,
-    "stop_sequence": 37,
-    "time": 1763290008
-  },
-  {
-    "trip_id": "11035844:10046926:10052691",
-    "route_id": "28-VIC",
-    "start_time": "26:17:00",
-    "stop_id": "101355",
-    "delay": 48,
-    "stop_sequence": 38,
-    "time": 1763290068
-  },
-  {
-    "trip_id": "11035848:10018562:10052691",
-    "route_id": "28-VIC",
-    "start_time": "26:47:00",
-    "stop_id": "101355",
-    "delay": 33,
-    "stop_sequence": 1,
-    "time": 0
+    "time": 1763291893
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "101368",
-    "delay": 33,
+    "delay": -36,
     "stop_sequence": 2,
-    "time": 1763290113
+    "time": 1763290044
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "101367",
-    "delay": 33,
+    "delay": -36,
     "stop_sequence": 3,
-    "time": 1763290173
+    "time": 1763290104
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "101354",
-    "delay": 33,
+    "delay": -36,
     "stop_sequence": 4,
-    "time": 1763290173
+    "time": 1763290104
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "101327",
-    "delay": 33,
+    "delay": -36,
     "stop_sequence": 5,
-    "time": 1763290233
+    "time": 1763290164
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "102649",
-    "delay": 33,
+    "delay": -36,
     "stop_sequence": 6,
-    "time": 1763290233
+    "time": 1763290164
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "101248",
-    "delay": 33,
+    "delay": -36,
     "stop_sequence": 7,
-    "time": 1763290293
+    "time": 1763290224
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "101219",
-    "delay": 33,
+    "delay": 0,
     "stop_sequence": 8,
-    "time": 1763290293
+    "time": 1763290260
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "101196",
-    "delay": 33,
+    "delay": 0,
     "stop_sequence": 9,
-    "time": 1763290353
+    "time": 1763290320
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "101160",
-    "delay": 33,
+    "delay": 0,
     "stop_sequence": 10,
-    "time": 1763290353
+    "time": 1763290320
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "101130",
-    "delay": 33,
+    "delay": 0,
     "stop_sequence": 11,
-    "time": 1763290413
+    "time": 1763290380
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "101102",
-    "delay": 33,
+    "delay": 0,
     "stop_sequence": 12,
-    "time": 1763290473
+    "time": 1763290440
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "101074",
-    "delay": 36,
+    "delay": 0,
     "stop_sequence": 13,
-    "time": 1763290473
+    "time": 1763290440
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "101028",
-    "delay": 7,
+    "delay": -27,
     "stop_sequence": 14,
-    "time": 1763290506
+    "time": 1763290473
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "100995",
-    "delay": 24,
+    "delay": -8,
     "stop_sequence": 15,
-    "time": 1763290524
+    "time": 1763290492
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "100980",
-    "delay": 33,
+    "delay": -31,
     "stop_sequence": 16,
-    "time": 1763290563
+    "time": 1763290529
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "100931",
-    "delay": 9,
+    "delay": -26,
     "stop_sequence": 17,
-    "time": 1763290627
+    "time": 1763290594
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "100898",
-    "delay": 42,
+    "delay": 5,
     "stop_sequence": 18,
-    "time": 1763290658
+    "time": 1763290625
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "100867",
-    "delay": 3,
+    "delay": -33,
     "stop_sequence": 19,
-    "time": 1763290680
+    "time": 1763290647
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "100811",
-    "delay": 45,
+    "delay": 19,
     "stop_sequence": 20,
-    "time": 1763290725
+    "time": 1763290699
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "102643",
-    "delay": 2,
+    "delay": -19,
     "stop_sequence": 21,
-    "time": 1763290742
+    "time": 1763290721
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "100727",
-    "delay": 30,
+    "delay": 11,
     "stop_sequence": 22,
-    "time": 1763290770
+    "time": 1763290751
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "100685",
-    "delay": -7,
+    "delay": -30,
     "stop_sequence": 23,
-    "time": 1763290789
+    "time": 1763290770
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "100636",
-    "delay": -34,
+    "delay": -53,
     "stop_sequence": 24,
-    "time": 1763290826
+    "time": 1763290807
   },
   {
     "trip_id": "11035848:10018562:10052691",
     "route_id": "28-VIC",
     "start_time": "26:47:00",
     "stop_id": "100595",
-    "delay": 0,
+    "delay": -53,
     "stop_sequence": 25,
-    "time": 1763290826
-  },
-  {
-    "trip_id": "11036174:10029515:10796250",
-    "route_id": "6-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100647",
-    "delay": 186,
-    "stop_sequence": 16,
-    "time": 1763289606
-  },
-  {
-    "trip_id": "11036174:10029515:10796250",
-    "route_id": "6-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100614",
-    "delay": 186,
-    "stop_sequence": 17,
-    "time": 1763289606
-  },
-  {
-    "trip_id": "11036174:10029515:10796250",
-    "route_id": "6-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100520",
-    "delay": 186,
-    "stop_sequence": 18,
-    "time": 1763289666
-  },
-  {
-    "trip_id": "11036174:10029515:10796250",
-    "route_id": "6-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100445",
-    "delay": 186,
-    "stop_sequence": 19,
-    "time": 1763289666
-  },
-  {
-    "trip_id": "11036174:10029515:10796250",
-    "route_id": "6-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100389",
-    "delay": 186,
-    "stop_sequence": 20,
-    "time": 1763289726
-  },
-  {
-    "trip_id": "11036174:10029515:10796250",
-    "route_id": "6-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100333",
-    "delay": 186,
-    "stop_sequence": 21,
-    "time": 1763289726
-  },
-  {
-    "trip_id": "11036174:10029515:10796250",
-    "route_id": "6-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100304",
-    "delay": 186,
-    "stop_sequence": 22,
-    "time": 1763289726
-  },
-  {
-    "trip_id": "11036174:10029515:10796250",
-    "route_id": "6-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100257",
-    "delay": 186,
-    "stop_sequence": 23,
-    "time": 1763289786
-  },
-  {
-    "trip_id": "11036174:10029515:10796250",
-    "route_id": "6-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100233",
-    "delay": 186,
-    "stop_sequence": 24,
-    "time": 1763289786
-  },
-  {
-    "trip_id": "11036174:10029515:10796250",
-    "route_id": "6-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100193",
-    "delay": 186,
-    "stop_sequence": 25,
-    "time": 1763289846
-  },
-  {
-    "trip_id": "11036174:10029515:10796250",
-    "route_id": "6-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100166",
-    "delay": 186,
-    "stop_sequence": 26,
-    "time": 1763289906
-  },
-  {
-    "trip_id": "11036174:10029515:10796250",
-    "route_id": "6-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100145",
-    "delay": 186,
-    "stop_sequence": 27,
-    "time": 1763289966
-  },
-  {
-    "trip_id": "11036174:10029515:10796250",
-    "route_id": "6-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100135",
-    "delay": 186,
-    "stop_sequence": 28,
-    "time": 1763289966
-  },
-  {
-    "trip_id": "11036174:10029515:10796250",
-    "route_id": "6-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100101",
-    "delay": 186,
-    "stop_sequence": 29,
-    "time": 1763290026
-  },
-  {
-    "trip_id": "11036174:10029515:10796250",
-    "route_id": "6-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100068",
-    "delay": 186,
-    "stop_sequence": 30,
-    "time": 1763290086
-  },
-  {
-    "trip_id": "11036174:10029515:10796250",
-    "route_id": "6-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100042",
-    "delay": 186,
-    "stop_sequence": 31,
-    "time": 1763290146
+    "time": 1763290807
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100042",
-    "delay": 61,
+    "delay": 0,
     "stop_sequence": 1,
     "time": 0
   },
@@ -1939,306 +1273,306 @@
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100033",
-    "delay": 106,
+    "delay": 45,
     "stop_sequence": 2,
-    "time": 1763290201
+    "time": 1763290140
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100045",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 3,
-    "time": 1763290299
+    "time": 1763290238
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100069",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 4,
-    "time": 1763290359
+    "time": 1763290298
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100085",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 5,
-    "time": 1763290419
+    "time": 1763290358
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100118",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 6,
-    "time": 1763290479
+    "time": 1763290418
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100133",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 7,
-    "time": 1763290479
+    "time": 1763290418
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100147",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 8,
-    "time": 1763290539
+    "time": 1763290478
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100171",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 9,
-    "time": 1763290599
+    "time": 1763290538
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100208",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 10,
-    "time": 1763290599
+    "time": 1763290538
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100234",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 11,
-    "time": 1763290659
+    "time": 1763290598
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100271",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 12,
-    "time": 1763290719
+    "time": 1763290658
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100315",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 13,
-    "time": 1763290779
+    "time": 1763290718
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100344",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 14,
-    "time": 1763290779
+    "time": 1763290718
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100401",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 15,
-    "time": 1763290839
+    "time": 1763290778
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100455",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 16,
-    "time": 1763290839
+    "time": 1763290778
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100540",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 17,
-    "time": 1763290899
+    "time": 1763290838
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100599",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 18,
-    "time": 1763290899
+    "time": 1763290838
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100655",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 19,
-    "time": 1763290959
+    "time": 1763290898
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100746",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 20,
-    "time": 1763291019
+    "time": 1763290958
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100782",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 21,
-    "time": 1763291019
+    "time": 1763290958
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100853",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 22,
-    "time": 1763291079
+    "time": 1763291018
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100895",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 23,
-    "time": 1763291139
+    "time": 1763291078
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100923",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 24,
-    "time": 1763291139
+    "time": 1763291078
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "100977",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 25,
-    "time": 1763291199
+    "time": 1763291138
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "101004",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 26,
-    "time": 1763291259
+    "time": 1763291198
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "101034",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 27,
-    "time": 1763291259
+    "time": 1763291198
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "101089",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 28,
-    "time": 1763291319
+    "time": 1763291258
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "101146",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 29,
-    "time": 1763291379
+    "time": 1763291318
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "101166",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 30,
-    "time": 1763291379
+    "time": 1763291318
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "101257",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 31,
-    "time": 1763291439
+    "time": 1763291378
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "101316",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 32,
-    "time": 1763291499
+    "time": 1763291438
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "101345",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 33,
-    "time": 1763291499
+    "time": 1763291438
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "101399",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 34,
-    "time": 1763291559
+    "time": 1763291498
   },
   {
     "trip_id": "11036138:10002255:10796250",
     "route_id": "6-VIC",
     "start_time": "26:48:00",
     "stop_id": "101412",
-    "delay": 159,
+    "delay": 98,
     "stop_sequence": 35,
-    "time": 1763291559
+    "time": 1763291498
   },
   {
     "trip_id": "11036138:10002255:10796250",
@@ -2247,375 +1581,87 @@
     "stop_id": "102490",
     "delay": 0,
     "stop_sequence": 36,
-    "time": 1763291619
-  },
-  {
-    "trip_id": "11035846:10017426:11184234",
-    "route_id": "27-VIC",
-    "start_time": "26:36:00",
-    "stop_id": "101238",
-    "delay": 120,
-    "stop_sequence": 4,
-    "time": 1763289600
-  },
-  {
-    "trip_id": "11035846:10017426:11184234",
-    "route_id": "27-VIC",
-    "start_time": "26:36:00",
-    "stop_id": "101170",
-    "delay": 120,
-    "stop_sequence": 5,
-    "time": 1763289600
-  },
-  {
-    "trip_id": "11035846:10017426:11184234",
-    "route_id": "27-VIC",
-    "start_time": "26:36:00",
-    "stop_id": "101137",
-    "delay": 120,
-    "stop_sequence": 6,
-    "time": 1763289660
-  },
-  {
-    "trip_id": "11035846:10017426:11184234",
-    "route_id": "27-VIC",
-    "start_time": "26:36:00",
-    "stop_id": "101105",
-    "delay": 120,
-    "stop_sequence": 7,
-    "time": 1763289720
-  },
-  {
-    "trip_id": "11035846:10017426:11184234",
-    "route_id": "27-VIC",
-    "start_time": "26:36:00",
-    "stop_id": "101074",
-    "delay": 120,
-    "stop_sequence": 8,
-    "time": 1763289720
-  },
-  {
-    "trip_id": "11035846:10017426:11184234",
-    "route_id": "27-VIC",
-    "start_time": "26:36:00",
-    "stop_id": "101028",
-    "delay": 93,
-    "stop_sequence": 9,
-    "time": 1763289753
-  },
-  {
-    "trip_id": "11035846:10017426:11184234",
-    "route_id": "27-VIC",
-    "start_time": "26:36:00",
-    "stop_id": "100995",
-    "delay": 111,
-    "stop_sequence": 10,
-    "time": 1763289771
-  },
-  {
-    "trip_id": "11035846:10017426:11184234",
-    "route_id": "27-VIC",
-    "start_time": "26:36:00",
-    "stop_id": "100980",
-    "delay": 90,
-    "stop_sequence": 11,
-    "time": 1763289810
-  },
-  {
-    "trip_id": "11035846:10017426:11184234",
-    "route_id": "27-VIC",
-    "start_time": "26:36:00",
-    "stop_id": "100931",
-    "delay": 94,
-    "stop_sequence": 12,
-    "time": 1763289874
-  },
-  {
-    "trip_id": "11035846:10017426:11184234",
-    "route_id": "27-VIC",
-    "start_time": "26:36:00",
-    "stop_id": "100898",
-    "delay": 125,
-    "stop_sequence": 13,
-    "time": 1763289905
-  },
-  {
-    "trip_id": "11035846:10017426:11184234",
-    "route_id": "27-VIC",
-    "start_time": "26:36:00",
-    "stop_id": "100867",
-    "delay": 87,
-    "stop_sequence": 14,
-    "time": 1763289927
-  },
-  {
-    "trip_id": "11035846:10017426:11184234",
-    "route_id": "27-VIC",
-    "start_time": "26:36:00",
-    "stop_id": "100811",
-    "delay": 132,
-    "stop_sequence": 15,
-    "time": 1763289972
-  },
-  {
-    "trip_id": "11035846:10017426:11184234",
-    "route_id": "27-VIC",
-    "start_time": "26:36:00",
-    "stop_id": "102643",
-    "delay": 89,
-    "stop_sequence": 16,
-    "time": 1763289989
-  },
-  {
-    "trip_id": "11035846:10017426:11184234",
-    "route_id": "27-VIC",
-    "start_time": "26:36:00",
-    "stop_id": "100727",
-    "delay": 117,
-    "stop_sequence": 17,
-    "time": 1763290017
+    "time": 1763291558
   },
   {
     "trip_id": "11035846:10017426:11184234",
     "route_id": "27-VIC",
     "start_time": "26:36:00",
     "stop_id": "100685",
-    "delay": 76,
+    "delay": 72,
     "stop_sequence": 18,
-    "time": 1763290036
+    "time": 1763290032
   },
   {
     "trip_id": "11035846:10017426:11184234",
     "route_id": "27-VIC",
     "start_time": "26:36:00",
     "stop_id": "100636",
-    "delay": 53,
+    "delay": 49,
     "stop_sequence": 19,
-    "time": 1763290073
+    "time": 1763290069
   },
   {
     "trip_id": "11035846:10017426:11184234",
     "route_id": "27-VIC",
     "start_time": "26:36:00",
     "stop_id": "100595",
-    "delay": 53,
+    "delay": 49,
     "stop_sequence": 20,
-    "time": 1763290073
-  },
-  {
-    "trip_id": "11036502:10043226:11184314",
-    "route_id": "14-VIC",
-    "start_time": "26:05:00",
-    "stop_id": "100822",
-    "delay": 112,
-    "stop_sequence": 50,
-    "time": 1763289592
-  },
-  {
-    "trip_id": "11036502:10043226:11184314",
-    "route_id": "14-VIC",
-    "start_time": "26:05:00",
-    "stop_id": "100844",
-    "delay": 112,
-    "stop_sequence": 51,
-    "time": 1763289592
-  },
-  {
-    "trip_id": "11036502:10043226:11184314",
-    "route_id": "14-VIC",
-    "start_time": "26:05:00",
-    "stop_id": "100869",
-    "delay": 112,
-    "stop_sequence": 52,
-    "time": 1763289652
-  },
-  {
-    "trip_id": "11036502:10043226:11184314",
-    "route_id": "14-VIC",
-    "start_time": "26:05:00",
-    "stop_id": "100901",
-    "delay": 112,
-    "stop_sequence": 53,
-    "time": 1763289652
-  },
-  {
-    "trip_id": "11036502:10043226:11184314",
-    "route_id": "14-VIC",
-    "start_time": "26:05:00",
-    "stop_id": "100944",
-    "delay": 112,
-    "stop_sequence": 54,
-    "time": 1763289712
-  },
-  {
-    "trip_id": "11036502:10043226:11184314",
-    "route_id": "14-VIC",
-    "start_time": "26:05:00",
-    "stop_id": "100956",
-    "delay": 112,
-    "stop_sequence": 55,
-    "time": 1763289772
-  },
-  {
-    "trip_id": "11036502:10043226:11184314",
-    "route_id": "14-VIC",
-    "start_time": "26:05:00",
-    "stop_id": "100071",
-    "delay": 112,
-    "stop_sequence": 56,
-    "time": 1763289832
-  },
-  {
-    "trip_id": "11036502:10043226:11184314",
-    "route_id": "14-VIC",
-    "start_time": "26:05:00",
-    "stop_id": "101036",
-    "delay": 134,
-    "stop_sequence": 57,
-    "time": 1763289914
-  },
-  {
-    "trip_id": "11036502:10043226:11184314",
-    "route_id": "14-VIC",
-    "start_time": "26:05:00",
-    "stop_id": "102420",
-    "delay": 142,
-    "stop_sequence": 58,
-    "time": 1763289982
-  },
-  {
-    "trip_id": "11035438:10017869:11184359",
-    "route_id": "95-VIC",
-    "start_time": "26:02:00",
-    "stop_id": "102442",
-    "delay": 217,
-    "stop_sequence": 24,
-    "time": 1763289637
-  },
-  {
-    "trip_id": "11035438:10017869:11184359",
-    "route_id": "95-VIC",
-    "start_time": "26:02:00",
-    "stop_id": "101542",
-    "delay": 217,
-    "stop_sequence": 25,
-    "time": 1763289697
-  },
-  {
-    "trip_id": "11036567:10030899:11184378",
-    "route_id": "15-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100033",
-    "delay": 41,
-    "stop_sequence": 19,
-    "time": 1763289581
-  },
-  {
-    "trip_id": "11036567:10030899:11184378",
-    "route_id": "15-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100064",
-    "delay": 41,
-    "stop_sequence": 20,
-    "time": 1763289641
-  },
-  {
-    "trip_id": "11036567:10030899:11184378",
-    "route_id": "15-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100126",
-    "delay": 72,
-    "stop_sequence": 21,
-    "time": 1763289732
-  },
-  {
-    "trip_id": "11036567:10030899:11184378",
-    "route_id": "15-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "102573",
-    "delay": 72,
-    "stop_sequence": 22,
-    "time": 1763289792
-  },
-  {
-    "trip_id": "11036567:10030899:11184378",
-    "route_id": "15-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100320",
-    "delay": 72,
-    "stop_sequence": 23,
-    "time": 1763289912
-  },
-  {
-    "trip_id": "11036567:10030899:11184378",
-    "route_id": "15-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100427",
-    "delay": 72,
-    "stop_sequence": 24,
-    "time": 1763289972
-  },
-  {
-    "trip_id": "11036567:10030899:11184378",
-    "route_id": "15-VIC",
-    "start_time": "26:28:00",
-    "stop_id": "100575",
-    "delay": 72,
-    "stop_sequence": 25,
-    "time": 1763290032
+    "time": 1763290069
   },
   {
     "trip_id": "11036567:10030899:11184378",
     "route_id": "15-VIC",
     "start_time": "26:28:00",
     "stop_id": "100689",
-    "delay": 72,
+    "delay": 44,
     "stop_sequence": 26,
-    "time": 1763290152
+    "time": 1763290124
   },
   {
     "trip_id": "11036567:10030899:11184378",
     "route_id": "15-VIC",
     "start_time": "26:28:00",
     "stop_id": "100763",
-    "delay": 72,
+    "delay": 44,
     "stop_sequence": 27,
-    "time": 1763290272
+    "time": 1763290244
   },
   {
     "trip_id": "11036567:10030899:11184378",
     "route_id": "15-VIC",
     "start_time": "26:28:00",
     "stop_id": "100913",
-    "delay": 72,
+    "delay": 44,
     "stop_sequence": 28,
-    "time": 1763290332
+    "time": 1763290304
   },
   {
     "trip_id": "11036567:10030899:11184378",
     "route_id": "15-VIC",
     "start_time": "26:28:00",
     "stop_id": "100071",
-    "delay": 72,
+    "delay": 44,
     "stop_sequence": 29,
-    "time": 1763290452
+    "time": 1763290424
   },
   {
     "trip_id": "11036567:10030899:11184378",
     "route_id": "15-VIC",
     "start_time": "26:28:00",
     "stop_id": "101036",
-    "delay": 94,
+    "delay": 65,
     "stop_sequence": 30,
-    "time": 1763290534
+    "time": 1763290505
   },
   {
     "trip_id": "11036567:10030899:11184378",
     "route_id": "15-VIC",
     "start_time": "26:28:00",
     "stop_id": "102420",
-    "delay": 102,
+    "delay": 72,
     "stop_sequence": 31,
-    "time": 1763290602
+    "time": 1763290572
   }
 ]
