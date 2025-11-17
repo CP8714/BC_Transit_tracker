@@ -581,10 +581,13 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     if not bus:
         # # Info about the bus such as how late/early it is, what is its next stop, what is its current capacity/how busy it is, 
         # # its current speed, and what are the next stops it will be serving 
-        # html.H3(id="desc-text", f"{bus_number} is not running at the moment"),
-        # html.H3(id="stop-text", "Next Stop: Not Available"),
-        # html.H3(id="capacity-text", "Occupancy Status: Not Available"),
-        # html.H3(id="speed-text", "Current Speed: Not Available"),
+        # bus_info = html.Div([
+        #     html.H3(id="desc-text", f"{bus_number} is not running at the moment"),
+        #     html.H3(id="stop-text", "Next Stop: Not Available"),
+        #     html.H3(id="capacity-text", "Occupancy Status: Not Available"),
+        #     html.H3(id="speed-text", "Current Speed: Not Available"),
+        # ])
+        # return fig, bus_info, reset_url, update_bus_input
         return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available", "", [], toggle_future_stops_text, "", reset_url, update_bus_input
 
     # Get the position, current route, its id, how busy it is, its current trip, next stop, and bearing along with the timestamp that BC Transit received this data
@@ -683,6 +686,20 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
                 hoverinfo="text",
                 name=f"Position of {bus_id}"
             ))
+
+            # bus_info = html.Div([
+                # # Info about the bus such as how late/early it is, what is its next stop, what is its current capacity/how busy it is, 
+                # # its current speed, and what are the next stops it will be serving 
+                # html.H3(id="desc-text", f"{bus_number} is currently Not In Service"),
+                # html.H3(id="stop-text", "Next Stop: Not Available"),
+                # html.H3(id="capacity-text", capacity_text),
+                # html.H3(id="speed-text", speed_text),
+                # # All of the trips that this bus will, has or is currently running today
+                # html.H3(id="block-trips", className="h3-bus-tracker", block_trips),
+                # # Timestamp indicating when the data was received by BC Transit
+                # html.H3(id="timestamp-text", className="h3-bus-tracker", timestamp_text),
+            # ])
+            # return fig, bus_info, reset_url, update_bus_input
             return fig, f"{bus_number} is currently Not In Service", "Next Stop: Not Available", capacity_text, speed_text, timestamp_text, [], toggle_future_stops_text, block_trips, reset_url, update_bus_input
             
         # Get the current delay of the next stop, what stop is the next one, the start time of this trip, the eta of the next stop, and its id
