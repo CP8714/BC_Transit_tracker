@@ -577,7 +577,14 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         toggle_future_stops_text = "Show Next 5 Stops"
 
     # If no results for the inputted bus, it is not running right now
+    
     if not bus:
+        # # Info about the bus such as how late/early it is, what is its next stop, what is its current capacity/how busy it is, 
+        # # its current speed, and what are the next stops it will be serving 
+        # html.H3(id="desc-text", f"{bus_number} is not running at the moment"),
+        # html.H3(id="stop-text", "Next Stop: Not Available"),
+        # html.H3(id="capacity-text", "Occupancy Status: Not Available"),
+        # html.H3(id="speed-text", "Current Speed: Not Available"),
         return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available", "", [], toggle_future_stops_text, "", reset_url, update_bus_input
 
     # Get the position, current route, its id, how busy it is, its current trip, next stop, and bearing along with the timestamp that BC Transit received this data
