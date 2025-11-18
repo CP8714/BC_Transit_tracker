@@ -137,7 +137,7 @@ bus_tracker_layout = html.Div([
             children=[
                 html.Div(
                     className="info-1-container",
-                    id = "bus-info",
+                    id = "bus-info"
                 )
             ]
         ),
