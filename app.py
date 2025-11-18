@@ -12,7 +12,7 @@ import fetch_fleet_data
 import fetch_trip_data
 from datetime import datetime
 from dash import callback_context, no_update
-import pytz
+import pytzf
 from urllib.parse import parse_qs, urlparse
 from flask import Flask, Response
 
@@ -876,7 +876,7 @@ def display_page(pathname):
      Output("future-stop-text", "children"),
      Output("toggle-future-stops", "children"),
      Output("block-trips", "children"),
-     Output("url-request", "href"),
+     Output("url-request", "data"),
      Output("bus-search-user-input", "value")],
     [Input("bus-search-user-input", "n_submit"),
      Input("interval-component", "n_intervals"),
