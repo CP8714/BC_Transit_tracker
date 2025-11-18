@@ -35,8 +35,7 @@ def sitemap():
     return Response(xml, mimetype="application/xml")
 
 app = dash.Dash(
-    __name__,
-    suppress_callback_exceptions=True,
+    __name__, 
     server=server, 
     title="BCTVicTracker",
     meta_tags=[
@@ -134,8 +133,26 @@ bus_tracker_layout = html.Div([
         dcc.Loading(
             id="loading-component-1",
             type="circle",
-            children= html.Div(className="info-1-container", id = "bus-info")
-        
+            children=[
+                html.Div(
+                    className="info-1-container",
+                    children=[
+                        # Info about the bus such as how late/early it is, what is its next stop, what is its current capacity/how busy it is, 
+                        # its current speed, and what are the next stops it will be serving 
+                        html.H3(id="desc-text"),
+                        html.H3(id="stop-text"),
+                        html.H3(id="capacity-text"),
+                        html.H3(id="speed-text"),
+                        # Button where the user can toggle whether they want to only see the next 5 stops served by the bus or all upcoming stops
+                        html.Button(id="toggle-future-stops", className="toggle-future-stops-button", n_clicks=0, children="Show All Upcoming Stops"),
+                        html.H3(id="future-stop-text"),
+                        # All of the trips that this bus will, has or is currently running today
+                        html.H3(id="block-trips", className="h3-bus-tracker"),
+                        # Timestamp indicating when the data was received by BC Transit
+                        html.H3(id="timestamp-text", className="h3-bus-tracker"),
+                    ]
+                )
+            ]
         ),
         dcc.Loading(
             id="loading-component-2",
@@ -560,17 +577,8 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
         toggle_future_stops_text = "Show Next 5 Stops"
 
     # If no results for the inputted bus, it is not running right now
-    
     if not bus:
-        # Info about the bus such as how late/early it is, what is its next stop, what is its current capacity/how busy it is, 
-        # its current speed, and what are the next stops it will be serving 
-        bus_info = html.Div([
-            html.H3(children=f"{bus_number} is not running at the moment"),
-            html.H3(children="Next Stop: Not Available"),
-            html.H3(children="Occupancy Status: Not Available"),
-            html.H3(children="Current Speed: Not Available"),
-        ])
-        return fig, bus_info, reset_url, update_bus_input
+        return fig, f"{bus_number} is not running at the moment", "Next Stop: Not Available", "Occupancy Status: Not Available", "Current Speed: Not Available", "", [], toggle_future_stops_text, "", reset_url, update_bus_input
 
     # Get the position, current route, its id, how busy it is, its current trip, next stop, and bearing along with the timestamp that BC Transit received this data
     lat, lon, speed, route, bus_id, capacity, trip_id, stop_id, bearing, timestamp = (
@@ -668,20 +676,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
                 hoverinfo="text",
                 name=f"Position of {bus_id}"
             ))
-
-            bus_info = html.Div([
-                # Info about the bus such as how late/early it is, what is its next stop, what is its current capacity/how busy it is, 
-                # its current speed, and what are the next stops it will be serving 
-                html.H3(id="desc-text", children=f"{bus_number} is currently Not In Service"),
-                html.H3(id="stop-text", children="Next Stop: Not Available"),
-                html.H3(id="capacity-text", children=capacity_text),
-                html.H3(id="speed-text", children=speed_text),
-                # All of the trips that this bus will, has or is currently running today
-                html.H3(id="block-trips", className="h3-bus-tracker", children=block_trips),
-                # Timestamp indicating when the data was received by BC Transit
-                html.H3(id="timestamp-text", className="h3-bus-tracker", children=timestamp_text),
-            ])
-            return fig, bus_info, reset_url, update_bus_input
+            return fig, f"{bus_number} is currently Not In Service", "Next Stop: Not Available", capacity_text, speed_text, timestamp_text, [], toggle_future_stops_text, block_trips, reset_url, update_bus_input
             
         # Get the current delay of the next stop, what stop is the next one, the start time of this trip, the eta of the next stop, and its id
         delay, stop_sequence, start_time, eta_time, current_stop_id = (
@@ -848,22 +843,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
             stop_text = f"Current Stop: {stop}"
 
 
-    bus_info = html.Div([
-        # Info about the bus such as how late/early it is, what is its next stop, what is its current capacity/how busy it is, 
-        # its current speed, and what are the next stops it will be serving 
-        html.H3(id="desc-text", children=f"{bus_number} is currently Not In Service"),
-        html.H3(id="stop-text", children="Next Stop: Not Available"),
-        html.H3(id="capacity-text", children=capacity_text),
-        html.H3(id="speed-text", children=speed_text),
-        # Button where the user can toggle whether they want to only see the next 5 stops served by the bus or all upcoming stops
-        html.Button(id="toggle-future-stops", className="toggle-future-stops-button", n_clicks=0, children="Show All Upcoming Stops"),
-        html.H3(id="future-stop-text", children=future_stops_eta),
-        # All of the trips that this bus will, has or is currently running today
-        html.H3(id="block-trips", className="h3-bus-tracker", children=block_trips),
-        # Timestamp indicating when the data was received by BC Transit
-        html.H3(id="timestamp-text", className="h3-bus-tracker", children=timestamp_text),
-    ])
-    return fig, bus_info, reset_url, update_bus_input
+    return fig, desc_text, stop_text, capacity_text, speed_text, timestamp_text, future_stops_eta, toggle_future_stops_text, block_trips, reset_url, update_bus_input
 
 app.layout = html.Div([
     dcc.Location(id="url", refresh=False),
@@ -887,7 +867,14 @@ def display_page(pathname):
 # Callback which sets the outputs of the bus tracker page
 @callback(
     [Output("live-map", "figure"),
-     Output("bus-info", "children"),
+     Output("desc-text", "children"),
+     Output("stop-text", "children"),
+     Output("capacity-text", "children"),
+     Output("speed-text", "children"),
+     Output("timestamp-text", "children"),
+     Output("future-stop-text", "children"),
+     Output("toggle-future-stops", "children"),
+     Output("block-trips", "children"),
      Output("url", "href"),
      Output("bus-search-user-input", "value")],
     [Input("bus-search-user-input", "n_submit"),
@@ -905,7 +892,7 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
 
     # If the Clear button on the bus tracker page is pressed, clear the input
     if triggered_id == "clear-bus-input":
-        return (no_update, no_update, no_update, "")
+        return (no_update, no_update, no_update, no_update, no_update, no_update, no_update, no_update, no_update, no_update, "")
         
 
     # Check if there is a bus number in the current url and if so, use it as the bus number input
