@@ -134,12 +134,8 @@ bus_tracker_layout = html.Div([
         dcc.Loading(
             id="loading-component-1",
             type="circle",
-            children=[
-                html.Div(
-                    className="info-1-container",
-                    id = "bus-info"
-                )
-            ]
+            children= html.Div(className="info-1-container", id = "bus-info")
+        
         ),
         dcc.Loading(
             id="loading-component-2",
