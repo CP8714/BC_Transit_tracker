@@ -35,7 +35,8 @@ def sitemap():
     return Response(xml, mimetype="application/xml")
 
 app = dash.Dash(
-    __name__, 
+    __name__,
+    suppress_callback_exceptions=True,
     server=server, 
     title="BCTVicTracker",
     meta_tags=[
