@@ -20,6 +20,11 @@ from flask import Flask, Response
 bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
 trip_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/trip_updates.json"
 
+page_flags = {
+    "bus_tracker": False,
+    "next_buses": False
+}
+
 server = Flask(__name__)
 
 @server.route("/sitemap.xml")
@@ -859,10 +864,16 @@ app.layout = html.Div([
 )
 def display_page(pathname):
     if pathname == "/bus_tracker":
+        page_flags["bus_tracker"] = True
+        page_flags["next_buses"] = False
         return bus_tracker_layout
     elif pathname == "/next_buses":
+        page_flags["next_buses"] = True
+        page_flags["bus_tracker"] = False
         return next_buses_layout
     else:
+        page_flags["bus_tracker"] = False
+        page_flags["next_buses"] = False
         return home_layout
 
 # Callback which sets the outputs of the bus tracker page
@@ -888,6 +899,10 @@ def display_page(pathname):
     [State("bus-search-user-input", "value")]
 )
 def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, href, clear_bus_input, bus_number):
+
+    if not page_flags.get("bus_tracker", False):
+        return (no_update,) * 11 
+        
     triggered_id = callback_context.triggered_id
     reset_url = no_update
 
@@ -936,6 +951,10 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
      State("variant-checklist", "value")]
 )
 def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, href, stop_number_input, route_number_input, include_variants):
+
+    if not page_flags.get("next_buses", False):
+        return (no_update,) * 11 
+        
     triggered_id = callback_context.triggered_id
     reset_url = no_update
         
