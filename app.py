@@ -925,7 +925,8 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
     [Output("next-buses-output", "children"),
      Output("toggle-future-buses", "children"),
      Output("stop-dropdown", "options"),
-     Output("route-dropdown", "options")],
+     Output("route-dropdown", "options"),
+     Output("url-request", "data")],
     [Input("stop-interval-component", "n_intervals"),
      Input("stop-search", "n_clicks"),
      Input("toggle-future-buses", "n_clicks"),
@@ -936,6 +937,7 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
 )
 def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, href, stop_number_input, route_number_input, include_variants):
     triggered_id = callback_context.triggered_id
+    reset_url = no_update
         
     # Check if there is a stop number in the url and use it if so
     if href and "/next_buses" in href and triggered_id not in ["stop-search"]:
@@ -943,6 +945,7 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
         query_params = parse_qs(parsed_url.query)
         if "stop_id" in query_params:
             stop_number_input = query_params["stop_id"][0]
+        reset_url = {"url": "/next_buses"}
 
     # Get the most up-to-date realtime data for trip_updates.json and bus_updates.json
     try:
@@ -976,7 +979,7 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
     # Get the main output for the next buses page containing the table with the next bus arrivals as well as the text stating the user inputs
     next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks, include_variants)
     # Returns the above outputs, populate the dropdowns, and set the text for the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button
-    return next_buses_html, toggle_future_buses_text, stop_options, route_options
+    return next_buses_html, toggle_future_buses_text, stop_options, route_options, reset_url
 
 @callback(Output("url", "href"), Input("url-request", "data"))
 def set_url(request):
