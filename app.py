@@ -940,8 +940,7 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
     [Output("next-buses-output", "children"),
      Output("toggle-future-buses", "children"),
      Output("stop-dropdown", "options"),
-     Output("route-dropdown", "options"),
-     Output("url-request", "data")],
+     Output("route-dropdown", "options")],
     [Input("stop-interval-component", "n_intervals"),
      Input("stop-search", "n_clicks"),
      Input("toggle-future-buses", "n_clicks"),
@@ -998,7 +997,7 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
     # Get the main output for the next buses page containing the table with the next bus arrivals as well as the text stating the user inputs
     next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks, include_variants)
     # Returns the above outputs, populate the dropdowns, and set the text for the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button
-    return next_buses_html, toggle_future_buses_text, stop_options, route_options, reset_url
+    return next_buses_html, toggle_future_buses_text, stop_options, route_options
 
 # @callback(Output("url", "href"), Input("url-request", "data"))
 # def set_url(request):
