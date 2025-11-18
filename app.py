@@ -847,6 +847,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
 
 app.layout = html.Div([
     dcc.Location(id="url", refresh=False),
+    dcc.Store(id="url-request"),
     html.Div(id="page-content"),
 ])
 
@@ -875,7 +876,7 @@ def display_page(pathname):
      Output("future-stop-text", "children"),
      Output("toggle-future-stops", "children"),
      Output("block-trips", "children"),
-     Output("url", "href"),
+     Output("url-request", "href"),
      Output("bus-search-user-input", "value")],
     [Input("bus-search-user-input", "n_submit"),
      Input("interval-component", "n_intervals"),
@@ -901,7 +902,7 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
         query_params = parse_qs(parsed_url.query)
         if "bus" in query_params:
             bus_number = query_params["bus"][0]
-        reset_url = "/bus_tracker"
+        reset_url = {"url": "/bus_tracker"}
         
 
     # Clicking the Manual Update or Search buttons or pressing the Enter key triggers a fetch for the most recent trip and bus realtime data
@@ -976,6 +977,12 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
     next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks, include_variants)
     # Returns the above outputs, populate the dropdowns, and set the text for the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button
     return next_buses_html, toggle_future_buses_text, stop_options, route_options
+
+@callback(Output("url", "href"), Input("url-request", "data"))
+def set_url(request):
+    if request:
+        return request["url"]
+    return no_update
 
 
 if __name__ == "__main__":
