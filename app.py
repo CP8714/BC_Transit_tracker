@@ -954,7 +954,7 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
      State("route-dropdown", "value"),
      State("variant-checklist", "value")]
 )
-def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, href, stop_number_input, route_number_input, include_variants):
+def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, href, next_bus_marker_request, stop_number_input, route_number_input, include_variants):
 
     if not page_flags.get("next_buses", False):
         return (no_update,) * 5
