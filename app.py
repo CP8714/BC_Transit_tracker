@@ -22,7 +22,8 @@ trip_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs
 
 page_flags = {
     "bus_tracker": False,
-    "next_buses": False
+    "next_buses": False,
+    "map_marker_clicked": False,
 }
 
 server = Flask(__name__)
@@ -538,6 +539,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             marker=dict(size=10, color="blue"),
             hovertext=bus_number_list,
             hoverinfo="text",
+            customdata=bus_number_list,
             name="Bus Locations",
         ))
     # Returning the text describing the stop and route selected by the user as well as the table containing the next arrivals
@@ -549,7 +551,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             className="next-buses-map-container",
             children = [
             html.H3("Map showing the locations of the next arriving buses (Buses that are scheduled are not shown)"),
-            dcc.Graph(figure=map_fig),
+            dcc.Graph(id="next-buses-map", figure=map_fig),
             ]
         )
     ])
@@ -867,14 +869,17 @@ def display_page(pathname):
     if pathname == "/bus_tracker":
         page_flags["bus_tracker"] = True
         page_flags["next_buses"] = False
+        page_flags["map_marker_clicked"] = False
         return bus_tracker_layout
     elif pathname == "/next_buses":
         page_flags["next_buses"] = True
         page_flags["bus_tracker"] = False
+        page_flags["map_marker_clicked"] = False
         return next_buses_layout
     else:
         page_flags["bus_tracker"] = False
         page_flags["next_buses"] = False
+        page_flags["map_marker_clicked"] = False
         return home_layout
 
 # Callback which sets the outputs of the bus tracker page
@@ -1001,8 +1006,12 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
     # Returns the above outputs, populate the dropdowns, and set the text for the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button
     return next_buses_html, toggle_future_buses_text, stop_options, route_options, reset_url
 
-@callback(Output("url", "href"), [Input("tracker-url-request", "data"),  Input("next-buses-url-request", "data")])
-def set_url(tracker_request, next_buses_request):
+@callback(Output("url", "href"), [Input("tracker-url-request", "data"),  Input("next-buses-url-request", "data"), Input("next-buses-map", "clickData")])
+def set_url(tracker_request, next_buses_request, next_bus_marker_request):
+    triggered_id = callback_context.triggered_id
+    if triggered_id == "next-buses-map":
+        bus_number = next_bus_marker_request["points"][0]["customdata"]
+        return f"/bus_tracker?bus={bus_number}"
     if page_flags.get("bus_tracker", True):
         if tracker_request:
             return tracker_request["url"]
