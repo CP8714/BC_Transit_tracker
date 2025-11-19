@@ -550,7 +550,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             className="next-buses-map-container",
             children = [
             html.H3("Map showing the locations of the next arriving buses (Buses that are scheduled are not shown)"),
-            dcc.Graph(figure=map_fig),
+            dcc.Graph(id="next-buses-map", figure=map_fig),
             ]
         )
     ])
