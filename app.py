@@ -539,6 +539,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             marker=dict(size=10, color="blue"),
             hovertext=bus_number_list,
             hoverinfo="text",
+            customdata=bus_number_list,
             name="Bus Locations",
         ))
     # Returning the text describing the stop and route selected by the user as well as the table containing the next arrivals
