@@ -949,7 +949,7 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
      Input("stop-search", "n_clicks"),
      Input("toggle-future-buses", "n_clicks"),
      Input("url", "href"),
-     Input("next-buses-url-request", "data")],
+     Input("next-buses-map", "clickData")],
     [State("stop-dropdown", "value"),
      State("route-dropdown", "value"),
      State("variant-checklist", "value")]
