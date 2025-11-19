@@ -1009,10 +1009,10 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
 @callback(Output("url", "href"), [Input("tracker-url-request", "data"),  Input("next-buses-url-request", "data"), Input("next-buses-map", "clickData")])
 def set_url(tracker_request, next_buses_request, next_bus_marker_request):
     triggered_id = callback_context.triggered_id
-    if triggered_id == "next-buses-map":
-        if next_bus_marker_request:
-            bus_number = next_bus_marker_request["points"][0]["customdata"]
-            return f"/bus_tracker?bus={bus_number}"
+    # if triggered_id == "next-buses-map":
+    #     if next_bus_marker_request:
+    #         bus_number = next_bus_marker_request["points"][0]["customdata"]
+    #         return f"/bus_tracker?bus={bus_number}"
     if page_flags.get("bus_tracker", True):
         if tracker_request:
             return tracker_request["url"]
