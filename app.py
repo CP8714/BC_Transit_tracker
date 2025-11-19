@@ -948,7 +948,8 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
     [Input("stop-interval-component", "n_intervals"),
      Input("stop-search", "n_clicks"),
      Input("toggle-future-buses", "n_clicks"),
-     Input("url", "href")],
+     Input("url", "href"),
+     Input("next-buses-url-request", "data")],
     [State("stop-dropdown", "value"),
      State("route-dropdown", "value"),
      State("variant-checklist", "value")]
@@ -959,6 +960,15 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
         return (no_update,) * 5
         
     triggered_id = callback_context.triggered_id
+
+    if triggered_id == "next-buses-map":
+        if next_bus_marker_request:
+            bus_number = next_bus_marker_request["points"][0]["customdata"]
+            page_flags["bus_tracker"] = True
+            page_flags["next_buses"] = False
+            reset_url = {"url": f"/bus_tracker?bus={bus_number}"}
+            return no_update, no_update, no_update, no_update, reset_url
+        
     reset_url = no_update
         
     # Check if there is a stop number in the url and use it if so
