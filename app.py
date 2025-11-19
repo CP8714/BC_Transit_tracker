@@ -956,7 +956,9 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
 )
 def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, href, next_bus_marker_request, stop_number_input, route_number_input, include_variants):
 
-    if not href or "/next_buses" not in href:
+    if href is None:
+        pass
+    elif "/next_buses" not in href:
         return (no_update,) * 5
         
     triggered_id = callback_context.triggered_id
