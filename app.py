@@ -961,11 +961,11 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
         
     triggered_id = callback_context.triggered_id
 
-    if triggered_id == "next-buses-map":
-        if next_bus_marker_request:
-            bus_number = next_bus_marker_request["points"][0]["customdata"]
-            reset_url = {"url": f"/bus_tracker?bus={bus_number}"}
-            return no_update, no_update, no_update, no_update, reset_url
+    # if triggered_id == "next-buses-map":
+    #     if next_bus_marker_request:
+    #         bus_number = next_bus_marker_request["points"][0]["customdata"]
+    #         reset_url = {"url": f"/bus_tracker?bus={bus_number}"}
+    #         return no_update, no_update, no_update, no_update, reset_url
         
     reset_url = no_update
         
