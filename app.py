@@ -964,8 +964,6 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
     if triggered_id == "next-buses-map":
         if next_bus_marker_request:
             bus_number = next_bus_marker_request["points"][0]["customdata"]
-            page_flags["bus_tracker"] = True
-            page_flags["next_buses"] = False
             reset_url = {"url": f"/bus_tracker?bus={bus_number}"}
             return no_update, no_update, no_update, no_update, reset_url
         
