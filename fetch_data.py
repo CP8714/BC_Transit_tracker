@@ -43,6 +43,7 @@ def fetch():
 
     # Reading the stop_times.txt file containing info on scheduled arrival times for all trips for every stop served and saving it to stop_times.csv
     stop_times_df = pd.read_csv(z.open("stop_times.txt"))
+    stop_times_df = stop_times_df[["trip_id", "arrival_time", "departure_time", "stop_id", "stop_sequence"]]
     stop_times_df.to_csv("data/stop_times.csv", index=False)
     
 
