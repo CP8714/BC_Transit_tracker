@@ -955,6 +955,10 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
      State("variant-checklist", "value")]
 )
 def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, href, next_bus_marker_request, stop_number_input, route_number_input, include_variants):
+    print("\n----- STOP CALLBACK FIRED -----", flush=True)
+    print("href:", href, flush=True)
+    print("triggered_id:", callback_context.triggered_id, flush=True)
+    print("--------------------------------\n", flush=True)
 
     if href is None:
         pass
