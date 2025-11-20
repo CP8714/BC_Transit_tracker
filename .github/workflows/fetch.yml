@@ -8,8 +8,14 @@ on:
 jobs:
   fetch:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
+        with:
+          lfs: true  
+
+      - name: Install Git LFS
+        run: git lfs install
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -22,10 +28,22 @@ jobs:
       - name: Run fetcher
         run: python fetch_data.py
 
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No changes detected."
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Changes detected."
+          fi
+
       - name: Commit and push data
+        if: steps.changes.outputs.changed == 'true'
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add data/
-          git commit -m "Updated realtime data" || echo "No changes"
+          git commit -m "Updated realtime data"
           git push
