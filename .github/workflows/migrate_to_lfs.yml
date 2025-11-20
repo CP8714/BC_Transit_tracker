@@ -1,0 +1,30 @@
+name: Migrate stop_times.csv to LFS
+
+on:
+  workflow_dispatch:  # run manually
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Git LFS
+        run: git lfs install
+
+      - name: Track the large file
+        run: |
+          git lfs track "data/stop_times.csv"
+          git add .gitattributes
+
+      - name: Re-add file as LFS object
+        run: |
+          git rm --cached data/stop_times.csv
+          git add data/stop_times.csv
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git commit -m "Convert stop_times.csv to LFS" || echo "No changes"
+          git push
