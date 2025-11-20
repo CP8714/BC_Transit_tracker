@@ -1010,8 +1010,8 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
     # Returns the above outputs, populate the dropdowns, and set the text for the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button
     return next_buses_html, toggle_future_buses_text, stop_options, route_options, reset_url
 
-@callback(Output("url", "href"), [Input("tracker-url-request", "data"),  Input("next-buses-url-request", "data")])
-def set_url(tracker_request, next_buses_request):
+@callback(Output("url", "href"), [Input("tracker-url-request", "data"),  Input("next-buses-url-request", "data"), Input("next-buses-map", "clickData")])
+def set_url(tracker_request, next_buses_request, next_bus_marker_click):
     if page_flags.get("bus_tracker", True):
         if tracker_request:
             return tracker_request["url"]
