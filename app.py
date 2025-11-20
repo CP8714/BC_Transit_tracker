@@ -539,7 +539,6 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             marker=dict(size=10, color="blue"),
             hovertext=bus_number_list,
             hoverinfo="text",
-            customdata=bus_number_list,
             name="Bus Locations",
         ))
     # Returning the text describing the stop and route selected by the user as well as the table containing the next arrivals
@@ -958,14 +957,7 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
     if not page_flags.get("next_buses", False):
         return (no_update,) * 5
         
-    triggered_id = callback_context.triggered_id
-
-    # if triggered_id == "next-buses-map":
-    #     if next_bus_marker_request:
-    #         bus_number = next_bus_marker_request["points"][0]["customdata"]
-    #         reset_url = {"url": f"/bus_tracker?bus={bus_number}"}
-    #         return no_update, no_update, no_update, no_update, reset_url
-        
+    triggered_id = callback_context.triggered_id    
     reset_url = no_update
         
     # Check if there is a stop number in the url and use it if so
@@ -1010,8 +1002,8 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
     # Returns the above outputs, populate the dropdowns, and set the text for the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button
     return next_buses_html, toggle_future_buses_text, stop_options, route_options, reset_url
 
-@callback(Output("url", "href"), [Input("tracker-url-request", "data"),  Input("next-buses-url-request", "data"), Input("next-buses-map", "clickData")])
-def set_url(tracker_request, next_buses_request, next_bus_marker_click):
+@callback(Output("url", "href"), [Input("tracker-url-request", "data"),  Input("next-buses-url-request", "data")])
+def set_url(tracker_request, next_buses_request):
     if page_flags.get("bus_tracker", True):
         if tracker_request:
             return tracker_request["url"]
