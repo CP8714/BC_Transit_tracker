@@ -93,6 +93,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100120,Cook St at Oxford St,48.41437,-123.35649,0,100120
 100121,Cook St at Rockland Ave,48.42231,-123.3542,0,100121
 100122,Cook St at Fort St,48.42309,-123.35422,0,100122
+100123,Fairfield Rd at Chester Ave,48.41747,-123.35376,0,100123
 100125,Johnson St at Vancouver St,48.42618,-123.35591,0,100125
 100126,Fort St at Cook St,48.42328,-123.35337,0,100126
 100128,Cook St at Fort St,48.42361,-123.35392,0,100128
@@ -431,6 +432,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100506,Richmond Rd at Haultain St,48.43553,-123.32891,0,100506
 100507,UVic Exch Bay H,48.4664,-123.30866,0,100507
 100508,Metchosin Rd at Happy Valley Rd,48.38102,-123.5302,0,100508
+100509,Tillicum Rd at Gosper Cres,48.44368,-123.40171,0,100509
 100510,Bowker St at Monteith St,48.43242,-123.30841,0,100510
 100511,900 Blk Foul Bay Rd,48.42226,-123.32252,0,100511
 100512,Oak Bay Ave at Foul Bay Rd,48.42652,-123.32331,0,100512
@@ -850,6 +852,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100969,1400 Blk McKenzie Ave,48.47049,-123.34301,0,100969
 100970,Shelbourne St at Garnet Rd,48.4672,-123.33265,0,100970
 100971,McKenzie Ave at Cedar Hill Rd,48.46855,-123.33484,0,100971
+100972,McKenzie Ave at Shelbourne St West Side,48.46874,-123.33349,0,100972
 100973,McKenzie Ave at Braefoot Elementary,48.47087,-123.34392,0,100973
 100974,Quadra St at Saanich Rd,48.47345,-123.3706,0,100974
 100975,McKenzie Ave at Braefoot Rd,48.47174,-123.34643,0,100975
@@ -862,6 +865,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100982,McKenzie Ave at Braefoot Elementary,48.4716,-123.34466,0,100982
 100983,Foul Bay Rd at Beaven St,48.41425,-123.32795,0,100983
 100984,Interurban Rd at Edge Pl,48.46945,-123.40377,0,100984
+100985,McKenzie Ave at Cedar Hill Rd,48.46876,-123.33589,0,100985
 100986,Lansdowne Rd at Norfolk Rd,48.44451,-123.29698,0,100986
 100987,Interurban Rd at Hyacinth Ave,48.4692,-123.40334,0,100987
 100988,McKenzie Ave at Shelbourne St,48.46852,-123.33207,0,100988
@@ -2305,8 +2309,8 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 104110,Admirals Rd at Westing Rd,48.4563,-123.41382,0,104110
 104111,Fairfield Rd at Blanshard St,48.42175,-123.36414,0,104111
 104112,Millstream Rd at Treanor Ave,48.46385,-123.49971,0,104112
-930000,Langford Transit Centre,48.44494,-123.51972,0,930000
-900000,Victoria Transit Centre,48.44063,-123.37047,0,900000
+930000,Langford Transit Centre,48.4447,-123.51974,0,930000
+900000,Victoria Transit Centre,48.44076,-123.37051,0,900000
 100000,UVic Exch Bay D,48.46645,-123.30886,0,100000
 101869,William Head Rd at Lombard Dr,48.36506,-123.54355,0,101869
 101858,William Head Rd at Taylor Rd,48.36895,-123.53956,0,101858
@@ -2346,3 +2350,31 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102670,McKenzie Ave at Shelbourne St West Side,48.46875,-123.33455,0,102670
 102657,Metchosin Rd at Ryder Hesjedal Way,48.40334,-123.48797,0,102657
 102658,Metchosin Rd at Ryder Hesjedal Way,48.40301,-123.48842,0,102658
+900001,Victoria Transit Centre,48.4402,-123.37192,0,900001
+102688,Cedar Hill Rd at Cedar Hill X Rd,48.46235,-123.33713,0,102688
+930002,Langford Transit Centre,48.44462,-123.51818,0,930002
+102635,Swartz Bay Ferry Terminal Bay D,48.68752,-123.41227,0,102635
+102702,Cadboro Bay Rd at Penrhyn St,48.46164,-123.29642,0,102702
+102707,Cadboro Bay Rd at Penrhyn St,48.46157,-123.29626,0,102707
+100560,Westhills Exch Bay D,48.44549,-123.53148,0,100560
+102650,Saanichton Exch Bay B,48.59367,-123.41707,0,102650
+100660,Westhills Exch Bay C,48.44558,-123.53167,0,100660
+102693,Douglas St at Carey Rd,48.45463,-123.37706,0,102693
+102694,Hwy 1 at Carey Rd,48.45528,-123.37787,0,102694
+102696,Admirals Rd at Glentana Rd,48.44942,-123.42615,0,102696
+102709,Sooke Rd at Townsend Rd - Sooke Town Ctr,48.37844,-123.72243,0,102709
+102695,Ravine Way at Vernon Ave,48.45785,-123.37591,0,102695
+102652,Saanichton Exch Bay A,48.59357,-123.4169,0,102652
+102674,Helgesen Rd at Otter Point Rd,48.3876,-123.73285,0,102674
+102675,Helgesen Rd at Cedar Ridge Dr,48.38904,-123.72764,0,102675
+102684,Church Rd at Acreman Pl,48.38622,-123.7236,0,102684
+102697,Admirals Rd at Arundel Dr,48.45773,-123.41097,0,102697
+102700,Admirals Rd at Hwy 1,48.45919,-123.40585,0,102700
+100889,UVic Exch Bay Q,48.46606,-123.30809,0,100889
+102178,McKenzie Ave at Hwy 1,48.46023,-123.40455,0,102178
+102699,Admirals Rd at Hwy 1,48.459,-123.40686,0,102699
+102698,Admirals Rd at Arundel Dr,48.45769,-123.41141,0,102698
+102720,Peatt Rd at Goldstream Ave,48.44987,-123.50027,0,102720
+102701,Happy Valley Rd at Dicker Rd,48.41492,-123.53325,0,102701
+102719,Douglas St at View St,48.42559,-123.36516,0,102719
+102710,Douglas St at Johnson St,48.42669,-123.36468,0,102710
