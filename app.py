@@ -948,21 +948,14 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
     [Input("stop-interval-component", "n_intervals"),
      Input("stop-search", "n_clicks"),
      Input("toggle-future-buses", "n_clicks"),
-     Input("url", "href"),
-     Input("next-buses-map", "clickData")],
+     Input("url", "href")],
     [State("stop-dropdown", "value"),
      State("route-dropdown", "value"),
      State("variant-checklist", "value")]
 )
-def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, href, next_bus_marker_request, stop_number_input, route_number_input, include_variants):
-    print("\n----- STOP CALLBACK FIRED -----", flush=True)
-    print("href:", href, flush=True)
-    print("triggered_id:", callback_context.triggered_id, flush=True)
-    print("--------------------------------\n", flush=True)
+def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, href, stop_number_input, route_number_input, include_variants):
 
-    if href is None:
-        pass
-    elif "/next_buses" not in href:
+    if not page_flags.get("next_buses", False):
         return (no_update,) * 5
         
     triggered_id = callback_context.triggered_id
@@ -971,6 +964,7 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
     #     if next_bus_marker_request:
     #         bus_number = next_bus_marker_request["points"][0]["customdata"]
     #         reset_url = {"url": f"/bus_tracker?bus={bus_number}"}
+    #         return no_update, no_update, no_update, no_update, reset_url
         
     reset_url = no_update
         
