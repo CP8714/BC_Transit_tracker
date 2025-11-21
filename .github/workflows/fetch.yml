@@ -10,11 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository with LFS
+      - name: Install Git LFS
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git-lfs
+          git lfs install
+
+      - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          lfs: true            # download actual LFS files
-          fetch-depth: 0       # optional, fetch full history
+          lfs: true
+          fetch-depth: 0
+
+      - name: Pull LFS files
+        run: git lfs pull
 
       - name: Set up Python
         uses: actions/setup-python@v4
