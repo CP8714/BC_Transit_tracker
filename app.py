@@ -374,7 +374,7 @@ def load_block_departure_times(trip_ids):
         for departure_times_chunk in departure_times_chunks:
             departure_times = departure_times_chunk[departure_times_chunk["trip_id"].isin(trip_ids) & (departure_times_chunk["stop_sequence"] == 1)]
             if not departure_times.empty:
-                departure_times_list.append(filtered)
+                departure_times_list.append(departure_times)
 
     if departure_times_list:
         return pd.concat(departure_times_list, ignore_index=True)
