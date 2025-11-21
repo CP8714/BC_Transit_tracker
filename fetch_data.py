@@ -41,9 +41,27 @@ def fetch():
     routes_df = pd.read_csv(z.open("routes.txt"))
     routes_df.to_csv("data/routes.csv", index=False)
 
-    # Reading the stop_times.txt file containing info on scheduled arrival times for all trips for every stop served and saving it to stop_times.csv
-    stop_times_df = pd.read_csv(z.open("stop_times.txt"))
-    stop_times_df.to_csv("data/stop_times.csv", index=False)
+
+
+    
+
+    # Reading stop_times.txt in chunks and saving to multiple CSVs
+    stop_times_chunksize = 100000  # rows per file
+    stop_times_file_base = "data/stop_times_part"
+
+    # Use iterator with chunksize
+    stop_times_iter = pd.read_csv(z.open("stop_times.txt"), chunksize=stop_times_chunksize)
+
+    for i, chunk in enumerate(stop_times_iter):
+        chunk.to_csv(f"{stop_times_file_base}_{i}.csv", index=False)
+
+    # # Reading the stop_times.txt file containing info on scheduled arrival times for all trips for every stop served and saving it to stop_times.csv
+    # stop_times_df = pd.read_csv(z.open("stop_times.txt"))
+    # stop_times_df.to_csv("data/stop_times.csv", index=False)
+
+
+
+    
     
 
     # --- Section of code where the realtime data related to each specific bus currently running is read and saved ---
