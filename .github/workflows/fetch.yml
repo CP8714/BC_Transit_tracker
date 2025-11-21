@@ -10,22 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository with LFS
+      - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          lfs: true
-          fetch-depth: 0  # ensures full history for LFS
-
-      - name: Install Git LFS
-        run: |
-          git lfs install
-          git lfs fetch --all
-          git lfs checkout
-
-      - name: Verify CSV
-        run: |
-          echo "First 5 lines of stop_times.csv:"
-          head -n 5 data/stop_times.csv
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -33,15 +19,31 @@ jobs:
           python-version: "3.10"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install pandas requests
 
-      - name: Run fetcher
-        run: python fetch_data.py
+      - name: Download stop_times.csv from GitHub
+        run: |
+          curl -L -o stop_times.csv https://github.com/<USER>/<REPO>/raw/main/data/stop_times.csv
+
+      - name: Split CSV into smaller files
+        run: |
+          python - <<EOF
+          import pandas as pd
+
+          input_file = "stop_times.csv"
+          chunk_size = 100000  # rows per smaller CSV
+
+          for i, chunk in enumerate(pd.read_csv(input_file, chunksize=chunk_size)):
+              chunk.to_csv(f"data/stop_times_part_{i}.csv", index=False)
+          EOF
 
       - name: Check for changes
         id: changes
         run: |
-          if git diff --quiet; then
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data/
+          if git diff --cached --quiet; then
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "No changes detected."
           else
@@ -49,11 +51,8 @@ jobs:
             echo "Changes detected."
           fi
 
-      - name: Commit and push data
+      - name: Commit and push
         if: steps.changes.outputs.changed == 'true'
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add data/
-          git commit -m "Updated realtime data"
+          git commit -m "Updated stop_times CSV chunks"
           git push
