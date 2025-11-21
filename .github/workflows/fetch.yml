@@ -10,22 +10,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install Git LFS
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y git-lfs
-          git lfs install
-
-      - name: Checkout repository
+      - name: Checkout repository with LFS
         uses: actions/checkout@v3
         with:
           lfs: true
-          fetch-depth: 0
+          fetch-depth: 0  # ensures full history for LFS
 
-      - name: Fetch and checkout all LFS files
+      - name: Install Git LFS
         run: |
+          git lfs install
           git lfs fetch --all
           git lfs checkout
+
+      - name: Verify CSV
+        run: |
+          echo "First 5 lines of stop_times.csv:"
+          head -n 5 data/stop_times.csv
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -34,9 +34,6 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
-
-      - name: Debug CSV file
-        run: head -n 5 data/stop_times.csv
 
       - name: Run fetcher
         run: python fetch_data.py
