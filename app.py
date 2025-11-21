@@ -16,6 +16,7 @@ from dash import callback_context, no_update
 import pytz
 from urllib.parse import parse_qs, urlparse
 from flask import Flask, Response
+import glob
 
 # Fallback data from the last run of the Github Actions Workflow
 bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
@@ -317,15 +318,17 @@ def load_routes():
 
 # Finds all the stops that are served by at current_trip_id and returns a dataframe containing them along with all other info from stop_times.csv
 def load_stop_times(current_trip_id):
-    stop_times_file = os.path.join("data", "stop_times.csv")
-    if os.path.exists(stop_times_file):
-        stop_times_df = pd.DataFrame()
-        stop_times_chunks = pd.read_csv(stop_times_file, chunksize=10000)
+    stop_times_list = []
+
+    for file in sorted(glob.glob(os.path.join("data", "stop_times_part_*.csv"))):
+        stop_times_chunks = pd.read_csv(file, chunksize=10000)
         for stop_times_chunk in stop_times_chunks:
             current_trip_stops = stop_times_chunk[stop_times_chunk["trip_id"] == current_trip_id]
             if not current_trip_stops.empty:
-                stop_times_df = pd.concat([stop_times_df, current_trip_stops], ignore_index=True)
-        return stop_times_df
+                stop_times_list.append(current_trip_stops)
+    if df_list:
+        return pd.concat(df_list, ignore_index=True)
+    return pd.DataFrame()
 
 # Returns appropriate text for bus capacity depending on the capacity input value
 # ----------------------------------------------------------------------------------
@@ -347,31 +350,34 @@ def get_capacity(capacity):
 
 # **This function is currently not being used**
 def load_scheduled_bus_times(current_stop_id):
-    bus_times_file = os.path.join("data", "stop_times.csv")
-    if os.path.exists(bus_times_file):
-        bus_times_df = pd.DataFrame()
-        bus_times_chunks = pd.read_csv(bus_times_file, chunksize=10000)
+    bus_times_df_list = []
+    for file in sorted(glob.glob(os.path.join("data", "stop_times_part_*.csv"))):
+        bus_times_chunks = pd.read_csv(file, chunksize=10000)
         for bus_times_chunk in bus_times_chunks:
             next_buses = bus_times_chunk[bus_times_chunk["stop_id"] == current_stop_id]
             if not next_buses.empty:
-                bus_times_df = pd.concat([bus_times_df, next_buses], ignore_index=True)
-        return bus_times_df
+                bus_times_df_list.append(next_buses)
+
+    if bus_times_df_list:
+        return pd.concat(bus_times_df_list, ignore_index=True)
+    return pd.DataFrame()
 
 # Loads all the stop times of the first stop for all the trips in trip_ids
 # ----------------------------------------------------------------------------------
 # trips_ids is a list of trip ids that a specific bus is running
 # ----------------------------------------------------------------------------------
 def load_block_departure_times(trip_ids):
-    stop_times_file = os.path.join("data", "stop_times.csv")
     departure_times_list = []
-    if os.path.exists(stop_times_file):
-        departure_times_chunks = pd.read_csv(stop_times_file, chunksize=10000, usecols=["trip_id", "stop_sequence", "departure_time"])
+
+    for file in sorted(glob.glob(os.path.join("data", "stop_times_part_*.csv"))):
+        departure_times_chunks = pd.read_csv(file, chunksize=10000, usecols=["trip_id", "stop_sequence", "departure_time"])
         for departure_times_chunk in departure_times_chunks:
             departure_times = departure_times_chunk[departure_times_chunk["trip_id"].isin(trip_ids) & (departure_times_chunk["stop_sequence"] == 1)]
             if not departure_times.empty:
-                departure_times_list.append(departure_times)
-        if departure_times_list:
-            return pd.concat(departure_times_list, ignore_index=True)
+                departure_times_list.append(filtered)
+
+    if departure_times_list:
+        return pd.concat(departure_times_list, ignore_index=True)
     return pd.DataFrame(columns=["trip_id", "stop_sequence", "departure_time"])
 
 # Makes a table with the estimated next arrival times, the route, and bus from the dictionaries in next_buses
