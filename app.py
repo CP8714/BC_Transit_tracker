@@ -365,14 +365,7 @@ def load_block_departure_times(trip_ids):
     stop_times_file = os.path.join("data", "stop_times.csv")
     departure_times_list = []
     if os.path.exists(stop_times_file):
-        test = pd.read_csv(stop_times_file, nrows=0, encoding="utf-8-sig")
-        print("COLUMNS LOADED:", test.columns.tolist())
-        departure_times_chunks = pd.read_csv(
-            stop_times_file,
-            chunksize=10000,
-            usecols=["trip_id", "stop_sequence", "departure_time"],
-            encoding="utf-8-sig"
-        )
+        departure_times_chunks = pd.read_csv(stop_times_file, chunksize=10000, usecols=["trip_id", "stop_sequence", "departure_time"])
         for departure_times_chunk in departure_times_chunks:
             departure_times = departure_times_chunk[departure_times_chunk["trip_id"].isin(trip_ids) & (departure_times_chunk["stop_sequence"] == 1)]
             if not departure_times.empty:
