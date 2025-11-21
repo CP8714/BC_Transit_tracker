@@ -1,17 +1,16 @@
+
 name: Fetch GTFS Data
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:       # manual run
   schedule:
-    - cron: "*/1 * * * *"
+    - cron: "*/1 * * * *"  # every minute
 
 jobs:
   fetch:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -19,40 +18,15 @@ jobs:
           python-version: "3.10"
 
       - name: Install dependencies
-        run: pip install pandas requests
+        run: pip install -r requirements.txt
 
-      - name: Download stop_times.csv from GitHub
-        run: |
-          curl -L -o stop_times.csv https://github.com/<USER>/<REPO>/raw/main/data/stop_times.csv
+      - name: Run fetcher
+        run: python fetch_data.py
 
-      - name: Split CSV into smaller files
-        run: |
-          python - <<EOF
-          import pandas as pd
-
-          input_file = "stop_times.csv"
-          chunk_size = 100000  # rows per smaller CSV
-
-          for i, chunk in enumerate(pd.read_csv(input_file, chunksize=chunk_size)):
-              chunk.to_csv(f"data/stop_times_part_{i}.csv", index=False)
-          EOF
-
-      - name: Check for changes
-        id: changes
+      - name: Commit and push data
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add data/
-          if git diff --cached --quiet; then
-            echo "changed=false" >> $GITHUB_OUTPUT
-            echo "No changes detected."
-          else
-            echo "changed=true" >> $GITHUB_OUTPUT
-            echo "Changes detected."
-          fi
-
-      - name: Commit and push
-        if: steps.changes.outputs.changed == 'true'
-        run: |
-          git commit -m "Updated stop_times CSV chunks"
+          git commit -m "Updated realtime data" || echo "No changes"
           git push
