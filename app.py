@@ -366,7 +366,7 @@ def load_block_departure_times(trip_ids):
     departure_times_list = []
     if os.path.exists(stop_times_file):
         test = pd.read_csv(stop_times_file, nrows=0, encoding="utf-8-sig")
-        print(test.columns.tolist())
+        print("COLUMNS LOADED:", test.columns.tolist())
         departure_times_chunks = pd.read_csv(
             stop_times_file,
             chunksize=10000,
