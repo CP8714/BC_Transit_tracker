@@ -326,8 +326,8 @@ def load_stop_times(current_trip_id):
             current_trip_stops = stop_times_chunk[stop_times_chunk["trip_id"] == current_trip_id]
             if not current_trip_stops.empty:
                 stop_times_list.append(current_trip_stops)
-    if df_list:
-        return pd.concat(df_list, ignore_index=True)
+    if stop_times_list:
+        return pd.concat(stop_times_list, ignore_index=True)
     return pd.DataFrame()
 
 # Returns appropriate text for bus capacity depending on the capacity input value
