@@ -358,14 +358,18 @@ def get_capacity(capacity):
 
 
 # **This function is currently not being used**
-def load_scheduled_bus_times(current_stop_id):
+def load_scheduled_bus_times(current_stop_id, today_trips_df):
+    today_trip_ids = set(today_trips_df["trip_id"].unique())
+    
     bus_times_df_list = []
     for file in sorted(glob.glob(os.path.join("data", "stop_times_part_*.csv"))):
         bus_times_chunks = pd.read_csv(file, chunksize=10000)
         for bus_times_chunk in bus_times_chunks:
             next_buses = bus_times_chunk[bus_times_chunk["stop_id"] == current_stop_id]
             if not next_buses.empty:
-                bus_times_df_list.append(next_buses)
+                today_next_buses = next_buses[next_buses["trip_id"].isin(today_trip_ids)]
+                if not today_next_buses.empty:
+                    bus_times_df_list.append(next_buses)
 
     if bus_times_df_list:
         return pd.concat(bus_times_df_list, ignore_index=True)
