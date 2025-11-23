@@ -993,6 +993,8 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
     buses = load_buses()
     current_trips = load_current_trips()
     trips_df = load_trips()
+    service_id = get_service_id()
+    today_trips_df = trips_df[trips_df["service_id"] == service_id]
     stops_df = load_stops()
     routes_df = load_routes()
 
