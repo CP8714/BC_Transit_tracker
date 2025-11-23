@@ -299,7 +299,7 @@ def load_current_trips():
 def get_service_id():
     calendar_file = os.path.join("data", "calendar_dates.csv")
     if os.path.exists(calendar_file):
-        calendar_dates = pd.read_csv(calendar_file)
+        calendar_dates = pd.read_csv(calendar_file, dtype=str)
         today = date.today().strftime("%Y%m%d")
         service_id = calendar_dates.loc[calendar_dates["date"] == today, "service_id"].iloc[0]
         return service_id
