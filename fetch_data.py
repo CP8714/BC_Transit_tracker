@@ -37,10 +37,14 @@ def fetch():
     stops_df = pd.read_csv(z.open("stops.txt"))
     stops_df.to_csv("data/stops.csv", index=False)
 
-    # Reading the trips.txt file containing info on all route and saving it to routes.csv
+    # Reading the trips.txt file containing info on all routes and saving it to routes.csv
     routes_df = pd.read_csv(z.open("routes.txt"))
     routes_df.to_csv("data/routes.csv", index=False)
 
+
+    # Reading the calendar_dates.txt file containing all calendar dates and saving it to calendar_dates.csv
+    calendar_df = pd.read_csv(z.open("calendar_dates.txt"))
+    calendar_df.to_csv("data/calendar_dates.csv", index=False)
 
 
     
