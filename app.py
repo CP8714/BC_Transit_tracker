@@ -295,6 +295,14 @@ def load_current_trips():
     except:
         return []
 
+# Returns the service_id for today denoting which trips are being run today
+def get_service_id():
+    calendar_file = os.path.join("data", "calendar_dates.csv")
+    if os.path.exists(calendar_file):
+        today = date.today().strftime("%Y%m%d")
+        service_id = calendar_dates.loc[calendar_dates["date"] == today, "service_id"].iloc[0]
+        return service_id
+
 # Returns dataframe of trips.csv, the static file containing info on all trips
 def load_trips():
     trips_file = os.path.join("data", "trips.csv")
