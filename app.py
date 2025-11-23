@@ -11,7 +11,7 @@ import requests
 import pandas as pd
 import fetch_fleet_data
 import fetch_trip_data
-from datetime import datetime
+from datetime import datetime, date
 from dash import callback_context, no_update
 import pytz
 from urllib.parse import parse_qs, urlparse
