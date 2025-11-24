@@ -362,23 +362,26 @@ def get_capacity(capacity):
 
 # **This function is currently not being used**
 def load_today_scheduled_bus_times(current_stop_id, today_trips_df):
-    reach_next_buses = False
     today_trip_ids = set(today_trips_df["trip_id"].unique())
+    current_stop_id_test = ""
+    bus_times_stop_id_test = ""
     
     bus_times_df_list = []
     for file in sorted(glob.glob(os.path.join("data", "stop_times_part_*.csv"))):
         bus_times_chunks = pd.read_csv(file, chunksize=10000)
         for bus_times_chunk in bus_times_chunks:
+            current_stop_id_test = type(current_stop_id)
+            bus_times_stop_id_test_1 = bus_times_chunk.iloc[0]
+            bus_times_stop_id_test = type(bus_times_stop_id_test_1["stop_id"])
             next_buses = bus_times_chunk[bus_times_chunk["stop_id"] == current_stop_id]
             if not next_buses.empty:
-                reach_next_buses = True
                 today_next_buses = next_buses[next_buses["trip_id"].isin(today_trip_ids)]
                 if not today_next_buses.empty:
                     bus_times_df_list.append(next_buses)
 
     if bus_times_df_list:
-        return pd.concat(bus_times_df_list, ignore_index=True), reach_next_buses
-    return pd.DataFrame(), reach_next_buses
+        return pd.concat(bus_times_df_list, ignore_index=True), current_stop_id_test, bus_times_stop_id_test
+    return pd.DataFrame(), current_stop_id_test, bus_times_stop_id_test
 
 # Loads all the stop times of the first stop for all the trips in trip_ids
 # ----------------------------------------------------------------------------------
@@ -481,7 +484,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
 
     current_pst = datetime.now(ZoneInfo("America/Los_Angeles"))
     current_pst_hms = current_pst.strftime("%H:%M:%S")
-    today_all_arrival_times, reach_next_buses = load_today_scheduled_bus_times(stop_number_input, today_trips_df)
+    today_all_arrival_times, current_stop_id_test, bus_times_stop_id_test = load_today_scheduled_bus_times(stop_number_input, today_trips_df)
     upcoming_arrival_times = [bus for bus in today_all_arrival_times if bus["arrival_time"] >= current_pst_hms]
 
     num_of_rows_test = len(today_all_arrival_times)
@@ -600,7 +603,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     return html.Div([
         html.H3(stop_name_text),
         make_next_buses_table(next_buses),
-        html.H3(f"Scheduled Assigned Bus means the bus is currently not running that trip ({type(time_test)} {reach_next_buses})"),
+        html.H3(f"Scheduled Assigned Bus means the bus is currently not running that trip ({type(time_test)} {current_stop_id_test} {bus_times_stop_id_test})"),
         html.Div(
             className="next-buses-map-container",
             children = [
