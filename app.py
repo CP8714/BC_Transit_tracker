@@ -1031,10 +1031,9 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
     buses = load_buses()
     current_trips = load_current_trips()
     trips_df = load_trips()
-    service_id = get_service_id()
-    service_id = int(service_id)
-    service_id = np.int64(service_id)
-    today_trips_df = trips_df[trips_df["service_id"] == service_id]
+    service_id_list = get_service_id()
+    service_id_list = [np.int64(x) for x in service_id]
+    today_trips_df = trips_df[trips_df["service_id"].isin(service_id)]
     stops_df = load_stops()
     routes_df = load_routes()
 
