@@ -504,7 +504,9 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
 
         route_number_input = route_number_input.split('-')[0] 
         stop_name_text = f"Next Estimated Arrivals For Route {route_number_input} At Stop {stop_number_input} ({stop_name}), (Click on a bus number to see info about that specific bus)"
-        
+
+    upcoming_arrival_times = sorted(upcoming_arrival_times, key=lambda x: x["time"])
+    
     # Sort the next trips by arrival time 
     next_trip = sorted(next_trip, key=lambda x: x["time"])
     # Show only the next 10 arrivals if the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button has not been pressed or been pressed an even amount of times
