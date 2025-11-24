@@ -1037,7 +1037,7 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
     stops_df = load_stops()
     routes_df = load_routes()
 
-
+    num_of_rows_test = len(today_trips_df)
     first_trip_test = trips_df.iloc[0]
     first_trip_service_id_test = first_trip_test["service_id"]
     
@@ -1055,9 +1055,9 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
     ]    
     # Change the text of the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button depending on how many times it has been clicked
     if toggle_future_buses_clicks % 2:
-        toggle_future_buses_text = f"Show Up To Next 10 Buses {type(first_trip_service_id_test)}"
+        toggle_future_buses_text = f"Show Up To Next 10 Buses {num_of_rows_test}"
     else:
-        toggle_future_buses_text = f"Show Up To Next 20 Buses {type(service_id)}"
+        toggle_future_buses_text = f"Show Up To Next 20 Buses {num_of_rows_test}"
     # Get the main output for the next buses page containing the table with the next bus arrivals as well as the text stating the user inputs
     next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, today_trips_df, current_trips, buses, toggle_future_buses_clicks, include_variants, today_trips_df)
     # Returns the above outputs, populate the dropdowns, and set the text for the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button
