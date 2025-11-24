@@ -297,14 +297,15 @@ def load_current_trips():
     except:
         return []
 
-# Returns the service_id for today denoting which trips are being run today
+# Returns the service_ids for today denoting which trips are being run today
 def get_service_id():
     calendar_file = os.path.join("data", "calendar_dates.csv")
     if os.path.exists(calendar_file):
         calendar_dates = pd.read_csv(calendar_file, dtype=str)
         today = date.today().strftime("%Y%m%d")
-        service_id = calendar_dates.loc[calendar_dates["date"] == today, "service_id"].iloc[0]
-        return service_id
+        today_service_ids = calendar_dates.loc[calendar_dates["date"] == today]
+        service_id_list = today_service_ids["service_id"]  
+        return service_id_list
 
 # Returns dataframe of trips.csv, the static file containing info on all trips
 def load_trips():
