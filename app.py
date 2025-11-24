@@ -480,8 +480,9 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     today_all_arrival_times = load_today_scheduled_bus_times(stop_number_input, today_trips_df)
     upcoming_arrival_times = [bus for bus in today_all_arrival_times if bus["arrival_time"] >= current_pst_hms]
 
-    first_trip_test = upcoming_arrival_times[0]
-    first_trip_test_id = first_trip_test["trip_id"]
+    # first_trip_test = upcoming_arrival_times[0]
+    # first_trip_test_id = first_trip_test["trip_id"]
+    first_trip_test_id = current_pst_hms
     
     # Filter the next trips arriving based on the selected stop and the current time
     next_trip = [stop for stop in current_trips if stop["stop_id"] == stop_number_input]
