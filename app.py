@@ -1038,7 +1038,7 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
     routes_df = load_routes()
 
 
-    first_trip_test = today_trips_df[0]
+    first_trip_test = today_trips_df.iloc[0]
     
     
 
