@@ -18,6 +18,7 @@ from urllib.parse import parse_qs, urlparse
 from flask import Flask, Response
 import glob
 from zoneinfo import ZoneInfo
+import numpy as np
 
 # Fallback data from the last run of the Github Actions Workflow
 bus_updates = "https://raw.githubusercontent.com/CP8714/BC_Transit_tracker/refs/heads/main/data/bus_updates.json"
