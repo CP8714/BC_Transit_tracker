@@ -358,7 +358,7 @@ def get_capacity(capacity):
 
 
 # **This function is currently not being used**
-def load_scheduled_bus_times(current_stop_id, today_trips_df):
+def load_today_scheduled_bus_times(current_stop_id, today_trips_df):
     today_trip_ids = set(today_trips_df["trip_id"].unique())
     
     bus_times_df_list = []
@@ -432,7 +432,7 @@ def make_next_buses_table(next_buses):
 # toggle_future_buses_clicks is the number of times the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button has been clicked
 # include_variants is the value determining if the user wants to include variants of the selected route or not
 # ----------------------------------------------------------------------------------
-def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks, include_variants):
+def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, current_trips, buses, toggle_future_buses_clicks, include_variants, today_trips_df):
     next_buses = []
     # If no stop number is selected, return the following line of text
     if not stop_number_input:
@@ -472,6 +472,12 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     stop_number_input = str(stop_number_input)
     # Get current time to determine the next arrivals
     current_time = int(datetime.now().timestamp())
+
+
+    current_pst = datetime.now(ZoneInfo("America/Los_Angeles"))
+    current_pst_hms = current_pst.strftime("%H:%M:%S")
+    today_all_arrival_times = load_today_scheduled_bus_times(stop_number_input, today_trips_df)
+    upcoming_arrival_times = [stop for stop in today_all_arrival_times if today_all_arrival_times["arrival_time"] >= current_pst_hms]
     
     # Filter the next trips arriving based on the selected stop and the current time
     next_trip = [stop for stop in current_trips if stop["stop_id"] == stop_number_input]
@@ -1019,7 +1025,7 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
     else:
         toggle_future_buses_text = "Show Up To Next 20 Buses"
     # Get the main output for the next buses page containing the table with the next bus arrivals as well as the text stating the user inputs
-    next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, today_trips_df, current_trips, buses, toggle_future_buses_clicks, include_variants)
+    next_buses_html = get_next_buses(stop_number_input, route_number_input, stops_df, today_trips_df, current_trips, buses, toggle_future_buses_clicks, include_variants, today_trips_df)
     # Returns the above outputs, populate the dropdowns, and set the text for the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button
     return next_buses_html, toggle_future_buses_text, stop_options, route_options, reset_url
 
