@@ -479,6 +479,9 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     current_pst_hms = current_pst.strftime("%H:%M:%S")
     today_all_arrival_times = load_today_scheduled_bus_times(stop_number_input, today_trips_df)
     upcoming_arrival_times = [bus for bus in today_all_arrival_times if bus["arrival_time"] >= current_pst_hms]
+
+    first_trip_test = upcoming_arrival_times[0]
+    first_trip_test_id = first_trip_test["trip_id"]
     
     # Filter the next trips arriving based on the selected stop and the current time
     next_trip = [stop for stop in current_trips if stop["stop_id"] == stop_number_input]
@@ -514,8 +517,6 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
 
     next_trip = upcoming_arrival_times
 
-    first_trip_test = next_trip.iloc[0]
-    first_trip_test_id = first_trip_test["trip_id"]
     # Show only the next 10 arrivals if the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button has not been pressed or been pressed an even amount of times
     if toggle_future_buses_clicks % 2 == 0:
         next_trip = next_trip[:10]
