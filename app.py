@@ -482,7 +482,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     today_all_arrival_times = load_today_scheduled_bus_times(stop_number_input, today_trips_df)
     upcoming_arrival_times = [bus for bus in today_all_arrival_times if bus["arrival_time"] >= current_pst_hms]
 
-    num_of_rows_test = len(upcoming_arrival_times)
+    num_of_rows_test = len(today_all_arrival_times)
     first_trip_test = "testing"
     first_trip_test_arrival = "testing"
 
@@ -598,7 +598,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     return html.Div([
         html.H3(stop_name_text),
         make_next_buses_table(next_buses),
-        html.H3(f"Scheduled Assigned Bus means the bus is currently not running that trip ({time_test} {num_of_rows_test})"),
+        html.H3(f"Scheduled Assigned Bus means the bus is currently not running that trip ({type(time_test)} {num_of_rows_test})"),
         html.Div(
             className="next-buses-map-container",
             children = [
