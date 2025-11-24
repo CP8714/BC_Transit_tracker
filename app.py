@@ -513,6 +513,9 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
 
 
     next_trip = upcoming_arrival_times
+
+    first_trip_test = next_trip[0]
+    first_trip_test_id = first_trip_test["trip_id"]
     # Show only the next 10 arrivals if the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button has not been pressed or been pressed an even amount of times
     if toggle_future_buses_clicks % 2 == 0:
         next_trip = next_trip[:10]
@@ -587,7 +590,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     return html.Div([
         html.H3(stop_name_text),
         make_next_buses_table(next_buses),
-        html.H3("Scheduled Assigned Bus means the bus is currently not running that trip"),
+        html.H3(f"Scheduled Assigned Bus means the bus is currently not running that trip ({first_trip_test_id})"),
         html.Div(
             className="next-buses-map-container",
             children = [
