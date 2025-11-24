@@ -477,7 +477,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     current_pst = datetime.now(ZoneInfo("America/Los_Angeles"))
     current_pst_hms = current_pst.strftime("%H:%M:%S")
     today_all_arrival_times = load_today_scheduled_bus_times(stop_number_input, today_trips_df)
-    upcoming_arrival_times = [stop for stop in today_all_arrival_times if today_all_arrival_times["arrival_time"] >= current_pst_hms]
+    upcoming_arrival_times = [bus for bus in today_all_arrival_times if bus["arrival_time"] >= current_pst_hms]
     
     # Filter the next trips arriving based on the selected stop and the current time
     next_trip = [stop for stop in current_trips if stop["stop_id"] == stop_number_input]
@@ -487,10 +487,19 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         # If the user wants to include variants, include any trips for that route number which also ends with A, B, N, or X
         if include_variants:
             route_variants = [f"{route_number_input}-VIC", f"{route_number_input}A-VIC", f"{route_number_input}B-VIC", f"{route_number_input}N-VIC", f"{route_number_input}X-VIC"]
+            all_variant_trips = [trip for trip in trips_df if trip["route_id"] in route_variants]
+            upcoming_arrival_times = [bus for bus in all_variant_trips if bus["trip_id"] in upcoming_arrival_times]
+            
             next_trip = [stop for stop in next_trip if stop["route_id"] in route_variants]
         else:
             route_number_input = str(route_number_input)
             route_number_input = route_number_input + "-VIC"
+            all_route_trips = [trip for trip in trips_df if trip["route_id"] == route_number_input]
+            upcoming_arrival_times = [bus for bus in all_route_trips if bus["trip_id"] in upcoming_arrival_times]
+
+
+
+            
             next_trip = [stop for stop in next_trip if stop["route_id"] == route_number_input]
 
         route_number_input = route_number_input.split('-')[0] 
