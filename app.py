@@ -1005,7 +1005,11 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
             page_flags["bus_tracker"] = True
             page_flags["next_buses"] = False
         else:
-            return (no_update,) * 11
+            if "/bus_tracker" in href:
+                page_flags["bus_tracker"] = True
+                page_flags["next_buses"] = False
+            else:
+                return (no_update,) * 11
         
     reset_url = no_update
 
@@ -1062,7 +1066,11 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
             page_flags["next_buses"] = True
             page_flags["bus_tracker"] = False
         else:
-            return (no_update,) * 5
+            if "/next_buses" in href:
+                page_flags["next_buses"] = True
+                page_flags["bus_tracker"] = False
+            else:
+                return (no_update,) * 5
         
     reset_url = no_update
         
