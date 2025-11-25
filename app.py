@@ -503,14 +503,14 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         if include_variants:
             route_variants = [f"{route_number_input}-VIC", f"{route_number_input}A-VIC", f"{route_number_input}B-VIC", f"{route_number_input}N-VIC", f"{route_number_input}X-VIC"]
             all_variant_trips = [trip for trip in trips_df if trip["route_id"] in route_variants]
-            upcoming_arrival_times = [bus for bus in all_variant_trips if bus["trip_id"] in upcoming_arrival_times]
+            # upcoming_arrival_times = [bus for bus in all_variant_trips if bus["trip_id"] in upcoming_arrival_times]
             
             next_trip = [stop for stop in next_trip if stop["route_id"] in route_variants]
         else:
             route_number_input = str(route_number_input)
             route_number_input = route_number_input + "-VIC"
             all_route_trips = [trip for trip in trips_df if trip["route_id"] == route_number_input]
-            upcoming_arrival_times = [bus for bus in all_route_trips if bus["trip_id"] in upcoming_arrival_times]
+            # upcoming_arrival_times = [bus for bus in all_route_trips if bus["trip_id"] in upcoming_arrival_times]
 
 
 
