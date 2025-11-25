@@ -1050,7 +1050,10 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
 def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, href, stop_number_input, route_number_input, include_variants):
 
     if not page_flags.get("next_buses", False):
-        return (no_update,) * 5
+        if triggered_id == "url" and "/next_buses" in href:
+            page_flags["next_buses"] = True
+        else:
+            return (no_update,) * 5
         
     triggered_id = callback_context.triggered_id    
     reset_url = no_update
