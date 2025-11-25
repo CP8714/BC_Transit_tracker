@@ -71,7 +71,7 @@ home_layout = html.Div([
             id="loading-component",
             type="circle",
             children=[
-                html.H3("Bus Tracker tracks a specific bus (e.g. 9542)"),
+                html.H3("Bus Tracker tracks a specific bus (e.g. 9541)"),
                 dcc.Link(
                     html.Button("Go to Bus Tracker", id="go-to-bus-tracker", className="home-button"),
                     href="/bus_tracker"
@@ -111,7 +111,7 @@ bus_tracker_layout = html.Div([
     html.H2("Bus Tracker Page", className="h2-bus-page-title"),
 
     html.H4("This is the Bus Tracker Page where you can get information about a specific bus such as its current location, how busy it is, and how early/late it is.", className="h4-bus-page-instruction"),
-    html.H4("To use this page, you need to enter a bus number of the bus you want to track such as 9542 and press the Search button. You can also press the Update Now button or press the Enter button on your keyboard. Clicking any of those three will also refresh the page and give you the most up-to-date info on that bus", className="h4-bus-page-instruction"),
+    html.H4("To use this page, you need to enter a bus number of the bus you want to track such as 9541 and press the Search button. You can also press the Update Now button or press the Enter button on your keyboard. Clicking any of those three will also refresh the page and give you the most up-to-date info on that bus", className="h4-bus-page-instruction"),
     dcc.Loading(
             id="loading-component-map",
             type="circle",
@@ -122,8 +122,8 @@ bus_tracker_layout = html.Div([
                     dcc.Input(
                         id="bus-search-user-input",
                         type="text",
-                        placeholder="enter bus number e.g. 9542",
-                        value="9542",
+                        placeholder="enter bus number e.g. 9541",
+                        value="9541",
                         className="input",
                         debounce=True,
                         n_submit=0
