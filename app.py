@@ -997,6 +997,8 @@ def display_page(pathname):
 )
 def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, toggle_future_stops_clicks, href, clear_bus_input, bus_number):
 
+    triggered_id = callback_context.triggered_id
+
     if not page_flags.get("bus_tracker", False):
         if triggered_id == "url" and "/bus_tracker" in href:
             page_flags["bus_tracker"] = True
@@ -1004,7 +1006,6 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
         else:
             return (no_update,) * 11
         
-    triggered_id = callback_context.triggered_id
     reset_url = no_update
 
     # If the Clear button on the bus tracker page is pressed, clear the input
@@ -1053,6 +1054,8 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
 )
 def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, href, stop_number_input, route_number_input, include_variants):
 
+    triggered_id = callback_context.triggered_id  
+
     if not page_flags.get("next_buses", False):
         if triggered_id == "url" and "/next_buses" in href:
             page_flags["next_buses"] = True
@@ -1060,7 +1063,6 @@ def update_stop_callback(n_intervals, stop_search, toggle_future_buses_clicks, h
         else:
             return (no_update,) * 5
         
-    triggered_id = callback_context.triggered_id    
     reset_url = no_update
         
     # Check if there is a stop number in the url and use it if so
