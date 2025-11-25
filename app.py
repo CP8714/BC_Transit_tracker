@@ -521,6 +521,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     bus_lat_list = []
     bus_lon_list = []
     bus_number_list = []
+    added_trips = []
     if route_number_input:
         for _, bus in upcoming_arrival_times.iterrows():
             scheduled = False
@@ -549,7 +550,8 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
                 bus_lon_list.append(current_bus["lon"])
                 bus_number_list.append(bus_number)
             next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]]
-            if not next_bus.empty:
+            if not next_bus.empty and bus["trip_id"] not in added_trips:
+                added_trips.append(bus["trip_id"])
                 next_bus = next_bus.iloc[0]
                 route = next_bus["route_id"]
                 route_number = route.split('-')[0] 
@@ -597,7 +599,8 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
                 bus_lon_list.append(current_bus["lon"])
                 bus_number_list.append(bus_number)
             next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]]
-            if not next_bus.empty:
+            if not next_bus.empty and bus["trip_id"] not in added_trips:
+                added_trips.append(bus["trip_id"])
                 next_bus = next_bus.iloc[0]
                 route = next_bus["route_id"]
                 route_number = route.split('-')[0] 
@@ -630,6 +633,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             name="Bus Locations",
         ))
     # Returning the text describing the stop and route selected by the user as well as the table containing the next arrivals
+    
     return html.Div([
         html.H3(stop_name_text),
         make_next_buses_table(next_buses),
