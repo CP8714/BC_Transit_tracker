@@ -365,7 +365,6 @@ def load_today_scheduled_bus_times(current_stop_id, today_trips_df):
     today_trip_ids = set(today_trips_df["trip_id"].unique())
     current_stop_id = int(current_stop_id)
     current_stop_id = np.int64(current_stop_id)
-    append_list = False
     
     bus_times_df_list = []
     for file in sorted(glob.glob(os.path.join("data", "stop_times_part_*.csv"))):
@@ -375,12 +374,11 @@ def load_today_scheduled_bus_times(current_stop_id, today_trips_df):
             if not next_buses.empty:
                 today_next_buses = next_buses[next_buses["trip_id"].isin(today_trip_ids)]
                 if not today_next_buses.empty:
-                    append_list = True
                     bus_times_df_list.append(today_next_buses)
 
     if bus_times_df_list:
-        return pd.concat(bus_times_df_list, ignore_index=True), append_list 
-    return pd.DataFrame(), append_list 
+        return pd.concat(bus_times_df_list, ignore_index=True) 
+    return pd.DataFrame()
 
 # Loads all the stop times of the first stop for all the trips in trip_ids
 # ----------------------------------------------------------------------------------
@@ -483,7 +481,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
 
     current_pst = datetime.now(ZoneInfo("America/Los_Angeles"))
     current_pst_hms = current_pst.strftime("%H:%M:%S")
-    today_all_arrival_times, append_list = load_today_scheduled_bus_times(stop_number_input, today_trips_df)
+    today_all_arrival_times = load_today_scheduled_bus_times(stop_number_input, today_trips_df)
     # upcoming_arrival_times = [bus for bus in today_all_arrival_times if bus["arrival_time"] >= current_pst_hms]
 
     num_of_rows_test = len(today_all_arrival_times)
@@ -603,7 +601,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     return html.Div([
         html.H3(stop_name_text),
         make_next_buses_table(next_buses),
-        html.H3(f"Scheduled Assigned Bus means the bus is currently not running that trip ({type(time_test)} {append_list})"),
+        html.H3(f"Scheduled Assigned Bus means the bus is currently not running that trip ({type(time_test)} {type(today_all_arrival_times)})"),
         html.Div(
             className="next-buses-map-container",
             children = [
