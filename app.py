@@ -491,14 +491,14 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         route_number_input = str(route_number_input)
         # If the user wants to include variants, include any trips for that route number which also ends with A, B, N, or X
         if include_variants:
-            # if include_variants == "include_variants":
-            route_variants = [f"{route_number_input}-VIC", f"{route_number_input}A-VIC", f"{route_number_input}B-VIC", f"{route_number_input}N-VIC", f"{route_number_input}X-VIC"]
-            all_variant_trips = trips_df[trips_df["route_id"].isin(route_variants)]
-            upcoming_trip_ids = {bus.trip_id for bus in upcoming_arrival_times}
-            all_variant_trips_ids = set(all_variant_trips["trip_id"])
-            valid_trip_ids = all_variant_trips_ids & upcoming_trip_ids
-            upcoming_arrival_times = today_all_arrival_times[today_all_arrival_times["trip_id"].isin(valid_trip_ids)]
-            upcoming_arrival_times = upcoming_arrival_times.sort_values("arrival_time")
+            if include_variants[0] == "include_variants":
+                route_variants = [f"{route_number_input}-VIC", f"{route_number_input}A-VIC", f"{route_number_input}B-VIC", f"{route_number_input}N-VIC", f"{route_number_input}X-VIC"]
+                all_variant_trips = trips_df[trips_df["route_id"].isin(route_variants)]
+                upcoming_trip_ids = {bus.trip_id for bus in upcoming_arrival_times}
+                all_variant_trips_ids = set(all_variant_trips["trip_id"])
+                valid_trip_ids = all_variant_trips_ids & upcoming_trip_ids
+                upcoming_arrival_times = today_all_arrival_times[today_all_arrival_times["trip_id"].isin(valid_trip_ids)]
+                upcoming_arrival_times = upcoming_arrival_times.sort_values("arrival_time")
         else:
             route_number_input = f"{route_number_input}-VIC"
             all_route_trip_ids = set(trips_df.loc[trips_df["route_id"] == route_number_input, "trip_id"])
@@ -641,7 +641,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     return html.Div([
         html.H3(stop_name_text),
         make_next_buses_table(next_buses),
-        html.H3(f"Assigned Bus that is Scheduled means the bus is currently not running that trip {type(include_variants)}"),
+        html.H3(f"Assigned Bus that is Scheduled means the bus is currently not running that trip"),
         html.Div(
             className="next-buses-map-container",
             children = [
