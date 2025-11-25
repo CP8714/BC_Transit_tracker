@@ -574,7 +574,8 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             # Getting the arrival time and converting it to PST and only including hours and minutes
             # arrival_time = datetime.fromtimestamp(bus["time"], pytz.timezone("America/Los_Angeles"))
 
-            arrival_time = datetime.fromtimestamp(bus["arrival_time"], pytz.timezone("America/Los_Angeles"))
+            # arrival_time = datetime.fromtimestamp(bus["arrival_time"], pytz.timezone("America/Los_Angeles"))
+            arrival_time = datetime.fromtimestamp(bus["time"], pytz.timezone("America/Los_Angeles"))
             arrival_time = arrival_time.strftime("%H:%M")
             if scheduled:
                 next_buses.append({
