@@ -359,8 +359,11 @@ def get_capacity(capacity):
         capacity_text = "Occupancy Status: Full"
     return capacity_text
 
-
-# **This function is currently not being used**
+# Gets all the scheduled arrival times for a specific stop for today by searching for them in the stop_time_part1, 2, etc files and returning a dataframe
+# ----------------------------------------------------------------------------------
+# current_stop_id is the id for the stop that the user wants to see the next arrivals
+# today_trips_df is a dataframe containing all the trips being run today
+# ----------------------------------------------------------------------------------
 def load_today_scheduled_bus_times(current_stop_id, today_trips_df):
     today_trip_ids = set(today_trips_df["trip_id"].unique())
     current_stop_id = int(current_stop_id)
