@@ -500,20 +500,26 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         route_number_input = str(route_number_input)
         # If the user wants to include variants, include any trips for that route number which also ends with A, B, N, or X
         if include_variants:
-            route_variants = [f"{route_number_input}-VIC", f"{route_number_input}A-VIC", f"{route_number_input}B-VIC", f"{route_number_input}N-VIC", f"{route_number_input}X-VIC"]
-            all_variant_trips = [trip for trip in trips_df if trip["route_id"] in route_variants]
+            # route_variants = [f"{route_number_input}-VIC", f"{route_number_input}A-VIC", f"{route_number_input}B-VIC", f"{route_number_input}N-VIC", f"{route_number_input}X-VIC"]
+            # all_variant_trips = [trip for trip in trips_df if trip["route_id"] in route_variants]
             # upcoming_arrival_times = [bus for bus in all_variant_trips if bus["trip_id"] in upcoming_arrival_times]
+            route_variants = [f"{route_number_input}-VIC", f"{route_number_input}A-VIC", f"{route_number_input}B-VIC", f"{route_number_input}N-VIC", f"{route_number_input}X-VIC"]
+            all_variant_trips = trips_df[trips_df["route_id"].isin(route_variants)]
+            upcoming_trip_ids = {bus.trip_id for bus in upcoming_arrival_times}
+            upcoming_arrival_times = all_variant_trips[all_variant_trips["trip_id"].isin(upcoming_trip_ids)]
             
             next_trip = [stop for stop in next_trip if stop["route_id"] in route_variants]
         else:
-            route_number_input = str(route_number_input)
-            route_number_input = route_number_input + "-VIC"
-            all_route_trips = [trip for trip in trips_df if trip["route_id"] == route_number_input]
+            # route_number_input = str(route_number_input)
+            # route_number_input = route_number_input + "-VIC"
+            # all_route_trips = [trip for trip in trips_df if trip["route_id"] == route_number_input]
             # upcoming_arrival_times = [bus for bus in all_route_trips if bus["trip_id"] in upcoming_arrival_times]
 
-
-
-            
+            route_number_input = f"{route_number_input}-VIC"
+            all_route_trips = trips_df[trips_df["route_id"] == route_number_input]
+            upcoming_trip_ids = {bus.trip_id for bus in upcoming_arrival_times}
+            upcoming_arrival_times = all_route_trips[all_route_trips["trip_id"].isin(upcoming_trip_ids)]
+           
             next_trip = [stop for stop in next_trip if stop["route_id"] == route_number_input]
 
         route_number_input = route_number_input.split('-')[0] 
@@ -525,7 +531,8 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     next_trip = sorted(next_trip, key=lambda x: x["time"])
 
 
-    # next_trip = upcoming_arrival_times
+    next_trip = upcoming_arrival_times
+    next_trip = sorted(next_trip, key=lambda x: x["arrival_time"])
 
     # Show only the next 10 arrivals if the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button has not been pressed or been pressed an even amount of times
     if toggle_future_buses_clicks % 2 == 0:
@@ -573,8 +580,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             # Getting the arrival time and converting it to PST and only including hours and minutes
             # arrival_time = datetime.fromtimestamp(bus["time"], pytz.timezone("America/Los_Angeles"))
 
-            # arrival_time = datetime.fromtimestamp(bus["arrival_time"], pytz.timezone("America/Los_Angeles"))
-            arrival_time = datetime.fromtimestamp(bus["time"], pytz.timezone("America/Los_Angeles"))
+            arrival_time = datetime.fromtimestamp(bus["arrival_time"], pytz.timezone("America/Los_Angeles"))
             arrival_time = arrival_time.strftime("%H:%M")
             if scheduled:
                 next_buses.append({
