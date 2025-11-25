@@ -504,7 +504,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             upcoming_arrival_times = upcoming_arrival_times.sort_values("arrival_time")
             next_trip = upcoming_arrival_times
             
-            next_trip = [stop for stop in next_trip if stop["route_id"] in route_variants]
+            # next_trip = [stop for stop in next_trip if stop["route_id"] in route_variants]
         else:
             # route_number_input = str(route_number_input)
             # route_number_input = route_number_input + "-VIC"
