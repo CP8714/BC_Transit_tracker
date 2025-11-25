@@ -482,6 +482,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     current_pst = datetime.now(ZoneInfo("America/Los_Angeles"))
     current_pst_hms = current_pst.strftime("%H:%M:%S")
     today_all_arrival_times = load_today_scheduled_bus_times(stop_number_input, today_trips_df)
+    upcoming_arrival_times = [bus for _, bus in today_all_arrival_times.iterrows() if bus["arrival_time"] >= current_pst_hms]
     # upcoming_arrival_times = [bus for bus in today_all_arrival_times if bus["arrival_time"] >= current_pst_hms]
 
     num_of_rows_test = len(today_all_arrival_times)
