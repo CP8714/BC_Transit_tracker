@@ -499,13 +499,13 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
                 valid_trip_ids = all_variant_trips_ids & upcoming_trip_ids
                 upcoming_arrival_times = today_all_arrival_times[today_all_arrival_times["trip_id"].isin(valid_trip_ids)]
                 upcoming_arrival_times = upcoming_arrival_times.sort_values("arrival_time")
-            else:
-                route_number_input = f"{route_number_input}-VIC"
-                all_route_trip_ids = set(trips_df.loc[trips_df["route_id"] == route_number_input, "trip_id"])
-                upcoming_trip_ids = {bus.trip_id for bus in upcoming_arrival_times}
-                valid_trip_ids = all_route_trip_ids & upcoming_trip_ids
-                upcoming_arrival_times = today_all_arrival_times[today_all_arrival_times["trip_id"].isin(valid_trip_ids)]
-                upcoming_arrival_times = upcoming_arrival_times.sort_values("arrival_time")
+        else:
+            route_number_input = f"{route_number_input}-VIC"
+            all_route_trip_ids = set(trips_df.loc[trips_df["route_id"] == route_number_input, "trip_id"])
+            upcoming_trip_ids = {bus.trip_id for bus in upcoming_arrival_times}
+            valid_trip_ids = all_route_trip_ids & upcoming_trip_ids
+            upcoming_arrival_times = today_all_arrival_times[today_all_arrival_times["trip_id"].isin(valid_trip_ids)]
+            upcoming_arrival_times = upcoming_arrival_times.sort_values("arrival_time")
 
         route_number_input = route_number_input.split('-')[0] 
         stop_name_text = f"Next Estimated Arrivals For Route {route_number_input} At Stop {stop_number_input} ({stop_name}), (Click on a bus number to see info about that specific bus)"
