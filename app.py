@@ -574,7 +574,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
         next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]]
         if not next_bus.empty:
             next_bus = next_bus.iloc[0]
-            route = bus["route_id"]
+            route = next_bus["route_id"]
             route_number = route.split('-')[0] 
             headsign = next_bus["trip_headsign"]
             # Getting the arrival time and converting it to PST and only including hours and minutes
