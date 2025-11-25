@@ -906,7 +906,7 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
             stop_text = f"Next Stop: {stop}"
         # If the bus is currently Not In Service and sitting at a transit yard, set the below text for the description and next stop text
         elif not stop_id:
-            desc_text = f"{bus_id} is sitting at a transit yard"
+            desc_text = f"{bus_id} is sitting at a transit yard or its current activity is unknown"
             stop_text = f"Next Stop: Not Available"
         # If the bus is currently Not In Service and heading to a run another route, set the below text for the description and next stop text
         else:
