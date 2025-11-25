@@ -486,12 +486,12 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     current_pst_hms = current_pst.strftime("%H:%M:%S")
     today_all_arrival_times = load_today_scheduled_bus_times(stop_number_input, today_trips_df)
     # Filter the next trips arriving based on the current time
+    testing = (include_variants == "include_variants")
     upcoming_arrival_times = [bus for _, bus in today_all_arrival_times.iterrows() if bus["arrival_time"] >= current_pst_hms]
     if route_number_input:
         route_number_input = str(route_number_input)
         # If the user wants to include variants, include any trips for that route number which also ends with A, B, N, or X
         if include_variants:
-            testing = (include_variants == "include_variants")
             # if include_variants == "include_variants":
             route_variants = [f"{route_number_input}-VIC", f"{route_number_input}A-VIC", f"{route_number_input}B-VIC", f"{route_number_input}N-VIC", f"{route_number_input}X-VIC"]
             all_variant_trips = trips_df[trips_df["route_id"].isin(route_variants)]
