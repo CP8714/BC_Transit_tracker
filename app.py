@@ -499,6 +499,8 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             all_variant_trips = trips_df[trips_df["route_id"].isin(route_variants)]
             upcoming_trip_ids = {bus.trip_id for bus in upcoming_arrival_times}
             upcoming_arrival_times = all_variant_trips[all_variant_trips["trip_id"].isin(upcoming_trip_ids)]
+            upcoming_arrival_times = upcoming_arrival_times.sort_values("arrival_time")
+            next_trip = upcoming_arrival_times
             
             next_trip = [stop for stop in next_trip if stop["route_id"] in route_variants]
         else:
@@ -511,20 +513,22 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             all_route_trips = trips_df[trips_df["route_id"] == route_number_input]
             upcoming_trip_ids = {bus.trip_id for bus in upcoming_arrival_times}
             upcoming_arrival_times = all_route_trips[all_route_trips["trip_id"].isin(upcoming_trip_ids)]
+            upcoming_arrival_times = upcoming_arrival_times.sort_values("arrival_time")
            
             next_trip = [stop for stop in next_trip if stop["route_id"] == route_number_input]
+            next_trip = upcoming_arrival_times
 
         route_number_input = route_number_input.split('-')[0] 
         stop_name_text = f"Next Estimated Arrivals For Route {route_number_input} At Stop {stop_number_input} ({stop_name}), (Click on a bus number to see info about that specific bus)"
 
-    # upcoming_arrival_times = sorted(upcoming_arrival_times, key=lambda x: x["arrival_time"])
+    else:
+        # Sort the next trips by arrival time 
+        next_trip = sorted(next_trip, key=lambda x: x["time"])
     
-    # Sort the next trips by arrival time 
-    next_trip = sorted(next_trip, key=lambda x: x["time"])
-
-
-    next_trip = upcoming_arrival_times
-    next_trip = sorted(next_trip, key=lambda x: x["arrival_time"])
+    
+        next_trip = upcoming_arrival_times
+        next_trip = sorted(next_trip, key=lambda x: x["arrival_time"])
+        
 
     # Show only the next 10 arrivals if the "Show Up To Next 10 Buses"/"Show Up To Next 20 Buses" button has not been pressed or been pressed an even amount of times
     if toggle_future_buses_clicks % 2 == 0:
