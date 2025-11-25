@@ -641,7 +641,7 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     return html.Div([
         html.H3(stop_name_text),
         make_next_buses_table(next_buses),
-        html.H3(f"Assigned Bus that is Scheduled means the bus is currently not running that trip {include_variants}"),
+        html.H3(f"Assigned Bus that is Scheduled means the bus is currently not running that trip"),
         html.Div(
             className="next-buses-map-container",
             children = [
