@@ -379,8 +379,8 @@ def load_today_scheduled_bus_times(current_stop_id, today_trips_df):
                     bus_times_df_list.append(today_next_buses)
 
     if bus_times_df_list:
-        return pd.concat(bus_times_df_list, ignore_index=True)
-    return pd.DataFrame()
+        return pd.concat(bus_times_df_list, ignore_index=True), append_list 
+    return pd.DataFrame(), append_list 
 
 # Loads all the stop times of the first stop for all the trips in trip_ids
 # ----------------------------------------------------------------------------------
