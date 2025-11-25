@@ -542,57 +542,111 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
     bus_lat_list = []
     bus_lon_list = []
     bus_number_list = []
-    for bus in next_trip:
-        scheduled = False
-        current_bus = next((b for b in buses if b["trip_id"] == bus["trip_id"]), None)
-        # If there is no bus currently running that trip, check the blocks to see if one is scheduled. If not, set bus_number to "Unknown"
-        if not current_bus:
-            bus_number = "Unknown"
-            current_trip = trips_df[trips_df["trip_id"] == bus["trip_id"]]
-            if not current_trip.empty:
-                current_trip = current_trip.iloc[0]
-                block = current_trip["block_id"]
-                full_block = trips_df[trips_df["block_id"] == block]
-                for _, row in full_block.iterrows():
-                    current_bus = next((b for b in buses if b["trip_id"] == row["trip_id"]), None)
-                    if current_bus:
-                        # The bus number is only the final four digits of the its id
-                        bus_number = current_bus["id"]
-                        bus_number = bus_number[-4:]
-                        scheduled = True
-                        break
-        else:
-            # The bus number is only the final four digits of the its id
-            bus_number = current_bus["id"]
-            bus_number = bus_number[-4:]
-            bus_lat_list.append(current_bus["lat"])
-            bus_lon_list.append(current_bus["lon"])
-            bus_number_list.append(bus_number)
-        next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]]
-        if not next_bus.empty:
-            next_bus = next_bus.iloc[0]
-            route = next_bus["route_id"]
-            route_number = route.split('-')[0] 
-            headsign = next_bus["trip_headsign"]
-            # Getting the arrival time and converting it to PST and only including hours and minutes
-            # arrival_time = datetime.fromtimestamp(bus["time"], pytz.timezone("America/Los_Angeles"))
-
-            # arrival_time = datetime.fromtimestamp(bus["arrival_time"], pytz.timezone("America/Los_Angeles"))
-            # arrival_time = arrival_time.strftime("%H:%M")
-            arrival_time = bus["arrival_time"]
-            arrival_time = arrival_time[:5]
-            if scheduled:
-                next_buses.append({
-                    "arrival_time": arrival_time,
-                    "trip_headsign": f"{route_number} {headsign}",
-                    "bus": f"{bus_number} (Scheduled)"
-                })
+    if route_number_input:
+        for _, bus in next_trip.iterrows():
+            scheduled = False
+            current_bus = next((b for b in buses if b["trip_id"] == bus["trip_id"]), None)
+            # If there is no bus currently running that trip, check the blocks to see if one is scheduled. If not, set bus_number to "Unknown"
+            if not current_bus:
+                bus_number = "Unknown"
+                current_trip = trips_df[trips_df["trip_id"] == bus["trip_id"]]
+                if not current_trip.empty:
+                    current_trip = current_trip.iloc[0]
+                    block = current_trip["block_id"]
+                    full_block = trips_df[trips_df["block_id"] == block]
+                    for _, row in full_block.iterrows():
+                        current_bus = next((b for b in buses if b["trip_id"] == row["trip_id"]), None)
+                        if current_bus:
+                            # The bus number is only the final four digits of the its id
+                            bus_number = current_bus["id"]
+                            bus_number = bus_number[-4:]
+                            scheduled = True
+                            break
             else:
-                next_buses.append({
-                    "arrival_time": arrival_time,
-                    "trip_headsign": f"{route_number} {headsign}",
-                    "bus": f"{bus_number}"
-                })
+                # The bus number is only the final four digits of the its id
+                bus_number = current_bus["id"]
+                bus_number = bus_number[-4:]
+                bus_lat_list.append(current_bus["lat"])
+                bus_lon_list.append(current_bus["lon"])
+                bus_number_list.append(bus_number)
+            next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]]
+            if not next_bus.empty:
+                next_bus = next_bus.iloc[0]
+                route = next_bus["route_id"]
+                route_number = route.split('-')[0] 
+                headsign = next_bus["trip_headsign"]
+                # Getting the arrival time and converting it to PST and only including hours and minutes
+                # arrival_time = datetime.fromtimestamp(bus["time"], pytz.timezone("America/Los_Angeles"))
+    
+                # arrival_time = datetime.fromtimestamp(bus["arrival_time"], pytz.timezone("America/Los_Angeles"))
+                # arrival_time = arrival_time.strftime("%H:%M")
+                arrival_time = bus["arrival_time"]
+                arrival_time = arrival_time[:5]
+                if scheduled:
+                    next_buses.append({
+                        "arrival_time": arrival_time,
+                        "trip_headsign": f"{route_number} {headsign}",
+                        "bus": f"{bus_number} (Scheduled)"
+                    })
+                else:
+                    next_buses.append({
+                        "arrival_time": arrival_time,
+                        "trip_headsign": f"{route_number} {headsign}",
+                        "bus": f"{bus_number}"
+                    })
+    else:
+        for bus in next_trip:
+            scheduled = False
+            current_bus = next((b for b in buses if b["trip_id"] == bus["trip_id"]), None)
+            # If there is no bus currently running that trip, check the blocks to see if one is scheduled. If not, set bus_number to "Unknown"
+            if not current_bus:
+                bus_number = "Unknown"
+                current_trip = trips_df[trips_df["trip_id"] == bus["trip_id"]]
+                if not current_trip.empty:
+                    current_trip = current_trip.iloc[0]
+                    block = current_trip["block_id"]
+                    full_block = trips_df[trips_df["block_id"] == block]
+                    for _, row in full_block.iterrows():
+                        current_bus = next((b for b in buses if b["trip_id"] == row["trip_id"]), None)
+                        if current_bus:
+                            # The bus number is only the final four digits of the its id
+                            bus_number = current_bus["id"]
+                            bus_number = bus_number[-4:]
+                            scheduled = True
+                            break
+            else:
+                # The bus number is only the final four digits of the its id
+                bus_number = current_bus["id"]
+                bus_number = bus_number[-4:]
+                bus_lat_list.append(current_bus["lat"])
+                bus_lon_list.append(current_bus["lon"])
+                bus_number_list.append(bus_number)
+            next_bus = trips_df[trips_df["trip_id"] == bus["trip_id"]]
+            if not next_bus.empty:
+                next_bus = next_bus.iloc[0]
+                route = next_bus["route_id"]
+                route_number = route.split('-')[0] 
+                headsign = next_bus["trip_headsign"]
+                # Getting the arrival time and converting it to PST and only including hours and minutes
+                # arrival_time = datetime.fromtimestamp(bus["time"], pytz.timezone("America/Los_Angeles"))
+    
+                # arrival_time = datetime.fromtimestamp(bus["arrival_time"], pytz.timezone("America/Los_Angeles"))
+                # arrival_time = arrival_time.strftime("%H:%M")
+                arrival_time = bus["arrival_time"]
+                arrival_time = arrival_time[:5]
+                if scheduled:
+                    next_buses.append({
+                        "arrival_time": arrival_time,
+                        "trip_headsign": f"{route_number} {headsign}",
+                        "bus": f"{bus_number} (Scheduled)"
+                    })
+                else:
+                    next_buses.append({
+                        "arrival_time": arrival_time,
+                        "trip_headsign": f"{route_number} {headsign}",
+                        "bus": f"{bus_number}"
+                    })
+                
     if bus_lat_list:
         map_fig.add_trace(go.Scattermapbox(
             lat=bus_lat_list,
