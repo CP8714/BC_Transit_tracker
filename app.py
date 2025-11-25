@@ -498,7 +498,8 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             route_variants = [f"{route_number_input}-VIC", f"{route_number_input}A-VIC", f"{route_number_input}B-VIC", f"{route_number_input}N-VIC", f"{route_number_input}X-VIC"]
             all_variant_trips = trips_df[trips_df["route_id"].isin(route_variants)]
             upcoming_trip_ids = {bus.trip_id for bus in upcoming_arrival_times}
-            upcoming_arrival_times = all_variant_trips[all_variant_trips["trip_id"].isin(upcoming_trip_ids)]
+            valid_trip_ids = set(all_variant_trips["trip_id"]) & upcoming_trip_ids
+            upcoming_arrival_times = today_all_arrival_times[today_all_arrival_times["trip_id"].isin(valid_trip_ids)]
             upcoming_arrival_times = upcoming_arrival_times.sort_values("arrival_time")
             next_trip = upcoming_arrival_times
             
