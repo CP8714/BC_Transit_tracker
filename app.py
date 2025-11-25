@@ -510,9 +510,10 @@ def get_next_buses(stop_number_input, route_number_input, stops_df, trips_df, cu
             # upcoming_arrival_times = [bus for bus in all_route_trips if bus["trip_id"] in upcoming_arrival_times]
 
             route_number_input = f"{route_number_input}-VIC"
-            all_route_trips = trips_df[trips_df["route_id"] == route_number_input]
+            all_route_trip_ids = set(trips_df.loc[trips_df["route_id"] == route_number_input, "trip_id"])
             upcoming_trip_ids = {bus.trip_id for bus in upcoming_arrival_times}
-            upcoming_arrival_times = all_route_trips[all_route_trips["trip_id"].isin(upcoming_trip_ids)]
+            valid_trip_ids = route_trip_ids & upcoming_trip_ids
+            upcoming_arrival_times = stop_times_df[stop_times_df["trip_id"].isin(valid_trip_ids)]
             upcoming_arrival_times = upcoming_arrival_times.sort_values("arrival_time")
            
             next_trip = [stop for stop in next_trip if stop["route_id"] == route_number_input]
