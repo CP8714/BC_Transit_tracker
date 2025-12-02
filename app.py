@@ -1040,7 +1040,7 @@ def update_bus_callback(n_submits, n_intervals, manual_update, search_for_bus, t
     current_trips = load_current_trips()
     trips_df = load_trips()
     stops_df = load_stops()
-    return get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url, triggered_id, no_update)
+    return get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_future_stops_clicks, reset_url, triggered_id, bus_number)
 
 # Callback which sets the outputs of the next buses page
 @callback(
