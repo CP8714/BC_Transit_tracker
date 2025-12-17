@@ -208,8 +208,9 @@ h4 {
 
     #live-map {
         position: relative;
-        width: 100%;
+        width: 50%;
         height: 400px;
+        margin-top: -200px;
         bottom: auto;
         left: auto;
     }
