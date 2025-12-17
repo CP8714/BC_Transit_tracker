@@ -203,6 +203,22 @@ h4 {
     z-index: 10;
 }
 
+/* Mobile test */
+@media (max-width: 768px) {
+
+    #live-map {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        bottom: auto;
+        left: auto;
+    }
+
+    .map-container {
+        width: 100%;
+    }
+}
+
 /* Container for the map in the bus tracker page */
 .map-container {
     position: relative;   
