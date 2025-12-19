@@ -43,6 +43,18 @@ h3 {
     width: 650px;
 }
 
+/* Mobile test */
+@media (max-width: 768px) {
+    .h4-bus-page-instruction {
+    color: #003366;
+    padding: 5px;
+    margin-top: 7px;
+    width: 100%;
+    }
+}
+
+
+
 /* Settings for the instruction text in the next buses page */
 .h4-stop-page-instruction {
     color: #003366;
@@ -203,6 +215,12 @@ h4 {
     z-index: 10;
 }
 
+/* Container for the map in the bus tracker page */
+.map-container {
+    position: relative;   
+    width: 1600px; 
+}
+
 /* Mobile test */
 @media (max-width: 768px) {
 
@@ -219,13 +237,6 @@ h4 {
         width: 100%;
     }
 }
-
-/* Container for the map in the bus tracker page */
-.map-container {
-    position: relative;   
-    width: 1600px; 
-}
-
 
 /* Container for the map in the next buses page */
 .next-buses-map-container {
