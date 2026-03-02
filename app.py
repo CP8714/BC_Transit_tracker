@@ -13,7 +13,6 @@ import fetch_fleet_data
 import fetch_trip_data
 from datetime import datetime, date
 from dash import callback_context, no_update
-# import pytz
 from zoneinfo import ZoneInfo
 from urllib.parse import parse_qs, urlparse
 from flask import Flask, Response
@@ -698,8 +697,6 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
     capacity_text = get_capacity(capacity)
 
     # Convert the timestamp time to PST and only include hours, minutes, and seconds for the timestamp output
-    # utc_time = datetime.fromisoformat(timestamp).replace(tzinfo=pytz.utc)
-    # pst_time = utc_time.astimezone(pytz.timezone("America/Los_Angeles"))
     utc_time = datetime.fromisoformat(timestamp).replace(tzinfo=ZoneInfo("UTC"))
     pst_time = utc_time.astimezone(ZoneInfo("America/Los_Angeles"))
     pst_timestamp = pst_time.strftime("%H:%M:%S")
@@ -794,7 +791,6 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
                     eta_time = eta_time[:-3]
         else:
             # Converting the eta time into PST and only keeping minutes and hours
-            # eta_time = datetime.fromtimestamp(eta_time, pytz.timezone("America/Los_Angeles"))
             eta_time = datetime.fromtimestamp(eta_time, ZoneInfo("America/Los_Angeles"))
             eta_time = eta_time.strftime("%H:%M")
 
@@ -812,7 +808,6 @@ def get_bus_info(buses, bus_number, current_trips, trips_df, stops_df, toggle_fu
                     future_eta_time = stop["start_time"]
                     future_eta_time = future_eta_time[:-3]
                 else:
-                    # future_eta_time = datetime.fromtimestamp(stop["time"], pytz.timezone("America/Los_Angeles"))
                     future_eta_time = datetime.fromtimestamp(stop["time"], ZoneInfo("America/Los_Angeles"))
                     future_eta_time = future_eta_time.strftime("%H:%M")
                 future_stop_id = int(stop["stop_id"])
