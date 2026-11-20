@@ -31,9 +31,9 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100039,Fairfield Rd at Quadra St,48.42019,-123.36101,0,100039
 100042,Douglas St at View St,48.42555,-123.36518,0,100042
 100044,Oswego St at St James St,48.41706,-123.37896,0,100044
-100045,Fort St at Blanshard St,48.42417,-123.36183,0,100045
+100045,Fort St at Blanshard St,48.42419,-123.36192,0,100045
 100046,Douglas St at Simcoe St,48.41358,-123.36728,0,100046
-100047,Wharf St at Yates St,48.42709,-123.3705,0,100047
+100047,Wharf St at Yates St,48.42709,-123.37045,0,100047
 100048,Yates St at Douglas St,48.42644,-123.36571,0,100048
 100049,Niagara St at Menzies St,48.41369,-123.37523,0,100049
 100050,Government St at Johnson St,48.42723,-123.36724,0,100050
@@ -49,14 +49,14 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100063,Johnson St at Douglas St,48.42705,-123.36398,0,100063
 100064,Fort St at Quadra St,48.42389,-123.35922,0,100064
 100065,Niagara St at Government St,48.41224,-123.37211,0,100065
-100067,Otter Point Rd at Butler Rd,48.39484,-123.77279,0,100067
+100067,Otter Point Rd at Butler Rd,48.39493,-123.77251,0,100067
 100068,Yates St at Quadra St,48.42589,-123.36054,0,100068
 100069,Quadra St at View St,48.42442,-123.35951,0,100069
-100071,University Dr at Ring Rd,48.45977,-123.31452,0,100071
+100071,University Dr at Ring Rd,48.45979,-123.31458,0,100071
 100072,Niagara St at Government St,48.41193,-123.37181,0,100072
 100073,Fairfield Rd at Vancouver St,48.41838,-123.35801,0,100073
 100075,Richardson St at Vancouver St,48.41996,-123.35749,0,100075
-100076,Douglas St at Pandora Ave,48.42771,-123.36446,0,100076
+100076,Douglas St at Pandora Ave,48.4278,-123.36443,0,100076
 100077,Pandora Ave at Store St,48.4286,-123.36812,0,100077
 100078,Douglas St at Beacon St,48.41126,-123.36859,0,100078
 100079,Johnson St at Blanshard St,48.42673,-123.36127,0,100079
@@ -73,7 +73,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100094,Richardson St at Cook St,48.41974,-123.35546,0,100094
 100095,Cook St at Fairfield Rd,48.41825,-123.35541,0,100095
 100096,Cook St at Richardson St,48.41943,-123.35514,0,100096
-100097,Esquimalt Rd at Tyee Rd,48.42882,-123.37797,0,100097
+100097,Esquimalt Rd at Tyee Rd,48.42882,-123.37802,0,100097
 100099,Esquimalt Rd at Tyee Rd,48.42865,-123.37801,0,100099
 100100,Cook St at Fairfield Rd,48.41836,-123.35519,0,100100
 100102,Cook St at Southgate St,48.41605,-123.35597,0,100102
@@ -82,7 +82,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100108,E Sooke Rd at Llanilar Rd,48.36642,-123.68406,0,100108
 100109,Richardson St at Cook St,48.41952,-123.35444,0,100109
 100110,Dallas Rd at Simcoe St,48.42112,-123.38553,0,100110
-100111,Dallas Rd at Niagara St,48.41863,-123.3854,0,100111
+100111,Dallas Rd at Niagara St,48.41868,-123.38542,0,100111
 100112,Cook St at Rockland Ave,48.42189,-123.35452,0,100112
 100113,Cook St at Southgate St,48.41613,-123.35572,0,100113
 100115,Cook St at Pandora Ave,48.42697,-123.35341,0,100115
@@ -101,7 +101,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100132,Douglas St at Discovery St,48.43232,-123.3647,0,100132
 100133,Quadra St at Balmoral Rd,48.42924,-123.35873,0,100133
 100134,Esquimalt Rd at Sitkum Rd,48.43013,-123.38048,0,100134
-100136,Metchosin Rd at Kenning Crt,48.41456,-123.48329,0,100136
+100136,Metchosin Rd at Kenning Crt,48.41457,-123.48331,0,100136
 100137,Fairfield Rd at Linden Ave,48.41711,-123.35249,0,100137
 100138,Richardson St at Linden Ave,48.41936,-123.35185,0,100138
 100139,Richardson St at Linden Ave,48.41917,-123.35118,0,100139
@@ -170,7 +170,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100208,Quadra St at Bay St,48.43558,-123.358,0,100208
 100209,Pandora Ave at Fernwood Rd,48.42692,-123.34588,0,100209
 100210,Fairfield Rd at Kipling St,48.41368,-123.34553,0,100210
-100211,Johnson St at Fernwood Rd,48.4254,-123.34499,0,100211
+100211,Johnson St at Fernwood Rd,48.42542,-123.34503,0,100211
 100212,Fort St at Elford St,48.42494,-123.34131,0,100212
 100213,George St at Moss St,48.40818,-123.35031,0,100213
 100214,Fernwood Rd at Pandora Ave,48.42722,-123.34526,0,100214
@@ -214,7 +214,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100259,Dunsmuir Rd at Garrett Pl,48.4302,-123.39678,0,100259
 100260,Cook St at Haultain St,48.43672,-123.35202,0,100260
 100261,Hillside Ave at Quadra St,48.43946,-123.35976,0,100261
-100262,Pandora Ave at Elford St,48.42657,-123.34085,0,100262
+100262,Pandora Ave at Elford St,48.42658,-123.34091,0,100262
 100263,Old Esquimalt Rd at Viewfield Rd,48.43288,-123.39449,0,100263
 100264,Fernwood Rd at Pembroke St,48.43221,-123.34519,0,100264
 100265,Begbie St at Elford St,48.42755,-123.34091,0,100265
@@ -250,9 +250,9 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100300,Jutland Rd at Gorge Rd E,48.44263,-123.37566,0,100300
 100301,Hillside Ave at Blackwood St,48.4401,-123.35348,0,100301
 100303,Fairfield Rd at St Charles St,48.41228,-123.33767,0,100303
-100305,Old Esquimalt Rd at Aldebury St,48.43291,-123.39924,0,100305
+100305,Old Esquimalt Rd at Aldebury St,48.43293,-123.3993,0,100305
 100307,Esquimalt Rd at Head St,48.43041,-123.40112,0,100307
-100308,Old Esquimalt Rd at Aldebury St,48.43302,-123.39915,0,100308
+100308,Old Esquimalt Rd at Aldebury St,48.43302,-123.39906,0,100308
 100309,Cook St at Hillside Ave,48.44008,-123.35195,0,100309
 100310,Craigflower Rd at Alderman Rd,48.43869,-123.39097,0,100310
 100311,Hillside Ave at Cook St,48.44035,-123.35255,0,100311
@@ -265,7 +265,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100319,Jutland Rd at Burnside Rd E,48.44366,-123.37487,0,100319
 100320,Fort St at Oak Bay Ave,48.42703,-123.33579,0,100320
 100321,Begbie St at Vining St,48.42909,-123.33661,0,100321
-100322,Hillside Ave at Cook St,48.44041,-123.35121,0,100322
+100322,Hillside Ave at Cook St,48.44043,-123.35111,0,100322
 100323,Burnside Rd E at Jutland Rd,48.44387,-123.37335,0,100323
 100324,Lyall St at MacAulay St,48.42693,-123.40482,0,100324
 100327,Esquimalt Rd at MacAulay St,48.42906,-123.40406,0,100327
@@ -275,8 +275,8 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100332,Ross St at St Charles St,48.41095,-123.33596,0,100332
 100333,Quadra St at Summit Ave,48.44365,-123.3605,0,100333
 100335,Ross St at St Charles St,48.4108,-123.33587,0,100335
-100336,Hillside Ave at Higgins St,48.44083,-123.34973,0,100336
-100337,Hillside Ave at Higgins St,48.44084,-123.34878,0,100337
+100336,Hillside Ave at Higgins St,48.44084,-123.34965,0,100336
+100337,Hillside Ave at Higgins St,48.44082,-123.34886,0,100337
 100338,Craigflower Rd at Dominion Rd,48.43955,-123.39348,0,100338
 100339,Finlayson St at Douglas St,48.44488,-123.37165,0,100339
 100340,Fairfield Rd at Lillian Rd,48.4132,-123.3342,0,100340
@@ -299,7 +299,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100361,Oak Bay Ave at Rockland Ave,48.4264,-123.33192,0,100361
 100362,Burnside Rd E at Napier Lane,48.44545,-123.37663,0,100362
 100364,Lampson St at Wychbury Ave,48.42576,-123.40796,0,100364
-100365,Esquimalt Rd at Lampson St,48.42945,-123.4064,0,100365
+100365,Esquimalt Rd at Lampson St,48.42947,-123.40645,0,100365
 100366,Lampson St at Fernhill Rd,48.43128,-123.40516,0,100366
 100367,Lampson St at Bewdley Ave,48.42377,-123.40854,0,100367
 100370,Lampson St at Wychbury Ave,48.42512,-123.40833,0,100370
@@ -311,32 +311,32 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100376,Lampson St at Fernhill Rd,48.43109,-123.40569,0,100376
 100377,Ross St at Wildwood Ave,48.4108,-123.33362,0,100377
 100378,Finlayson St at Quadra St,48.44602,-123.36278,0,100378
-100379,Lampson St at Old Esquimalt Rd,48.43388,-123.40371,0,100379
+100379,Lampson St at Old Esquimalt Rd,48.43408,-123.40361,0,100379
 100380,Burnside Rd E at Alpha St,48.44614,-123.37779,0,100380
 100381,Lampson St at Munro St,48.42176,-123.40938,0,100381
 100382,Oak Bay Ave at Belcher Ave,48.42655,-123.3328,0,100382
 100383,Fairfield Rd at Robertson St,48.41511,-123.33204,0,100383
 100384,Fort St at Leighton Rd,48.42855,-123.3324,0,100384
-100385,Hillside Ave at Cedar Hill Rd,48.44104,-123.34545,0,100385
+100385,Hillside Ave at Cedar Hill Rd,48.44104,-123.34551,0,100385
 100386,Craigflower Rd at Carrie St,48.44011,-123.3954,0,100386
-100387,Esquimalt Rd at Lampson St West Side,48.42975,-123.4075,0,100387
+100387,Esquimalt Rd at Lampson St,48.42971,-123.40736,0,100387
 100388,Craigflower Rd at Carrie St,48.44027,-123.39544,0,100388
 100389,Quadra St at Finlayson St,48.44596,-123.36118,0,100389
 100390,Fairfield Rd at Richmond Ave,48.41529,-123.33095,0,100390
 100392,Finlayson St at Quadra St,48.44622,-123.36217,0,100392
 100393,Richardson St at Gonzales Ave,48.41835,-123.33008,0,100393
-100394,Douglas St at Herald St,48.42996,-123.3644,0,100394
-100396,Hillside Ave at Cedar Hill Rd,48.44125,-123.3447,0,100396
+100394,Douglas St at Herald St,48.43004,-123.36438,0,100394
+100396,Hillside Ave at Cedar Hill Rd,48.44127,-123.34464,0,100396
 100397,Oak Bay Ave at Richmond Ave,48.42639,-123.32988,0,100397
 100399,Burnside Rd E at Washington Ave,48.44667,-123.37919,0,100399
 100401,Quadra St at Finlayson St,48.44683,-123.36119,0,100401
 100402,Fort St at Ashgrove St,48.42911,-123.33139,0,100402
 100403,Shelbourne St at Denman St,48.43275,-123.3335,0,100403
 100404,Munro St at Kinver St,48.42173,-123.41097,0,100404
-100405,UVic Exch Bay G,48.46625,-123.30887,0,100405
+100405,UVic Exch Bay G,48.46623,-123.30891,0,100405
 100406,Oak Bay Ave at Richmond Ave,48.42653,-123.33066,0,100406
 100407,Richmond Ave at Leighton Rd,48.42814,-123.33033,0,100407
-100408,Lampson St at Wurtele Pl,48.43665,-123.40289,0,100408
+100408,Lampson St at Wurtele Pl,48.43664,-123.40276,0,100408
 100410,Crescent Rd at Richmond Ave,48.41174,-123.33064,0,100410
 100411,Shelbourne St at Denman St,48.43281,-123.33329,0,100411
 100412,Crescent Rd at Richmond Ave,48.41167,-123.33051,0,100412
@@ -348,7 +348,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100418,Lampson St at Ellery St,48.43758,-123.40225,0,100418
 100419,Lampson St at Colville Rd,48.43855,-123.40212,0,100419
 100420,Cedar Hill Rd at Hipwood Lane,48.44389,-123.34753,0,100420
-100421,Esquimalt Rd at Fernhill Rd,48.42993,-123.41019,0,100421
+100421,Esquimalt Rd at Fernhill Rd,48.42996,-123.41026,0,100421
 100422,Finlayson St at Somerset St,48.44693,-123.35648,0,100422
 100424,Finlayson St at Blackwood St,48.44693,-123.35556,0,100424
 100425,Richardson St at Lawndale Ave,48.41952,-123.32764,0,100425
@@ -357,7 +357,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100429,William Head Rd at Pearson College Dr,48.3513,-123.5463,0,100429
 100430,Esquimalt Rd at Fernhill Rd,48.4301,-123.41016,0,100430
 100432,Foul Bay Rd at Fairfield Rd,48.41576,-123.32768,0,100432
-100433,Shelbourne St at Haultain St,48.43548,-123.33381,0,100433
+100433,Shelbourne St at Haultain St,48.43553,-123.33371,0,100433
 100434,Richmond Rd at Fort St,48.43011,-123.32989,0,100434
 100435,William Head Rd at Pearson College Dr,48.35133,-123.54625,0,100435
 100436,Foul Bay Rd at Fairfield Rd,48.41586,-123.32749,0,100436
@@ -375,16 +375,16 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100449,Cedar Hill Rd at Delatre St,48.44497,-123.34653,0,100449
 100450,Shelbourne St at Haultain St,48.43649,-123.33356,0,100450
 100451,Richmond Rd at Denman St,48.43197,-123.32941,0,100451
-100452,Burnside Rd E at Eldon Place,48.44866,-123.38281,0,100452
+100452,Burnside Rd E at Eldon Place,48.44858,-123.38272,0,100452
 100453,Oak Bay Ave at Chamberlain St,48.42639,-123.32674,0,100453
 100454,Douglas St at Kelvin Rd,48.44955,-123.37373,0,100454
 100455,Quadra St at Tolmie Ave,48.44932,-123.36171,0,100455
 100456,Douglas St at Cloverdale Ave,48.44986,-123.37353,0,100456
 100457,Craigflower Rd at Lampson St,48.44157,-123.40129,0,100457
-100458,Oak Bay Ave at Davie St,48.42653,-123.32655,0,100458
+100458,Oak Bay Ave at Davie St,48.42652,-123.32649,0,100458
 100459,Gorge Rd W at Wascana St,48.44525,-123.39299,0,100459
 100460,Crescent Rd at Foul Bay Rd,48.41209,-123.32709,0,100460
-100461,Shelbourne St at Kings Rd,48.43757,-123.33374,0,100461
+100461,Shelbourne St at Kings Rd,48.4376,-123.33365,0,100461
 100462,Gorge Rd W at Wascana St,48.44572,-123.3934,0,100462
 100463,Craigflower Rd at Lampson St,48.44141,-123.40132,0,100463
 100464,Colville Rd at MacLeod Ave,48.4387,-123.4054,0,100464
@@ -423,27 +423,27 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100500,McNeill Ave at Foul Bay Rd,48.42024,-123.32281,0,100500
 100502,Oak Bay Ave at Amphion St,48.42638,-123.32402,0,100502
 100504,McNeill Ave at Foul Bay Rd,48.42037,-123.32294,0,100504
-100505,Hillside Ave at Doncaster Dr,48.44357,-123.33882,0,100505
+100505,Hillside Ave at Doncaster Dr,48.44361,-123.33874,0,100505
 100506,Richmond Rd at Haultain St,48.43553,-123.32891,0,100506
 100507,UVic Exch Bay H,48.4664,-123.30866,0,100507
 100508,Metchosin Rd at Happy Valley Rd,48.38102,-123.5302,0,100508
 100510,Bowker St at Monteith St,48.43242,-123.30841,0,100510
-100511,900 Blk Foul Bay Rd,48.42226,-123.32252,0,100511
+100511,900 Blk Foul Bay Rd,48.42226,-123.32247,0,100511
 100512,Oak Bay Ave at Foul Bay Rd,48.42652,-123.32331,0,100512
 100513,Cook St at Slater St,48.44915,-123.35036,0,100513
-100514,Hillside Ave at Doncaster Dr,48.44384,-123.3377,0,100514
+100514,Hillside Ave at Doncaster Dr,48.44381,-123.33774,0,100514
 100515,Fort St at Lee Ave,48.43156,-123.3251,0,100515
-100517,Foul Bay Rd at Oak Bay Ave,48.42576,-123.32277,0,100517
+100517,Foul Bay Rd at Oak Bay Ave,48.42588,-123.32277,0,100517
 100518,Richmond Rd at Haultain St,48.43623,-123.32856,0,100518
 100519,Lyall St at Admirals Rd,48.42834,-123.4167,0,100519
 100520,Quadra St at Inverness Rd,48.45154,-123.36108,0,100520
 100521,Crescent Rd at King George Terr,48.41065,-123.32392,0,100521
 100522,Foul Bay Rd at Granite St,48.42539,-123.32231,0,100522
-100523,Burnside Rd W at Albion Rd,48.45037,-123.38628,0,100523
+100523,Burnside Rd W at Albion Rd,48.45034,-123.38621,0,100523
 100524,Colville Rd at Hutchinson Ave,48.43819,-123.41091,0,100524
 100525,Gorge Rd W at Orillia St,48.44733,-123.39717,0,100525
-100526,Esquimalt Rd at Admirals Rd,48.42984,-123.4166,0,100526
-100527,Burnside Rd W at Wascana St,48.45049,-123.38686,0,100527
+100526,Esquimalt Rd at Admirals Rd,48.42987,-123.41649,0,100526
+100527,Burnside Rd W at Wascana St,48.45053,-123.38692,0,100527
 100528,Admirals Rd at Lyall St,48.42843,-123.41713,0,100528
 100529,Admirals Rd at Esquimalt Rd,48.42947,-123.4169,0,100529
 100530,Richmond Rd at Kings Rd,48.43755,-123.32848,0,100530
@@ -453,7 +453,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100534,Boleskine Rd at Whittier Ave,48.4521,-123.38056,0,100534
 100535,Boleskine Rd at Douglas St,48.4526,-123.37623,0,100535
 100536,Oak Bay Ave at Foul Bay Rd,48.4264,-123.32177,0,100536
-100537,Colville Rd at Hutchinson Ave,48.43836,-123.41083,0,100537
+100537,Colville Rd at Hutchinson Ave,48.43835,-123.41073,0,100537
 100538,Harriet Rd at Hampton Rd,48.45194,-123.38207,0,100538
 100539,Tillicum Rd at Tillicum Bridge,48.44546,-123.40094,0,100539
 100540,Quadra St at Holmes St,48.45232,-123.3606,0,100540
@@ -468,12 +468,12 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100549,Shelbourne St at Pearl St,48.44224,-123.33334,0,100549
 100550,Foul Bay Rd at Bourchier St,48.42995,-123.32263,0,100550
 100551,Douglas St at Boleskine Rd - Uptown,48.45316,-123.37587,0,100551
-100552,McNeill Ave at Falkland Rd,48.42033,-123.32049,0,100552
+100552,McNeill Ave at Falkland Rd,48.42031,-123.32049,0,100552
 100553,Maplewood Rd at Tolmie Ave,48.45056,-123.3505,0,100553
 100554,Douglas St at Saanich Rd - Uptown,48.45337,-123.37558,0,100554
 100556,Foul Bay Rd at Goldsmith St,48.43078,-123.32239,0,100556
 100557,Cedar Hill Rd at Finlayson St,48.44905,-123.34361,0,100557
-100558,McNeill Ave at Falkland Rd,48.42017,-123.31945,0,100558
+100558,McNeill Ave at Falkland Rd,48.42019,-123.31944,0,100558
 100559,Foul Bay Rd at Fort St,48.43176,-123.32255,0,100559
 100561,Fort St at Foul Bay Rd,48.43215,-123.32293,0,100561
 100562,Gorge Rd W at Tillicum Rd,48.44766,-123.39921,0,100562
@@ -500,18 +500,18 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100583,Victoria Ave at McNeill Ave,48.42061,-123.31835,0,100583
 100584,North Dairy Rd at Wetherby Rd,48.44831,-123.34009,0,100584
 100585,Craigflower Rd at Esquimalt Gorge Park,48.44415,-123.40742,0,100585
-100586,Craigflower Rd at Esquimalt Gorge Park,48.44418,-123.40722,0,100586
+100586,Craigflower Rd at Esquimalt Gorge Park,48.44427,-123.40743,0,100586
 100587,Burnside Rd W at Millgrove St,48.45173,-123.38892,0,100587
-100588,Oak Bay Ave at Yale St,48.42645,-123.31856,0,100588
+100588,Oak Bay Ave at Yale St,48.42646,-123.31867,0,100588
 100589,Victoria Ave at Pentland Rd,48.41957,-123.31773,0,100589
 100590,Shelbourne St at Hillside Ave,48.4451,-123.33344,0,100590
 100591,Victoria Ave at Central Ave,48.41709,-123.31787,0,100591
 100593,Saanich Rd at Blanshard St - Uptown,48.45497,-123.37295,0,100593
 100594,Esquimalt Rd at Sturdee St,48.42967,-123.42083,0,100594
-100595,Hillside Ave at Shelbourne St,48.44533,-123.33448,0,100595
+100595,Hillside Ave at Shelbourne St,48.44536,-123.33443,0,100595
 100596,Richmond Rd at Allenby St,48.44106,-123.32774,0,100596
 100597,Esquimalt Rd at Foster St,48.42967,-123.42204,0,100597
-100598,Tillicum Rd at Obed Ave,48.44973,-123.39839,0,100598
+100598,Tillicum Rd at Obed Ave,48.44977,-123.39835,0,100598
 100599,Quadra St at Cook St,48.45434,-123.35988,0,100599
 100600,Saanich Rd at Vernon Ave,48.45532,-123.37155,0,100600
 100601,Tillicum Rd at Obed Ave,48.45028,-123.39748,0,100601
@@ -524,13 +524,13 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100610,North Dairy Rd at Keats St,48.44827,-123.33728,0,100610
 100611,North Dairy Rd at Keats St,48.44814,-123.3368,0,100611
 100612,Hillside Centre,48.44737,-123.33548,0,100612
-100613,Colville Rd at Flag Dr,48.43759,-123.41685,0,100613
+100613,Colville Rd at Flag Dr,48.43758,-123.41695,0,100613
 100614,Quadra St at Cloverdale Ave,48.4552,-123.35977,0,100614
 100615,Shelbourne St at Hillside Ave,48.44619,-123.33316,0,100615
 100616,Cadboro Bay Rd at Cranmore Rd,48.43272,-123.3185,0,100616
 100617,Gorge Rd W at Gorge View Dr,48.4487,-123.40361,0,100617
 100618,Lansdowne Rd at Shelbourne St,48.44584,-123.33265,0,100618
-100619,Tillicum Rd at Arena Rd,48.45155,-123.39635,0,100619
+100619,Tillicum Rd at Arena Rd,48.45163,-123.39627,0,100619
 100620,Burnside Rd W at Albina St,48.45311,-123.39152,0,100620
 100621,Admirals Rd at Colville Rd,48.43707,-123.41812,0,100621
 100622,Oak Bay Ave at Wilmot Pl,48.42645,-123.31703,0,100622
@@ -557,15 +557,15 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100644,Craigflower Rd at Forshaw Rd,48.44559,-123.41045,0,100644
 100645,Saanich Rd at Darwin Ave,48.45705,-123.36937,0,100645
 100646,Richmond Rd at Forrester St,48.44406,-123.32709,0,100646
-100647,Quadra St at Tattersall Dr,48.45786,-123.36003,0,100647
+100647,Quadra St at Tattersall Dr,48.45797,-123.36004,0,100647
 100648,Tillicum Rd at Tillicum Centre,48.45333,-123.39435,0,100648
-100649,Obed Ave at Bodega Rd,48.45129,-123.40062,0,100649
+100649,Obed Ave at Bodega Rd,48.45133,-123.40069,0,100649
 100650,Blanshard St at Ravine Way - Uptown,48.45701,-123.37602,0,100650
 100651,Canteen Rd at Esquimalt Rd,48.4289,-123.42462,0,100651
 100652,Richmond Rd at Forrester St,48.44396,-123.32691,0,100652
 100653,Lansdowne Rd at Richmond Rd,48.44608,-123.32717,0,100653
-100654,Windsor Rd at Monterey Ave,48.42197,-123.3139,0,100654
-100655,Quadra St at Tattersall Dr,48.45827,-123.35988,0,100655
+100654,Windsor Rd at Monterey Ave,48.42198,-123.31392,0,100654
+100655,Quadra St at Tattersall Dr,48.45821,-123.35993,0,100655
 100656,Shelbourne St at North Dairy Rd,48.44843,-123.33312,0,100656
 100657,Oak Bay Ave at Monterey Ave,48.42641,-123.31459,0,100657
 100659,Foul Bay Rd at Townley St,48.44006,-123.32217,0,100659
@@ -587,7 +587,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100681,Foul Bay Rd at Neil St,48.44171,-123.32208,0,100681
 100682,Maplewood Rd at Pike St,48.4566,-123.35099,0,100682
 100683,Craigflower Rd at Garthland Rd,48.4466,-123.4122,0,100683
-100684,Carey Rd at Harriet Rd,48.45834,-123.37926,0,100684
+100684,Carey Rd at Harriet Rd,48.45837,-123.37932,0,100684
 100685,Shelbourne St at McRae Ave,48.44973,-123.33326,0,100685
 100686,Oak Bay Ave at Oliver St,48.42636,-123.31232,0,100686
 100687,Craigflower Rd at Garthland Rd,48.44653,-123.41238,0,100687
@@ -598,10 +598,10 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100692,Admirals Rd at Coles St,48.43822,-123.42224,0,100692
 100693,Esquimalt Rd at Lyall St,48.42842,-123.42811,0,100693
 100694,Central Ave at St Patrick St,48.41666,-123.31157,0,100694
-100695,Gorge Rd W at Dysart Rd,48.45016,-123.40912,0,100695
+100695,Gorge Rd W at Dysart Rd,48.4501,-123.40891,0,100695
 100697,Shelbourne St at McRae Ave,48.45088,-123.33306,0,100697
 100698,HMC Dockyard Terminal,48.42764,-123.42815,0,100698
-100699,Gorge Rd W at Dysart Rd,48.45018,-123.40874,0,100699
+100699,Gorge Rd W at Dysart Rd,48.4501,-123.40866,0,100699
 100700,500 Blk Obed Ave,48.45284,-123.4037,0,100700
 100701,Oak Bay Ave at York Pl,48.42647,-123.31141,0,100701
 100702,Foul Bay Rd at Forrester St,48.44334,-123.32197,0,100702
@@ -634,7 +634,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100736,Blenkinsop Rd at Tattersall Dr,48.45922,-123.35082,0,100736
 100737,Cadboro Bay Rd at Tod Rd,48.43588,-123.31289,0,100737
 100739,Cadboro Bay Rd at Woodhouse Rd,48.43662,-123.31304,0,100739
-100741,UVic Exch Bay M,48.46602,-123.30836,0,100741
+100741,UVic Exch Bay M,48.46604,-123.30833,0,100741
 100742,Newport Ave at Transit Rd,48.42462,-123.30805,0,100742
 100743,Burnside Rd W at Interurban Rd,48.45821,-123.39495,0,100743
 100744,Cowper St at Dysart Rd,48.45373,-123.407,0,100744
@@ -683,7 +683,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100794,Nottingham Rd at Thompson Ave,48.44133,-123.3119,0,100794
 100795,Craigflower Rd at Aral Rd,48.44916,-123.42007,0,100795
 100796,Newport Ave at McNeill Ave,48.42042,-123.3033,0,100796
-100797,Interurban Rd at Dumeresq St,48.46236,-123.39536,0,100797
+100797,Interurban Rd at Dumeresq St,48.46231,-123.39537,0,100797
 100799,Craigflower Rd at Rankin Rd,48.44838,-123.4174,0,100799
 100800,Oak Bay Marina,48.42368,-123.30293,0,100800
 100801,Beach Dr at Dalhousie St,48.43358,-123.30587,0,100801
@@ -735,29 +735,29 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100855,Interurban Rd at Columbine Way,48.46403,-123.39712,0,100855
 100856,Craigflower Rd at Admirals Rd,48.45057,-123.424,0,100856
 100857,Admirals Rd at Murray Dr,48.45475,-123.41853,0,100857
-100858,UVic Exch Bay L,48.46588,-123.3085,0,100858
+100858,UVic Exch Bay L,48.4659,-123.30849,0,100858
 100859,Craigflower Rd at Admirals Rd,48.45077,-123.42409,0,100859
 100860,Interurban Rd at Columbine Way,48.46416,-123.39704,0,100860
 100861,Richmond Rd at Poplar Ave,48.45951,-123.33,0,100861
 100863,Cedar Hill Rd at Cedar Hill X Rd,48.4622,-123.33741,0,100863
 100864,Henderson Rd at Dundrum Rd,48.4513,-123.31601,0,100864
-100865,Carey Rd at Columbine Way,48.46576,-123.39049,0,100865
+100865,Carey Rd at Columbine Way,48.4658,-123.39055,0,100865
 100866,Carey Rd at Ralph St,48.46417,-123.38688,0,100866
 100867,Shelbourne St at Cedar Hill X Rd,48.46097,-123.33308,0,100867
 100868,Cedar Hill X Rd at Merriman Dr,48.4642,-123.34239,0,100868
-100869,Richmond Rd at Poplar Ave,48.45972,-123.3299,0,100869
+100869,Richmond Rd at Poplar Ave,48.45968,-123.32991,0,100869
 100870,Nottingham Rd at Dorset Rd,48.44356,-123.3074,0,100870
-100871,UVic Exch Bay O,48.46579,-123.30838,0,100871
+100871,UVic Exch Bay O,48.46581,-123.30834,0,100871
 100872,Hwy 17 at McKenzie Ave,48.46744,-123.38214,0,100872
-100873,Carey Rd at Columbine Way,48.46593,-123.39051,0,100873
+100873,Carey Rd at Columbine Way,48.46587,-123.39039,0,100873
 100874,Cedar Hill X Rd at Synod Rd,48.46325,-123.33864,0,100874
 100875,Hwy 17 at McKenzie Ave,48.46787,-123.37893,0,100875
 100876,McKenzie Ave at Glanford Ave,48.46692,-123.38683,0,100876
 100877,McKenzie Ave at Hwy 17 West Side,48.46751,-123.38226,0,100877
-100878,UVic Exch Bay P,48.46593,-123.30822,0,100878
+100878,UVic Exch Bay P,48.46595,-123.30817,0,100878
 100879,Cedar Hill X Rd at Braefoot Rd,48.46549,-123.34564,0,100879
 100880,Blenkinsop Rd at Cedar Hill X Rd,48.46649,-123.34999,0,100880
-100881,Admirals Walk Shopping Centre,48.44751,-123.42788,0,100881
+100881,Admirals Walk Shopping Centre,48.44743,-123.42778,0,100881
 100882,McKenzie Ave at Carey Rd,48.46647,-123.39058,0,100882
 100883,McKenzie Ave at Hwy 17 East Side,48.46807,-123.3794,0,100883
 100884,McKenzie Ave at Willowbrook Pl,48.46747,-123.38461,0,100884
@@ -779,13 +779,13 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100901,Cedar Hill X Rd at Iona Dr,48.46037,-123.32791,0,100901
 100902,Burnside Rd W at Marigold Rd,48.46334,-123.40452,0,100902
 100903,Burnside Rd W at Marigold Rd,48.46342,-123.4044,0,100903
-100904,UVic Exch Bay R,48.4662,-123.30795,0,100904
+100904,UVic Exch Bay R,48.4662,-123.30786,0,100904
 100905,Superior St at Oswego St,48.41977,-123.3766,0,100905
 100906,Carey Rd at McKenzie Ave,48.46683,-123.39272,0,100906
 100907,Carey Rd at McKenzie Ave,48.46724,-123.39295,0,100907
 100908,Sunheights Dr at Sun Estates,48.41529,-123.51384,0,100908
 100910,Island Hwy at Glentana Rd,48.45254,-123.42854,0,100910
-100911,Cedar Hill X Rd at Iona Dr,48.46054,-123.32697,0,100911
+100911,Cedar Hill X Rd at Iona Dr,48.46054,-123.32682,0,100911
 100912,Cotswold Rd at Uplands Rd,48.44644,-123.30723,0,100912
 100913,Henderson Rd at Kendal Ave,48.45354,-123.31487,0,100913
 100914,Nottingham Rd at Lansdowne Rd,48.44465,-123.3052,0,100914
@@ -804,7 +804,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100927,McKenzie Ave at Borden St,48.4704,-123.36216,0,100927
 100928,Burnside Rd W at Grange Rd,48.46314,-123.41061,0,100928
 100929,Cedar Hill X Rd at Astra Pl,48.47024,-123.35665,0,100929
-100930,Esquimalt Rd at Harbour Rd,48.42813,-123.37534,0,100930
+100930,Esquimalt Rd at Harbour Rd,48.42815,-123.37538,0,100930
 100931,Shelbourne St at Mortimer St,48.46466,-123.33296,0,100931
 100932,Henderson Rd at Avondale Rd,48.45529,-123.31441,0,100932
 100933,Shelbourne St at Mortimer St,48.46478,-123.33271,0,100933
@@ -824,17 +824,17 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100950,Henderson Rd at Frederick Norris Rd,48.45779,-123.31587,0,100950
 100951,Henderson Rd at Frederick Norris Rd,48.45791,-123.31569,0,100951
 100952,Jimmy Rd at Stautw Rd,48.5887,-123.37857,0,100952
-100953,McKenzie Ave at Century Rd,48.47144,-123.35434,0,100953
+100953,McKenzie Ave at Century Rd,48.47142,-123.35447,0,100953
 100954,Douglas St at Superior St,48.4178,-123.3658,0,100954
 100955,McKenzie Ave at Century Rd,48.47153,-123.35484,0,100955
 100956,Cedar Hill X Rd at Henderson Rd,48.45945,-123.31795,0,100956
 100957,McKenzie Ave at Oakwinds St,48.46858,-123.33937,0,100957
 100958,Carey Rd at Norwood Dr,48.46975,-123.3957,0,100958
-100959,McKenzie Ave at Oakwinds St,48.4688,-123.34023,0,100959
+100959,McKenzie Ave at Oakwinds St,48.46879,-123.34014,0,100959
 100960,Cedar Hill X Rd at University Dr,48.4595,-123.31763,0,100960
 100961,Blenkinsop Rd at Lonsdale Pl,48.4714,-123.35093,0,100961
 100962,Helmcken Rd at Camden Ave,48.46794,-123.42515,0,100962
-100963,Carey Rd at Norwood Dr,48.46967,-123.39588,0,100963
+100963,Carey Rd at Norwood Dr,48.46979,-123.39598,0,100963
 100964,1400 Blk McKenzie Ave,48.46977,-123.34245,0,100964
 100965,Garnet Rd at Cedar Hill Rd,48.46782,-123.33497,0,100965
 100966,McKenzie Ave at Blenkinsop Rd,48.47197,-123.35182,0,100966
@@ -847,7 +847,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100975,McKenzie Ave at Braefoot Rd,48.47174,-123.34643,0,100975
 100976,Glanford Ave at Agnes St,48.47198,-123.38934,0,100976
 100977,Quadra St at Saanich Rd,48.47336,-123.37008,0,100977
-100978,Burnside Rd W at Belgrave Rd,48.46518,-123.41534,0,100978
+100978,Burnside Rd W at Belgrave Rd,48.46513,-123.4153,0,100978
 100979,McKenzie Ave at Braefoot Rd,48.47216,-123.34747,0,100979
 100980,Shelbourne St at McKenzie Ave,48.46803,-123.33286,0,100980
 100981,Glanford Ave at Agnes St,48.47265,-123.3897,0,100981
@@ -858,7 +858,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100987,Interurban Rd at Hyacinth Ave,48.4692,-123.40334,0,100987
 100988,McKenzie Ave at Shelbourne St,48.46852,-123.33207,0,100988
 100989,Burnside Rd W at Wilkinson Rd,48.46548,-123.41634,0,100989
-100990,Wilkinson Rd at Burnside Rd W,48.46561,-123.4159,0,100990
+100990,Wilkinson Rd at Burnside Rd W,48.46563,-123.41585,0,100990
 100991,Ring Rd at Fine Arts Building,48.46192,-123.31606,0,100991
 100992,Wilkinson Rd at Burnside Rd W,48.46636,-123.41512,0,100992
 100993,Burnside Rd W at Wilkinson Rd,48.46549,-123.41718,0,100993
@@ -869,7 +869,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 100998,McKenzie Ave at Shelbourne St East Side,48.46871,-123.33072,0,100998
 100999,McKenzie Ave at Cedarwood St,48.46854,-123.32803,0,100999
 101000,Quadra St at Ambassador Ave,48.47582,-123.373,0,101000
-101002,Island Hwy at Plowright Rd,48.45361,-123.43729,0,101002
+101002,Island Hwy at Plowright Rd,48.45343,-123.43677,0,101002
 101003,Cedar Hill Rd at Hopesmore Dr,48.47138,-123.33501,0,101003
 101004,Quadra St at Ambassador Ave,48.4765,-123.37361,0,101004
 101005,Beach Dr at Midland Rd,48.45175,-123.29963,0,101005
@@ -919,12 +919,12 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101050,Island Hwy at Helmcken Rd,48.4556,-123.4405,0,101050
 101051,Helmcken Rd at Island Hwy,48.45642,-123.44049,0,101051
 101052,Helmcken Rd at Hwy 1 South Side,48.4633,-123.43156,0,101052
-101053,Cadboro Bay Rd at Vista Bay Rd,48.45738,-123.30021,0,101053
+101053,Cadboro Bay Rd at Vista Bay Rd,48.45751,-123.3002,0,101053
 101054,Carey Rd at Judah St,48.47661,-123.39872,0,101054
 101055,Hwy 1 at Helmcken Rd,48.46341,-123.43165,0,101055
 101056,Interurban Rd at Meadowview Pl,48.47431,-123.40753,0,101056
 101057,Island Hwy at Helmcken Rd,48.45638,-123.44154,0,101057
-101058,Cadboro Bay Rd at Vista Bay Rd,48.45741,-123.30041,0,101058
+101058,Cadboro Bay Rd at Vista Bay Rd,48.45727,-123.30044,0,101058
 101059,Carey Rd at Roy Rd,48.47696,-123.39909,0,101059
 101060,Cedar Hill Rd at Feltham Rd,48.47537,-123.3355,0,101060
 101061,Interurban Rd at Meadowview Pl,48.47462,-123.40759,0,101061
@@ -949,7 +949,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101083,Laval Ave at Larchwood Dr,48.47331,-123.32493,0,101083
 101085,Helmcken Rd at Knockan Dr,48.47262,-123.41848,0,101085
 101086,Quadra St at Beckwith Ave,48.48118,-123.37823,0,101086
-101087,Glanford Ave at Leaside Ave,48.48023,-123.39122,0,101087
+101087,Glanford Ave at Leaside Ave,48.48029,-123.39115,0,101087
 101088,Helmcken Rd at Knockan Dr,48.47208,-123.41897,0,101088
 101089,Quadra St at Beckwith Ave,48.48138,-123.37813,0,101089
 101090,Island Hwy at Jedburgh Rd,48.45777,-123.44363,0,101090
@@ -968,7 +968,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101104,Wilkinson Rd at Glen Tara Lane,48.47586,-123.41185,0,101104
 101105,Feltham Rd at Larchwood Dr,48.47609,-123.32784,0,101105
 101106,Laval Ave at Loyola St,48.47326,-123.32111,0,101106
-101107,McKenzie Ave at Vikes Way,48.46896,-123.31225,0,101107
+101107,McKenzie Ave at Vikes Way,48.46899,-123.31233,0,101107
 101108,Feltham Rd at Larchwood Dr,48.47596,-123.32802,0,101108
 101110,Laval Ave at Mount Douglas Secondary,48.47219,-123.31767,0,101110
 101113,Laval Ave at Mount Douglas Secondary,48.47231,-123.31707,0,101113
@@ -1012,8 +1012,8 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101158,Interurban Rd at Dunsterville Ave,48.4797,-123.4116,0,101158
 101159,Glanford Ave at Lodi Ave,48.48458,-123.38889,0,101159
 101160,Shelbourne St at Arbordale Ave,48.48175,-123.33656,0,101160
-101161,Vanalman Ave at Ridgebank Cres,48.48334,-123.39636,0,101161
-101162,Vanalman Ave at Ridgebank Cres,48.48322,-123.3965,0,101162
+101161,Vanalman Ave at Ridgebank Cres,48.48337,-123.39642,0,101161
+101162,Vanalman Ave at Ridgebank Cres,48.48333,-123.39654,0,101162
 101163,Watkiss Way at Talcott Rd,48.46462,-123.44391,0,101163
 101164,Quadra St at Chatterton Way,48.48528,-123.38181,0,101164
 101165,Glanford Ave at Enterprise Cres,48.48463,-123.38865,0,101165
@@ -1072,13 +1072,13 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101222,Kenmore Rd at Torquay Dr,48.48227,-123.3278,0,101222
 101224,Gordon Head Rd at Lifton Pl,48.47618,-123.31106,0,101224
 101225,Emily Carr Dr at Crownwood Lane,48.48834,-123.37777,0,101225
-101226,Arbutus Rd at Sherwood Rd,48.46362,-123.2905,0,101226
+101226,Arbutus Rd at Sherwood Rd,48.46372,-123.29067,0,101226
 101227,Watkiss Way at Creed Rd,48.4635,-123.44979,0,101227
 101228,Watkiss Way at Creed Rd,48.4637,-123.44969,0,101228
 101229,Ocean Blvd at Lagoon Rd,48.41686,-123.47265,0,101229
 101230,Telegraph Bay Rd at Seaview Rd,48.46009,-123.28604,0,101230
 101231,Arbutus Rd at Sherwood Rd,48.46372,-123.29037,0,101231
-101232,Colwood Exch Bay A,48.44495,-123.4662,0,101232
+101232,Colwood Exch Bay A,48.44491,-123.46611,0,101232
 101233,Majestic Dr at Prairie St,48.4846,-123.33319,0,101233
 101234,4400 Blk Chatterton Way,48.48821,-123.38319,0,101234
 101235,Arbutus Rd at Lauder Rd,48.46226,-123.288,0,101235
@@ -1086,7 +1086,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101238,Tyndall Ave at Kenmore Rd,48.48143,-123.32273,0,101238
 101239,Telegraph Bay Rd at Arbutus Rd,48.46022,-123.28558,0,101239
 101240,Arbutus Rd at Burchett Pl,48.4624,-123.28798,0,101240
-101241,Colwood Exch (Island Hwy) Bay E,48.44588,-123.46652,0,101241
+101241,Colwood Exch (Island Hwy) Bay E,48.44586,-123.46646,0,101241
 101242,Emily Carr Dr at Parkwood Terr,48.48963,-123.37296,0,101242
 101243,Emily Carr Dr at Parkwood Terr,48.48957,-123.37277,0,101243
 101244,Arbutus Rd at Lexington Ave,48.47374,-123.30392,0,101244
@@ -1100,7 +1100,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101252,Watkiss Way at Marler Dr,48.46194,-123.4538,0,101252
 101253,Watkiss Way at Marler Dr,48.46207,-123.45372,0,101253
 101254,Island Hwy at Six Mile Rd,48.45933,-123.45734,0,101254
-101255,Sooke Rd at Goldstream Ave,48.44154,-123.47004,0,101255
+101255,Sooke Rd at Goldstream Ave,48.44153,-123.46998,0,101255
 101256,Gordon Head Rd at Greenlands Rd,48.47725,-123.30982,0,101256
 101257,W Saanich Rd at Tri-Eagle Plaza,48.48981,-123.38585,0,101257
 101258,Vanalman Ave at Northridge Cres,48.48744,-123.39786,0,101258
@@ -1129,11 +1129,11 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101283,Vanalman Ave at Mann Ave,48.48883,-123.39873,0,101283
 101284,Watkiss Way at Flury Heights,48.462,-123.45675,0,101284
 101288,San Juan Ave at Gordon Head Rd,48.47948,-123.30917,0,101288
-101289,Six Mile Rd at Island Hwy,48.45739,-123.46207,0,101289
+101289,Six Mile Rd at Island Hwy,48.45741,-123.46227,0,101289
 101290,San Juan Ave at Gordon Head Rd,48.47938,-123.30843,0,101290
 101291,Six Mile Rd at Damon Dr,48.45758,-123.46247,0,101291
 101292,Shelbourne St at Robinwood Dr,48.48898,-123.33807,0,101292
-101293,Interurban Rd at Alan Rd,48.48607,-123.41572,0,101293
+101293,Interurban Rd at Alan Rd,48.4861,-123.41565,0,101293
 101294,Gordon Head Rd at Arbutus Rd,48.47926,-123.30747,0,101294
 101295,Mann Ave at Wilkinson Rd,48.48952,-123.4006,0,101295
 101296,Milburn Dr at Hatley Dr,48.41943,-123.48068,0,101296
@@ -1142,7 +1142,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101299,Majestic Dr at Hawthorne St,48.4879,-123.33122,0,101299
 101300,Emily Carr Dr at Thistlewood Dr,48.49267,-123.37109,0,101300
 101301,Shelbourne St at Robinwood Dr,48.48935,-123.33778,0,101301
-101302,Interurban Rd at Alan Rd,48.4869,-123.41548,0,101302
+101302,Interurban Rd at Alan Rd,48.48689,-123.41551,0,101302
 101303,Lagoon Rd at Heatherbell Rd,48.42079,-123.48023,0,101303
 101304,Atkins Ave at Traverse Terr,48.44993,-123.47025,0,101304
 101305,Tyndall Ave at Hillcrest Ave,48.48523,-123.32023,0,101305
@@ -1150,7 +1150,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101307,Atkins Rd at Myra Pl,48.45239,-123.46873,0,101307
 101308,Tyndall Ave at Triest Cres,48.48542,-123.3203,0,101308
 101309,Atkins Rd at Country Terr,48.45003,-123.47042,0,101309
-101310,Sooke Rd at University Dr,48.43998,-123.47663,0,101310
+101310,Sooke Rd at University Dr,48.43995,-123.47667,0,101310
 101311,Atkins Rd at Six Mile Rd,48.45818,-123.4645,0,101311
 101312,Atkins Rd at Myra Pl,48.45255,-123.46896,0,101312
 101313,Chatterton Way at Dalewood Lane,48.49347,-123.3836,0,101313
@@ -1161,9 +1161,9 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101320,Atkins Rd at Anya Lane,48.45646,-123.4674,0,101320
 101321,Emily Carr Dr at Lohbrunner Rd W,48.49442,-123.36794,0,101321
 101322,Atkins Rd at Anya Lane,48.45644,-123.4672,0,101322
-101323,Emily Carr Dr at Lohbrunner Rd W,48.49404,-123.36835,0,101323
+101323,Emily Carr Dr at Lohbrunner Rd W,48.4939,-123.36847,0,101323
 101324,Wilkinson Rd at Lindsay St,48.49119,-123.40058,0,101324
-101325,Sooke Rd at Aldeane Ave,48.43978,-123.47811,0,101325
+101325,Sooke Rd at Aldeane Ave,48.43981,-123.47807,0,101325
 101326,Goldstream Ave at Wale Rd,48.44399,-123.47592,0,101326
 101327,Majestic Dr at Wycliffe Pl,48.4898,-123.33028,0,101327
 101328,Wilkinson Rd at Lindsay St,48.49225,-123.39988,0,101328
@@ -1176,11 +1176,11 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101335,Chatterton Way at Royal Oak Ave,48.4947,-123.38443,0,101335
 101336,Benhomer Dr at Metchosin Rd,48.41705,-123.48341,0,101336
 101337,Lagoon Rd at Metchosin Rd,48.42032,-123.48415,0,101337
-101338,Metchosin Rd at Farview Rd,48.4188,-123.48414,0,101338
+101338,Metchosin Rd at Farview Rd,48.41878,-123.48418,0,101338
 101339,Metchosin Rd at Benhomer Dr,48.4179,-123.48382,0,101339
 101340,Lagoon Rd at Wickheim Rd,48.42019,-123.48408,0,101340
 101341,Interurban Rd at Hector Rd,48.48911,-123.41806,0,101341
-101342,Atkins Ave at Selica Rd,48.44765,-123.47696,0,101342
+101342,Atkins Ave at Selica Rd,48.44765,-123.47664,0,101342
 101343,Benhomer Dr at Swindell Cres,48.4172,-123.48441,0,101343
 101344,Ferndale Rd at Houlihan Pl,48.48368,-123.30581,0,101344
 101345,W Saanich Rd at Elk Lake Dr,48.49569,-123.38928,0,101345
@@ -1253,12 +1253,12 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101416,Royal Oak Exch Bay E,48.49915,-123.38734,0,101416
 101417,Painter Rd at Dressler Rd,48.41705,-123.48985,0,101417
 101418,Royal Oak Dr at Emily Carr Dr,48.49988,-123.36691,0,101418
-101419,Sooke Rd at Acacia Dr,48.43704,-123.4866,0,101419
+101419,Sooke Rd at Acacia Dr,48.43699,-123.48662,0,101419
 101420,Ferndale Rd at Seawood Terr,48.49114,-123.315,0,101420
 101421,Ferndale Rd at Pomona Way,48.49009,-123.3116,0,101421
 101422,Ferndale Rd at Pauls Terr,48.48841,-123.30699,0,101422
 101423,Ferndale Rd at Pauls Terr,48.48832,-123.30721,0,101423
-101425,Sooke Rd at Mount View Ave,48.43672,-123.48745,0,101425
+101425,Sooke Rd at Mount View Ave,48.43675,-123.48741,0,101425
 101426,Ferndale Rd at Whispering Oak Dr,48.49029,-123.31181,0,101426
 101427,Metchosin Rd at Wishart Rd,48.42605,-123.49037,0,101427
 101428,Ferndale Rd at Vantreight Dr,48.48922,-123.30841,0,101428
@@ -1267,15 +1267,15 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101433,Wishart Rd at Terrahue Rd,48.42465,-123.49145,0,101433
 101434,Interurban Rd at Conway Rd,48.49349,-123.41965,0,101434
 101435,Interurban Rd at Conway Rd,48.49358,-123.41946,0,101435
-101436,Metchosin Rd at Wishart Rd,48.42721,-123.49157,0,101436
-101437,Sooke Rd at Ledsham Rd,48.43536,-123.48986,0,101437
+101436,Metchosin Rd at Wishart Rd,48.42718,-123.49157,0,101436
+101437,Sooke Rd at Ledsham Rd,48.43533,-123.48984,0,101437
 101438,Elk Lake Dr at Commonwealth Place,48.50119,-123.38619,0,101438
 101439,Elk Lake Dr at Commonwealth Place,48.50053,-123.38693,0,101439
 101440,Royal Oak Dr at Lochside Dr,48.50135,-123.36261,0,101440
 101441,400 Blk Dressler Rd,48.41645,-123.49252,0,101441
 101442,Atkins Ave at Westwind Dr,48.45001,-123.48435,0,101442
-101443,Sooke Rd at Kelly Rd,48.43546,-123.48996,0,101443
-101444,Wishart Rd at Tipton Ave,48.42197,-123.49297,0,101444
+101443,Sooke Rd at Kelly Rd,48.43549,-123.48996,0,101443
+101444,Wishart Rd at Tipton Ave,48.42196,-123.49295,0,101444
 101445,Metchosin Rd at Laren Rd,48.42787,-123.49259,0,101445
 101446,Royal Oak Dr at Lochside Dr,48.50176,-123.36086,0,101446
 101447,400 Blk Dressler Rd,48.41654,-123.4924,0,101447
@@ -1284,7 +1284,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101450,Metchosin Rd at Laren Rd,48.42806,-123.49258,0,101450
 101451,Metchosin Rd at Farhill Rd,48.39999,-123.49053,0,101451
 101452,Kelly Rd at Sooke Rd,48.43524,-123.492,0,101452
-101453,Sooke Rd at Heatherly Rd,48.4344,-123.49229,0,101453
+101453,Sooke Rd at Heatherly Rd,48.43435,-123.49228,0,101453
 101454,Royal Oak Dr at McMorran Way,48.50256,-123.3594,0,101454
 101455,Metchosin Rd at Farhill Rd,48.40009,-123.4907,0,101455
 101456,Goldstream Ave at Grainger Rd,48.44625,-123.48746,0,101456
@@ -1293,23 +1293,23 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101459,Markham St at Parking Lot 3,48.49302,-123.41469,0,101459
 101460,Kelly Rd at Sooke Rd,48.43528,-123.49267,0,101460
 101461,Interurban Rd at Delmar Pl,48.49521,-123.41938,0,101461
-101462,Selwyn Rd at Selwyn Oaks Pl,48.45041,-123.48602,0,101462
-101463,Sooke Rd at Ridley Dr,48.43427,-123.49308,0,101463
+101462,Selwyn Rd at Selwyn Oaks Pl,48.45054,-123.48606,0,101462
+101463,Sooke Rd at Ridley Dr,48.4343,-123.49306,0,101463
 101464,Wishart Rd at Stornoway Dr,48.41882,-123.49501,0,101464
 101466,Wishart Rd at Webb Pl,48.41791,-123.4951,0,101466
 101467,Goldstream Ave at Grainger Rd,48.44642,-123.48772,0,101467
 101468,Wishart Rd at Cairndale Rd,48.42041,-123.49537,0,101468
-101469,Colwood Exch Bay D,48.44511,-123.46636,0,101469
+101469,Colwood Exch Bay D,48.44511,-123.46631,0,101469
 101470,Wishart Rd at Rockwood Terr,48.4161,-123.4956,0,101470
 101471,Selwyn Rd at Downhome Dr,48.45242,-123.48604,0,101471
 101472,Royal Oak Dr at Firbank Lane,48.50332,-123.35642,0,101472
-101473,Metchosin Rd at Cedarcrest Dr,48.43078,-123.49489,0,101473
+101473,Metchosin Rd at Cedarcrest Dr,48.43076,-123.49488,0,101473
 101474,Wishart Rd at Salton Dr,48.41732,-123.49563,0,101474
 101475,Cordova Bay Rd at Mt Douglas Park,48.50171,-123.34332,0,101475
 101476,Cordova Bay Rd at Mt Douglas Park,48.50253,-123.344,0,101476
 101477,Elk Lake Dr at Marsett Pl,48.50401,-123.38564,0,101477
 101478,Elk Lake Dr at Marsett Pl,48.50331,-123.3859,0,101478
-101479,Metchosin Rd at Sooke Rd,48.43199,-123.49535,0,101479
+101479,Metchosin Rd at Sooke Rd,48.43197,-123.49535,0,101479
 101480,Metchosin Rd at Sooke Rd,48.43134,-123.49531,0,101480
 101481,Royal Oak Dr at Blenkinsop Rd,48.50367,-123.35516,0,101481
 101482,Stornoway Dr at Strathdee Pl,48.41858,-123.49641,0,101482
@@ -1326,9 +1326,9 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101493,Interurban Rd at Viaduct Ave W,48.49911,-123.41917,0,101493
 101494,Selwyn Rd at Mill Hill Rd,48.45603,-123.4871,0,101494
 101495,Cairndale Rd at Brenda Lane,48.42035,-123.49924,0,101495
-101496,Wishart Rd at Gurunank Lane,48.41178,-123.49857,0,101496
+101496,Wishart Rd at Gurunank Lane,48.41203,-123.49844,0,101496
 101498,Stornoway Dr at Saint Troy Pl,48.41898,-123.49948,0,101498
-101499,Metchosin Rd at Duke Rd E,48.39854,-123.49453,0,101499
+101499,Metchosin Rd at Duke Rd E,48.39863,-123.49409,0,101499
 101500,Quayle Rd at Beaver Rd,48.50142,-123.41394,0,101500
 101501,3800 Blk Sooke Rd,48.41133,-123.58589,0,101501
 101502,Duke Rd E at Haystock Rd,48.39712,-123.49547,0,101502
@@ -1374,12 +1374,12 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101542,Langford Exch Bay C,48.44554,-123.50468,0,101542
 101543,Strandlund Ave at Duncan Pl,48.45663,-123.49347,0,101543
 101544,Treanor Ave at Kyle Pl,48.4656,-123.4868,0,101544
-101545,Duke Rd E at Chapel Heights Dr,48.3905,-123.49755,0,101545
+101545,Duke Rd E at Chapel Heights Dr,48.39035,-123.49763,0,101545
 101546,Goldstream Ave at Claude Rd,48.44893,-123.49901,0,101546
 101548,Sooke Rd at Fulton Rd,48.43042,-123.5063,0,101548
 101549,Langford Pky at City Centre Park,48.44337,-123.51966,0,101549
 101550,Cordova Bay Rd at Sunnygrove Terr,48.51068,-123.36173,0,101550
-101551,3700 Blk Duke Rd E,48.38916,-123.49831,0,101551
+101551,3700 Blk Duke Rd E,48.38929,-123.4982,0,101551
 101552,Sooke Rd at Fulton Rd,48.42979,-123.50566,0,101552
 101553,Veterans Memorial Pky at Langford Pky,48.44095,-123.50303,0,101553
 101554,Cordova Bay Rd at Sunnygrove Terr,48.51089,-123.36164,0,101554
@@ -1388,22 +1388,22 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101557,Veterans Memorial Pky at Kelly Rd,48.43905,-123.50412,0,101557
 101558,Goldstream Ave at Lakeview Terr,48.44979,-123.52448,0,101558
 101559,Veterans Memorial Pky at Strandlund Ave,48.45553,-123.49644,0,101559
-101560,Peatt Rd at Larkhall Rd,48.45325,-123.49821,0,101560
+101560,Peatt Rd at Larkhall Rd,48.4532,-123.49825,0,101560
 101561,Peatt Rd at Veterans Memorial Pky,48.45451,-123.49751,0,101561
 101562,Veterans Memorial Pky at Kelly Rd,48.43747,-123.50479,0,101562
 101563,3700 Blk Duke Rd E,48.38863,-123.49887,0,101563
 101565,Langford Pky at Langford Lake Rd E,48.44395,-123.52691,0,101565
-101566,Peatt Rd at Brock Ave,48.45331,-123.49836,0,101566
+101566,Peatt Rd at Brock Ave,48.45319,-123.49845,0,101566
 101567,Kelly Rd at Veteran Memorial Pky,48.4383,-123.50538,0,101567
 101568,Peatt Rd at Veterans Memorial Pky,48.45458,-123.49765,0,101568
 101569,Peatt Rd at Goldstream Ave,48.44985,-123.50046,0,101569
-101570,Latoria Rd at Veterans Memorial Pky,48.40891,-123.50918,0,101570
+101570,Latoria Rd at Veterans Memorial Pky,48.40889,-123.50919,0,101570
 101571,Latoria Rd at Bezanton Way,48.40722,-123.50545,0,101571
 101572,Veterans Memorial Pky at Peatt Rd,48.45451,-123.49623,0,101572
 101573,Langford Exch Bay A,48.44533,-123.50575,0,101573
 101574,Goldstream Ave at Peatt Rd,48.44944,-123.50159,0,101574
 101575,W Saanich Rd at Beaver Rd,48.50846,-123.41005,0,101575
-101576,Fulton Rd at Karger Terr,48.42128,-123.50872,0,101576
+101576,Fulton Rd at Karger Terr,48.42125,-123.50871,0,101576
 101577,Treanor Ave at Cottier Pl,48.46558,-123.49111,0,101577
 101580,Sooke Rd at Cecil Blogg Dr,48.43231,-123.51,0,101580
 101581,Cordova Bay Rd at Maxine Lane,48.51317,-123.36491,0,101581
@@ -1412,12 +1412,12 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101585,Sooke Rd at Cecil Blogg Dr,48.43181,-123.50934,0,101585
 101586,Phelps Ave at Sabina Pl,48.46682,-123.49157,0,101586
 101588,3800 Blk Duke Rd E,48.38785,-123.50147,0,101588
-101589,Bexhill Rd at Bexhill Pl,48.42351,-123.51047,0,101589
+101589,Bexhill Rd at Bexhill Pl,48.42354,-123.51052,0,101589
 101590,W Saanich Rd at Old W Saanich Rd,48.50917,-123.41132,0,101590
 101591,3800 Blk Duke Rd E,48.38834,-123.50264,0,101591
 101592,Treanor Ave at Bellamy Rd,48.46492,-123.4937,0,101592
 101593,Langford Pky at Langford Lake Rd E,48.44374,-123.52695,0,101593
-101595,Fulton Rd at Sunheights Dr,48.41984,-123.51121,0,101595
+101595,Fulton Rd at Sunheights Dr,48.41987,-123.51115,0,101595
 101596,Elk Lake Dr at Hwy 17,48.51354,-123.38463,0,101596
 101597,Goldstream Ave at Strathmore Rd,48.45015,-123.50429,0,101597
 101601,Cuaulta Cres at Zapata Pl,48.4265,-123.51148,0,101601
@@ -1444,7 +1444,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101627,W Saanich Rd at Interurban Rd,48.51095,-123.41472,0,101627
 101629,Gourman Pl at Peacock Pl,48.47056,-123.4929,0,101629
 101630,Jacklin Rd at Rex Rd,48.44162,-123.51079,0,101630
-101631,Goldstream Ave at Jacklin Rd,48.45085,-123.50638,0,101631
+101631,Goldstream Ave at Jacklin Rd,48.45086,-123.50633,0,101631
 101632,Langford Exch (Jacklin Rd) Bay E,48.44397,-123.50975,0,101632
 101633,W Saanich Rd at Interurban Rd,48.51221,-123.41449,0,101633
 101634,Walfred Rd at West Oak Pl,48.42752,-123.51425,0,101634
@@ -1452,7 +1452,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101636,Duke Rd W at Cliff Dr,48.39158,-123.5084,0,101636
 101637,Millstream Rd at Treanor Ave,48.46381,-123.49922,0,101637
 101638,Treanor Ave at Belair Rd,48.46455,-123.4988,0,101638
-101639,Goldstream Ave at Matson Rd,48.45089,-123.50754,0,101639
+101639,Goldstream Ave at Matson Rd,48.4509,-123.50764,0,101639
 101640,Jacklin Rd at Terlane Pl,48.43893,-123.51234,0,101640
 101641,Wesley Rd at Haliburton Rd,48.51597,-123.37423,0,101641
 101642,Desmond Dr at Wendey Dr,48.41398,-123.51472,0,101642
@@ -1463,13 +1463,13 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101647,Latoria Rd at Joy Close,48.41075,-123.5147,0,101647
 101649,Goldstream Ave at Leigh Rd,48.44972,-123.51885,0,101649
 101651,Millstream Rd at Millstream Village,48.4614,-123.4981,0,101651
-101652,Latoria Rd at Kelly Dawn Pl,48.41103,-123.51515,0,101652
+101652,Latoria Rd at Kelly Dawn Pl,48.41101,-123.51514,0,101652
 101653,Sunheights Dr at Columbus Pl,48.41727,-123.51568,0,101653
 101654,Jacklin Rd at Sunridge Valley Dr,48.43548,-123.51428,0,101654
 101655,Jenkins Ave at Avrill Rd,48.44065,-123.51268,0,101655
 101656,Dunford Ave at Jacklin Rd,48.4451,-123.51131,0,101656
 101657,900 Blk Walfred Rd,48.42883,-123.51553,0,101657
-101658,Jacklin Rd at Sunridge Valley Dr,48.43547,-123.51451,0,101658
+101658,Jacklin Rd at Sunridge Valley Dr,48.43552,-123.51448,0,101658
 101659,Jenkins Ave at Jacklin Rd,48.44061,-123.51306,0,101659
 101660,Cordova Bay Rd at Haliburton Rd,48.51777,-123.36694,0,101660
 101661,Cordova Bay Rd at Haliburton Rd,48.51752,-123.36707,0,101661
@@ -1478,11 +1478,11 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101665,Latoria Rd at Desmond Dr,48.41131,-123.51671,0,101665
 101666,Metchosin Rd at Duke Rd W,48.39303,-123.51082,0,101666
 101668,Goldstream Ave at Spencer Rd,48.45024,-123.51081,0,101668
-101669,Latoria Rd at Desmond Dr,48.41164,-123.51735,0,101669
+101669,Latoria Rd at Desmond Dr,48.41163,-123.5174,0,101669
 101670,Florence Lake Rd at Citation Rd,48.4559,-123.50785,0,101670
 101671,Millstream Rd at Hoylake Ave,48.46589,-123.50107,0,101671
 101672,Sooke Rd at Jacklin Rd,48.4341,-123.51619,0,101672
-101673,Goldstream Ave at Spencer Rd,48.45037,-123.51089,0,101673
+101673,Goldstream Ave at Spencer Rd,48.45037,-123.51099,0,101673
 101674,Florence Lake Rd at McCallum Rd,48.45559,-123.50799,0,101674
 101675,Jacklin Rd at Walfred Rd,48.43061,-123.51743,0,101675
 101676,McCallum Rd at Hwy 1,48.45351,-123.50969,0,101676
@@ -1492,7 +1492,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101680,Cordova Bay Rd at Gloria Pl,48.51951,-123.36725,0,101680
 101681,Dunford Ave at Carlow Rd,48.4459,-123.51451,0,101681
 101682,Millstream Rd at Gardner Creek,48.46742,-123.50188,0,101682
-101683,Sooke Rd at Ayton Pl,48.43329,-123.51831,0,101683
+101683,Sooke Rd at Ayton Pl,48.43328,-123.51838,0,101683
 101684,Jenkins Ave at Hull Rd,48.44145,-123.51648,0,101684
 101685,Dunford Ave at Carlow Rd,48.44575,-123.51435,0,101685
 101686,Carlow Rd at Goldstream Ave,48.44924,-123.51332,0,101686
@@ -1519,7 +1519,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101709,Florence Lake Rd at Setchfield Ave,48.45937,-123.51135,0,101709
 101710,Jenkins Ave at Haslam Ave,48.44166,-123.51989,0,101710
 101712,Goldstream Ave at Leigh Rd,48.44956,-123.5172,0,101712
-101713,Jenkins Ave at Haslam Ave,48.44188,-123.52062,0,101713
+101713,Jenkins Ave at Haslam Ave,48.44181,-123.52009,0,101713
 101715,Cordova Bay Rd at Doumac Ave,48.52272,-123.36759,0,101715
 101717,Setchfield Ave at Treanor Ave,48.4665,-123.50827,0,101717
 101718,Cordova Bay Rd at Doumac Ave,48.52311,-123.36753,0,101718
@@ -1532,13 +1532,13 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101725,W Saanich Rd at Observatory Rd,48.51778,-123.42182,0,101725
 101726,Jenkins Ave at Glen Lake Rd,48.44182,-123.52276,0,101726
 101727,Jenkins Ave at Glen Lake Rd,48.44191,-123.52302,0,101727
-101728,Metchosin Rd at Lomax Rd,48.39173,-123.52075,0,101728
+101728,Metchosin Rd at Lomax Rd,48.39175,-123.52075,0,101728
 101729,Glen Lake Rd at Page Ave,48.43434,-123.5254,0,101729
 101730,Goldstream Ave at Shelby Pl,48.44959,-123.52417,0,101730
 101731,Glen Lake Rd at Page Ave,48.43441,-123.52554,0,101731
 101732,West Shore Pky at Constellation Ave,48.44816,-123.53984,0,101732
 101733,Glen Lake Rd at Colbourne Gdns,48.43609,-123.52577,0,101733
-101734,Metchosin Rd at Lomax Rd,48.39182,-123.52123,0,101734
+101734,Metchosin Rd at Lomax Rd,48.39184,-123.52096,0,101734
 101735,West Shore Pky at Landing Lane,48.45166,-123.5416,0,101735
 101736,Glen Lake Rd at Colbourne Gdns,48.43602,-123.52592,0,101736
 101737,Cordova Bay Rd at Sutcliffe Rd,48.52525,-123.36848,0,101737
@@ -1549,18 +1549,18 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101742,Glen Lake Rd at Waterlily Lane,48.43848,-123.52779,0,101742
 101743,Glen Lake Rd at Springhill Rd,48.44269,-123.52685,0,101743
 101744,Sooke Rd at Ronald Rd,48.43252,-123.5293,0,101744
-101745,Glen Lake Rd at Springhill Rd,48.44261,-123.52629,0,101745
+101745,Glen Lake Rd at Springhill Rd,48.44261,-123.52616,0,101745
 101746,Happy Valley Rd at Acadian Rd,48.42764,-123.53008,0,101746
-101747,Goldstream Ave at Hartsdale Dr,48.44918,-123.52096,0,101747
+101747,Goldstream Ave at Hartsdale Dr,48.44921,-123.52088,0,101747
 101748,Happy Valley Rd at Huckleberry Terr,48.42715,-123.53054,0,101748
-101749,Sooke Rd at Ronald Rd,48.43282,-123.52899,0,101749
+101749,Sooke Rd at Ronald Rd,48.43284,-123.52893,0,101749
 101750,Langford Pky at Hull's Corner,48.44289,-123.51469,0,101750
-101751,Metchosin Rd at Pears Rd,48.38974,-123.52557,0,101751
-101752,Glen Lake Rd at Glenview Pl,48.44176,-123.5282,0,101752
+101751,Metchosin Rd at Pears Rd,48.38974,-123.5256,0,101751
+101752,Glen Lake Rd at Glenview Pl,48.44183,-123.52808,0,101752
 101754,Glen Lake Rd at Kathlynn Lane,48.43973,-123.52908,0,101754
 101755,Glen Lake Rd at Kathlynn Lane,48.43971,-123.52933,0,101755
 101756,Glen Lake Rd at Glenview Pl,48.44102,-123.5296,0,101756
-101758,Metchosin Rd at Pears Rd,48.38948,-123.52607,0,101758
+101758,Metchosin Rd at Pears Rd,48.38949,-123.52604,0,101758
 101760,Happy Valley Rd at Vision Way,48.42363,-123.53266,0,101760
 101761,Happy Valley Rd at Lobo Vale,48.41986,-123.5329,0,101761
 101763,Bear Mountain Pky at Stone Gate,48.47328,-123.51247,0,101763
@@ -1580,45 +1580,45 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101781,Goldstream Ave at Wenger Terr,48.45202,-123.52873,0,101781
 101782,Metchosin Rd at Witty Beach Rd,48.38405,-123.52696,0,101782
 101783,W Saanich Rd at Prospect Lake Rd,48.52377,-123.43079,0,101783
-101784,Cordova Bay Rd at Hill Rise Terr,48.53068,-123.38223,0,101784
+101784,Cordova Bay Rd at Hill Rise Terr,48.53065,-123.38206,0,101784
 101785,Cordova Bay Rd at Alderley Rd,48.53074,-123.38403,0,101785
 101786,W Saanich Rd at Sparton Rd,48.52384,-123.43052,0,101786
-101787,Goldstream Ave at Lakeshore Pl,48.45374,-123.53146,0,101787
+101787,Goldstream Ave at Lakeshore Pl,48.45371,-123.53141,0,101787
 101788,Cordova Bay Rd at Fowler Rd,48.5322,-123.37677,0,101788
 101789,Bear Mountain Pky at Players Dr,48.47436,-123.518,0,101789
 101790,Bear Mountain Pky at Players Dr,48.47475,-123.51848,0,101790
-101791,Metchosin Rd at Wootton Rd,48.38205,-123.52896,0,101791
+101791,Metchosin Rd at Wootton Rd,48.38228,-123.52876,0,101791
 101792,Happy Valley Rd at Torrance Ave,48.41098,-123.53803,0,101792
 101793,Happy Valley Rd at Torrance Ave,48.41123,-123.53787,0,101793
 101794,Metchosin Rd at Wootton Rd,48.38218,-123.52908,0,101794
 101796,Fowler Rd at Cordova Bay Rd,48.53329,-123.37821,0,101796
 101797,Happy Valley Rd at Wild Ridge Way,48.40983,-123.53967,0,101797
 101798,Happy Valley Rd at Wild Ridge Way,48.40965,-123.53999,0,101798
-101799,Metchosin Rd at Happy Valley Rd,48.38029,-123.53067,0,101799
+101799,Metchosin Rd at Happy Valley Rd,48.38029,-123.53071,0,101799
 101800,Happy Valley Rd at Winter Rd,48.40755,-123.54154,0,101800
 101801,Sooke Rd at Chidlow Connector,48.42944,-123.53809,0,101801
 101802,Happy Valley Rd at Centremont Lane,48.40795,-123.54146,0,101802
 101803,Fowler Rd at Menawood Pl,48.53513,-123.37914,0,101803
 101804,Bear Mountain Pky at Nicklaus Dr,48.47507,-123.52197,0,101804
-101805,William Head Rd at Happy Valley Rd,48.37927,-123.53174,0,101805
+101805,William Head Rd at Happy Valley Rd,48.37926,-123.53172,0,101805
 101807,Bear Mountain Pky at Rivers Crossing,48.4753,-123.5234,0,101807
 101808,W Saanich Rd at Hartland Ave,48.52739,-123.4365,0,101808
-101809,Goldstream Ave at Lake End Rd,48.45513,-123.53411,0,101809
+101809,Goldstream Ave at Lake End Rd,48.45507,-123.53399,0,101809
 101810,W Saanich Rd at Hartland Ave,48.5279,-123.43689,0,101810
-101812,William Head Rd at Parry Rd,48.37702,-123.53279,0,101812
+101812,William Head Rd at Parry Rd,48.37718,-123.5327,0,101812
 101813,Mills Rd at Littlewood Rd,48.65532,-123.43204,0,101813
 101814,Mills Rd at Avenger Way,48.6553,-123.42158,0,101814
-101815,Sooke Rd at Awsworth Rd,48.42582,-123.56312,0,101815
+101815,Sooke Rd at Awsworth Rd,48.42583,-123.56318,0,101815
 101816,Happy Valley Rd at Rocky Point Rd,48.38271,-123.53869,0,101816
 101817,Carey Rd at Ravine Way - Uptown,48.45597,-123.37735,0,101817
 101819,Happy Valley Rd at Rocky Point Rd,48.38255,-123.53873,0,101819
 101820,West Shore Pky at Amy Rd,48.45672,-123.53899,0,101820
-101821,Fowler Rd at Sayward Rd,48.53823,-123.38102,0,101821
+101821,Fowler Rd at Sayward Rd,48.53822,-123.381,0,101821
 101822,Sooke Rd at Awsworth Rd,48.42604,-123.56372,0,101822
 101823,Hwy 17 at Sayward Rd,48.53661,-123.38885,0,101823
-101824,Metchosin Rd at Raynerwood Pl,48.42299,-123.48782,0,101824
+101824,Metchosin Rd at Raynerwood Pl,48.42298,-123.48778,0,101824
 101825,Sayward Rd at Fowler Rd,48.53865,-123.38335,0,101825
-101826,4500 Blk William Head Rd,48.37506,-123.53393,0,101826
+101826,4500 Blk William Head Rd,48.37499,-123.53397,0,101826
 101827,Sooke Rd at West Shore Pky,48.42503,-123.54991,0,101827
 101828,Hwy 17 at Sayward Rd,48.53822,-123.38956,0,101828
 101829,Happy Valley Rd at Neild Rd,48.40483,-123.5475,0,101829
@@ -1627,8 +1627,8 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101832,4400 Blk Happy Valley Rd,48.38514,-123.54226,0,101832
 101833,West Shore Pky at Amy Rd,48.45788,-123.54105,0,101833
 101834,Bear Mountain Pky at Country Club Way,48.47593,-123.53071,0,101834
-101835,4300 Blk Happy Valley Rd,48.38641,-123.54448,0,101835
-101836,4300 Blk Happy Valley Rd,48.38646,-123.54424,0,101836
+101835,4300 Blk Happy Valley Rd,48.38634,-123.54431,0,101835
+101836,4300 Blk Happy Valley Rd,48.38651,-123.54436,0,101836
 101837,Happy Valley Rd at Flesh Rd,48.40209,-123.55022,0,101837
 101838,Rocky Point Rd at Winfall Rd,48.37731,-123.54187,0,101838
 101839,Happy Valley Rd at Flesh Rd,48.40198,-123.55048,0,101839
@@ -1639,9 +1639,9 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101844,W Saanich Rd at Matterhorn Dr,48.53386,-123.43767,0,101844
 101845,Happy Valley Rd at Glen Forest Way,48.3993,-123.55102,0,101845
 101846,Phipps Rd at Westshore Town Centre,48.44098,-123.50541,0,101846
-101847,Rocky Point Rd at Winfall Rd,48.37746,-123.54151,0,101847
+101847,Rocky Point Rd at Winfall Rd,48.37719,-123.54174,0,101847
 101848,Happy Valley Rd at Brookview Dr,48.39734,-123.55114,0,101848
-101849,Happy Valley Rd at Brookview Dr,48.39735,-123.55133,0,101849
+101849,Happy Valley Rd at Brookview Dr,48.39715,-123.55137,0,101849
 101850,2900 Blk Amy Rd,48.45864,-123.5456,0,101850
 101851,Happy Valley Rd at Lindholm Rd,48.39321,-123.5512,0,101851
 101852,Phipps Rd at Westshore Town Centre,48.44103,-123.50555,0,101852
@@ -1660,14 +1660,14 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101868,Rocky Point Rd at Taylor Rd,48.37178,-123.54729,0,101868
 101870,Rocky Point Rd at Tiswilde Rd,48.37167,-123.54775,0,101870
 101871,William Head Rd at Lombard Dr,48.36518,-123.54366,0,101871
-101872,Humpback Rd at Sooke Lk Rd,48.45886,-123.55338,0,101872
+101872,Humpback Rd at Sooke Lk Rd,48.45885,-123.55334,0,101872
 101873,5800 Blk W Saanich Rd,48.54138,-123.4368,0,101873
 101874,Lombard Dr at Tavane Rd,48.3666,-123.54857,0,101874
 101875,Rocky Point Rd at Arden Rd,48.36894,-123.55036,0,101875
 101876,Rocky Point Rd at Arden Rd,48.36901,-123.55052,0,101876
 101877,Lombard Dr at Tavane Rd,48.36658,-123.54892,0,101877
 101878,5800 Blk W Saanich Rd,48.54319,-123.43671,0,101878
-101879,William Head Rd at Boblaw Pl,48.35823,-123.54521,0,101879
+101879,William Head Rd at Boblaw Pl,48.35857,-123.54508,0,101879
 101880,William Head Rd at Boblaw Pl,48.35853,-123.54528,0,101880
 101881,Sooke Rd at Humpback Rd,48.42622,-123.56915,0,101881
 101883,Tanner Rd at Bella Vista Dr,48.55436,-123.39503,0,101883
@@ -1681,7 +1681,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101892,W Saanich Rd at Glen Nevis Rd,48.54752,-123.44142,0,101892
 101893,W Saanich Rd at Durrance Rd,48.55061,-123.4399,0,101893
 101894,Central Saanich Rd at Tanner Rd,48.55713,-123.40343,0,101894
-101895,Central Saanich Rd at Tanner Rd,48.55711,-123.40363,0,101895
+101895,Central Saanich Rd at Tanner Rd,48.55724,-123.4036,0,101895
 101896,W Saanich Rd at Durrance Rd,48.55122,-123.44008,0,101896
 101897,Central Saanich Rd at Styan Rd,48.5598,-123.40346,0,101897
 101899,6100 Blk W Saanich Rd,48.55424,-123.43866,0,101899
@@ -1701,15 +1701,15 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101915,Keating X Rd at Veyaness Rd,48.56522,-123.41026,0,101915
 101916,3800 Blk Sooke Rd,48.40957,-123.58528,0,101916
 101917,Keating X Rd at Rajpur Pl,48.56507,-123.41313,0,101917
-101919,Keating X Rd at Rajpur Pl,48.5652,-123.41438,0,101919
+101919,Keating X Rd at Rajpur Pl,48.56519,-123.41424,0,101919
 101920,Keating X Rd at Butler Cres,48.56506,-123.4193,0,101920
 101921,Keating X Rd at Oldfield Rd,48.56522,-123.41838,0,101921
 101923,Gillespie Rd at Sooke Rd,48.39409,-123.62741,0,101923
 101924,Keating X Rd at Willow Way,48.56571,-123.42649,0,101924
 101925,Keating X Rd at Willow Way,48.56558,-123.42752,0,101925
 101928,W Saanich Rd at Benvenuto Ave,48.56458,-123.43813,0,101928
-101929,Keating X Rd at W Saanich Rd,48.56512,-123.43738,0,101929
-101930,Keating X Rd at W Saanich Rd,48.56527,-123.43771,0,101930
+101929,Keating X Rd at W Saanich Rd,48.56512,-123.43727,0,101929
+101930,Keating X Rd at W Saanich Rd,48.56525,-123.43763,0,101930
 101931,W Saanich Rd at Keating X Rd,48.56585,-123.43906,0,101931
 101932,W Saanich Rd at Kersey Rd,48.56677,-123.44009,0,101932
 101933,Benvenuto Ave at Garden Gate Dr,48.56379,-123.45353,0,101933
@@ -1717,7 +1717,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 101935,Benvenuto Ave at Trudeau Terr,48.56286,-123.45614,0,101935
 101936,Benvenuto Ave at Amwell Dr,48.56384,-123.45373,0,101936
 101937,Sooke Rd at Kangaroo Rd,48.39294,-123.59798,0,101937
-101938,Sooke Rd at Kangaroo Rd,48.39349,-123.59691,0,101938
+101938,Sooke Rd at Kangaroo Rd,48.39345,-123.597,0,101938
 101939,Benvenuto Ave at Knott Way,48.56616,-123.44709,0,101939
 101940,Wallace Dr at Benvenuto Ave,48.56334,-123.45917,0,101940
 101941,Wallace Dr at Benvenuto Ave,48.5633,-123.45882,0,101941
@@ -1802,7 +1802,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102032,McTavish Exch Bay F,48.63033,-123.4132,0,102032
 102034,Hwy 1 at Admirals Rd,48.45967,-123.40673,0,102034
 102035,W Saanich Rd at Shaker Church Rd,48.58382,-123.4577,0,102035
-102036,Mt Newton X Rd at Stautw Rd,48.59298,-123.39173,0,102036
+102036,Mt Newton X Rd at Stautw Rd,48.59298,-123.39164,0,102036
 102037,W Saanich Rd at Shaker Church Rd,48.58428,-123.45807,0,102037
 102038,McTavish Exch Bay G,48.63033,-123.41297,0,102038
 102040,Mt Newton X Rd at Lochside Dr,48.59412,-123.39517,0,102040
@@ -1861,11 +1861,11 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102102,Sooke Rd at Ludlow Rd,48.39419,-123.65797,0,102102
 102103,5500 Blk Sooke Rd,48.39456,-123.65615,0,102103
 102104,E Sooke Rd at Gillespie Rd,48.35445,-123.64248,0,102104
-102105,Sooke Rd at Laidlaw Rd,48.39343,-123.66049,0,102105
+102105,Sooke Rd at Laidlaw Rd,48.39339,-123.6604,0,102105
 102106,Sooke Rd at Ludlow Rd,48.39404,-123.65801,0,102106
 102107,E Sooke Rd at Gillespie Rd,48.35436,-123.64263,0,102107
 102108,Lochside Dr at Amity Dr,48.61435,-123.40129,0,102108
-102109,Sooke Rd at Laidlaw Rd,48.393,-123.66088,0,102109
+102109,Sooke Rd at Laidlaw Rd,48.39298,-123.66092,0,102109
 102110,Lochside Dr at Amity Dr,48.61427,-123.40144,0,102110
 102111,May St at Eberts St,48.411,-123.34574,0,102111
 102112,E Saanich Rd at Barrett Dr,48.61348,-123.41615,0,102112
@@ -1881,16 +1881,16 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102124,Barrett Dr at Sandover Cres,48.61487,-123.42202,0,102124
 102125,Barrett Dr at Colburne Pl,48.61375,-123.42829,0,102125
 102126,Barrett Dr at Sandover Cres W,48.61479,-123.42188,0,102126
-102127,Sooke Rd at Harbourview Rd,48.39104,-123.66666,0,102127
+102127,Sooke Rd at Harbourview Rd,48.39109,-123.66654,0,102127
 102128,Barrett Dr at Kingcome Cres,48.61436,-123.43145,0,102128
 102129,Barrett Dr at Kingcome Cres S,48.61423,-123.43108,0,102129
 102130,Lochside Dr at Lowe Rd,48.61828,-123.40454,0,102130
 102131,Sooke Rd at Harbourview Rd,48.39119,-123.66785,0,102131
-102132,Royal Bay Exch Bay B,48.40838,-123.488,0,102132
+102132,Royal Bay Exch Bay B,48.40832,-123.48809,0,102132
 102133,E Sooke Rd at Parkheights Dr,48.35826,-123.65588,0,102133
 102134,E Sooke Rd at Parkheights Dr,48.35839,-123.65597,0,102134
 102135,E Saanich Rd at Dean Park Rd,48.61796,-123.41666,0,102135
-102136,E Saanich Rd at Dean Park Rd,48.61733,-123.41644,0,102136
+102136,E Saanich Rd at Dean Park Rd,48.61734,-123.4165,0,102136
 102137,Lochside Dr at Lowe Rd,48.61839,-123.40443,0,102137
 102138,Barrett Dr at Sentinel Pl,48.61652,-123.43226,0,102138
 102139,Barrett Dr at Kingcome Cres N,48.6163,-123.43211,0,102139
@@ -1922,7 +1922,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102167,E Sooke Rd at Raglan Pl,48.36445,-123.67433,0,102167
 102168,Sooke Rd at Parkland Rd,48.38906,-123.68276,0,102168
 102169,W Saanich Rd at Theh Le Lum Lane,48.62159,-123.46457,0,102169
-102170,Sooke Rd at Winnipeg Rd,48.39,-123.67872,0,102170
+102170,Sooke Rd at Winnipeg Rd,48.39005,-123.67864,0,102170
 102171,Haliburton Rd at Arsenault Pl,48.51429,-123.37519,0,102171
 102172,Haliburton Rd at Del Monte Ave,48.51414,-123.37868,0,102172
 102173,Haliburton Rd at Del Monte Ave,48.51432,-123.37897,0,102173
@@ -1939,11 +1939,11 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102185,James White Blvd at Resthaven Dr,48.65017,-123.40159,0,102185
 102186,Andover Rd at Copper Mine Rd,48.36299,-123.67856,0,102186
 102187,Wharf St at Broughton St,48.42389,-123.36947,0,102187
-102188,Lochside Dr at Bakerview Pl,48.63278,-123.40898,0,102188
+102188,Lochside Dr at Bakerview Pl,48.63265,-123.40909,0,102188
 102189,Kaltasin Rd at Sooke Rd,48.38654,-123.68791,0,102189
 102190,Lochside Dr at Bakerview Pl,48.63282,-123.40912,0,102190
 102191,W Saanich Rd at Pauquachin Lane,48.62708,-123.45811,0,102191
-102192,Six Mile Rd at Atkins Rd,48.45908,-123.46526,0,102192
+102192,Six Mile Rd at Atkins Rd,48.45906,-123.46514,0,102192
 102193,Six Mile Rd at Nursery Hill Dr,48.45964,-123.46553,0,102193
 102194,W Saanich Rd at North Ridge Rd,48.62772,-123.45791,0,102194
 102195,Copper Mine Rd at E Sooke Rd,48.36376,-123.67888,0,102195
@@ -1958,7 +1958,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102205,Lochside Dr at Frost Ave,48.6378,-123.40379,0,102205
 102206,W Saanich Rd at McTavish Rd,48.63169,-123.45809,0,102206
 102207,Lochside Dr at Frost Ave,48.63813,-123.40324,0,102207
-102208,Canora Rd at Brackman Way,48.63683,-123.41775,0,102208
+102208,Canora Rd at Brackman Way,48.6369,-123.41773,0,102208
 102209,Llanilar Rd at Cole Rd,48.36553,-123.69033,0,102209
 102210,Llanilar Rd at Hensbro Pl,48.36319,-123.6896,0,102210
 102211,Legislature Exch Bay A,48.41865,-123.36896,0,102211
@@ -1968,12 +1968,12 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102215,Fairfield Rd at Cornwall St,48.41608,-123.34993,0,102215
 102216,Milburn Dr at Aloha Ave,48.41697,-123.47651,0,102216
 102217,Fifth St at Weiler Ave,48.64133,-123.40026,0,102217
-102218,Canora Rd at Northbrook Dr,48.64062,-123.41745,0,102218
+102218,Canora Rd at Northbrook Dr,48.64073,-123.41734,0,102218
 102219,Sunriver Way at Driftwood Dr,48.39542,-123.71863,0,102219
 102220,Canora Rd at Norseman Rd,48.64048,-123.41727,0,102220
 102221,Fifth St at Weiler Ave,48.64166,-123.40046,0,102221
 102226,Victoria International Airport,48.64039,-123.43155,0,102226
-102227,Fifth St at Ocean Ave,48.644,-123.4001,0,102227
+102227,Fifth St at Ocean Ave,48.64397,-123.40022,0,102227
 102228,Fifth St at Ocean Ave,48.64369,-123.40047,0,102228
 102229,W Saanich Rd at Bradley Dyne Rd,48.63715,-123.45797,0,102229
 102230,E Sooke Rd at Whale View Cres,48.33716,-123.62048,0,102230
@@ -1983,7 +1983,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102234,W Saanich Rd at Bradley Dyne Rd,48.63874,-123.4581,0,102234
 102235,Sooke Rd at Belvista Pl,48.3839,-123.70554,0,102235
 102236,Sooke Rd at Phillips Rd,48.38373,-123.70622,0,102236
-102238,SEAPARC Recreation Centre,48.38628,-123.7088,0,102238
+102238,SEAPARC Recreation Centre,48.38624,-123.70907,0,102238
 102239,Fifth St at Bevan Ave,48.64739,-123.40023,0,102239
 102240,Fifth St at Bevan Ave,48.64729,-123.4004,0,102240
 102241,Sunriver Way at Demamiel Dr,48.39308,-123.71138,0,102241
@@ -2014,7 +2014,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102272,Sooke Rd at Goodmere Rd,48.3792,-123.71749,0,102272
 102273,W Saanich Rd at Willingdon Rd,48.64978,-123.44745,0,102273
 102274,Resthaven Dr at Mills Rd,48.65517,-123.40283,0,102274
-102275,Church Rd at Country Rd,48.38193,-123.71996,0,102275
+102275,Church Rd at Country Rd,48.3818,-123.7199,0,102275
 102276,Mills Rd at Bowerbank Rd,48.65527,-123.40987,0,102276
 102277,Bowerbank Rd at Mills Rd,48.65574,-123.41008,0,102277
 102278,Church Rd at Church Hill Dr,48.38459,-123.72233,0,102278
@@ -2031,12 +2031,12 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102291,Resthaven Dr at Amelia Ave,48.65848,-123.40305,0,102291
 102292,Otter Point Rd at Ayre Rd,48.37852,-123.72453,0,102292
 102293,Otter Point Rd at Eustace Rd,48.37815,-123.72454,0,102293
-102294,Otter Point Rd at Grant Rd W,48.37965,-123.7252,0,102294
+102294,Otter Point Rd at Grant Rd W,48.37971,-123.72525,0,102294
 102295,Resthaven Dr at Amelia Ave,48.65902,-123.40288,0,102295
 102296,Sunriver Way at Poplar Dr,48.39434,-123.71452,0,102296
 102297,Helgesen Rd at Cedar Ridge Dr,48.38904,-123.72823,0,102297
 102298,Mills Rd at W Saanich Rd,48.65546,-123.4444,0,102298
-102299,West Coast Rd at Atherly Close,48.37535,-123.72496,0,102299
+102299,West Coast Rd at Atherly Close,48.37522,-123.72499,0,102299
 102300,McDonald Park Rd at Glamorgan Rd,48.65927,-123.41692,0,102300
 102301,Bowerbank Rd at Calvin Ave,48.65984,-123.41027,0,102301
 102302,Bowerbank Rd at Piercy Ave,48.66025,-123.41003,0,102302
@@ -2044,11 +2044,11 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102304,McDonald Park Rd at Hwy 17,48.66114,-123.41693,0,102304
 102305,Bowerbank Rd at Vallis Pl,48.66206,-123.41028,0,102305
 102306,W Saanich Rd at Tapping Rd,48.65893,-123.44708,0,102306
-102307,Ardwell Ave at Resthaven Dr,48.66253,-123.40455,0,102307
-102308,West Coast Rd at Maple Ave S,48.37057,-123.72819,0,102308
+102307,Ardwell Ave at Resthaven Dr,48.66255,-123.40467,0,102307
+102308,West Coast Rd at Maple Ave S,48.37052,-123.72824,0,102308
 102309,Ardwell Ave at Simister Pl,48.66253,-123.40735,0,102309
 102310,Ardwell Ave at Simister Pl,48.66265,-123.40661,0,102310
-102311,West Coast Rd at Maple Ave S,48.37064,-123.72837,0,102311
+102311,West Coast Rd at Maple Ave S,48.37066,-123.72834,0,102311
 102312,Ardwell Ave at Menagh Pl,48.66253,-123.40947,0,102312
 102313,Helgesen Rd at Otter Point Rd,48.38759,-123.73329,0,102313
 102314,Bowerbank Rd at Ardwell Ave,48.66291,-123.4101,0,102314
@@ -2080,15 +2080,15 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102341,W Saanich Rd at Wsikem Creek,48.66313,-123.45133,0,102341
 102342,West Coast Rd at Whiffin Spit Rd,48.36594,-123.73675,0,102342
 102343,Royal Bay Exch Bay A,48.40813,-123.48807,0,102343
-102344,West Coast Rd at Whiffin Spit Rd,48.36607,-123.73493,0,102344
+102344,West Coast Rd at Whiffin Spit Rd,48.36613,-123.73496,0,102344
 102345,Grant Rd W at Maple Ave S,48.37549,-123.74008,0,102345
 102346,Whiffin Spit Rd at Deerlepe Rd,48.35832,-123.7343,0,102346
-102347,Latoria Blvd at Ryder Hesjedal Way,48.4073,-123.49161,0,102347
+102347,Latoria Blvd at Ryder Hesjedal Way,48.40731,-123.49154,0,102347
 102348,W Saanich Rd at Totem Lane,48.66478,-123.45403,0,102348
-102349,Latoria Blvd at Ryder Hesjedal Way,48.40769,-123.49028,0,102349
+102349,Latoria Blvd at Ryder Hesjedal Way,48.40773,-123.49031,0,102349
 102350,Grant Rd W at Maple Ave S,48.37539,-123.74096,0,102350
-102351,Whiffin Spit Rd at Wright Rd,48.36333,-123.73719,0,102351
-102352,Whiffin Spit Rd at Wright Rd,48.36335,-123.73737,0,102352
+102351,Whiffin Spit Rd at Wright Rd,48.36354,-123.73708,0,102351
+102352,Whiffin Spit Rd at Wright Rd,48.36329,-123.73736,0,102352
 102353,McDonald Park Rd at Blue Heron Rd,48.66956,-123.41764,0,102353
 102354,McDonald Park Rd at Blue Heron Rd,48.66929,-123.41777,0,102354
 102355,Otter Point Rd at Pascoe Rd,48.39671,-123.74636,0,102355
@@ -2108,7 +2108,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102369,Grant Rd W at West Coast Rd,48.37263,-123.7499,0,102369
 102370,Otter Point Rd at Sarah Dr,48.39685,-123.75433,0,102370
 102371,West Coast Rd at Ella Rd,48.37195,-123.74967,0,102371
-102372,Grant Rd W at West Coast Rd,48.37267,-123.75027,0,102372
+102372,Grant Rd W at West Coast Rd,48.37271,-123.75012,0,102372
 102373,McDonald Park Rd at Hwy 17,48.67601,-123.42612,0,102373
 102374,Wain Rd at Hwy 17,48.67679,-123.4275,0,102374
 102375,Downey Rd at W Saanich Rd,48.67355,-123.46045,0,102375
@@ -2125,7 +2125,6 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102386,Lands End Rd at Hwy 17,48.68394,-123.41386,0,102386
 102387,Hwy 17 at Lands End Rd,48.6841,-123.41248,0,102387
 102388,Wain Rd at Derrick Rd,48.67701,-123.47108,0,102388
-102389,W Saanich Rd at Birch Rd,48.6792,-123.45768,0,102389
 102390,Rocky Point Rd at Cook Rd,48.36275,-123.56748,0,102390
 102391,Madrona Dr at Cromar Rd,48.67555,-123.4823,0,102391
 102392,Otter Point Rd at Young Lake Rd,48.3961,-123.76795,0,102392
@@ -2135,10 +2134,8 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102396,Wain Rd at Deep Cove Rd,48.67707,-123.47832,0,102396
 102397,Rocky Point Rd at Pedder Bay Dr,48.3516,-123.58209,0,102397
 102398,Rocky Point Rd at Matheson Lake Park Rd,48.35175,-123.58234,0,102398
-102399,W Saanich Rd at Clayton Rd,48.681,-123.45768,0,102399
 102400,Lands End Rd at Woodpecker Pl,48.68565,-123.41672,0,102400
 102401,Madrona Dr at Wain Rd,48.67669,-123.48477,0,102401
-102402,W Saanich Rd at Maple Rd,48.68241,-123.45768,0,102402
 102403,E Sooke Rd at Seedtree Rd,48.35,-123.63717,0,102403
 102404,Swartz Bay Ferry Terminal Bay A,48.68826,-123.41201,0,102404
 102405,Lands End Rd at Greenpark Dr,48.68802,-123.42004,0,102405
@@ -2148,19 +2145,16 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102409,Lands End Rd at Elderberry Way,48.69021,-123.42471,0,102409
 102410,E Sooke Rd at Whale View Cres,48.33732,-123.62065,0,102410
 102411,Otter Point Rd at Robinson Rd,48.39407,-123.77793,0,102411
-102412,W Saanich Rd at Tatlow Rd,48.68725,-123.45774,0,102412
 102413,Lands End Rd at Hedgerow Dr,48.69174,-123.42788,0,102413
 102414,E Sooke Rd at Spirit Bay Rd,48.33817,-123.60623,0,102414
 102415,Lands End Rd at Oceanspray Dr,48.69446,-123.43,0,102415
-102416,UVic Exch Bay B,48.46615,-123.30926,0,102416
-102417,UVic Exch Bay C,48.46632,-123.30903,0,102417
+102416,UVic Exch Bay B,48.46608,-123.30936,0,102416
+102417,UVic Exch Bay C,48.46624,-123.30916,0,102417
 102418,E Sooke Rd at Sutiacum Rd,48.34278,-123.59617,0,102418
-102419,W Saanich Rd at Brickley Close,48.69218,-123.45773,0,102419
-102420,UVic Exch Bay I,48.46601,-123.30864,0,102420
-102422,7000 Blk West Coast Rd,48.36714,-123.78399,0,102422
+102420,UVic Exch Bay I,48.46604,-123.30858,0,102420
+102422,7000 Blk West Coast Rd,48.36722,-123.78389,0,102422
 102423,Lands End Rd at Howcrest Rd,48.69749,-123.43935,0,102423
 102424,Lands End Rd at Cloake Hill Rd,48.69592,-123.45187,0,102424
-102425,W Saanich Rd at Readings Dr,48.69451,-123.45775,0,102425
 102426,UVic Exch Bay F,48.46609,-123.30907,0,102426
 102428,Lands End Rd at W Saanich Rd,48.69566,-123.45739,0,102428
 102429,Lands End Rd at Seabreeze Rd,48.69728,-123.44708,0,102429
@@ -2169,8 +2163,8 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102432,Rocky Point Rd at Windover Terr,48.36508,-123.55553,0,102432
 102433,Bay St at Belmont Ave,48.43434,-123.34009,0,102433
 102434,Tyee Rd at Wilson St,48.43028,-123.37791,0,102434
-102435,Kemp Lake Rd at Milligan Rd,48.38173,-123.79075,0,102435
-102436,Fernwood Rd at Pandora Ave,48.42741,-123.34543,0,102436
+102435,Kemp Lake Rd at Milligan Rd,48.38177,-123.79053,0,102435
+102436,Fernwood Rd at Pandora Ave,48.42745,-123.3454,0,102436
 102438,Kemp Lake Rd at Chubb Rd,48.37625,-123.79192,0,102438
 102439,Kemp Lake Rd at Dollar Rd,48.37147,-123.79464,0,102439
 102440,West Coast Rd at Capenter Rd,48.36607,-123.79331,0,102440
@@ -2180,7 +2174,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102444,Tillicum Centre - Upper Level,48.45388,-123.39464,0,102444
 102445,Langford Pky at Phipps Rd,48.44201,-123.50396,0,102445
 102446,Hastings St at Santa Anita Ave,48.47913,-123.41563,0,102446
-102447,William Head Institution,48.33952,-123.54183,0,102447
+102447,William Head Institution,48.33953,-123.54188,0,102447
 102459,1400 Blk Gillespie Rd,48.37697,-123.6296,0,102459
 102467,Legislature Exch (Belleville St) Bay G,48.4206,-123.3681,0,102467
 102469,Hwy 17 at Mt Newton X Rd,48.59396,-123.39851,0,102469
@@ -2192,11 +2186,11 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102495,Royal Oak Exch Bay D,48.49923,-123.38873,0,102495
 102510,Royal Oak Exch Bay F,48.49893,-123.38749,0,102510
 102511,Royal Oak Exch Bay B,48.49865,-123.38854,0,102511
-102512,Veterans Memorial Pky at Allandale Rd,48.42763,-123.5018,0,102512
+102512,Veterans Memorial Pky at Allandale Rd,48.42775,-123.50186,0,102512
 102513,Burnside Rd W at Watkiss Way,48.46463,-123.4465,0,102513
 102524,Saanichton Exch Bay C,48.59414,-123.4164,0,102524
 102527,Saanichton Exch Bay D,48.59424,-123.41632,0,102527
-102530,Goldstream Ave at Lakeshore Pl,48.45411,-123.53175,0,102530
+102530,Goldstream Ave at Lakeshore Pl,48.45413,-123.53189,0,102530
 102537,Admirals Rd at Craigflower Rd,48.45012,-123.42542,0,102537
 102538,Swartz Bay Ferry Terminal Bay C,48.68769,-123.41226,0,102538
 102544,Metchosin Rd at Latoria Blvd,48.40734,-123.48625,0,102544
@@ -2219,9 +2213,9 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102583,Bear Mountain Pky at Marble Pl,48.45874,-123.5235,0,102583
 102584,Bear Mountain Pky at Alabaster Court,48.45881,-123.52433,0,102584
 102585,Bear Mountain Pky at Skirt Mountain,48.46289,-123.53411,0,102585
-102586,Bear Mountain Pky at Skirt Mountain,48.46032,-123.53038,0,102586
+102586,Bear Mountain Pky at Skirt Mountain,48.46009,-123.5299,0,102586
 102587,Bear Mountain Pky at Pinehurst Terr,48.46476,-123.53599,0,102587
-102588,Bear Mountain Pky at Pinehurst Terr,48.46471,-123.53632,0,102588
+102588,Bear Mountain Pky at Pinehurst Terr,48.46456,-123.53619,0,102588
 102590,Bear Mountain Pky at Riviera Pl,48.46856,-123.53776,0,102590
 102593,Bear Mountain Pky at Riviera Pl,48.46859,-123.53808,0,102593
 102595,Bear Mountain Pky at Pebble Dr,48.4738,-123.53649,0,102595
@@ -2247,39 +2241,39 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 104084,Leigh Rd at Hwy 1,48.45286,-123.5189,0,104084
 104085,Hwy 1 at Leigh Rd,48.45556,-123.52022,0,104085
 104086,McCallum Rd at Shell Gas Station,48.45322,-123.51096,0,104086
-104087,Wishart Rd at Allandale Rd,48.42468,-123.49165,0,104087
-104088,Wishart Rd at Tipton Rd,48.42206,-123.49318,0,104088
+104087,Wishart Rd at Allandale Rd,48.42486,-123.49153,0,104087
+104088,Wishart Rd at Tipton Rd,48.42208,-123.49304,0,104088
 104089,Wishart Rd at Stornoway Dr,48.41924,-123.49536,0,104089
 104090,Wishart Rd at Rockwood Terr,48.41553,-123.49543,0,104090
-104091,Wishart Rd at Gurunank Lane,48.412,-123.49864,0,104091
+104091,Wishart Rd at Gurunank Lane,48.41211,-123.49854,0,104091
 104092,Wishart Rd at Bunker Rd,48.40885,-123.50044,0,104092
 104093,Latoria Rd at Bezanton Way,48.40719,-123.50427,0,104093
 104094,Desmond Dr at Latoria Rd,48.4118,-123.51657,0,104094
 104095,Desmond Dr at Wendey Dr,48.41337,-123.51499,0,104095
 104096,Sunheights Dr at Columbus Pl,48.41736,-123.51553,0,104096
-104097,Sunheights Dr at Batting Pl,48.41892,-123.5145,0,104097
+104097,Sunheights Dr at Batting Pl,48.41897,-123.51449,0,104097
 104098,Sunheights Dr at Blue Sky Pl,48.42002,-123.51211,0,104098
-104099,Fulton Rd at Karger Terr,48.42124,-123.50852,0,104099
+104099,Fulton Rd at Karger Terr,48.42132,-123.50847,0,104099
 104100,Bexhill Rd at Bexhill Pl,48.4237,-123.51074,0,104100
-104101,Cuaulta Cres at Zapata Pl,48.42682,-123.51121,0,104101
+104101,Cuaulta Cres at Zapata Pl,48.42626,-123.51174,0,104101
 104102,Walfred Rd at West Oak Pl,48.42756,-123.51403,0,104102
 104103,Jacklin Rd at Walfred Rd,48.43032,-123.51745,0,104103
 104104,Jacklin Rd at Sooke Rd,48.43294,-123.51574,0,104104
-104105,McKenzie Ave at Vikes Way,48.46882,-123.31224,0,104105
-104106,McCallum Rd at Savory Rd,48.455,-123.51513,0,104106
-104107,McCallum Rd at Savory Rd,48.45497,-123.51537,0,104107
-104108,Royal Roads University Loop,48.43748,-123.47554,0,104108
-104109,800 Blk Cuaulta Cres,48.42558,-123.50956,0,104109
+104105,McKenzie Ave at Vikes Way,48.46883,-123.3123,0,104105
+104106,McCallum Rd at Savory Rd,48.45523,-123.51525,0,104106
+104107,McCallum Rd at Savory Rd,48.45517,-123.51543,0,104107
+104108,Royal Roads University Loop,48.4375,-123.47557,0,104108
+104109,800 Blk Cuaulta Cres,48.42586,-123.50961,0,104109
 104110,Admirals Rd at Westing Rd,48.4563,-123.41382,0,104110
 104111,Fairfield Rd at Blanshard St,48.42175,-123.36414,0,104111
 104112,Millstream Rd at Treanor Ave,48.46385,-123.49971,0,104112
 930000,Langford Transit Centre,48.4447,-123.51974,0,930000
 900000,Victoria Transit Centre,48.44076,-123.37051,0,900000
-100000,UVic Exch Bay D,48.46645,-123.30886,0,100000
-101869,William Head Rd at Lombard Dr,48.36506,-123.54355,0,101869
+100000,UVic Exch Bay D,48.46638,-123.30899,0,100000
+101869,William Head Rd at Lombard Dr,48.36543,-123.54311,0,101869
 101858,William Head Rd at Taylor Rd,48.36895,-123.53956,0,101858
-101818,4500 Blk William Head Rd,48.37492,-123.53381,0,101818
-101811,William Head Rd at Parry Rd,48.37697,-123.53259,0,101811
+101818,4500 Blk William Head Rd,48.37498,-123.53376,0,101818
+101811,William Head Rd at Parry Rd,48.37714,-123.53254,0,101811
 102161,Forest Park Dr at Cresswell Dr,48.62554,-123.42698,0,102161
 100143,Johnson St at Cook St,48.42583,-123.35275,0,100143
 102611,Victoria General Hospital,48.46622,-123.435,0,102611
@@ -2287,7 +2281,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102614,Happy Valley Rd at Latoria Rd,48.41766,-123.53323,0,102614
 102613,Happy Valley Rd at Latoria Rd,48.41726,-123.53303,0,102613
 102609,Cedar Hill X Rd at Davis Crt,48.46758,-123.35139,0,102609
-102617,Fernwood Rd at Vining St,48.42961,-123.34533,0,102617
+102617,Fernwood Rd at Vining St,48.42973,-123.34528,0,102617
 102608,Richmond Rd at Waterloo Rd,48.451,-123.32579,0,102608
 102606,Richmond Rd at McRae Ave,48.45078,-123.32587,0,102606
 102602,Shelbourne St at Cedar Ave,48.45576,-123.33296,0,102602
@@ -2299,18 +2293,18 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102624,Gorge Rd E at Irma St,48.44352,-123.38727,0,102624
 102626,Gorge Rd E at Carroll St,48.44312,-123.38332,0,102626
 102618,Gorge Rd E at Jutland Rd,48.44239,-123.37799,0,102618
-100705,UVic Exch Bay N,48.46614,-123.30822,0,100705
+100705,UVic Exch Bay N,48.46619,-123.30817,0,100705
 102643,Shelbourne St at Cedar Ave,48.45638,-123.33315,0,102643
 102633,Gorge Rd W at Admirals Rd,48.45306,-123.41918,0,102633
-102637,2100 Blk Bear Mountain Pky,48.46129,-123.52706,0,102637
-102641,Bear Mountain Pky at Selenite Pl,48.46157,-123.53191,0,102641
+102637,2100 Blk Bear Mountain Pky,48.46127,-123.52736,0,102637
+102641,Bear Mountain Pky at Selenite Pl,48.46108,-123.5312,0,102641
 102638,2100 Blk Bear Mountain Pky,48.46115,-123.52696,0,102638
 102649,Majestic Dr at Hawthorne St,48.48759,-123.33159,0,102649
 102644,Pandora Ave at Cook St,48.42731,-123.35488,0,102644
-102646,Bear Mountain Pky at Selenite Pl,48.46229,-123.5336,0,102646
-102654,Island Hwy at Stormont Rd,48.45372,-123.43714,0,102654
+102646,Bear Mountain Pky at Selenite Pl,48.46215,-123.53322,0,102646
+102654,Island Hwy at Stormont Rd,48.45348,-123.43645,0,102654
 102663,Sooke Lake Rd at Mount Wells Dr,48.45998,-123.54987,0,102663
-102655,2200 Blk Otter Point Rd,48.38131,-123.73029,0,102655
+102655,2200 Blk Otter Point Rd,48.38105,-123.72997,0,102655
 102670,McKenzie Ave at Shelbourne St West Side,48.46875,-123.33455,0,102670
 102657,Metchosin Rd at Ryder Hesjedal Way,48.40334,-123.48797,0,102657
 102658,Metchosin Rd at Ryder Hesjedal Way,48.40301,-123.48842,0,102658
@@ -2331,10 +2325,10 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102652,Saanichton Exch Bay A,48.59357,-123.4169,0,102652
 102674,Helgesen Rd at Otter Point Rd,48.3876,-123.73285,0,102674
 102675,Helgesen Rd at Cedar Ridge Dr,48.38904,-123.72764,0,102675
-102684,Church Rd at Acreman Pl,48.38622,-123.7236,0,102684
+102684,Church Rd at Acreman Pl,48.38617,-123.72352,0,102684
 102697,Admirals Rd at Arundel Dr,48.4578,-123.41083,0,102697
 102700,Admirals Rd at Hwy 1,48.45919,-123.40585,0,102700
-100889,UVic Exch Bay Q,48.46606,-123.30809,0,100889
+100889,UVic Exch Bay Q,48.46608,-123.308,0,100889
 102178,McKenzie Ave at Hwy 1,48.46023,-123.40455,0,102178
 102699,Admirals Rd at Hwy 1,48.45907,-123.40673,0,102699
 102698,Admirals Rd at Arundel Dr,48.45769,-123.41141,0,102698
@@ -2344,7 +2338,7 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102710,Douglas St at Johnson St,48.42669,-123.36468,0,102710
 102722,Hwy 1 at Tillicum Rd,48.45843,-123.39353,0,102722
 102721,Hwy 1 at Helmcken Rd,48.46446,-123.43038,0,102721
-102745,Latoria Rd at Klahanie Dr,48.41361,-123.5218,0,102745
+102745,Latoria Rd at Klahanie Dr,48.41357,-123.52174,0,102745
 102735,Latoria Rd at Klahanie Dr,48.41372,-123.52177,0,102735
 102727,Latoria Rd at Triangle Trail,48.41471,-123.52586,0,102727
 102726,Hansen Ave at Bellamy Rd,48.46354,-123.49231,0,102726
@@ -2358,4 +2352,4 @@ stop_id,stop_name,stop_lat,stop_lon,wheelchair_boarding,stop_code
 102765,Birch Rd at W Saanich Rd,48.67895,-123.45846,0,102765
 102871,Glanford Ave at Kenneth St,48.46965,-123.3889,0,102871
 102778,Sooke Rd at Jacklin Rd,48.43353,-123.5137,0,102778
-101237,Colwood Exch Bay B,48.445,-123.46634,0,101237
+101237,Colwood Exch Bay B,48.44496,-123.4663,0,101237
